@@ -1,0 +1,1849 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+    line-height: 1.2;
+}
+
+/*HEADER homepage*/
+
+header{
+    display: flex;
+    align-items: center;
+    margin: 20px 3%;
+}
+
+.logoHome img{
+    width: 70px;
+}
+
+.logoHome{
+    right: 0;
+}
+
+.headerHome{
+    padding: 0 4%;
+    z-index: 1000;
+}
+
+.headerHome a{
+    color: black;
+    text-decoration: none;
+    font-size: 20px ;
+    padding: 5px 20px;
+}
+
+.headerHomePerfil{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    align-items: center;
+}
+
+.headerHomePerfil a{
+    font-family: 'League Spartan';
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.menuIcon{
+    cursor: pointer;
+    display: none;
+}
+
+button.menuIcon {
+    background-color: transparent;
+    border: none;
+}
+
+.headerHome a:hover, .headerHomePerfil a:hover{
+    color: #FF3E83;
+}
+
+/*GRID TELA homepage*/
+.gridHomepage{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto repeat(auto, 1fr) auto;
+}
+
+/*CONTAINER HOMEPAGE descrição eventalize*/
+.gridMain {
+    grid-area: 1/1/3/8;
+    padding: 8% 5% 0 5%;
+    z-index: 1;
+    min-height: 100svh;
+}
+
+.gridMain h1{
+    color: transparent;
+    background: radial-gradient(37.47% 91.91% at 33.26% 36.72%, #3ED1FF 0%, #FF3E83 67.5%, #FFA856 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 10vw;
+    font-weight: 500;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0, 0.3));
+}
+
+.gridMain h2{
+    font-size: 3em;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 3%;
+    width: 90%;
+}
+
+.gridMain h3{
+    color: #252b2f;
+    font-size: 1.8em;
+    margin-bottom: 3%;
+    font-weight: 500;
+    line-height: 40px;
+    margin-bottom: 7%;
+
+}
+
+ button.buttonMain{
+    width: 50%;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    background-color: #E94F91;
+    font-size: 25px;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+button.buttonMain:hover{
+    transform: translateY(-10px);
+}
+
+.circlePositionMain {
+    grid-area: 1/7/3/13;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.circleMain{
+    position: absolute;
+    right: -25%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+    clip-path: circle();
+    z-index: 2;
+    bottom: 0;
+}
+  
+  .circleMain img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 80%;
+    height: auto;
+    position: absolute;
+    padding: 3%;
+    top: 45%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+  
+
+/*DESCRIÇÃO EXPLORE homepage*/
+.explorePage{
+    grid-area: 3/1/4/7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.explorePage img{
+    width: 600px;
+    max-width: 100%;
+}
+
+.exploreDescription{
+    grid-area: 3/7/4/13;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.exploreDescription h2{
+    font-size: 3em;
+    font-weight: 600;
+    line-height: 70px;
+}
+
+.exploreDescription h3{
+    font-size: 1.5em;
+    font-weight: 400;
+    width: 80%;
+    color: #252b2f;
+}
+
+/*DIVISÃO CARDS EMPRESA E CLIENTE homepage*/
+.clientCardDivision{
+    grid-area: 4/1/4/7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    margin-bottom: 10%;
+    visibility: hidden;
+}
+
+.companyCardDivision{
+    grid-area: 4/7/4/13;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    margin-bottom: 10%;
+    visibility: hidden;
+
+}
+
+.clientCard, .companyCard{
+    border-radius: 20px;
+    border-left: 3px solid #E94F91;
+    border-top: 3px solid #e97b4f;
+    border-right: 3px solid #A385BF;
+    border-bottom: 3px solid #0062ff76;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+    max-width: 400px;
+    height: 100%;
+    padding: 8%;
+}
+
+.clientCard img, .companyCard img{
+    width: 100%;
+    height: auto;   
+    object-fit: fill;
+}
+
+.clientCard h1{
+    color: #E94F91;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0, 0.3));
+    text-align: center;
+    font-size: 3em;
+    font-weight: 450;
+    margin: 7%;
+}
+
+.companyCard h1{
+    color: #A385BF;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0, 0.3));
+    text-align: center;
+    font-size: 3em;
+    font-weight: 450;
+    padding: 7%;
+}
+
+.clientCard p{
+    color: #252b2f;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.companyCard p{
+    color: #252b2f;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+/*CATEGORIAS DE SERVIÇOS icons homepage*/
+.serviceCategories{
+    grid-area: 6/1/6/10;
+    padding: 8% 10% 8% 10%;
+    background: linear-gradient(to bottom, #F8D7E9, #A9DCEC);
+    visibility: hidden;
+
+}
+
+.serviceCategoriesIcons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    row-gap: 30px;    
+}
+
+.serviceCategoriesIcons img{
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* border: 3px solid #FF3E83;
+    background-color: white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 2/2;
+    object-fit:scale-down;
+    max-width: 100%;
+    padding: 10%;
+}
+
+.serviceCategoriesIcons h3{
+    text-align: center;
+    line-height: 2;
+    font-weight: 300;
+}
+
+.serviceCategoriesIcons h4{
+    grid-area: 3/1/3/5;
+    word-spacing: 5px;
+    font-size: 2em;
+    text-align: center;
+    font-weight: 100;
+    padding-top: 5%;
+    line-height: 1.2;
+}
+
+.cellphoneScreen{
+    grid-area: 6/10/6/13;
+    padding: 25% 8% 0 3%;
+    background: linear-gradient(to bottom, #F8D7E9, #A9DCEC);
+    visibility: hidden;
+}
+
+.cellphoneScreen img{
+    filter: drop-shadow(25px 15px 5px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+    transform: rotate(3deg);
+    transform-origin: top right;
+    margin: 5% 10% 5% 0;
+    max-width: 75%;
+}
+
+/*IMAGEM TELA SERVIÇO LADO EMPRESA homepage*/
+.companyScreen{
+    grid-area: 7/1/7/7;
+    display: grid;
+    justify-items: center;
+    padding: 8% 10% 8% 10%;
+}
+
+.companyScreen img{
+    width: 600px;
+    max-width: 100%;
+}
+
+.textCompanyScreen{
+    grid-area: 7/7/7/13;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
+    align-items: center;
+    padding: 5%;
+}
+
+.textCompanyScreen h3{
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 10% 10% 5% 10%;
+}
+
+.textCompanyScreen h4{
+    font-size: 1.5em;
+    text-align: left;
+    font-weight: 500;
+    margin: 0 10% 0 10%;
+}
+
+/*RODAPE*/
+footer {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    font-size: 14px;
+    grid-area: 8/1/8/13;
+}
+  
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  
+.logoFooter {
+    width: 200px;
+    margin-right: 50px;
+}
+  
+.infoFooter {
+    flex: 1;
+    max-width: 400px;
+    margin-right: 50px;
+}
+  
+.headerFooter ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.headerFooter li {
+    margin-right: 20px;
+}
+  
+.headerFooter a {
+    color: #333;
+    text-decoration: none;
+}
+
+/*RESPONSIVIDADE*/
+
+/*RESPONSIVIDADE HEADER medida desktop*/
+
+@media (max-width: 1200px){
+    header{
+        padding: 14px 2%;
+        transition: .2s;
+    }
+    .headerHome a, .headerHomePerfil a{
+        padding: 5px 0;
+        margin: 0px 10px;
+    }
+}
+
+/*RESPONSIVIDADE HEADER telas pequenas - celular*/
+
+@media (max-width: 320px){
+    .logoHome img{
+        width: 50px;
+    }
+    .menuIcon{
+        display: inline-block;
+    }
+    .menuIcon button{
+        background-color: transparent;
+        border: none;
+    }
+    .headerHome {
+        position: fixed;
+        top: 14%;
+        right: -70%;
+        width: 210px;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+    }
+    .headerHome {
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerHome a{
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerHome a:hover{
+        color: black;
+        transform: translateY(5px);
+        background-color: whitesmoke;
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+}
+
+/*RESPONSIVIDADE homepage celular*/
+@media (max-width: 320px){
+
+    /*GRID TELA homepage*/
+    .gridHomepage{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        overflow-x: hidden;
+        row-gap: 5px;
+      }
+
+    /*CONTAINER HOMEPAGE descrição eventalize*/
+    .gridMain{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1% 0 1%;
+        min-height: 90vh;
+        z-index: 1;
+    }
+
+    .gridMain h1{
+        font-size: 15vw;
+        margin-bottom: 1%;
+    }
+
+    .gridMain h2{
+        font-size: 1.3em !important;
+        margin-bottom: 3%;
+    }
+
+    .gridMain h3{
+        font-size: 5vw !important;
+        line-height: 1.5em;
+        width: 95%;
+        margin-bottom: 3%;
+    }
+
+    button.buttonMain{
+        font-size: 1em;
+        width: 50%;
+        height: 40px;
+    }
+
+    /*CIRCULO HOMEPAGE*/
+    .circlePositionMain{
+        grid-area: 1/1/2/1;
+        overflow-x: hidden;
+    }
+    
+    .circleMain{
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(80deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+        clip-path: circle(50% at 50% 100%);
+        z-index: 0;
+        position: absolute;
+    }
+
+    .circleMain img{
+        display: none;
+    }
+
+    /*DESCRIÇÃO EXPLORE homepage*/
+    .explorePage{
+        grid-area: 2/1/2/1;
+        padding-top: 10%;
+    }
+
+    .explorePage img{
+        width: 100%;
+    }
+
+    .exploreDescription{
+        grid-area: 3/1/3/1;
+        display: flex;
+        align-items: center ;
+        margin: 3% 5% 5% 10%;
+        text-align: justify;
+    }
+
+    .exploreDescription h2{
+        font-size: 1.8em !important;
+        line-height: 8.5vw;
+    }
+
+    .exploreDescription h3{
+        font-size: 1.2em !important;
+        width: 100%;
+        text-align:unset !important;
+    }
+
+    /*DIVISÃO CARDS EMPRESA E CLIENTE homepage*/
+    .clientCardDivision{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 4/1/4/2;
+        visibility: none;
+    }
+    
+    .clientCard, .companyCard{
+        width: 70%;
+    }
+
+    .clientCard h1, .companyCard h1{
+        font-size: 1.8em !important;
+        filter: none;
+        font-weight: 600;
+    }
+
+    .clientCard p, .companyCard p{
+        font-size: 1.2em !important;
+    }
+
+    .companyCardDivision{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 5/1/5/2;
+        visibility: none;
+    }
+
+    /*CATEGORIAS DE SERVIÇOS icons homepage*/
+    .serviceCategories{
+        grid-area: 6/1/6/2;
+        visibility: none;
+    }
+
+    .serviceCategoriesIcons{
+        grid-template-columns: 1fr 1fr 1fr;
+        line-height: 0 !important;
+        row-gap: 10px !important;
+    }
+
+    .serviceCategoriesIcons img{
+       width: 80px;
+       height: 80px;
+       border-radius: 50%;
+       aspect-ratio: 1/2;
+       object-fit: contain;
+       padding: 8%;
+    }
+
+    .serviceCategoriesIcons h4{
+        grid-area: 4/1/4/4;
+        font-size: 1.2em !important;
+        font-weight: 500;
+        word-spacing: 5px;
+        width: 100% !important;
+        padding: 15% 0 0 0;
+        text-align: left;
+    }
+
+    .cellphoneScreen{
+        display: none;
+    }
+
+    /*IMAGEM TELA SERVIÇO LADO EMPRESA homepage*/
+    .textCompanyScreen{
+        grid-area: 8/1/8/3;
+    }
+
+    .companyScreen img{
+        width: 80%;
+    }
+
+    .textCompanyScreen h3{
+        font-size: 1.7em !important;
+        text-align: left;
+    }
+
+    .textCompanyScreen h4{
+        font-size: 1.2em;
+        width: 85%;
+        padding-bottom: 5%;
+        text-align: left; 
+    }
+
+    /*RODAPE*/
+    footer{
+        grid-area: 9/1/9/13;
+    }
+
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+      
+    .logoFooter{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+      
+    .infoFooter {
+        line-height: 5vw;
+        margin-right: 0;
+        text-align: center;
+    }
+      
+    .headerFooter {
+        margin-top: 20px;
+    }
+      
+    .headerFooter ul {
+        justify-content: center;
+    }
+
+    .logoFooter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logoFooter img{
+        width: 50px;
+        max-width: 100%;
+    }
+}
+
+
+/*RESPONSIVIDADE HEADER medida celular*/
+
+@media (min-width:321px) and (max-width: 480px){
+    .logoHome img{
+        width: 50px;
+    }
+    .menuIcon{
+        display: inline-block;
+    }
+    .menuIcon button{
+        background-color: transparent;
+        border: none;
+    }
+    .headerHome {
+        position: fixed;
+        top: 14%;
+        right: -70%;
+        width: 210px;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+    }
+    .headerHome {
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerHome a{
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerHome a:hover{
+        color: black;
+        transform: translateY(5px);
+        background-color: whitesmoke;
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+}
+
+/*RESPONSIVIDADE homepage celular*/
+@media (min-width:321px)and (max-width: 480px){
+
+    /*GRID TELA homepage*/
+    .gridHomepage{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        overflow-x: hidden;
+        row-gap: 5px;
+      }
+
+    /*CONTAINER HOMEPAGE descrição eventalize*/
+    .gridMain{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 1% 1% 0 1%;
+        min-height: 90vh;
+        z-index: 1;
+    }
+
+    .gridMain h1{
+        font-size: 18vw;
+        margin-bottom: 1%;
+    }
+
+    .gridMain h2{
+        font-size: 1.8em !important;
+        margin-bottom: 3%;
+    }
+
+    .gridMain h3{
+        font-size: 1.2em !important;
+        line-height: 1.5em;
+        width: 95%;
+        margin-bottom: 3%;
+    }
+
+    button.buttonMain{
+        font-size: 1.2em;
+        width: 50%;
+        height: 50px;
+    }
+
+    /*CIRCULO HOMEPAGE*/
+    .circlePositionMain{
+        grid-area: 1/1/2/1;
+        overflow-x: hidden;
+    }
+    
+    .circleMain{
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(80deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+        clip-path: circle(50% at 50% 100%);
+        z-index: 0;
+        position: absolute;
+    }
+
+    .circleMain img{
+        display: none;
+    }
+
+    /*DESCRIÇÃO EXPLORE homepage*/
+    .explorePage{
+        grid-area: 2/1/2/1;
+        padding-top: 10%;
+    }
+
+    .explorePage img{
+        width: 100%;
+    }
+
+    .exploreDescription{
+        grid-area: 3/1/3/1;
+        display: flex;
+        align-items: center ;
+        margin: 3% 5% 5% 10%;
+        text-align: justify;
+    }
+
+    .exploreDescription h2{
+        font-size: 1.8em !important;
+        line-height: 8.5vw;
+    }
+
+    .exploreDescription h3{
+        font-size: 1.2em !important;
+        width: 100%;
+        text-align:unset !important;
+    }
+
+    /*DIVISÃO CARDS EMPRESA E CLIENTE homepage*/
+    .clientCardDivision{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 4/1/4/2;
+        visibility: none;
+    }
+    
+    .clientCard, .companyCard{
+        width: 70%;
+    }
+
+    .clientCard h1, .companyCard h1{
+        font-size: 1.8em !important;
+        filter: none;
+        font-weight: 600;
+    }
+
+    .clientCard p, .companyCard p{
+        font-size: 1.2em !important;
+    }
+
+    .companyCardDivision{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 5/1/5/2;
+        visibility: none;
+    }
+
+    /*CATEGORIAS DE SERVIÇOS icons homepage*/
+    .serviceCategories{
+        grid-area: 6/1/6/2;
+        visibility: none;
+    }
+
+    .serviceCategoriesIcons{
+        grid-template-columns: 1fr 1fr 1fr;
+        line-height: 0 !important;
+        row-gap: 10px !important;
+    }
+
+    .serviceCategoriesIcons img{
+       width: 80px;
+       height: 80px;
+       border-radius: 50%;
+       aspect-ratio: 1/2;
+       object-fit: contain;
+       padding: 8%;
+    }
+
+    .serviceCategoriesIcons h4{
+        grid-area: 4/1/4/4;
+        font-size: 1.2em !important;
+        font-weight: 500;
+        word-spacing: 5px;
+        width: 100% !important;
+        padding: 15% 0 0 0;
+        text-align: left;
+    }
+
+    .cellphoneScreen{
+        display: none;
+    }
+
+    /*IMAGEM TELA SERVIÇO LADO EMPRESA homepage*/
+    .textCompanyScreen{
+        grid-area: 8/1/8/3;
+    }
+
+    .companyScreen img{
+        width: 80%;
+    }
+
+    .textCompanyScreen h3{
+        font-size: 1.7em !important;
+        text-align: left;
+    }
+
+    .textCompanyScreen h4{
+        font-size: 1.2em;
+        width: 85%;
+        padding-bottom: 5%;
+        text-align: left; 
+    }
+
+    /*RODAPE*/
+    footer{
+        grid-area: 9/1/9/13;
+    }
+
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+      
+    .logoFooter{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+      
+    .infoFooter {
+        line-height: 5vw;
+        margin-right: 0;
+        text-align: center;
+    }
+      
+    .headerFooter {
+        margin-top: 20px;
+    }
+      
+    .headerFooter ul {
+        justify-content: center;
+    }
+
+    .logoFooter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logoFooter img{
+        width: 50px;
+        max-width: 100%;
+    }
+}
+
+/* RESPONSIVIDADE HEADER homepage tablets*/
+
+@media (min-width: 481px) and (max-width: 768px){
+    .logoHome img{
+        width: 50px;
+    }
+    .menuIcon{
+        display: inline-block;
+    }
+    .menuIcon button{
+        background-color: transparent;
+        border: none;
+    }
+    .headerHome {
+        position: fixed;
+        top: 14%;
+        right: -70%;
+        width: 210px;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+    }
+    .headerHome {
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerHome a{
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerHome a:hover{
+        color: black;
+        transform: translateY(5px);
+        background-color: whitesmoke;
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+}
+
+/* RESPONSIVIDADE homepage tablets*/
+@media (min-width: 481px)and (max-width: 768px){
+
+    /*GRID TELA homepage*/
+    .gridHomepage{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        overflow-x: hidden;
+        row-gap: 5px;
+      }
+
+    /*CONTAINER HOMEPAGE descrição eventalize*/
+    .gridMain{
+        grid-column: 1/2;
+        grid-row: 1/2;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1% 0 1%;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+    .gridMain h1{
+        font-size: 15vw;
+    }
+
+    .gridMain h2{
+        font-size: 1.8em !important;
+        width: 75%;
+        margin-bottom: 2%;
+    }
+
+    .gridMain h3{
+        font-size: 1.2em !important;
+        line-height: 1.5em;
+        width: 75%;
+    }
+
+    button.buttonMain{
+        font-size: 1.2em;
+        width: 40%;
+        height: 50px;
+    }
+
+    /*CIRCULO HOMEPAGE*/
+    .circlePositionMain{
+        grid-area: 1/1/2/1;
+        overflow-x: hidden;
+    }
+    
+    .circleMain{
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(80deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+        clip-path: circle(50% at 50% 100%);
+        z-index: 0;
+        position: absolute;
+    }
+
+    .circleMain img{
+        display: none;
+    }
+
+    /*DESCRIÇÃO EXPLORE homepage*/
+    .explorePage{
+        grid-area: 2/1/2/1;
+        padding-top: 10%;
+    }
+
+    .explorePage img{
+        width: 100%;
+    }
+
+    .exploreDescription{
+        grid-area: 3/1/3/1;
+        display: flex;
+        align-items: center ;
+        margin: 3% 5% 5% 10%;
+        text-align: justify;
+    }
+
+    .exploreDescription h2{
+        font-size: 2.8em !important;
+        line-height: 8.5vw;
+    }
+
+    .exploreDescription h3{
+        font-size: 1.2em !important;
+        padding-top: 3%;
+        width: 100%;
+        text-align:unset !important;
+    }
+
+    /*DIVISÃO CARDS EMPRESA E CLIENTE homepage*/
+    .clientCardDivision{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 4/1/4/2;
+        visibility: none;
+    }
+    
+    .clientCard, .companyCard{
+        width: 70%;
+    }
+
+    .clientCard h1, .companyCard h1{
+        font-size: 2.5em !important;
+        filter: none;
+        font-weight: 600;
+    }
+
+    .clientCard p, .companyCard p{
+        font-size: 1.5em !important;
+    }
+
+    .companyCardDivision{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: 5/1/5/2;
+        visibility: none;
+    }
+
+    /*CATEGORIAS DE SERVIÇOS icons homepage*/
+    .serviceCategories{
+        grid-area: 6/1/6/2;
+        max-height: 100svh !important;
+        visibility: none;
+    }
+
+    .serviceCategoriesIcons{
+        grid-template-columns: 1fr 1fr 1fr;
+        line-height: 0 !important;
+        row-gap: 0 !important;      
+    }
+
+    .serviceCategoriesIcons img{
+        width: 80px;
+        height: 80px;
+       border-radius: 50%;
+       aspect-ratio: 1/1;
+       object-fit: contain;
+       padding: 8%;
+    }
+
+    .serviceCategoriesIcons h4{
+        grid-area: 4/1/4/4;
+        font-size: 1.5em !important;
+        font-weight: 500;
+        width: 100% !important;
+        text-align: left;
+        padding-top: 10%;
+    }
+
+    .cellphoneScreen{
+        display: none;
+    }
+
+    /*IMAGEM TELA SERVIÇO LADO EMPRESA homepage*/
+    .textCompanyScreen{
+        grid-area: 8/1/8/3;
+    }
+
+    .companyScreen img{
+        width: 80%;
+    }
+
+    .textCompanyScreen h3{
+        font-size: 2em !important;
+        text-align: left;
+        width: 90%;
+    }
+
+    .textCompanyScreen h4{
+        font-size: 1.5em;
+        width: 85%;
+        padding-bottom: 5%;
+        text-align: left; 
+    }
+
+    /*RODAPE*/
+    footer{
+        grid-area: 9/1/9/13;
+    }
+
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+      
+    .logoFooter{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+      
+    .infoFooter {
+        line-height: 5vw;
+        margin-right: 0;
+        text-align: center;
+    }
+      
+    .headerFooter {
+        margin-top: 20px;
+    }
+      
+    .headerFooter ul {
+        justify-content: center;
+    }
+
+    .logoFooter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logoFooter img{
+        width: 50px;
+        max-width: 100%;
+    }
+}
+
+/*RESPONSIVIDADE homepage*/
+@media (min-width: 769px)and (max-width: 1024px){
+        
+    /*CONTAINER HOMEPAGE descrição eventalize*/
+    .gridMain {
+        grid-area: 1/1/3/8;
+        max-width: 1000px;
+        padding: 8% 5% 0 5%;
+        z-index: 1;
+        min-height: 100svh;
+    }
+    
+    .gridMain h1{
+        color: transparent;
+        background: radial-gradient(37.47% 91.91% at 33.26% 36.72%, #3ED1FF 0%, #FF3E83 67.5%, #FFA856 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        font-size: 10vw;
+        font-weight: 500;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0, 0.3));
+    }
+    
+    .gridMain h2{
+        font-size: 3em;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 3%;
+        width: 100%;
+    }
+    
+    .gridMain h3{
+        color: #252b2f;
+        font-size: 1.8em;
+        margin-bottom: 3%;
+        font-weight: 500;
+        line-height: 40px;
+        margin-bottom: 7%;
+    }
+    
+     button.buttonMain{
+        width: 50%;
+        height: 60px;
+        border-radius: 50px;
+        border: none;
+        background-color: #E94F91;
+        font-size: 25px;
+        color: white;
+        font-weight: 500;
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    
+    button.buttonMain:hover{
+        transform: translateY(-10px);
+    }
+    
+    .circlePositionMain {
+        grid-area: 1/6/3/13;
+        position: relative;
+        overflow-x: hidden;
+    }
+    
+    .circleMain{
+        position: absolute;
+        right: -25%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+        clip-path: circle();
+        z-index: 2;
+        bottom: 0;
+      }
+      
+      .circleMain img{
+        max-width: 100%;
+        max-height: 100%;
+        width: 80%;
+        height: auto;
+        position: absolute;
+        padding: 3%;
+        top: 45%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+      }
+      
+    
+    /*DESCRIÇÃO EXPLORE homepage*/
+    .explorePage{
+        grid-area: 3/1/4/7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .explorePage img{
+        width: 600px;
+        max-width: 100%;
+    }
+    
+    .exploreDescription{
+        grid-area: 3/7/4/13;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .exploreDescription h2{
+        font-size: 3em;
+        font-weight: 600;
+        line-height: 70px;
+    }
+    
+    .exploreDescription h3{
+        font-size: 1.5em;
+        font-weight: 400;
+        width: 90%;
+        color: #252b2f;
+    }
+    
+    /*DIVISÃO CARDS EMPRESA E CLIENTE homepage*/
+    .clientCardDivision{
+        grid-area: 4/1/4/7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3%;
+        margin-bottom: 10%;
+        visibility: hidden;
+    }
+    
+    .companyCardDivision{
+        grid-area: 4/7/4/13;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3%;
+        margin-bottom: 10%;
+        visibility: hidden;
+    }
+    
+    .clientCard, .companyCard{
+        border-radius: 20px;
+        border-left: 3px solid #E94F91;
+        border-top: 3px solid #e97b4f;
+        border-right: 3px solid #A385BF;
+        border-bottom: 3px solid #0062ff76;
+        box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+        max-width: 400px;
+        height: 100%;
+        padding: 8%;
+    }
+    
+    .clientCard img, .companyCard img{
+        width: 100%;
+        height: auto;   
+        object-fit: fill;
+    }
+    
+    .clientCard h1{
+        color: #E94F91;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0, 0.3));
+        text-align: center;
+        font-size: 3em;
+        font-weight: 450;
+        margin: 7%;
+    }
+    
+    .companyCard h1{
+        color: #A385BF;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0, 0.3));
+        text-align: center;
+        font-size: 3em;
+        font-weight: 450;
+        padding: 7%;
+    }
+    
+    .clientCard p{
+        color: #252b2f;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+    
+    .companyCard p{
+        color: #252b2f;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+    
+    /*CATEGORIAS DE SERVIÇOS icons homepage*/
+    .serviceCategories{
+        grid-area: 6/1/6/10;
+        padding: 8% 10% 8% 10%;
+        background: linear-gradient(to bottom, #F8D7E9, #A9DCEC);
+        visibility: hidden;
+    }
+    
+    .serviceCategoriesIcons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        row-gap: 30px;    
+    }
+    
+    .serviceCategoriesIcons img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 2/2;
+        object-fit:scale-down;
+        max-width: 100%;
+    }
+    
+    .serviceCategoriesIcons h3{
+        text-align: center;
+        line-height: 2;
+        font-weight: 300;
+    }
+    
+    .serviceCategoriesIcons h4{
+        grid-area: 3/1/3/5;
+        word-spacing: 5px;
+        font-size: 2em;
+        text-align: center;
+        font-weight: 100;
+        padding-top: 5%;
+        line-height: 1.2;
+    }
+    
+    .cellphoneScreen{
+        grid-area: 6/10/6/13;
+        padding: 25% 8% 0 3%;
+        background: linear-gradient(to bottom, #F8D7E9, #A9DCEC);
+        visibility: hidden;
+    }
+    
+    .cellphoneScreen img{
+        filter: drop-shadow(25px 15px 5px rgba(0, 0, 0, 0.25));
+        border-radius: 20px;
+        transform: rotate(3deg);
+        transform-origin: top right;
+        margin: 5% 10% 5% 0;
+        max-width: 95%;
+    }
+    
+    /*IMAGEM TELA SERVIÇO LADO EMPRESA homepage*/
+    .companyScreen{
+        grid-area: 7/1/7/7;
+        display: grid;
+        justify-items: center;
+        padding: 8% 10% 8% 10%;
+    }
+    
+    .companyScreen img{
+        width: 600px;
+        max-width: 100%;
+    }
+    
+    .textCompanyScreen{
+        grid-area: 7/7/7/13;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 100%;
+        align-items: center;
+        padding: 5%;
+    }
+    
+    .textCompanyScreen h3{
+        text-align: left;
+        font-size: 2em;
+        font-weight: bold;
+        width: 100%;    
+    }
+    
+    .textCompanyScreen h4{
+        font-size: 1.5em;
+        text-align: left;
+        font-weight: 500;
+        width: 95%;
+    }
+    
+    /*RODAPE*/
+    footer {
+        background-color: #f2f2f2;
+        padding: 20px 0;
+        font-size: 14px;
+        grid-area: 8/1/8/13;
+    }
+      
+    .footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+      
+    .logoFooter {
+        width: 200px;
+        margin-right: 50px;
+    }
+      
+    .infoFooter {
+        flex: 1;
+        max-width: 400px;
+        margin-right: 50px;
+    }
+      
+    .headerFooter ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+      
+    .headerFooter li {
+        margin-right: 20px;
+    }
+      
+    .headerFooter a {
+        color: #333;
+        text-decoration: none;
+    }
+}
+
+.estiloVazio {
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+/* Animação do círculo para cadastro e login */
+
+@keyframes arrastaCirculo{
+    0% {
+
+      }
+      100% {
+        width: 90vw;
+        height: 90vw;
+        left: 4.5vw;
+        top: 0vw;
+      }
+}
+
+@keyframes desvanecer{
+    from {
+    opacity: 1;
+
+    }
+  
+    to {
+    opacity: 0;
+    display: none;
+    }
+  }
+
+.sectionCircular {
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -moz-animation-name: arrastaCirculo;
+    -webkit-animation-name: arrastaCirculo;
+    animation-name: arrastaCirculo;
+    -moz-animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+.sairElementos {
+    -moz-animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -moz-animation-name: desvanecer;
+    -webkit-animation-name: desvanecer;
+    animation-name: desvanecer;
+    -moz-animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+.grid-NovaSection{
+    display: block;
+}
+
+.sessaoCirc {
+    position: absolute;
+    display: flex;
+    z-index: 3;
+
+}
+
+.ajusImg{
+    position: relative;
+    top: 3.7vw;
+    left: 4vw;
+    width: 73.95%;
+}
+
+.Circulo{
+    position: relative;
+    left: 61.95vw;
+    top: 0.4vw;
+    width: 49.5vw;
+    height: 49.5vw;
+    background: linear-gradient(180deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+    clip-path: circle();
+    overflow: hidden;
+}
+
+#loginCirc {
+    position: relative;
+    top: 7vw;
+    display: none;
+    text-align: center;
+}
+
+.fontCirc {
+    font-family: 'League Spartan';
+    font-size: 4em;
+    color: white;
+}
+
+.grid-loginCirc {
+    align-content: center;
+    margin-top: 2%;
+    display: grid;
+    color: white;
+    grid-template-rows: 5vw 5vw 1.9vw 4vw 5vw;
+}
+
+
+.grid-loginCirc h5{
+    font-size: 1.2em;
+}
+
+.grid-loginCirc a{
+    font-weight: bold;
+}
+
+.grid-loginCirc p{
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+.inputCirc {
+    height: 60%;
+    width: 28%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 4px solid rgb(250, 250, 250);
+    background-color: #f2f2f28f;
+    font-size: 1.2em;
+    padding: 1.5%;
+}
+
+.btnCirc{
+    width: 20%;
+    height: 70%;
+    display: block;
+    border: none;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1.9em;
+    border-radius: 100px;
+}
+
+.btnCirc a{
+    background: linear-gradient(180deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.voltar {
+    font-size: 4em;
+    text-decoration: none;
+    color: white;
+}
+
+/* SESSAO DE CADASTRO da animação */
+
+#cadastCirc {
+    position: relative;
+    top: 7vw;
+    display: none;
+    text-align: center;
+}
+
+.grid-cadastCirc {
+    align-content: center;
+    margin-top: 2%;
+    padding: 0vw 18vw;
+    display: grid;
+    color: white;
+    grid-template-rows: 5vw 5vw 20vw;
+}
+
+.irAte {
+    position: absolute;
+    top: 15.8vw;
+    width: 24%;
+    height: 24.3em;
+    z-index: 1;
+}
+
+.irAteCliente {
+    position: absolute;
+    top: 15.8vw;
+    right: 19.5vw;
+    width: 24%;
+    height: 24.3em;
+    z-index: 1;
+}
+
+.grid-cadastCirc h5{
+    font-size: 1.2em;
+}
+
+.fraseCadastrar{
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.grid-cadastCirc p{
+    font-size: 1.2em;
+    display: inline-block;
+}
+
+.aGradiente{
+    font-size: 3em;
+    margin: 2vw 0vw;
+    background: linear-gradient(180deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+}
+
+.cards p{
+    font-size: 1.6em;
+    color: #7958AF;
+}
+
+.card-Empresa {
+    background: rgb(255, 255, 255);
+    display: grid;
+    width: 40%;
+    padding: 5% 5%;
+    color: black;
+    border-radius: 15%;
+    height: 24em;
+    position: relative;
+    top: 3.5vw;
+    margin-right: 17%;
+}
+
+.card-Cliente {
+    background: rgb(255, 255, 255);
+    display: grid;
+    width: 40%;
+    padding: 5% 5%;
+    color: black;
+    border-radius: 15%;
+    height: 24em;
+    position: relative;
+    top: 3.5vw;
+}
+
+.grid-Cards {
+    display: flex;
+}
