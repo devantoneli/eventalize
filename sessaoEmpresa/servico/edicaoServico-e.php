@@ -147,6 +147,6 @@ if (isset($_GET['cd_servico'])) {
     </section>
    
 </div>
-    <script src="js/adicionarServico.js"></script>
+    <script src="scriptServico-e.js"></script>
 </body>
 </html>

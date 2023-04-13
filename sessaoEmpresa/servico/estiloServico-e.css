@@ -9,7 +9,7 @@ body, html{
 
 @font-face {
     font-family: 'League Spartan';
-    src: url('fontes/LeagueSpartan-VariableFont_wght.ttf');
+    src: url('/font/LeagueSpartan.ttf');
 }
 
 .menu {
