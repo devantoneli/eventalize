@@ -1,6 +1,6 @@
 <?php
 
-//BACK-END para carregar lista de serviços se achar empresa selecionada pelo n-procuraempresa.php
+//BACK-END para carregar lista de serviços se achar empresa selecionada pelo r-procuraempresa-e.php
 
 if (isset($_GET['cd_empresa'])) {
     $cd_empresa = $_GET['cd_empresa'];

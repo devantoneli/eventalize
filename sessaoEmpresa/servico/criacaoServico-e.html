@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estiloServico-e.css">
+    <title>Criar Serviço/Pacote</title>
+</head>
+<body>
+<!-- FRONT-END formulário para criação de um serviço, enviando para o arquivo salvarServico.php-->
+<!-- MENU -->
+    <div class="menu"></div>
+<!-- FIM MENU -->
+<div class="centralizaSections">
+
+    <h1 class="meioH1">Este é um</h1>
+    <div class="cabecalho">
+        <div>
+        <label for="servico">
+        <input type="radio" name="opcao" value="servico" id="">
+        Servico</label>
+        </div>
+        <hr>
+        <div>
+        <label for="pacote">
+        <input type="radio" name="opcao" value="pacote" id="">
+        <a>Pacote de serviços</a></label>
+        </div>
+    </div>
+
+<!-- SESSAO SERVICO -->  
+    <section class="servico">
+        <form class="grid-Principal" action="salvarServico.php" method="post">
+            <div class="digitacao">
+                <input class="input-Digita" type="text" placeholder="Título do serviço" name="nm_servico">
+                <input class="input-Digita" type="text" name="ds_servico" id="" placeholder="Descrição">
+                <select class="input-Selec" name="cd_tiposervico" id="">
+                    <option value="" selected>Tipo de serviço</option>
+                    <option value="1">Comida</option>
+                    <option value="2">Fotografia</option>
+                    <option value="3">Decoração</option>
+                    <option value="4">Música</option>
+                    <option value="5">Espaço</option>
+                    <option value="6">Atração</option>
+                    <option value="7">Equipamento</option>
+                    <option value="8">Auxiliar</option>
+                </select>
+                <input class="input-Digita" type="text" name="vl_servico" id="" placeholder="Valor">
+<!-- RADIOS COMUNS -->
+                <div class="radios">
+                    <h1>Personalização</h1>
+                    <div class="personalizacao">
+                        <label class="sim" for="1" name="cd_personaliz">
+                        <input type="radio" name="cd_personaliz" value="1" id="">
+                        Sim</label>
+                        
+                        <label class="nao" for="0">
+                        <input type="radio" name="cd_personaliz" value="0" id="">
+                        <a>Não</a></label>
+                    </div>
+                    <hr>
+                    <h1>Solicitação de orçamento</h1>
+                    <div class="personalizacao">
+                        <label class="sim" for="1">
+                        <input type="radio" name="cd_orcament" value="1" id="">
+                        Sim</label>
+                        
+                        <label class="nao" for="0">
+                        <input type="radio" name="cd_orcament" value="0" id="">
+                        <a>Não</a></label>
+                    </div>
+                    <hr>
+                    <h1>Livre localização</h1>
+                    <div class="personalizacao">
+                        <label class="sim" for="1">
+                        <input type="radio" name="cd_local" value="1" id="">
+                        Sim</label>
+                        
+                        <label class="nao" for="0">
+                        <input type="radio" name="cd_local" value="0" id="">
+                        <a>Não</a></label>
+                    </div>
+                </div>
+<!-- BOTAO DO FORM -->         
+                <button class="criar" type="submit">Criar Serviço</button>
+            </div>
+<!-- INPUT PARA IMAGENS -->
+            <div class="imagens">
+                <h1 class="">Imagem de capa</h1>
+                <label class="cardCarregarG" for="img-inputCapa" id="img2">
+                    <input hidden class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
+                    <input id="linkimgCapa" value="mudara" type="hidden" name="url_imgcapa">
+                    <img id="preview-capa" src="" width="100%">
+                </label>
+
+                <h1>Outras imagens</h1>
+                <div class="grid-imagens">
+                        <div>
+                        <label class="img2" for="img-input2">
+                        <input class="link2" id="img-input2" value="" hidden type="file" name="img2">
+                            <input id="linkimg2" value="mudara" type="hidden" name="url_img2">
+                            <img id="preview-2" src="" width="100%">
+                        </label>
+                    </div>
+                    <div>
+                        <label class="img3" for="img-input3">
+                        <input hidden class="link3" id="img-input3" value="" type="file" name="img3">
+                            <input id="linkimg3" value="mudara" type="hidden" name="url_img3">
+                            <img id="preview-3" src="" width="100%">
+                        </label>
+                    </div>
+                </div>
+        </form>
+    </section>
+
+<!-- SESSAO PACOTE -->
+    <section class="pacote">
+
+    </section>
+   
+</div>
+    <script src="js/adicionarServico.js"></script>
+</body>
+</html>

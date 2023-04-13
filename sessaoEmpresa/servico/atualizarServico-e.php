@@ -8,7 +8,7 @@ $cd_local = $_POST['cd_local'];
 $cd_servico = $_POST['cd_servico'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
-// BACK-END para salvar alterações enviadas pelo arquivo edicaoServico.php
+// BACK-END para salvar alterações enviadas pelo arquivo edicaoServico-e.php
 
 var_dump($_POST);
 
