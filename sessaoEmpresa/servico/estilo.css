@@ -1,0 +1,250 @@
+/* ESTILO DE TODAS AS TELAS DE CRUD-SERVICO */
+/* 13/04 (quinta-feira) - Por enquanto está com estilo só da tela de criacaoServico.html */
+
+body, html{
+    margin: 0;
+    padding: 0;
+    font-family: 'League Spartan';
+}
+
+@font-face {
+    font-family: 'League Spartan';
+    src: url('fontes/LeagueSpartan-VariableFont_wght.ttf');
+}
+
+.menu {
+    width: 100%;
+    height: 3vw;
+    background-color: rgb(255, 74, 105);
+}
+
+/* RADIO DECISIVO */
+
+.grid-Principal {
+    display: grid;
+    grid-template-columns: 45em 45em;
+}
+
+.centralizaSections {
+    margin: 3vw 15vw;
+}
+
+.cabecalho {
+    margin-bottom: 3vw;
+    display: grid;
+    grid-template-columns: 9vw 3vw 18vw;
+    max-width: 30vw;
+}
+
+.cabecalho a{
+    width: 290%;
+}
+
+.meioH1 {
+    margin-left: 9vw;
+    margin-bottom: 2vw;
+    font-size: 2em;
+}
+
+.cabecalho label {
+    font-size: 1.6em;
+    display: flex;
+}
+
+.cabecalho hr {
+    opacity: 0;
+}
+
+.cabecalho input[type=radio] {
+    width: 100%;
+    height: 2.5vw;
+    margin-top: -0.5vw;
+}
+
+/* CONFIG INPUTS */
+
+.input-Digita {
+    width: 24.2em;
+    height: 3em;
+    border-radius: 0.6em;
+    padding: 0em 1.5em;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    border: solid rgb(255, 74, 105)
+}
+
+.input-Selec {
+    width: 27.5em;
+    height: 3.5em;
+    border-radius: 0.6em;
+    padding: 0em 1.5em;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    border: solid rgb(255, 74, 105)
+}
+
+/* INPUT FILE */
+
+.titCapa{
+    position: absolute;
+    top: 2.7em;
+    right: 16em;
+}
+
+.cardCarregarG{
+    width: 30.5em;
+    height: 20em;
+    margin-bottom: 2vw;
+    background-color: rgb(204, 204, 204);
+    background-image: url('imgAdicionar/upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+
+    clip-path: inset(0% 0 0% 0);
+    
+}
+
+.cardCarregarG img {
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+
+#preview-capa{
+    opacity: 0;
+}
+
+#preview-2{
+    opacity: 0;
+}
+
+#preview-3{
+    opacity: 0;
+}
+
+.img2 {
+    display: block;
+    width: 14em;
+    height: 10em;
+    background-color: rgb(204, 204, 204);
+    background-image: url('imgAdicionar/upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+
+    clip-path: inset(0% 0 0% 0);
+}
+
+.img3{
+    display: block;
+    width: 14em;
+    height: 10em;
+    background-color: rgb(204, 204, 204);
+    background-image: url('imgAdicionar/upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+
+    clip-path: inset(0% 0 0% 0);
+}
+
+.img2 img {
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+  }
+
+.img3 img {
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+.grid-imagens {
+    display: grid;
+    grid-template-columns: 16.5em 10em;
+}
+
+.imagens{
+    display: grid;
+    grid-template-rows: 5em 21em 5em 20em;
+    margin-top: -6em;
+}
+
+.imagens h1{
+    margin-left: 17%;
+    font-size: 2em;
+}
+
+.alinhaInputs {
+    text-align: center;
+}
+
+/* RADIOS */ 
+
+.radios {
+    max-width: 75%;
+}
+
+.personalizacao {
+    display: flex;
+    font-size: 1.6em;
+    margin-left: 4vw;
+}
+
+.radios hr{
+    height: 2em;
+    opacity: 0;
+}
+
+.personalizacao input[type=radio] {
+    width: 100%;
+    height: 2.5vw;
+    margin-top: -0.5vw;
+}
+
+.radios h1{
+    font-size: 1.7em;
+    margin-bottom: 1.8em;
+    text-align: center;
+}
+
+.sim {
+    display: grid;
+    grid-template-columns: 3em 7em;
+}
+
+.nao {
+    display: grid;
+    grid-template-columns: 3em 3em;
+}
+
+/* BOTAO */
+
+.criar {
+    display: block;
+    margin: 3em 25vw;
+    width: 14em;
+    height: 3em;
+    border-radius: 2em;
+    font-size: 1.7em;
+    border: none;
+    background-color: #FF3E83;
+    color: white;  
+    font-weight: bolder;  
+}
+
+/* SERVICO */
+
+.servico {
+    display: grid;
+}
+
+/* PACOTE */
+.pacote {
+    display: none;
+}
