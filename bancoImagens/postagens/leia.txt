@@ -1,0 +1,8 @@
+aqui é colocado imagens das postagens (url_imgcapa, url_img2, url_img3 e url_img4)
+nome definido por:
+se capa, pos-capa(nº da postagem).jpg
+exemplo:
+se a capa é referente a postagem 120, então será> pos-capa120.jpg
+se img2 ou 3, ou 4, pos-img2(nº da capa).jpg
+exemplo:
+se a capa é referente ao pacote 120, então será = pos-img120.jpg

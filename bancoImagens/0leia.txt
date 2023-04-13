@@ -1,0 +1,3 @@
+banco de imagens, onde terá as imagens que são referenciadas no banco de dados
+caminho 
+/bancoImagens/nome-da-especificacao/nome-da-imagem.jpg
