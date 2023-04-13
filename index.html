@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Eventalize</title>
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!--HEADER homepage-->
+    <header>
+        <div class="logoHome">
+            <img src="img/logo.png" alt="logo">
+        </div>
+            <div class="headerHome">
+                <a href="">Início</a>
+                <a href="">Explore</a>
+                <a href="">Sobre Nós</a>
+            </div>
+            <div class="headerHomePerfil">
+                <button class="estiloVazio" id="entrarHome" onclick="novaSection(1)"><a>Entrar</a></button>
+                <button class="estiloVazio" id="entrarHome" onclick="novaSection(0)"><a>Cadastrar</a></button>
+            </div>
+            <button class="menuIcon" onclick="menuOpen()"><img  src="img/menuicon.svg" width="30px"></button>
+    </header>
+
+    <!--CONTAINER descrição eventalize homepage-->
+ 
+<div class="gridHomepage">
+        <div class="gridMain desvanecerElementos">
+			<h1>Eventalize</h1>
+            <h2>Tudo o que você precisa para fazer o seu evento!</h2>
+            <h3>Faça eventos incríveis com mais facilidade!
+                Um intermediador de serviços para você contratar
+                onde e quando quiser!</h3>
+            <button class="buttonMain">Começar agora</button>
+		</div>
+
+    <!--CIRCULO homepage-->
+        <div class="circlePositionMain desvanecerElementos">
+        <div class="circleMain">
+            <img id="imgCapa" src="img/capainicio.svg" alt="">
+
+            <section id="loginCirc">
+                <h1 class="fontCirc">Entrar</h1>
+                
+                <form class="grid-loginCirc" action="login.php" method="post">
+
+                    <input class="inputCirc" id="usuario" name="usuario" type="email">
+                    <input class="inputCirc" id="senha" name="senha" type="password">
+                    <h5>Esqueceu a senha?</h5>
+                    <p>Não tem login? <a>Cadastre-se agora!</a></p>
+                    <button class="btnCirc"><a>Entrar</a></button>
+                    <br>
+                    <a class="voltar" href="index.html">&lt;</a>
+                    
+                </form>
+            </section>
+
+            <section id="cadastCirc">
+                <h1 class="fontCirc">Cadastrar</h1>
+                
+                <div class="grid-cadastCirc">
+
+                    <a class="fraseCadastrar">Para continuar, por favor, selecione uma das opções abaixo: </a>
+
+                    <div class="grid-Cards">
+                    <a class="irAte" href="../cadastroempresa.html"></a>
+                    <div class="card-Empresa cards">
+                        <p>Cadastre-se como</p>
+                        <a class="aGradiente">Empresa</a>
+                        <p>E preste serviços, venda ou alugue seus produtos para eventos e festas e mais!</p>
+                    </div>
+                 
+
+                    <a class="irAteCliente" href="../cadastrocliente.html"></a>
+                    <div class="card-Cliente cards">
+                        <p>Cadastre-se como</p>
+                        <a class="aGradiente">Cliente</a>
+                        <p>E contrate serviços, compre e alugue produtos, explore e crie diversas postagens e mais! </p>
+                    </div>
+                  
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        </div>
+    
+    <!--DESCRIÇÃO EXPLORE homepage-->
+        <div class="explorePage desvanecerElementos">
+            <img src="img/telacellular.svg" alt="">
+        </div>
+            <div class="exploreDescription desvanecerElementos">
+                <h2>Explore</h2>
+                <h3>Navegue por uma ampla variedade de postagens para todos os tipos de eventos. Encontre fotos incríveis, leia avaliações, se inspire e selecione serviços do seu interesse para a realização do seu evento.</h3>
+            </div>
+
+    <!--DIVISÃO CARDS EMPRESA E CLIENTE homepage-->
+    <div class="clientCardDivision desvanecerElementos">
+        <div class="clientCard">
+            <img src="img/cliente.svg" alt="">
+            <h1>Cliente</h1>
+            <p>Contrate serviços de diversas categorias!</p>
+        </div>
+    </div>
+
+    <div class="companyCardDivision desvanecerElementos">
+        <div class="companyCard">
+            <img src="img/empresa.svg" alt="">
+            <h1>Empresa</h1>
+            <p>Publique e venda seu serviço!</p>
+        </div>
+    </div>
+
+    <!--CATEGORIAS DE SERVIÇOS icons homepage-->
+    <div class="serviceCategories desvanecerElementos">
+        <div class="serviceCategoriesIcons">
+            <h3><img src="img/auxiliar.svg" alt="">Auxiliar</h3>
+            <h3><img src="img/equipamento.svg" alt="">Materiais</h3>
+            <h3><img src="img/comida.svg" alt="">Comida</h3>
+            <h3><img src="img/musica.svg" alt="">Música</h3>
+            <h3><img src="img/fotografia.svg" alt="">Fotografia</h3>
+            <h3><img src="img/decoracao.svg" alt="">Decoração</h3>
+            <h3><img src="img/espaco.svg" alt="">Espaço</h3>
+            <h3><img src="img/atracao.svg" alt="">Atração</h3>
+            <h4>Encontre empresas e profissionais que oferecem todos os serviços necessários para a organização do seu evento!</h4>
+        </div>
+    </div>
+                
+    <div class="cellphoneScreen desvanecerElementos">
+        <img src="img/tela-celular-icon.jpg" alt="">
+    </div>
+                    
+    <!--IMAGEM TELA SERVIÇO LADO EMPRESA homepage-->
+    <div class="companyScreen desvanecerElementos">
+        <img src="img/computador-empresa.svg" alt="">
+    </div>
+
+    <div class="textCompanyScreen desvanecerElementos">
+        <h3>Registre sua empresa e alcance um público maior!</h3>
+        <h4>Aumente sua presença online, promova seus serviços e esteja sempre à disposição dos seus clientes em potencial.</h4>
+    </div>
+
+    <!--RODAPE homepage-->
+    <footer class="desvanecerElementos">
+        <div class="footer ">
+            <div class="logoFooter">
+                <img src="img/logo.png" alt="Logo da Empresa" width="70px">
+            </div>
+
+            <div class="infoFooter">
+                <h4>Eventalize</h4>
+                <p>Intermediador de Serviços para Eventos e Festas</p>
+                <p>E-mail: eventalize@gmail.com.br</p>
+            </div>
+
+            <div class="headerFooter">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</div>
+     
+    <script src="js/menu.js"></script>
+
+</body>
+</html>
