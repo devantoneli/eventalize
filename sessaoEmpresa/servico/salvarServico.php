@@ -8,6 +8,8 @@ $cd_local = $_POST['cd_local'];
 // $cd_empresa = $_POST['cd_empresa'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
+// BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
+
 var_dump($_POST);
 
 $servername = "localhost";
