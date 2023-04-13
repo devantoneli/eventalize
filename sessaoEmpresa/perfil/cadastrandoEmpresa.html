@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- FRONT-END formulário para inserir informações da empresa e enviar ao arquivo validarEmpresa.php, para cadastrar -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se cadastre como cliente</title>
+    <link rel="stylesheet" href="estiloPerfil-e.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <script src="cadastro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body id="empresa">
+    <div class="cont">
+        <center>
+        <div class="bigBoxEmpresa">
+            <br>
+         <div class="box">
+                <h2 class="estiloFonte">EVENTALIZE</h2>
+                <h3>Cadastre-se como Empresa ou Profissional</h3>
+                <form action="validarEmpresa.php">                      
+                             <div class="gridSegCadastro">
+                                        <input type="text" class="retangulo" placeholder="Nome Fantasia" name="nm_fantasia">
+                                    </div>
+                                    <br>    
+                                    <div class="gridSegCadastro">
+                                        <input type="text" class="retangulo" placeholder="Razão Social" name="nm_razaosocial">
+                                    </div>
+                                    <br>
+                                <div class="gridUmCadastro">
+                                    <input type="text" class="retangulo" placeholder="Natureza Juridica">
+                                    <div></div>
+                                    <input type="text" class="retangulo" placeholder="CNPJ" name="cd_cnpj">
+                                </div>
+                                <br>
+                                <div class="gridUmCadastro">
+                                    <input type="text" class="retangulo" placeholder="Atividade Economica">
+                                    <div></div>
+                                    <input type="date" class="retangulo" placeholder="Data de fundação">
+                                </div>
+                                <br>
+                                <div class="gridSegCadastro">
+                                    <input type="text" class="retangulo" placeholder="Nome do usuário" name="nm_usuarioempresa">
+                                </div>
+                                <br>
+                                <div class="gridSegCadastro">
+                                    <input type="email" class="retangulo" placeholder="Email" name="nm_emailempresa">
+                                </div>
+                                <br>
+                                <div class="gridUmCadastro">
+                                    <input type="password" class="retangulo" placeholder="Senha" name="nm_senhaempresa">
+                                    <div></div>
+                                    <input type="password" class="retangulo" placeholder="Repita a senha">
+                                </div>
+                                <br>
+                                <div class="gridUmCadastro">
+                                    <input type="text" class="retangulo" placeholder="Estado">
+                                    <div></div>
+                                    <input type="text" class="retangulo" placeholder="Cidade">
+                                </div>
+                            
+                                <div class="termos">
+                                    <input type="checkbox">
+                                    <h4>Eu li e concordo com os 
+                                        <h4 class="rosaEstilo">termos de uso</h4>
+                                    </h4>
+                                </div> 
+                                <center>   
+                                    <button onclick="cadastro()" id="buttonCadastro" type="submit">Cadastrar</button>
+                                </center>
+                            <div class="h4Grid">
+                                <h4>Já possui uma conta? <h4> <a class="rosaEstilo" href="/index.html">Entrar </a></h4></h4>
+                            </div>
+                                
+                            <div class="h4Grids">
+                                <h4>Deseja se <h4> <a class="azulEstilo" href="cadastrocliente.html"> cadastrar como Cliente?</a> </h4>
+                                </h4> 
+                            </div>      
+                            </center>
+                 </form>
+                 </div>
+             </div>    
+       </div>
+</body>
+</html>

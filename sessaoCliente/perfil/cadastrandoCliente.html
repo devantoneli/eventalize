@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- FRONT-END formulário para inserir informações da empresa e enviar ao arquivo validarCliente.php, para cadastrar -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se cadastre como cliente</title>
+    <link rel="stylesheet" href="estiloPerfil-c.css">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
+    <script src="cadastrocliente.js"></script>
+</head>
+<body id="cliente"> 
+    <div class="cont">
+        <center>
+        <div class="bigBoxCliente">
+            <br>
+        <div class="box">
+                <h2 class="estiloFonte">EVENTALIZE</h2>
+                <h3>Cadastre-se como Cliente</h3>
+                <form action="validarCliente.php">              
+                <div class="gridUmCadastro">
+                    <input type="text" class="retangulo" placeholder="Nome" name="nm_cliente">
+                    <div></div>
+                    <input type="text" class="retangulo" placeholder="Sobrenome" name="nm_sobrenome">
+                </div>
+                <br>
+                <div class="gridSegCadastro">
+                    <input type="email" class="retangulo" placeholder="E-mail" name="nm_emailcliente">
+                </div>
+                <br>
+                <div class="gridUmCadastro">
+                    <input type="password" class="retangulo" placeholder="Senha" name="nm_senhacliente">
+                    <div></div>
+                    <input type="password" class="retangulo" placeholder="Repita a senha">
+                </div>
+                <br>
+                <div class="gridSegCadastro">
+                    <input type="text" class="retangulo" placeholder="Nome de usuário" name="nm_usuariocliente">
+                </div>
+                <div class="termos">
+                    <input type="checkbox">
+                    <h4>Eu li e concordo com os 
+                        <h4 class="rosaEstilo">termos de uso</h4>
+                    </h4>
+                </div> 
+                <center>   
+                    <button onclick="cadastro()" id="buttonCadastro" type="submit">Cadastrar</button>
+                </center>
+               <div class="h4Grid">
+                <h4>Já possui uma conta? <h4> <a class="rosaEstilo" href="/index.html">Entrar </a></h4></h4>
+               </div>
+               <div class="h4Grids">
+                <h4>Deseja se <h4> <a class="azulEstilo" href="cadastroempresa.html"> cadastrar como Empresa?</a> </h4>
+                </h4> 
+               </div>      
+            </center>
+        </div>
+    </div>
+    </div>
+</form>
+</body>
+</html>
