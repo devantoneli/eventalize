@@ -1,0 +1,469 @@
+/* ESTILO DA PÁGINA INICIAL EMPRESA index-e.html*/
+
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/font/LeagueSpartan.ttf');
+}
+
+.bg-gradPrincipal {
+    background: linear-gradient(270deg, #3ED1FF -3.33%, #FF3E83 68.74%, #FFA856 103.43%);
+}
+
+
+/* TELA INICIO EMPRESA */
+
+.html, body {
+    padding: 0;
+    margin: 0;
+}
+
+/* MENU EMPRESA */
+
+.alinhaElementos {
+    display: grid !important;
+    align-items: center;
+    grid-template-columns: 10vw 71vw 5vw;
+}
+
+.alinhaLogo {
+    display: grid;
+    align-items: center;
+    height: 0;
+    width: 0;
+    margin-bottom: 4vw;
+    grid-template-columns: 4vw 5vw 3vw;
+}
+
+.opcoesMenu {
+    display: grid;
+    text-align: center;
+    grid-template-columns: 13% 10% 15% 13%;
+    padding: 2%;
+}
+
+.opcoesMenu li{
+    list-style: none;
+}
+
+.opcaoMenu:hover{
+    color: white;
+    text-shadow: 0px 2px 18px white, 0px 2px 18px white;
+}
+
+.botaoSeta {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.botaoSeta:hover {
+    color: white;
+
+}
+
+.setaMenu:hover {
+    filter:drop-shadow(0 2px 2px rgb(255, 255, 255));
+}
+
+.menuEmpresa {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.opcaoSele {
+    font-family: 'League Spartan';
+    color: white;
+    text-decoration: none;
+    font-style: none;
+    font-size: 100%;
+    text-shadow: 0px 1px 16px white;
+}
+
+.opcaoMenu {
+    font-family: 'League Spartan';
+    color: white;
+    text-decoration: none;
+    font-style: none;
+    font-size: 1.5vw;
+}
+
+#logoImagem {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-image: url('/img/icones/logoBranca.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-left: 5vw;
+}
+
+#inserirPerfil {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+/* @media (max-width: 480px) {
+    .alinhaElementos {
+        display: grid;
+        align-items: baseline;
+        grid-template-columns: 50% 50%;
+    }
+    
+    .opcoesMenu {
+        display: grid;
+        text-align: center;
+        grid-template-columns: 10% 10% 10% 10% 10%;
+    }
+  } */
+
+/* menu suspenso */
+
+#menu{
+    z-index: 1;
+    border-radius: 4%;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 11vw;
+    top: 5.9vw;
+    right: 10vw;
+    height: 17vw;
+    color:#5356ad;
+    grid-template-rows: 2.5vw 2.5vw 2.5vw 2.5vw 2.5vw;
+    display: none;
+    padding-top: 0.3vw;
+    padding-left: 2vw;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: 'League Spartan';
+    background-color: rgb(255, 255, 255);
+}
+
+#menu a{
+    text-decoration: none;
+    height: 0;
+    width: 10vw;
+}
+
+#menu h4:hover{
+    color: #FF3E83;
+}
+
+/* MENU PERFIL SUSPENSO */
+
+#menuPerfil{
+    z-index: 1;
+    border-radius: 4%;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 11vw;
+    top: 5.9vw;
+    right: 0.5vw;
+    height: 14.3vw;
+    color:#5356ad;
+    grid-template-rows: 3.5vw 2.5vw 3.5vw 2.5vw;
+    display: none;
+    padding-top: 0.3vw;
+    padding-left: 2vw;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: 'League Spartan Regular';
+    background-color: rgb(255, 255, 255);
+}
+
+#menuPerfil a{
+    text-decoration: none;
+    height: 0;
+    width: 10vw;
+}
+
+#menuPerfil h4:hover{
+    color: #FF3E83;
+}
+
+/* CORPO INICIO - grid de cards */
+
+.grid-CardsInicio {
+    padding-top: 3vw;
+    padding-left: 7vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'League Spartan';
+}
+
+.grid-CardsInicio h2 {
+    font-size: 2vw;
+}
+
+.grid-LinhaDupla {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+/* novos pedidos */
+
+.card-novosPedidos {
+    color: #C94FB8;
+}
+
+.blocoRoxo {
+    background-color: #F2DDEF;
+    width: 36vw;
+    margin-top: 3%;
+    height: auto;
+    border-radius: 15px;
+    padding: 2.3vw;
+    display: grid;
+    grid-template-columns: 11vw 11vw 11vw;
+    grid-template-rows: 10vw;
+}
+
+.imgServico {
+    width: 8vw;
+    height: 8vw;
+    background-color: #a5799f;
+    background-image: url('../imgInicioEmpresa/imgServico.jpg');
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 150%;
+    border-radius: 50%;
+    position: relative;
+}
+
+.imgCliente {
+    width: 3vw;
+    height: 3vw;
+    position: absolute;
+    z-index: 3;
+    background-color: #a5799f;
+    background-image: url('../imgInicioEmpresa/imgCliente.jpg');
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-size: 150%;
+    border-radius: 50%;
+    transform: translate(6vw, -3vw);
+}
+
+/* pedidos em andamento */
+
+.card-pedidsAndament {
+    color: #FF5F76;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.blocoLaranja {
+    background-color: #FFD9DE;
+    width: 36vw;
+    margin-top: 3%;
+    height: auto;
+    max-height: 105vw;
+    border-radius: 15px;
+    padding: 2.3vw;
+    padding-bottom: 8vw;
+    padding-top: 2vw;
+    font-size: 1.5vw;
+    display: grid;
+    grid-template-rows: 30% 30% 30% 30%;
+}
+
+.pedidAndament {
+    width: 100%;
+    height: 9.5vw;
+    padding: 1.5vw 1.5vw;
+    border: 0.6vw solid #7696F2;
+    border-radius: 1.2vw;
+    box-shadow: inset -186px 2px 129px rgba(0, 0, 0, 0.9);
+    background-image: url('../imgInicioEmpresa/imgServico.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: 'League Spartan';
+    font-size: 1.8vw;
+}
+
+.pedidAndament p {
+    margin-top: 0vw;
+    font-size: 1.3vw;
+    font-family: 'League Spartan';
+}
+
+.img-cliPedAndamnt {
+    width: 4.5vw;
+    height: 4.5vw;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    margin: -17% 0vw 16% 23vw;
+}
+
+.status {
+    width: 70%;
+    height: 3vw;
+    background: #7696F2;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transform: translate(3.5vw, 0vw);
+    overflow: hidden;
+}
+  
+
+.andamento {
+    width: 100%;
+    height: 0.6vw;
+    border-radius: 5vw;
+    background-color: #ffffff;
+    transform: translate(0vw, -25vw);
+}
+
+.barraProgresso {
+    height: 100%;
+    width: 45%;
+    border-radius: 5vw;
+    background-color: #7696F2;
+}
+
+.acaoEmpresa {
+    transform: translate(-1vw, -16.5vw);
+}
+
+.acaoEmpresa .cls-1 {
+    fill: #7696F2;
+}
+
+.font-acaoPendent{
+    color: #ffffff;
+    transform: translate(7.9vw, -25.5vw);
+    text-decoration: none;
+    font-size: 1.6vw;
+}
+
+.font-acaoPendent:hover{
+    color: #ffffff;
+}
+
+/*  */
+
+.card-solicsOrcament{
+    color: #8084E8;
+}
+
+.blocoAzul {
+    background-color: #CECFEB;
+    width: 36vw;
+    max-height: 105vw;
+    border-radius: 15px;
+    font-size: 1.5vw;
+    display: grid;
+    padding: 2.5vw;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4%;
+}
+
+.card-orcamntSolic {
+    background-color: white;
+    width: 15vw;
+    height: 16.5vw;
+    border-radius: 1.5vw;
+}
+
+.cidadMeio p{
+    text-align: center;
+    font-size: 2vw;
+    font-family: 'League Spartan';
+    background: radial-gradient(67.47% 91.91% at 73.26% 36.72%, #3ED1FF 0%, #FF3E83 67.5%, #FFA856 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1vw;
+}
+
+.font-descSolic {
+    color: black;
+    font-family: 'League Spartan';
+    font-size: 1.7vw;
+    padding: 0vw 0vw 0vw 2.5vw;
+    list-style: none;
+}
+
+.btn-abrirSolic {
+    margin: 6% 0% 0% 25%;
+    border-radius: 15vw;
+    width: 50%;
+    height: 17%;
+    font-size: 3vw;
+    padding-bottom: 2vw;
+    font-weight: bolder;
+    background: linear-gradient(270deg, #3ED1FF -3.33%, #FF3E83 68.74%, #FFA856 103.43%);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    border: none;
+}
+
+.font-abrirSolic{
+    position: absolute;
+    margin-top: -1.5vw;
+    margin-left: -1.2vw;
+    color: white !important;
+    z-index: 3;
+}
+
+/* BOAS VINDAS EMPRESA*/
+
+.grid-BoasVindasEmp{
+    padding: 3vw 6vw;
+    display: grid;
+    grid-template-columns: 19vw 30vw;
+    font-family: 'League Spartan';
+}
+
+.grid-BoasVindasEmp h1{
+    font-family: 'League Spartan';
+    font-size: 2vw;
+}
+
+.grid-BoasVindasEmp p{
+    font-size: 1.3vw;
+}
+
+#perfilEmpresa {
+    margin-top: 2vw;
+    width: 17vw;
+    height: 17vw;
+    border-radius: 50%;
+    background-color: #bfc5d9;
+}
+
+.grid-LinhaTripla{
+    display: grid;
+    grid-template-rows: 4vw 5vw 5vw;
+}
+
+.grid-RelatRapid{
+    display: grid;
+    grid-template-columns: 14vw 14vw 14vw 14vw;
+}
+
+.relatRapid {
+    width: 12vw;
+    height: 11vw;
+    border-radius: 7%;
+    background-color: #6abaff;
+    display: grid;
+    grid-template-rows: 1.5vw 2vw 1.7vw 1.7vw 1.7vw;
+    text-align: center;
+}
+
+.relatRapid a{
+    font-weight: 600;
+    font-size: 1.7vw;
+}
+
+

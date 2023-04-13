@@ -26,7 +26,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows == 1) {
   // informações de login válidas, redirecionar o usuário para a página inicial
-  header("Location: ../inicioEmpresa.html ");
+  header("Location: /sistema/eventalize/sessaoEmpresa/index-e.php ");
 
   exit();
 } else {
