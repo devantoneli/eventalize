@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- RASCUNHO FRONT-END formulário para procurar serviços baseados em uma empresa enviada para consultarServicos.php
+    <!-- RASCUNHO FRONT-END formulario para procurar serviços baseados em uma empresa enviada para consultarServicos.php
     ESTE ARQUIVO NÃO PODE EXISTIR, É ALGO QUE JÁ TEM QUE SER DETERMINADO NO LOGIN -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
