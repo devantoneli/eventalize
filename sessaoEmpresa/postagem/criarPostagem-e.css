@@ -169,12 +169,107 @@
     color: #FF3E83;
 }
 
-/* CARD criar postagem */
+/* SELECAO PEDIDO */
+
+.cardSelecaoPedido{
+    grid-column: 3/4;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80vw;
+    height: auto;
+    background-color: white;
+    border-radius: 3%;
+    border: 1px solid  rgb(141, 141, 141);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    justify-items: center;
+}
+
+.cardSelecaoPedido h1{
+    grid-area: 1/1/3/1;
+    display: flex;
+    justify-content: center;
+    font-size: 1.8em;
+    margin-top: 3%;
+}
+
+.inputPesquisa{
+    display: flex;
+    /* margin: 5%; */
+}
+
+.inputPesquisa input{
+    display: flex;
+    justify-content: space-between;
+    height: 2vw;
+    width: 25vw;
+    margin: 2% 2% 5% 2%;
+    /* padding-right: 2%; */
+    border-radius: 15px;
+    border: 2px solid  rgb(141, 141, 141);
+}
+
+.botaoPesquisaPedido{
+    /* display: grid; */
+    /* align-items: center; */
+    margin: 2% 2% 5% 2%;
+
+}
+
+.botaoPesquisaPedido button{
+    text-decoration: none;
+    background-color: none;
+    width: 8vw;
+    height: 2.5vw;
+    background-color: #FF3E83;
+    border-style: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-family: 'League Spartan Regular';
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cards{
+    grid-area: 6/1/6/1;
+}
+
+.infoCard{
+    margin: 3%;
+}
+
+.precoPedido{
+    color: #FF3E83;
+    display: grid;
+    align-items: center;
+}
+
+.card {
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-bottom: 5%;
+    padding: 10px;
+    width: 55em;
+    /* display: flex; */
+}
+
+.cardConteudo{
+    display: flex;
+}
+
+  
+.cardSelecao {
+    float: right;
+    margin-right: 10px;
+}
+
+/* CARD CRIAR POSTAGEM */
 
 .grid-Principal{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* grid-template-rows: auto; */
 }
 
 .cardCriarPostagem{
@@ -194,21 +289,14 @@
 
 .cardCriarPostagem h1{
     grid-area: 2/1/3/1;
-    /* margin-top: 10%; */
     display: flex;
     justify-content: center;
 }
 
-/* .grid-CriarPostagem{
-    
-} */
+/* UPLOAD IMAGENS */
 
 .uploadImgPedido{
-    /* position: absolute; */
-    /* top: 50px; 
-    left: 50px;  */
     grid-area: 3/1/3/1;
-    /* margin: 0 20% 0 20%; */
     text-align: center;
     width: 18vw;
     height: 10vw;
@@ -219,21 +307,11 @@
     background-size: 40%;
     background-position: center;
     border-radius: 5%;
-    
-
-    /* clip-path: inset(0% 0 0% 0); */
+    clip-path: inset(0% 0 0% 0);
 }
 
-/* .grid-outrasImg{
-    display: flex;
-} */
-
 .uploadImg{
-    /* grid-area: 4/1/4/1; */
-    /* display: flex; */
-    /* align-items: center; */
-    /* margin: 5% 10% 5% 10%; */
-    /* text-align: center; */
+    display: block;
     width: 12vw;
     height: 8vw; 
     background-color: rgb(204, 204, 204);
@@ -242,38 +320,39 @@
     background-size: 40%;
     background-position: center;
     border-radius: 5%;
+    clip-path: inset(0% 0 0% 0);
 }
 
-.uploadImg1{
+.uploadImg2{
+    display: block;
+    width: 12vw;
+    height: 8vw; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('/img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    border-radius: 5%;
+    clip-path: inset(0% 0 0% 0);
+}
+
+.uploadImgPrincipal{
     grid-area: 5/1/5/1;
     display: flex;
     column-gap: 15px;
 }
 
-.uploadImg2{
-    grid-area: 4/1/4/1;
-    display: flex;
-    /*align-items: center; */
-    /* margin: 5% 10% 5% 50%; */
-    width: 12vw;
-    height: 8vw; 
-    background-color: rgb(204, 204, 204);
-    background-image: url('/img/icones/icon-upload.svg');
-    background-repeat: no-repeat;
-    background-size: 40%;
-    background-position: center;
-    border-radius: 5%;
-}
-
-.coluna {
+/* LINHA DE DIVISÃO DAS COLUNAS */
+.linhaDivisao {
     width: 100%;
     grid-area: 2/1/12/2;
     display: grid;
     justify-items: center;
-    box-sizing: border-box; /* inclui a largura da borda na largura total da coluna */
-    border-right: 1px solid  rgb(141, 141, 141); /* adiciona uma borda sólida de 1 pixel na cor preta à direita da coluna */
+    box-sizing: border-box; 
+    border-right: 1px solid  rgb(141, 141, 141);
 }
 
+/* PERFIL DA EMPRESA */
 .fotoPerfil{
     grid-row: 2/3;
     margin: 5%;
@@ -297,11 +376,7 @@
     width: 100%;
 }
 
-/* .linhasInput{
-    display: grid;
-    grid-template-rows: repeat(6, 1fr);
-} */
-
+/* INFORMAÇÕES PARA A POSTAGEM */
 .linhasInput{
     display: grid;
     grid-template-rows: repeat(6, 1fr);
@@ -310,25 +385,20 @@
     width: 80%;
     height: 50%;
     margin-top: 5%;
-    /* padding-right: 3%; */
 }
 
-input{
+.linhasInput input{
     height: 0.5vw;
     padding: 3%;
     border-radius: 15px;
     border: 2px solid  rgb(141, 141, 141);
-    /* border-color:#FF3E83; */
-    /* border-left: #FF3E83;
-    border-right: #FF3E83;
-    border-top: #FF3E83;
-    border-bottom: #FF3E83; */
 }
 
 #legendaInput{
     height: 5vw;
 }
 
+/* BOTAO CRIAR POSTAGEM */
 .botaoPostagem{
     grid-area: 7/2/7/2;
 }
@@ -345,5 +415,6 @@ input{
     font-family: 'League Spartan Regular';
     color: white;
     font-weight: 500;
+    cursor: pointer;
 
 }

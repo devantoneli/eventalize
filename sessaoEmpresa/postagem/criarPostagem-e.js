@@ -6,7 +6,7 @@ var linkCapa;
 var link2;
 var link3;
 function lerImgCapa() {
-    const card = document.querySelector('.cardCarregarG');
+    const card = document.querySelector('.uploadImgPedido');
     if (this.files && this.files[0]) {
         var file = new FileReader();
         file.onload = function(e) {
@@ -24,7 +24,7 @@ function lerImgCapa() {
   document.getElementById("img-inputCapa").addEventListener("change", lerImgCapa, false);
   
   function lerImg2() {
-    const card = document.querySelector('.img2');
+    const card = document.querySelector('.uploadImg');
     if (this.files && this.files[0]) {
         var file = new FileReader();
         file.onload = function(e) {
@@ -41,7 +41,7 @@ function lerImgCapa() {
   document.getElementById("img-input2").addEventListener("change", lerImg2, false);
   
   function lerImg3() {
-    const card = document.querySelector('.img3');
+    const card = document.querySelector('.uploadImg2');
     if (this.files && this.files[0]) {
         var file = new FileReader();
         file.onload = function(e) {
