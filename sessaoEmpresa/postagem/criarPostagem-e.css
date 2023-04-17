@@ -1,0 +1,349 @@
+/* ESTILO DA PÁGINA CRIAR POSTAGEM EMPRESA criarPostagem-e.html*/
+
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/font/LeagueSpartan.ttf');
+}
+
+.bg-gradPrincipal {
+    background: linear-gradient(270deg, #3ED1FF -3.33%, #FF3E83 68.74%, #FFA856 103.43%);
+}
+
+
+/* TELA INICIO EMPRESA */
+
+.html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'League Spartan Regular';
+}
+
+/* MENU EMPRESA */
+
+.alinhaElementos {
+    display: grid !important;
+    align-items: center;
+    grid-template-columns: 10vw 71vw 5vw;
+}
+
+.alinhaLogo {
+    display: grid;
+    align-items: center;
+    height: 0;
+    width: 0;
+    margin-bottom: 4vw;
+    grid-template-columns: 4vw 5vw 3vw;
+}
+
+.opcoesMenu {
+    display: grid;
+    text-align: center;
+    grid-template-columns: 13% 10% 15% 13%;
+    padding: 1%;
+}
+
+.opcoesMenu li{
+    list-style: none;
+}
+
+.opcaoMenu:hover{
+    color: white;
+    text-shadow: 0px 2px 18px white, 0px 2px 18px white;
+}
+
+.botaoSeta {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.botaoSeta:hover {
+    color: white;
+
+}
+
+.setaMenu:hover {
+    filter:drop-shadow(0 2px 2px rgb(255, 255, 255));
+}
+
+.menuEmpresa {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.opcaoSele {
+    font-family: 'League Spartan';
+    color: white;
+    text-decoration: none;
+    font-style: none;
+    font-size: 100%;
+    text-shadow: 0px 1px 16px white;
+}
+
+.opcaoMenu {
+    font-family: 'League Spartan';
+    color: white;
+    text-decoration: none;
+    font-style: none;
+    font-size: 1.5vw;
+}
+
+#logoImagem {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-image: url('/img/icones/logoBranca.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-left: 5vw;
+}
+
+#inserirPerfil {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+#menu{
+    z-index: 1;
+    border-radius: 4%;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 11vw;
+    top: 5.9vw;
+    right: 10vw;
+    height: 17vw;
+    color:#5356ad;
+    grid-template-rows: 2.5vw 2.5vw 2.5vw 2.5vw 2.5vw;
+    display: none;
+    padding-top: 0.3vw;
+    padding-left: 2vw;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: 'League Spartan Regular';
+    background-color: rgb(255, 255, 255);
+}
+
+#menu a{
+    text-decoration: none;
+    height: 0;
+    width: 10vw;
+}
+
+#menu h4:hover{
+    color: #FF3E83;
+}
+
+/* MENU PERFIL SUSPENSO */
+
+#menuPerfil{
+    z-index: 1;
+    border-radius: 4%;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 11vw;
+    top: 5.9vw;
+    right: 0.5vw;
+    height: 14.3vw;
+    color:#5356ad;
+    grid-template-rows: 3.5vw 2.5vw 3.5vw 2.5vw;
+    display: none;
+    padding-top: 0.3vw;
+    padding-left: 2vw;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: 'League Spartan Regular';
+    background-color: rgb(255, 255, 255);
+}
+
+#menuPerfil a{
+    text-decoration: none;
+    height: 0;
+    width: 10vw;
+}
+
+#menuPerfil h4:hover{
+    color: #FF3E83;
+}
+
+/* CARD criar postagem */
+
+.grid-Principal{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* grid-template-rows: auto; */
+}
+
+.cardCriarPostagem{
+    grid-column: 3/4;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80vw;
+    height: 50vw;
+    background-color: white;
+    border-radius: 3%;
+    border: 1px solid  rgb(141, 141, 141);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    justify-items: center;
+}
+
+.cardCriarPostagem h1{
+    grid-area: 2/1/3/1;
+    /* margin-top: 10%; */
+    display: flex;
+    justify-content: center;
+}
+
+/* .grid-CriarPostagem{
+    
+} */
+
+.uploadImgPedido{
+    /* position: absolute; */
+    /* top: 50px; 
+    left: 50px;  */
+    grid-area: 3/1/3/1;
+    /* margin: 0 20% 0 20%; */
+    text-align: center;
+    width: 18vw;
+    height: 10vw;
+    padding: 5%; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('/img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    border-radius: 5%;
+    
+
+    /* clip-path: inset(0% 0 0% 0); */
+}
+
+/* .grid-outrasImg{
+    display: flex;
+} */
+
+.uploadImg{
+    /* grid-area: 4/1/4/1; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* margin: 5% 10% 5% 10%; */
+    /* text-align: center; */
+    width: 12vw;
+    height: 8vw; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('/img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    border-radius: 5%;
+}
+
+.uploadImg1{
+    grid-area: 5/1/5/1;
+    display: flex;
+    column-gap: 15px;
+}
+
+.uploadImg2{
+    grid-area: 4/1/4/1;
+    display: flex;
+    /*align-items: center; */
+    /* margin: 5% 10% 5% 50%; */
+    width: 12vw;
+    height: 8vw; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('/img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    border-radius: 5%;
+}
+
+.coluna {
+    width: 100%;
+    grid-area: 2/1/12/2;
+    display: grid;
+    justify-items: center;
+    box-sizing: border-box; /* inclui a largura da borda na largura total da coluna */
+    border-right: 1px solid  rgb(141, 141, 141); /* adiciona uma borda sólida de 1 pixel na cor preta à direita da coluna */
+}
+
+.fotoPerfil{
+    grid-row: 2/3;
+    margin: 5%;
+    display: flex;
+}
+
+.fotoPerfil img{
+    width: 15%;
+    clip-path: circle();
+}
+
+.fotoPerfil h2{
+    font-size: 1.5em;
+    margin-left: 10%;
+    width: 100%;
+}
+
+.fotoPerfil h1{
+    font-size: 1em;
+    margin-left: 10%;
+    width: 100%;
+}
+
+/* .linhasInput{
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+} */
+
+.linhasInput{
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    row-gap: 40%;
+    grid-area: 3/2/5/2;
+    width: 80%;
+    height: 50%;
+    margin-top: 5%;
+    /* padding-right: 3%; */
+}
+
+input{
+    height: 0.5vw;
+    padding: 3%;
+    border-radius: 15px;
+    border: 2px solid  rgb(141, 141, 141);
+    /* border-color:#FF3E83; */
+    /* border-left: #FF3E83;
+    border-right: #FF3E83;
+    border-top: #FF3E83;
+    border-bottom: #FF3E83; */
+}
+
+#legendaInput{
+    height: 5vw;
+}
+
+.botaoPostagem{
+    grid-area: 7/2/7/2;
+}
+
+.botaoPostagem button{
+    text-decoration: none;
+    background-color: none;
+    width: 12em;
+    height: 3em;
+    background-color: #FF3E83;
+    border-style: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-family: 'League Spartan Regular';
+    color: white;
+    font-weight: 500;
+
+}
