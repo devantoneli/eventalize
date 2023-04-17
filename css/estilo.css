@@ -1712,6 +1712,8 @@ footer {
 
 .grid-loginCirc a{
     font-weight: bold;
+    text-decoration: none;
+    color: white;
 }
 
 .grid-loginCirc p{
