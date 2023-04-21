@@ -14,6 +14,9 @@ $password = "";
 $dbname = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
+$result = $conn->query($sql);
+
+$result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
 if($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
