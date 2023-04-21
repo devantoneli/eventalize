@@ -73,7 +73,8 @@
 
 //NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
 
-$nm_cliente = $_POST["nm_cliente"];
+if (isset($_GET['nm_cliente'])) {
+    $nm_cliente = $_POST["nm_cliente"];
 
 $servername = "localhost";
 $username = "root";
@@ -113,6 +114,7 @@ if(mysqli_num_rows($result_query) > 0){
 }
     }else{
         echo "Nenhum registro encontrado";
+}
 }
     
 ?>
