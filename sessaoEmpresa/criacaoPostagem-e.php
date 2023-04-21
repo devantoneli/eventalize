@@ -19,7 +19,7 @@ if($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO tb_postagem (nm_postagem, ds_postagem) VALUES ('$nm_postagem', '$ds_postagem')";
+$sql = 'INSERT INTO tb_postagem (nm_postagem, ds_postagem) VALUES (' . "'" . $nm_postagem . "'" . ', ' . "'" . $ds_postagem . "'" . ')';
 
 if($conn->query($sql)=== TRUE){
     // header('Location: /sistema/eventalize/sessaoUsuario/postagem-usuario.html');
