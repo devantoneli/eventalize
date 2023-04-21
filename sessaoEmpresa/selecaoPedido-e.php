@@ -138,19 +138,31 @@ if(mysqli_num_rows($result_query) > 0){
 
 
       <script>
-        var checkboxes = document.querySelectorAll('input[name="cardSelecao"]');
+var checkboxes = document.querySelectorAll('input[name="cardSelecao"]');
+var selectedCheckbox = null;
 
 for (var i = 0; i < checkboxes.length; i++) {
   checkboxes[i].addEventListener('click', function() {
-    // uncheck all checkboxes
-    for (var j = 0; j < checkboxes.length; j++) {
-      checkboxes[j].checked = false;
+    if (this === selectedCheckbox) {
+      // desmarca a checkbox selecionada atualmente
+      this.checked = false;
+      selectedCheckbox = null;
+    } else {
+      // desmarca a checkbox selecionada anteriormente (se houver)
+      if (selectedCheckbox) {
+        selectedCheckbox.checked = false;
+      }
+      
+      // marca a checkbox selecionada
+      this.checked = true;
+      selectedCheckbox = this;
     }
-    
-    // check the clicked checkbox
-    this.checked = true;
   });
 }
+
+
+
+
 
       </script>
       <script src="js/menu-e.js"></script>
