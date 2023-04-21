@@ -100,7 +100,7 @@ if(mysqli_num_rows($result_query) > 0){
             <div class="cardConteudo">
             <img src="../bancoImagens/empresas/pedido.svg" alt="">
         <div class="infoCard">
-             <p>' . $row["cd_pedido"] .'</p>
+             <p>Pedido nº' . $row["cd_pedido"] .'</p>
              <h2>' .$row["nm_cliente"] .'</h2>
              <p>' . $row["dt_pedido"] . '</p>
              <p>Mais detalhes desse pedido</p>
@@ -117,7 +117,7 @@ if(mysqli_num_rows($result_query) > 0){
     
 ?>
                 
-                <div class="card">
+                <!-- <div class="card">
                     <input type="checkbox" name="cardSelecao" class="cardSelecao">
                     <div class="card-content">
                     <h2>Card 2</h2>
@@ -130,7 +130,7 @@ if(mysqli_num_rows($result_query) > 0){
                     <div class="card-content">
                     <h2>Card 3</h2>
                     <p>Some content here</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
