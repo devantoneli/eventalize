@@ -96,10 +96,11 @@ if(mysqli_num_rows($result_query) > 0){
         echo
         '<div class="cards">
             <div class="card">
-            <input type="checkbox" name="cardSelecao" class="cardSelecao">
+            <input type="checkbox" name="cardSelecao" class="cardSelecao" value="' . $row['cd_pedido'] . '>
             <div class="cardConteudo">
             <img src="../bancoImagens/empresas/pedido.svg" alt="">
         <div class="infoCard">
+            
              <p>Pedido nº' . $row["cd_pedido"] .'</p>
              <h2>' .$row["nm_cliente"] .'</h2>
              <p>' . $row["dt_pedido"] . '</p>
@@ -113,6 +114,15 @@ if(mysqli_num_rows($result_query) > 0){
 }
     }else{
         echo "Nenhum registro encontrado";
+}
+
+$checkboxes = $_POST['cardSelecao'];
+
+foreach ($checkboxes as $checkbox){
+    //verifica se o valor da checkbox é igual a 1
+    if($checkbox == '1'){
+        echo $row['cd_pedido'];
+    }
 }
     
 ?>
@@ -135,6 +145,7 @@ if(mysqli_num_rows($result_query) > 0){
             </div>
         </div>
     </div>
+ 
 
 
       <script>
