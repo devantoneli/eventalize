@@ -73,8 +73,7 @@
 
 //NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
 
-if (isset($_GET['nm_cliente'])) {
-    $nm_cliente = $_POST["nm_cliente"];
+$nm_cliente = $_POST["nm_cliente"];
 
 $servername = "localhost";
 $username = "root";
@@ -91,8 +90,6 @@ $sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
-
-}
 
 if(mysqli_num_rows($result_query) > 0){
     while($row = mysqli_fetch_assoc($result_query)){
@@ -117,7 +114,6 @@ if(mysqli_num_rows($result_query) > 0){
     }else{
         echo "Nenhum registro encontrado";
 }
-
     
 ?>
                 
