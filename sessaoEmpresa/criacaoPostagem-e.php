@@ -1,5 +1,7 @@
 <?php
 
+//CRIANDO A POSTAGEM DO LADO DA EMPRESA (FAZENDO OS INSERTS)
+
 $nm_postagem = $_POST['nm_postagem'];
 $ds_postagem = $_POST['ds_postagem'];
 // $cd_pedido = $_POST['cd_pedido'];
@@ -18,7 +20,8 @@ if($conn->connect_error) {
 $sql = 'INSERT INTO tb_postagem (nm.postagem, ds_postagem) VALUES (' . "'" . $nm_postagem . "'" . ', ' . "'" . $ds_postagem . "'" . ')';
 
 if($conn->query($sql)=== TRUE){
-    header('Location: /sistema/eventalize/sessaoUsuario/postagem-usuario.html');
+    // header('Location: /sistema/eventalize/sessaoUsuario/postagem-usuario.html');
+    echo 'funfou';
 }
 else{
     echo "Erro: " . $sql . "<br>" . $conn->error;
