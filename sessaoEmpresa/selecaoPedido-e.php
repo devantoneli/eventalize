@@ -74,17 +74,56 @@
                     <div class="cardConteudo">
                     <img src="../bancoImagens/empresas/pedido.svg" alt="">
                     
-                    <div class="infoCard">
-                    <p>Pedido nº 548</p>
-                    <h2>Maria Carla Lima Souza</h2>
-                    <p>10/02/2023</p>
-                    <p>Mais detalhes desse pedido</p>
-                    </div>
-                    <div class="precoPedido">
-                        <h1>350,00</h1>
-                    </div>
-                </div>
-            </div>
+                    <?php
+
+//NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
+
+$nm_cliente = $_POST["nm_cliente"];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
+// $sql = "SELECT * FROM vwpedidocliente WHERE cd_empresa = $cd_empresa AND nm_cliente = %$nm_cliente%";
+
+$result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+$row = mysqli_fetch_assoc($result_query);
+
+if(mysqli_num_rows($result_query) > 0){
+    while($row = mysqli_fetch_assoc($result_query)){
+        echo
+        // '<td>'. $row["cd_pedido"]; '</td>
+        // '<tr>
+        // <td>' . $row["nm_cliente"] . '</td>
+        // <td>' . $row["dt_pedido"] . '</td>
+        // <td>R$' . $row["vl_pedido"] . '</td>
+        // <tr>
+        
+        '<div class="infoCard">
+             <p>Pedido nº 548</p>
+             <h2>' .$row["nm_cliente"] .'</h2>
+             <p>' . $row["dt_pedido"] . '</p>
+             <p>Mais detalhes desse pedido</p>
+        </div>
+        <div class="precoPedido">
+            <h1>R$' . $row["vl_pedido"] . '</h1>
+        </div>
+    </div>
+</div>';
+}
+    }else{
+        echo "Nenhum registro encontrado";
+}
+    
+?>
                 
                 <div class="card">
                     <input type="checkbox" name="cardSelecao" class="cardSelecao">
