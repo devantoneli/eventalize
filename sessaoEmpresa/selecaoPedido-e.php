@@ -87,7 +87,6 @@ if($conn->connect_error) {
 }
 
 $sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
-// $sql = "SELECT * FROM vwpedidocliente WHERE cd_empresa = $cd_empresa AND nm_cliente = %$nm_cliente%";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
@@ -95,20 +94,13 @@ $row = mysqli_fetch_assoc($result_query);
 if(mysqli_num_rows($result_query) > 0){
     while($row = mysqli_fetch_assoc($result_query)){
         echo
-        // '<td>'. $row["cd_pedido"]; '</td>
-        // '<tr>
-        // <td>' . $row["nm_cliente"] . '</td>
-        // <td>' . $row["dt_pedido"] . '</td>
-        // <td>R$' . $row["vl_pedido"] . '</td>
-        // <tr>
-        
         '<div class="cards">
             <div class="card">
             <input type="checkbox" name="cardSelecao" class="cardSelecao">
             <div class="cardConteudo">
             <img src="../bancoImagens/empresas/pedido.svg" alt="">
         <div class="infoCard">
-             <p>Pedido nº 548</p>
+             <p>' . $row["cd_pedido"] .'</p>
              <h2>' .$row["nm_cliente"] .'</h2>
              <p>' . $row["dt_pedido"] . '</p>
              <p>Mais detalhes desse pedido</p>
