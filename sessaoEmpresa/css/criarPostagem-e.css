@@ -192,6 +192,7 @@
 /* Estiliza a barra de rolagem para navegadores que usam o motor WebKit, como o Google Chrome e o Safari */
 .cards::-webkit-scrollbar {
     width: 12px;
+    
     /* margin-left: 10px; */
   }
   
@@ -204,12 +205,14 @@
   /* Estiliza o botão de rolagem quando não está sendo arrastado */
   .cards::-webkit-scrollbar-thumb {
     background: #888;
+    
 
   }
   
   /* Estiliza o botão de rolagem quando está sendo arrastado */
   .cards::-webkit-scrollbar-thumb:hover {
     background: #FF3E83;
+    
 
   }
 
@@ -220,7 +223,7 @@
   }
 
   .cards::-webkit-scrollbar-thumb:vertical {
-    min-height: 30px; /* Altura mínima da barra de rolagem */
+    height: 30px; /* Altura mínima da barra de rolagem */
     border-radius: 5px;
     margin-bottom: -5px; /* Distância abaixo da barra de rolagem */
   }
