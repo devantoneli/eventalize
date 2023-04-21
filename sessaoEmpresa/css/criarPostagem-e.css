@@ -299,6 +299,10 @@
     /* display: flex; */
 }
 
+.card input{
+    accent-color: #FF3E83;
+}
+
 .cardConteudo{
     display: flex;
 }
