@@ -58,7 +58,7 @@
     <div class="grid-Principal">
         <div class="cardSelecaoPedido">
             <h1>Selecione um pedido para começar</h1>
-            <form action="selecionarPedido-e.php" method="post">
+            <form action="selecaoPedido-e.php" method="post">
                 <div class="inputPesquisa">
                     <!-- <input type="text" name="cd_empresa" placeholder="Código da empresa"> -->
                     <input type="text" name="nm_cliente" placeholder="Pesquisar pedido">
@@ -68,11 +68,6 @@
                 </div>
             </form>
 
-            <div class="cards">
-                <div class="card">
-                    <input type="checkbox" name="cardSelecao" class="cardSelecao">
-                    <div class="cardConteudo">
-                    <img src="../bancoImagens/empresas/pedido.svg" alt="">
                     
                     <?php
 
@@ -107,7 +102,12 @@ if(mysqli_num_rows($result_query) > 0){
         // <td>R$' . $row["vl_pedido"] . '</td>
         // <tr>
         
-        '<div class="infoCard">
+        '<div class="cards">
+            <div class="card">
+            <input type="checkbox" name="cardSelecao" class="cardSelecao">
+            <div class="cardConteudo">
+            <img src="../bancoImagens/empresas/pedido.svg" alt="">
+        <div class="infoCard">
              <p>Pedido nº 548</p>
              <h2>' .$row["nm_cliente"] .'</h2>
              <p>' . $row["dt_pedido"] . '</p>
