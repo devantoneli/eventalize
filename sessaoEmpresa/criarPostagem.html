@@ -57,7 +57,7 @@
     </div>
 
     <!-- CARD criar postagem -->
-    <form action="criacaoPostagem.php"></form>
+    <form action="criacaoPostagem-e.php"></form>
     <div class="grid-Principal">
         <div class="cardCriarPostagem">
             <!-- UPLOAD imagens -->
@@ -96,13 +96,13 @@
                 <!-- INFORMAÇÕES PARA A POSTAGEM-->
                 <div class="linhasInput">
                     <input type="text" placeholder="Pedido" disabled value="2">
-                    <input type="text" placeholder="Título">
-                    <input id="legendaInput" type="text" placeholder="Legenda">
+                    <input type="text" placeholder="Título" name="nm_postagem">
+                    <input id="legendaInput" type="text" placeholder="Legenda" name="ds_postagem">
                 </div>
 
                 <!-- BOTÃO CRIAR POSTAGEM -->
                 <div class="botaoPostagem">
-                    <button>Criar Postagem</button>
+                    <button type="submit">Criar Postagem</button>
                 </div>
 
             </form>
