@@ -1,4 +1,1 @@
-destinada para todas as pastas de telas para usuários cadastrados como empresa
-
-as pastas de tela são pastas onde contem todas as telas referente a um crud/pacote de funcionalidades
-exemplo: criar serviço, apagar servico, editar servico, consultar servico, tudo em uma pasta só escrita Servico, com um mesmo css e javascript e somente em casos de singularidade, javascript próprio
+destinada para todas as telas para usuários cadastrados como empresa

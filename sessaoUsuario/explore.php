@@ -7,7 +7,7 @@ $db_name = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
-$sql = "SELECT * FROM tb_servico";
+$sql = "SELECT * FROM tb_postagem";
 $result = $conn->query($sql);
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
@@ -27,17 +27,17 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/sistema/eventalize/css/estilo.css">
-    <link rel="stylesheet" href="estiloExplore.css">
+    <link rel="stylesheet" href="css/estiloExplore.css">
     <title>Explore</title>
 </head>
 <body>
     <!-- MENU -->
     <header>
         <div class="logoHome">
-            <img src="img/index/logo.png" alt="logo">
+            <img src="../img/index/logo.png" alt="logo">
         </div>
             <div class="headerHome">
-                <a href="../../index.html">Início</a>
+                <a href="../index.html">Início</a>
                 <a href="">Explore</a>
                 <a href="">Sobre Nós</a>
             </div>
@@ -55,13 +55,7 @@ if ($result->num_rows > 0) {
         if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo '<div class="column">
-            <img src="">
-            <img src="'. $row['url_imgcapa'].'">
-            <img src="'.$row['url_img2'].'">
-            <img src="'.$row['url_img3'].'">
-            <img src="nature.jpg">
-            <img src="mist.jpg">
-            <img src="paris.jpg">
+            <img width="20%" src="'.$row['url_imgcapa'].'">
                 </div>';
         }
         }else {
