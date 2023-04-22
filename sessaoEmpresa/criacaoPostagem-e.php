@@ -14,15 +14,17 @@ $password = "";
 $dbname = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-$result = $conn->query($sql);
-
-$result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
 if($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
 $sql = 'INSERT INTO tb_postagem (nm_postagem, ds_postagem) VALUES (' . "'" . $nm_postagem . "'" . ', ' . "'" . $ds_postagem . "'" . ')';
+
+$result = $conn->query($sql);
+
+$result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+
 
 if($conn->query($sql)=== TRUE){
     // header('Location: /sistema/eventalize/sessaoUsuario/postagem-usuario.html');
