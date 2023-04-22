@@ -1,5 +1,7 @@
 <?php 
 
+//TELA BACK E FRONT DE EXPLORAR, que carrega as imagens das capas de cada pedido ou pacote/serviço publicado tanto pela empresa, quanto pelo cliente
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,8 +17,9 @@ $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 }else{
-    echo ('rolou algum erro');
+    echo ('Sem resultados.');
 }
+
 ?>
 
 
@@ -48,25 +51,77 @@ if ($result->num_rows > 0) {
             <button class="menuIcon" onclick="menuOpen()"><img  src="img/index/menuicon.svg" width="30px"></button>
     </header>
     <!-- FIM MENU -->
-
+<div class="row">
     <!-- CORPO - GRID DE POSTAGENS -->
-    <div class="row">
         <?php
-        if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo '<div class="column">
-            <img width="20%" src="'.$row['url_imgcapa'].'">
-                </div>';
+        $contador = 0;
+        while ($row = $result->fetch_assoc()) {
+            // Verifica se é a primeira imagem da linha
+        
+            // Verifica se é a primeira imagem da coluna
+            if ($contador % 7 === 0) {
+                // Abre uma nova coluna
+                echo '<div class="column">';
+            }
+        
+            // Exibe a imagem
+            echo '<div class="tipoServico">';
+            // Procura o codigo para inserir o icone correspondente
+            $sql2 = "SELECT * FROM vwtiposervicopost where cd_postagem = ".$row['cd_postagem']."";
+            $result2 = $conn->query($sql2);
+            $row2 = $result2->fetch_assoc();
+            echo '<img class="iconTipo" src="../img/icones/'.$row2['cd_tiposervico'].'.svg">';
+            echo '<div class="sombraCapa"></div>';
+            echo '<img src="'.$row['url_imgcapa'].'">';
+            echo '<form class="infoPostagem">
+                        <div>
+                        <h2>Album de fotos</h2>
+                        <p>100 unidades</p>
+                        </div>
+
+                        <div class="autor">
+                        <img class="perfil" src="">
+                        
+                        <div class="infoAutor">
+                        <h2>Jessica Lima</h2>
+                        <p>Fotografa Social</p>
+                        </div>
+                        </div>
+                  
+                        <button class="verMais" type="submit">Ver mais</button>
+                  </form>
+            ';
+            echo '</div>';
+            
+            // Incrementa o contador
+            $contador++;
+        
+            // Verifica se é a última imagem da coluna
+            if ($contador % 7 === 0) {
+                // Fecha a coluna
+                echo '</div>';
+            }
+        
+
         }
-        }else {
-            echo "0 results";
+        
+        // Verifica se ainda há imagens não exibidas
+        while ($contador % 28 !== 0) {
+            // Verifica se é a última imagem da coluna
+            if ($contador % 7 === 0) {
+                // Fecha a coluna
+                echo '</div>';
+            }
+        
+            // Incrementa o contador
+            $contador++;
         }
+        
         $conn->close();
         ?>
-    </div>
-
+</div>
     <!-- FIM CORPO -->
-    
+
     <script src="/sistema/eventalize/js/menu.js"></script>
 </body>
 </html>

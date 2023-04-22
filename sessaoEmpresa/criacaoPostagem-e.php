@@ -5,6 +5,8 @@
 if(isset($_POST['nm_postagem']) && isset($_POST['ds_postagem'])){
     $nm_postagem = $_POST['nm_postagem'];
     $ds_postagem = $_POST['ds_postagem'];
+}
+
 
 // $cd_pedido = $_POST['cd_pedido'];
 
@@ -32,5 +34,4 @@ if($conn->query($sql)=== TRUE){
 }
 else{
     echo "Erro: " . $sql . "<br>" . $conn->error;
-}
 }

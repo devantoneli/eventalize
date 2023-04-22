@@ -107,6 +107,9 @@ if(mysqli_num_rows($result_query) > 0){
         </div>
         <div class="precoPedido">
             <h1>R$' . $row["vl_pedido"] . '</h1>
+            <form action="criacaoPostagem-e.php">
+            <button type="submit">Selecionar Pedido</button>
+            </form>
         </div>
     </div>
 </div>';
