@@ -1,16 +1,98 @@
+/* ESTILO PARA A PAGINA EXPLORE */
+
+body {
+  overflow: visible !important;
+}
+
+/* GRID CAPA DAS IMAGENS */
+
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
-  }
-  
-  /* Create two equal columns that sits next to each other */
-  .column {
-    flex: 50%;
-    padding: 0 4px;
-  }
-  
-  .column img {
-    margin-top: 8px;
-    vertical-align: middle;
-  }
+  column-count: 6;
+  column-gap: 16px;
+  padding: 0px 15px;
+}
+
+.column img {
+  width: 100%;
+  border-radius: 6%;
+}
+
+.sombraCapa {
+  width: 100%;
+  height: 100%;
+  border-radius: 6%;
+  box-shadow: inset 0px -40px 40px rgba(0, 0, 0, 0.8);
+  position: absolute;
+}
+
+.tipoServico {
+  width: 100%;
+  position: relative;
+  height: auto;
+  display: inline-flex;
+  margin-top: 13px;
+}
+
+img.iconTipo {
+  position: absolute;
+  width: 12%;
+  bottom: 12%;
+  left: 42%;
+  z-index: 3;
+}
+
+/* QUANDO PASSAR O MOUSE EM CIMA DAS IMAGENS */
+
+.infoPostagem {
+  top: 10%;
+  opacity: 0;
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 30% 30% 50%;
+  color: white;
+  text-align: center;
+  transition: 1s;
+}
+
+.infoPostagem:hover{
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.infoPostagem:hover + .iconTipo{
+  display: none;
+}
+
+.perfil {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  background-color: white;
+ 
+}
+
+.autor {
+  display: flex;
+  justify-content: center;
+}
+
+.infoAutor {
+  display: flex;
+  flex-direction: column;
+}
+
+.verMais {
+  width: 130px;
+  height: 30px !important;
+  background: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 0% 6%;
+  border-radius: 5em;
+  border-color: white;
+  display: block;
+  margin: 0 auto;
+}
