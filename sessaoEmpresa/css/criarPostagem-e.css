@@ -93,7 +93,7 @@
     width: 4vw;
     height: 4vw;
     border-radius: 50%;
-    background-image: url('/img/icones/logoBranca.svg');
+    background-image: url('../../img/icones/logoBranca.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -351,14 +351,26 @@
     text-align: center;
     width: 18vw;
     height: 10vw;
-    padding: 5%; 
+    /* padding: 5%;  */
     background-color: rgb(204, 204, 204);
-    background-image: url('/img/icones/icon-upload.svg');
+    background-image: url('../../img/icones/icon-upload.svg');
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 30%;
     background-position: center;
     border-radius: 5%;
     clip-path: inset(0% 0 0% 0);
+}
+
+.uploadImgPedido img{
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    
+}
+
+#preview-capa {
+    opacity: 0;
 }
 
 .uploadImg{
@@ -366,9 +378,9 @@
     width: 12vw;
     height: 8vw; 
     background-color: rgb(204, 204, 204);
-    background-image: url('/img/icones/icon-upload.svg');
+    background-image: url('../../img/icones/icon-upload.svg');
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 30%;
     background-position: center;
     border-radius: 5%;
     clip-path: inset(0% 0 0% 0);
@@ -379,9 +391,9 @@
     width: 12vw;
     height: 8vw; 
     background-color: rgb(204, 204, 204);
-    background-image: url('/img/icones/icon-upload.svg');
+    background-image: url('../../img/icones/icon-upload.svg');
     background-repeat: no-repeat;
-    background-size: 40%;
+    background-size: 30%;
     background-position: center;
     border-radius: 5%;
     clip-path: inset(0% 0 0% 0);
@@ -447,6 +459,9 @@
 
 #legendaInput{
     height: 5vw;
+    padding: 3%;
+    border-radius: 15px;
+    border: 2px solid  rgb(141, 141, 141);
 }
 
 /* BOTAO CRIAR POSTAGEM */
