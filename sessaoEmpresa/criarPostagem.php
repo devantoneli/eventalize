@@ -1,7 +1,8 @@
 <?php
 
-
-$cd_pedido = $_POST['cd_pedido'];
+if(isset($_POST['cd_pedido'])){
+    $cd_pedido = $_POST['cd_pedido'];
+}
 
 $servername = "localhost";
 $username = "root";
@@ -14,10 +15,15 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$query2 = 'SELECT * FROM cd_pedido WHERE cd_pedido =' . $row['cd_pedido'] .''; 
+$query = "SELECT * FROM tb_pedido WHERE cd_pedido = 21121"; 
 
-$result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
-$row2 = mysqli_fetch_assoc($result_query2);
+$result = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
+
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+} else {
+    die("Nenhum resultado encontrado.");
+}
 
 ?>
 
