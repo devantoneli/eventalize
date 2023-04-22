@@ -24,15 +24,19 @@ $dbname = "db_eventalize";
 
     // $cd_postagem = $_GET ['cd_postagem'];
     //SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
-    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 3';
+    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 4';
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
-    $sql2 = 'SELECT p.nm_postagem, p.ds_postagem, p.url_imgcapa, p.url_img2, p.url_img3, e.nm_fantasia, e.cd_empresa
-    FROM tb_postagem AS p
-    INNER JOIN tb_empresa AS e ON p.cd_empresa = e.cd_empresa';
+    $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 4';
+    $result2 = $conn->query($sql2);
+    $row2 = $result2 -> fetch_assoc();
+    // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
     //SELECT vwcodigospostagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
-    $sql3 = 'SELECT vwcodigospostagem WHERE cd_postagem = 2';
+    $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 4';
     $result = $conn->query($sql);
 
+    // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
+    // $result4 = $coon->query($sql3);
+    // $row3 = $result3 -> fetch_assoc(); trecho pra dar inicio a logica dos detalhes do pacote
  
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
@@ -90,11 +94,11 @@ $dbname = "db_eventalize";
                         <div class="salvarPostagem">
                             <img src="../img/icones/icon-salvar-detalhes.png" alt="">
                         </div>
-                        <img src="../bancoImagens/postagens/fotodestaque.jpg" alt="">
+                        <img src='.$row["url_imgcapa"].' alt="">
                     </div>
                     <div class="fotoLateral">
-                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
-                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
+                        <img src='.$row["url_img2"].' alt="">
+                        <img src='.$row["url_img3"].' alt="">
                     </div>
                     <div class="dataPostagem">
                         <h3>postado em 14 de fevereiro de 2023, às 11h20</h3>
@@ -113,7 +117,7 @@ $dbname = "db_eventalize";
                     <div class="iconEmpresa">
                         <img src="../bancoImagens/empresas/fotoempresa.jpg" alt="">
                         <div class="nomeEmpresa">
-                        <h3>Max Lyp Decorações</h3>
+                        <h3>'.$row2["nm_fantasia"].'</h3>
                         <div class="iconsCategorias">
                             <img style="width: 30px; margin: 2%;" src="../img/icones/icon-decoracao-detalhes.png" alt="">
                             <img src="../img/icones/icon-auxiliar-detalhes.png" alt="">
@@ -135,7 +139,7 @@ $dbname = "db_eventalize";
                         <div class="slide">
                     <div class="tituloInfoPacote">
                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>Decoração florida para casamentos elegantes</h3>
+                        <h3>'.$row["ds_postagem"].'</h3>
                     </div>
                     <div class="fotoDestaquePacote">
                         <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
