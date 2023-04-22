@@ -1,3 +1,27 @@
+<?php
+
+
+$cd_pedido = $_POST['cd_pedido'];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+$query2 = 'SELECT * FROM cd_pedido WHERE cd_pedido =' . $row['cd_pedido'] .''; 
+
+$result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
+$row2 = mysqli_fetch_assoc($result_query2);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -94,11 +118,14 @@
                 </div>
 
                 <!-- INFORMAÇÕES PARA A POSTAGEM-->
+
+                <form action="criarPostagem.php">
                 <div class="linhasInput">
-                    <input type="text" placeholder="Pedido" disabled value="2">
+                    <input type="text" placeholder="Pedido" disabled value=<?php echo($row["cd_pedido"]) ?>>
                     <input type="text" placeholder="Título" name="nm_postagem">
                     <textarea id="legendaInput"  type="text" placeholder="Legenda" name="ds_postagem"></textarea>
                 </div>
+                </form>
 
                 <!-- BOTÃO CRIAR POSTAGEM -->
                 <div class="botaoPostagem">
