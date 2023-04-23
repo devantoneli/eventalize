@@ -39,6 +39,8 @@ img.iconTipo {
   bottom: 12%;
   left: 42%;
   z-index: 3;
+  transition: 0.5s;
+  opacity: 1;
 }
 
 /* QUANDO PASSAR O MOUSE EM CIMA DAS IMAGENS */
@@ -62,8 +64,9 @@ img.iconTipo {
   transition: 0.5s;
 }
 
-.infoPostagem:hover + .iconTipo{
-  display: none;
+.tipoServico:hover .iconTipo{
+  opacity: 0 !important;
+  text-align: 0.3s;
 }
 
 .perfil {
@@ -71,7 +74,7 @@ img.iconTipo {
   height: 50px !important;
   border-radius: 50% !important;
   background-color: white;
- 
+  margin-right: 3%;
 }
 
 .autor {
