@@ -137,13 +137,14 @@ $dbname = "db_eventalize";
                 </div>
                 <div class="inicioInfoPostagem">
                 <div class="quadroPacote">
-                    <div class="seta-direita">&#8250;</div>
-                    <div class="seta-esquerda">&#8249;</div>
-                    <div class="carrosselPacote">
-                        <div class="slide">
+                    
+            
+                <div class="slides-container">
+                    <!-- slides -->
+                    <div class="slide" data-slide>
                     <div class="tituloInfoPacote">
                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>'.$row["ds_postagem"].'</h3>
+                        <h3>Decoração florida para casamentos elegantes</h3>
                     </div>
                     <div class="fotoDestaquePacote">
                         <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
