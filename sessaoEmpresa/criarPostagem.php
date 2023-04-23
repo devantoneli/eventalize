@@ -15,7 +15,7 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$query = "SELECT * FROM tb_pedido WHERE cd_pedido = 21121"; 
+$query = "SELECT * FROM tb_pedido WHERE cd_pedido = '$cd_pedido'"; 
 
 $result = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 
