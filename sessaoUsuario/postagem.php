@@ -25,24 +25,21 @@ $dbname = "db_eventalize";
     // $cd_postagem = $_GET ['cd_postagem'];
     //SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
     $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 4';
-    $result = $conn->query($sql);
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
     $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 4';
     $result2 = $conn->query($sql2);
     $row2 = $result2 -> fetch_assoc();
-   
-   
     // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
     //SELECT vwcodigospostagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
     $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 4';
+    $result = $conn->query($sql);
+
     // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
     // $result4 = $coon->query($sql3);
     // $row3 = $result3 -> fetch_assoc(); trecho pra dar inicio a logica dos detalhes do pacote
  
-
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
-                   
             echo '
             <head>
     <meta charset="UTF-8">
@@ -131,7 +128,6 @@ $dbname = "db_eventalize";
                 </div>
             
                 <!-- INICIO EXIBIÇÕES DE PACOTES -->
-                
                 <div class="infoDescricao">
                     <h3>Esta postagem contém o pacote</h3>
                 </div>
@@ -165,60 +161,111 @@ $dbname = "db_eventalize";
                         <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
                     </div>
                 </div>
-                 <!-- <div class="slide">
-                           <div class="tituloInfoPacote">
-                               <img src="imagens/icon-decoracao-detalhes-pacote.png" alt="">
-                               <h3>Decoração florida para casamentos elegantes</h3>
-                           </div>
-                           <div class="fotoDestaquePacote">
-                               <img src="imagens/fotodestaque.jpg" class="active" alt="">
-                           </div>
-                   
-                           <div class="fotoLateralPacote">
-                               <img src="imagens/fotolateral.jpg" alt="">
-                               <img src="imagens/fotolateral2.jpg" alt="">
-                           </div>
-                   
-                           <div class="descricaoInfoPacote">
-                               <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
-                           </div>
-                   
-                           <button class="botaoDetalhes">Mais detalhes</button>
-                   
-                           <div class="identificaPersonalizacao">
-                               <h3><img src="imagens/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
-                           </div>
-                       </div> -->
-                   </div>
-                   </div>
-                   </div>
-                   
-                       <!-- MAIS SOBRE A EMPRESA -->
-                       <div class="maisSobre">
-                           <h3>Mais sobre a empresa</h3>
-                           <div class="gridMaisSobre">
-                               <div class="prestacaoMes">
-                                   <h1>100</h1>
-                                   <h3>Prestações de serviços no último mês</h3>
-                               </div>
-                               <div class="classificacaoEmpresa">
-                                   <img src="../bancoImagens/empresas/balaoouro.png" alt="">
-                                   <h3>Esta é uma empresa</h3> <h2>balão ouro</h2>
-                               </div>
-                               <div class="prestacaoFinalizada">
-                                   <h1>+2000</h1>
-                                   <h3>Prestacões de serviços finalizadas</h3>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   
-                   <script src="../js/menu.js"></script>
-                   </body>';
-                   }
-               }
-                  
-                       
+                    <div class="slide" data-slide>
+                    <div class="tituloInfoPacote">
+                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
+                        <h3>Decoração florida para casamentos elegantes</h3>
+                    </div>
+                    <div class="fotoDestaquePacote">
+                        <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
+                    </div>
+            
+                    <div class="fotoLateralPacote">
+                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
+                    </div>
+            
+                    <div class="descricaoInfoPacote">
+                        <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
+                    </div>
+            
+                    <button class="botaoDetalhes">Mais detalhes</button>
+            
+                    <div class="identificaPersonalizacao">
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                    </div>
+                </div>
+                    <div class="slide" data-slide>
+                    <div class="tituloInfoPacote">
+                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
+                        <h3>Decoração florida para casamentos elegantes</h3>
+                    </div>
+                    <div class="fotoDestaquePacote">
+                        <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
+                    </div>
+            
+                    <div class="fotoLateralPacote">
+                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
+                    </div>
+            
+                    <div class="descricaoInfoPacote">
+                        <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
+                    </div>
+            
+                    <button class="botaoDetalhes">Mais detalhes</button>
+            
+                    <div class="identificaPersonalizacao">
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                    </div>
+                </div>
+                    <div class="slide" data-slide>
+                    <div class="tituloInfoPacote">
+                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
+                        <h3>Decoração florida para casamentos elegantes</h3>
+                    </div>
+                    <div class="fotoDestaquePacote">
+                        <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
+                    </div>
+            
+                    <div class="fotoLateralPacote">
+                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
+                    </div>
+            
+                    <div class="descricaoInfoPacote">
+                        <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
+                    </div>
+            
+                    <button class="botaoDetalhes">Mais detalhes</button>
+            
+                    <div class="identificaPersonalizacao">
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                    </div>
+                </div>
+                 </div>   
+                <button class="seta-esquerda" data-button="previous">&#8249;</button>
+                <button class="seta-direita" data-button="next">&#8250;</button>
+            
+            
+        </div>
+            
+                <!-- MAIS SOBRE A EMPRESA -->
+                <div class="maisSobre">
+                    <h3>Mais sobre a empresa</h3>
+                    <div class="gridMaisSobre">
+                        <div class="prestacaoMes">
+                            <h1>100</h1>
+                            <h3>Prestações de serviços no último mês</h3>
+                        </div>
+                        <div class="classificacaoEmpresa">
+                            <img src="../bancoImagens/empresas/balaoouro.png" alt="">
+                            <h3>Esta é uma empresa</h3> <h2>balão ouro</h2>
+                        </div>
+                        <div class="prestacaoFinalizada">
+                            <h1>+2000</h1>
+                            <h3>Prestacões de serviços finalizadas</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script src="../js/menu.js"></script>
+            <script src="../sessaoUsuario/js/carousel.js"></script>
+            
+            </body>';
+            }
+        }
     
 
 ?>
