@@ -131,15 +131,16 @@ $dbname = "db_eventalize";
                 <div class="infoDescricao">
                     <h3>Esta postagem contém o pacote</h3>
                 </div>
-            <div class="inicioInfoPostagem">
+                <div class="inicioInfoPostagem">
                 <div class="quadroPacote">
-                    <div class="seta-direita">&#8250;</div>
-                    <div class="seta-esquerda">&#8249;</div>
-                    <div class="carrosselPacote">
-                        <div class="slide">
+                    
+            
+                <div class="slides-container">
+                    <!-- slides -->
+                    <div class="slide" data-slide>
                     <div class="tituloInfoPacote">
                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>'.$row["ds_postagem"].'</h3>
+                        <h3>Decoração florida para casamentos elegantes</h3>
                     </div>
                     <div class="fotoDestaquePacote">
                         <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
@@ -160,18 +161,18 @@ $dbname = "db_eventalize";
                         <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
                     </div>
                 </div>
-                        <!-- <div class="slide">
+                    <div class="slide" data-slide>
                     <div class="tituloInfoPacote">
-                        <img src="imagens/icon-decoracao-detalhes-pacote.png" alt="">
+                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
                         <h3>Decoração florida para casamentos elegantes</h3>
                     </div>
                     <div class="fotoDestaquePacote">
-                        <img src="imagens/fotodestaque.jpg" class="active" alt="">
+                        <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
                     </div>
             
                     <div class="fotoLateralPacote">
-                        <img src="imagens/fotolateral.jpg" alt="">
-                        <img src="imagens/fotolateral2.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
                     </div>
             
                     <div class="descricaoInfoPacote">
@@ -181,12 +182,63 @@ $dbname = "db_eventalize";
                     <button class="botaoDetalhes">Mais detalhes</button>
             
                     <div class="identificaPersonalizacao">
-                        <h3><img src="imagens/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
                     </div>
-                </div> -->
-            </div>
-            </div>
-            </div>
+                </div>
+                    <div class="slide" data-slide>
+                    <div class="tituloInfoPacote">
+                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
+                        <h3>Decoração florida para casamentos elegantes</h3>
+                    </div>
+                    <div class="fotoDestaquePacote">
+                        <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
+                    </div>
+            
+                    <div class="fotoLateralPacote">
+                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
+                    </div>
+            
+                    <div class="descricaoInfoPacote">
+                        <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
+                    </div>
+            
+                    <button class="botaoDetalhes">Mais detalhes</button>
+            
+                    <div class="identificaPersonalizacao">
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                    </div>
+                </div>
+                    <div class="slide" data-slide>
+                    <div class="tituloInfoPacote">
+                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
+                        <h3>Decoração florida para casamentos elegantes</h3>
+                    </div>
+                    <div class="fotoDestaquePacote">
+                        <img src="../bancoImagens/postagens/fotodestaque.jpg" class="active" alt="">
+                    </div>
+            
+                    <div class="fotoLateralPacote">
+                        <img src="../bancoImagens/postagens/fotolateral.jpg" alt="">
+                        <img src="../bancoImagens/postagens/fotolateral2.jpg" alt="">
+                    </div>
+            
+                    <div class="descricaoInfoPacote">
+                        <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
+                    </div>
+            
+                    <button class="botaoDetalhes">Mais detalhes</button>
+            
+                    <div class="identificaPersonalizacao">
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                    </div>
+                </div>
+                 </div>   
+                <button class="seta-esquerda" data-button="previous">&#8249;</button>
+                <button class="seta-direita" data-button="next">&#8250;</button>
+            
+            
+        </div>
             
                 <!-- MAIS SOBRE A EMPRESA -->
                 <div class="maisSobre">
@@ -209,6 +261,8 @@ $dbname = "db_eventalize";
             </div>
             
             <script src="../js/menu.js"></script>
+            <script src="../sessaoUsuario/js/carousel.js"></script>
+            
             </body>';
             }
         }
