@@ -11,10 +11,10 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_eventalize";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_eventalize";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
