@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,15 +7,8 @@
     <link rel="stylesheet" href="css/postagem.css">
     <link rel="icon" href="../img/icones/logo.png">
     <title>Postagem Empresa</title>
-</head> -->
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/postagem.css">
-        <link rel="icon" href="../img/icones/logo.png">
-        <title>Postagem Empresa</title>
-    </head>
+</head>
+
             <body>
                 <div class="grid-container"> <!--DIV QUE CARREGA O LAYOUT GRID DA PÁGINA TODA-->
                 <!-- MENU -->
@@ -126,15 +119,19 @@
                     </div>
                     </div>
                 </div>';
-                if (mysqli_num_rows($result3) > 1){
-                    while($row3 = mysqli_fetch_assoc($result3)){
-                        $sql_pacote = "SELECT * FROM tb_pacote WHERE cd_pacote = " . $row3['cd_pacote'];
-                        $result_pacote = mysqli_query($conn, $sql_pacote);
+                
+                if (mysqli_num_rows($result3) > 0){
+                    while($row3 = $result3 -> fetch_assoc()){
+                        $pacote = $row3['cd_pacote'];
+                        $sql4 = "SELECT * FROM tb_pacote WHERE cd_pacote = $pacote";
+                        $result4 = $conn->query($sql4);
                     }
-                    while ($row_pacote = mysqli_fetch_assoc($result_pacote)) {
+                    if (mysqli_num_rows($result4) > 0){
+                        while ($row4 = $result4 -> fetch_assoc()) {
                         // aqui vem o carrosel da pa 
-                        echo $row_pacote['nm_pacote'];
-                      }
+                        
+                        echo $row4['nm_pacote'];
+                      }}
                 }
             
                echo' <!-- INICIO EXIBIÇÕES DE PACOTES -->
