@@ -8,6 +8,47 @@
     <link rel="icon" href="../img/icones/logo.png">
     <title>Postagem Empresa</title>
 </head> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/postagem.css">
+        <link rel="icon" href="../img/icones/logo.png">
+        <title>Postagem Empresa</title>
+    </head>
+            <body>
+                <div class="grid-container"> <!--DIV QUE CARREGA O LAYOUT GRID DA PÁGINA TODA-->
+                <!-- MENU -->
+                    <div class="header">
+                      <div class="logo">
+                          <img src="../img/icones/logoBranca.svg" alt="">
+                      </div>
+                      <div class="menu">
+                          <a href="">Início</a>
+                          <a href="">Inspira-se</a>
+                          <a href="">Sobre Nós</a>
+                          <a href="">Contato</a>
+                      </div>
+                  
+                      <div class="headerPesquisa">
+                            <input type="text" placeholder="Procure Serviços">
+                            <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                          </div>
+                          <div class="headerClientePerfil" >
+                              <!-- <div class="iconCliente"> -->
+                                  <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                                  <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                                <!-- </div> -->
+                          <button class="menuIcon" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
+                          </div>
+                          <section class="menuPerfil">
+                            <a href="">Perfil</a>
+                            <a href="">Postagens</a>
+                            <a href="" style="margin-bottom: 20%">Histórico de Compras</a>
+                            <a href="">Configurações</a>
+                            <a href="">Sair</a>
+                        </section>
+                  </div>
 
 <?php
 
@@ -43,49 +84,6 @@
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
             echo '
-            <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/postagem.css">
-    <link rel="icon" href="../img/icones/logo.png">
-    <title>Postagem Empresa</title>
-    </head>
-            <body>
-                <div class="grid-container"> <!--DIV QUE CARREGA O LAYOUT GRID DA PÁGINA TODA-->
-                <!-- MENU -->
-                    <div class="header">
-                      <div class="logo">
-                          <img src="../img/icones/logoBranca.svg" alt="">
-                      </div>
-                      <div class="menu">
-                          <a href="">Início</a>
-                          <a href="">Inspira-se</a>
-                          <a href="">Sobre Nós</a>
-                          <a href="">Contato</a>
-                      </div>
-                  
-                      <div class="headerPesquisa">
-                            <input type="text" placeholder="Procure Serviços">
-                            <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
-                          </div>
-                          <div class="headerClientePerfil" >
-                              <!-- <div class="iconCliente"> -->
-                                  <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
-                                  <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
-                                <!-- </div> -->
-                          <button class="menuIcon" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
-                          </div>
-                          <section class="menuPerfil">
-                            <a href="">Perfil</a>
-                            <a href="">Postagens</a>
-                            <a href="" style="margin-bottom: 20%">Histórico de Compras</a>
-                            <a href="">Configurações</a>
-                            <a href="">Sair</a>
-                        </section>
-                  </div>
-            
-            
                   <!-- INICIO POSTAGENS -->
                   <div class="inicioPostagens">
                     <div class="fotoDestaque">
