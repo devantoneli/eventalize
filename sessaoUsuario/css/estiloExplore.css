@@ -23,6 +23,7 @@ body {
   border-radius: 6%;
   box-shadow: inset 0px -40px 40px rgba(0, 0, 0, 0.8);
   position: absolute;
+  transition: 1s;
 }
 
 .tipoServico {
@@ -66,7 +67,12 @@ img.iconTipo {
 
 .tipoServico:hover .iconTipo{
   opacity: 0 !important;
-  text-align: 0.3s;
+  transition: 0.3s;
+}
+
+.tipoServico:hover .sombraCapa{
+  box-shadow: inset 0px -40px 400px rgba(0, 0, 0, 0.8) !important;
+  transition: 1s;
 }
 
 .perfil {
@@ -75,6 +81,7 @@ img.iconTipo {
   border-radius: 50% !important;
   background-color: white;
   margin-right: 3%;
+  justify-content: center;
 }
 
 .autor {
@@ -85,6 +92,7 @@ img.iconTipo {
 .infoAutor {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .verMais {

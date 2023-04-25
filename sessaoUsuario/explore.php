@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/sistema/eventalize/css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="css/estiloExplore.css">
     <title>Explore</title>
 </head>
@@ -64,39 +64,41 @@ if ($result->num_rows > 0) {
                 echo '<div class="column">';
             }
         
-            // Exibe a imagem
+            // Div que contém a imagem e informações de uma postagem
             echo '<div class="tipoServico">';
             // Procura o codigo para inserir o icone correspondente
             $sql2 = "SELECT * FROM vwtiposervicopost where cd_postagem = ".$row['cd_postagem']."";
             $result2 = $conn->query($sql2);
             $row2 = $result2->fetch_assoc();
+            //associa o código do autor da tabela postagem a variáveis
             $cliente = $row['cd_cliente'];
             $empresa = $row['cd_empresa'];
-            // Pega informações do autor
+            // Pega informações do autora partir do atributo cd_tipoautor da tabela postagem
             if ($row['cd_tipoautor'] == 2){
-                $sql3 = "SELECT * FROM tb_cliente where cd_cliente = ".$cliente."";
-                $result3 = $conn->query($sql3);
-                echo (mysqli_error($conn));
-                $row3 = $result3->fetch_assoc();
-                $nome = $row3['nm_cliente'];
-                
-            }else {
                 $sql4 = "SELECT * FROM tb_empresa where cd_empresa = $empresa";
                 $result4 = $conn->query($sql4);
                 $row4 = $result4->fetch_assoc();
                 $nome = $row4['nm_fantasia'];
+                $biografia = substr($row4['ds_biografia'], 0, 25) . '...';
+                
+            }else {
+                $sql3 = "SELECT * FROM tb_cliente where cd_cliente = $cliente";
+                $result3 = $conn->query($sql3);
+                echo (mysqli_error($conn));
+                $row3 = $result3->fetch_assoc();
+                $nome = $row3['nm_cliente'];
+                $biografia = 'Cliente';
             }
            
             
-
+            //Carrega cada informação de cada postagem
             echo '<img class="iconTipo" src="../img/icones/'.$row2['cd_tiposervico'].'.svg">';
             echo '<div class="sombraCapa"></div>';
             echo '<img src="'.$row['url_imgcapa'].'">';
-            echo '<form class="infoPostagem">
+            echo '<form class="infoPostagem" action="postagem.php" method="get">
                         <input type="hidden" name="cd_postagem" value="'.$row['cd_postagem'].'">
                         <div>
                         <h3>'. $row['nm_postagem'] .'</h3>
-                        <p>100 unidades</p>
                         </div>
 
                         <div class="autor">
@@ -104,7 +106,7 @@ if ($result->num_rows > 0) {
                         
                         <div class="infoAutor">
                         <h3>'.$nome.'</h3>
-                        <p>Fotografa Social</p>
+                        <p>'.$biografia.'</p>
                         </div>
                         </div>
                   
@@ -113,12 +115,12 @@ if ($result->num_rows > 0) {
             ';
             echo '</div>';
             
-            // Incrementa o contador
+            // Incrementa o contador para separar as postagem com suas respectitivas colunas e posições
             $contador++;
         
             // Verifica se é a última imagem da coluna
             if ($contador % 7 === 0) {
-                // Fecha a coluna
+                // Fecha a coluna quando é a última imagem
                 echo '</div>';
             }
         
