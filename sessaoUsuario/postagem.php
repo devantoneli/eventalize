@@ -11,10 +11,10 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_eventalize";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_eventalize";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -25,6 +25,7 @@ $dbname = "db_eventalize";
     // $cd_postagem = $_GET ['cd_postagem'];
     //SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
     $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 4';
+    $result = $conn->query($sql);
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
     $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 4';
     $result2 = $conn->query($sql2);
@@ -32,11 +33,12 @@ $dbname = "db_eventalize";
     // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
     //SELECT vwcodigospostagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
     $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 4';
-    $result = $conn->query($sql);
+    $result3 = $conn->query($sql3);
+    // $row3 = $result3 -> fetch_assoc(); 
 
     // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
     // $result4 = $coon->query($sql3);
-    // $row3 = $result3 -> fetch_assoc(); trecho pra dar inicio a logica dos detalhes do pacote
+    
  
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
@@ -125,9 +127,19 @@ $dbname = "db_eventalize";
                         </div>
                     </div>
                     </div>
-                </div>
+                </div>';
+                if (mysqli_num_rows($result3) > 1){
+                    while($row3 = mysqli_fetch_assoc($result3)){
+                        $sql_pacote = "SELECT * FROM tb_pacote WHERE cd_pacote = " . $row3['cd_pacote'];
+                        $result_pacote = mysqli_query($conn, $sql_pacote);
+                    }
+                    while ($row_pacote = mysqli_fetch_assoc($result_pacote)) {
+                        // aqui vem o carrosel da pa 
+                        echo $row_pacote['nm_pacote'];
+                      }
+                }
             
-                <!-- INICIO EXIBIÇÕES DE PACOTES -->
+               echo' <!-- INICIO EXIBIÇÕES DE PACOTES -->
                 <div class="infoDescricao">
                     <h3>Esta postagem contém o pacote</h3>
                 </div>
