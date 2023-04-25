@@ -70,12 +70,32 @@ if ($result->num_rows > 0) {
             $sql2 = "SELECT * FROM vwtiposervicopost where cd_postagem = ".$row['cd_postagem']."";
             $result2 = $conn->query($sql2);
             $row2 = $result2->fetch_assoc();
+            $cliente = $row['cd_cliente'];
+            $empresa = $row['cd_empresa'];
+            // Pega informações do autor
+            if ($row['cd_tipoautor'] == 2){
+                $sql3 = "SELECT * FROM tb_cliente where cd_cliente = ".$cliente."";
+                $result3 = $conn->query($sql3);
+                echo (mysqli_error($conn));
+                $row3 = $result3->fetch_assoc();
+                $nome = $row3['nm_cliente'];
+                
+            }else {
+                $sql4 = "SELECT * FROM tb_empresa where cd_empresa = $empresa";
+                $result4 = $conn->query($sql4);
+                $row4 = $result4->fetch_assoc();
+                $nome = $row4['nm_fantasia'];
+            }
+           
+            
+
             echo '<img class="iconTipo" src="../img/icones/'.$row2['cd_tiposervico'].'.svg">';
             echo '<div class="sombraCapa"></div>';
             echo '<img src="'.$row['url_imgcapa'].'">';
             echo '<form class="infoPostagem">
+                        <input type="hidden" name="cd_postagem" value="'.$row['cd_postagem'].'">
                         <div>
-                        <h2>Album de fotos</h2>
+                        <h3>'. $row['nm_postagem'] .'</h3>
                         <p>100 unidades</p>
                         </div>
 
@@ -83,7 +103,7 @@ if ($result->num_rows > 0) {
                         <img class="perfil" src="">
                         
                         <div class="infoAutor">
-                        <h2>Jessica Lima</h2>
+                        <h3>'.$nome.'</h3>
                         <p>Fotografa Social</p>
                         </div>
                         </div>
@@ -122,6 +142,6 @@ if ($result->num_rows > 0) {
 </div>
     <!-- FIM CORPO -->
 
-    <script src="/sistema/eventalize/js/menu.js"></script>
+    <script src="js/scriptExplore.js"></script>
 </body>
 </html>

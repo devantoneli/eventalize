@@ -73,7 +73,9 @@
 
 //NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
 
-$nm_cliente = $_POST["nm_cliente"];
+if (isset($_GET['nm_cliente'])) {
+    $nm_cliente = $_POST["nm_cliente"];
+}
 
 $servername = "localhost";
 $username = "root";

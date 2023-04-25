@@ -316,8 +316,8 @@ button.menuIcon{
 }
 
 .slides-container {
-    width: auto;
-    height: 900px;
+    /* width: auto; */
+    height: 700px;
     /* display: grid;
     place-items: center; */
     overflow: hidden;
@@ -421,7 +421,7 @@ button.menuIcon{
     color: white;
     font-size: 2em;
     font-weight: 400;
-    margin: 5%;
+    margin: 5% 5% 0 5%;
     line-height: 30px;
     text-align: center;
 }

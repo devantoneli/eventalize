@@ -155,11 +155,7 @@
                         <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
                     </div>
             
-                    <button class="botaoDetalhes">Mais detalhes</button>
-            
-                    <div class="identificaPersonalizacao">
-                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
-                    </div>
+                    
                 </div>
                     <div class="slide" data-slide>
                     <div class="tituloInfoPacote">
@@ -179,11 +175,7 @@
                         <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
                     </div>
             
-                    <button class="botaoDetalhes">Mais detalhes</button>
-            
-                    <div class="identificaPersonalizacao">
-                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
-                    </div>
+                    
                 </div>
                     <div class="slide" data-slide>
                     <div class="tituloInfoPacote">
@@ -203,11 +195,7 @@
                         <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
                     </div>
             
-                    <button class="botaoDetalhes">Mais detalhes</button>
-            
-                    <div class="identificaPersonalizacao">
-                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
-                    </div>
+                   
                 </div>
                     <div class="slide" data-slide>
                     <div class="tituloInfoPacote">
@@ -227,15 +215,17 @@
                         <h3>Decoração repleta de flores, das mais delicadas às mais sofisticadas, com móveis e talheres em tons pastéis e funcionários dedicados...</h3>
                     </div>
             
-                    <button class="botaoDetalhes">Mais detalhes</button>
-            
-                    <div class="identificaPersonalizacao">
-                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
-                    </div>
+                   
                 </div>
                  </div>   
                 <button class="seta-esquerda" data-button="previous">&#8249;</button>
                 <button class="seta-direita" data-button="next">&#8250;</button>
+
+                <button class="botaoDetalhes">Mais detalhes</button>
+            
+                    <div class="identificaPersonalizacao">
+                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+                    </div>
             
             
         </div>
