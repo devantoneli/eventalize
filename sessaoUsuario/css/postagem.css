@@ -163,17 +163,26 @@ button.menuIcon{
     display: grid;
     grid-template-columns: repeat(2,auto);
     grid-template-rows: repeat(8,auto);
+    /* margin: 0 auto; */
+    column-gap: 3%;
 }
 
 .fotoDestaque{
     grid-column: 1/1;
     position: relative;
     padding: 5px;
+    /* width: 800px;
+    height: 550px; */
+    width: 50vw;
+    height: 30.7vw;
+
 
 }
 
 .fotoDestaque img{
-    width: 50vw;
+    /* width: 100%;
+    height: 100%; */
+    object-fit: cover;
 }
 
 .fotoLateral{
@@ -182,10 +191,19 @@ button.menuIcon{
     flex-direction: column;
     justify-content: space-between;
     padding: 5px;
+    /* width: 400px;
+    height: 275px; */
+    width: 28vw;
+    height: 15vw;
 }
 
 .fotoLateral img{
-    width: 25vw;
+    /* width: 100%;
+    height: 100%; */
+    object-fit: cover;
+    margin-bottom: 5%;
+    
+      
 }
 
 .curtidasPostagem{
@@ -343,40 +361,50 @@ button.menuIcon{
 
 .seta-direita {
     position: absolute;
-    top: 50%;
+    top: 38%;
     right: 0;
     transform: translateY(-50%);
-    font-size: 2rem;
+    /* font-size: 2rem; */
     cursor: pointer;
     z-index: 1;
-    background-color: white;
+    /* background-color: white;
     border-radius: 50%;
-    border: 1px black solid;
-
-    width: 50px;
-    height: 50px;
-    display: flex;
+    border: 1px black solid; */
+    border: none;
+    color: white;
+    background: none;
+    width: 80px;
+    /* height: 80px; */
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .seta-esquerda {
     position: absolute;
-    top: 50%;
+    top: 38%;
     left: 0;
     transform: translateY(-50%);
-    font-size: 2rem;
+    /* font-size: 2rem; */
     cursor: pointer;
     z-index: 1;
-    background-color: white;
+    /* background-color: white;
     border-radius: 50%;
-    border: 1px black solid;
-    width: 50px;
-    height: 50px;
-    display: flex;
+    border: 1px black solid; */
+    border: none;
+    color: white;
+    background: none;
+    width: 80px;
+    /* height: 80px; */
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
+
+.seta-esquerda, .seta-direita {
+    font-size: 4.5em;
+  }
+  
 
 .fotoLateralPacote{
     display: flex;
