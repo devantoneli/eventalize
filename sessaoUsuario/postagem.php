@@ -25,6 +25,7 @@ $dbname = "db_eventalize";
     // $cd_postagem = $_GET ['cd_postagem'];
     //SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
     $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 17';
+    $result = $conn->query($sql);
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
     $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 17';
     $result2 = $conn->query($sql2);
@@ -32,7 +33,7 @@ $dbname = "db_eventalize";
     // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
     //SELECT vwcodigospostagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
     $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 17';
-    $result = $conn->query($sql);
+    $result3 = $conn->query($sql3);
 
     // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
     // $result4 = $coon->query($sql3);
@@ -42,12 +43,6 @@ $dbname = "db_eventalize";
  
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
-                    $capa_img = getimagesize($row["url_imgcapa"]);
-                    $info_imagem = getimagesize($row["url_img2"]. $row["url_img3"] );
-                    $largura = 100; 
-                    $altura = 100;
-                    $largura_capa = 100;
-                    $altura_capa = 100;  
             echo '
             <head>
     <meta charset="UTF-8">
@@ -90,42 +85,7 @@ $dbname = "db_eventalize";
                             <a href="">Sair</a>
                         </section>
                   </div>
-
-<?php
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "db_eventalize";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-    die("Não foi possível conectar ao banco de dados: " . $conn->connect_error);
-    }
-
-    // $cd_postagem = $_GET ['cd_postagem'];
-    //SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
-    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 4';
-    $result = $conn->query($sql);
-    //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
-    $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 4';
-    $result2 = $conn->query($sql2);
-    $row2 = $result2 -> fetch_assoc();
-    // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
-    //SELECT vwcodigospostagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
-    $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 4';
-    $result3 = $conn->query($sql3);
-    // $row3 = $result3 -> fetch_assoc(); 
-
-    // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
-    // $result4 = $coon->query($sql3);
-    
- 
-        if ($result -> num_rows > 0){
-                while ($row = $result -> fetch_assoc()){
-            echo '
-                  <!-- INICIO POSTAGENS -->
+                   <!-- INICIO POSTAGENS -->
                   <div class="inicioPostagens">
                     <div class="fotoDestaque">
                         <div class="curtidasPostagem">
@@ -135,11 +95,11 @@ $dbname = "db_eventalize";
                         <div class="salvarPostagem">
                             <img src="../img/icones/icon-salvar-detalhes.png" alt="">
                         </div>
-                        <img src='.$row["url_imgcapa"].' " style="width:'.$largura_capa.'%;height:'.$altura_capa.'%;">
+                        <img src='.$row["url_imgcapa"].' " style="width:">
                     </div>
                     <div class="fotoLateral">
-                    <img src="'.$row["url_img2"].'" style="width:'.$largura.'%;height:'.$altura.'%;">
-                    <img src="'.$row["url_img3"].'" style="width:'.$largura.'%;height:'.$altura.'%;">
+                    <img src="'.$row["url_img2"].'" style="width:">
+                    <img src="'.$row["url_img3"].'" style="width:">
                     </div>
                     <div class="dataPostagem">
                         <h3>postado em 14 de fevereiro de 2023, às 11h20</h3>
