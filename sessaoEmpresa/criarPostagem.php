@@ -128,7 +128,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 <form action="criarPostagem.php" method="post">
                 <div class="linhasInput">
-                    <input type="text" placeholder="Pedido" disabled value=<?php echo($row["cd_pedido"]) ?>>
+                    <input type="text" placeholder="Pedido" name="cd_pedido" disabled value=<?php echo($row["cd_pedido"]) ?>>
                     <input type="text" placeholder="Título" name="nm_postagem">
                     <textarea id="legendaInput"  type="text" placeholder="Legenda" name="ds_postagem"></textarea>
                 </div>

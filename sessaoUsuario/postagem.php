@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/postagem.css">
     <link rel="icon" href="../img/icones/logo.png">
     <title>Postagem Empresa</title>
-</head> -->
+</head>
 
 <?php
 
@@ -90,8 +90,41 @@ $dbname = "db_eventalize";
                             <a href="">Sair</a>
                         </section>
                   </div>
-            
-            
+
+<?php
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_eventalize";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+    die("Não foi possível conectar ao banco de dados: " . $conn->connect_error);
+    }
+
+    // $cd_postagem = $_GET ['cd_postagem'];
+    //SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
+    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 4';
+    $result = $conn->query($sql);
+    //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
+    $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 4';
+    $result2 = $conn->query($sql2);
+    $row2 = $result2 -> fetch_assoc();
+    // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
+    //SELECT vwcodigospostagem WHERE cd_postagem = $cd_postagem; (pra quando o da raiza estiver pronto)
+    $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 4';
+    $result3 = $conn->query($sql3);
+    // $row3 = $result3 -> fetch_assoc(); 
+
+    // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
+    // $result4 = $coon->query($sql3);
+    
+ 
+        if ($result -> num_rows > 0){
+                while ($row = $result -> fetch_assoc()){
+            echo '
                   <!-- INICIO POSTAGENS -->
                   <div class="inicioPostagens">
                     <div class="fotoDestaque">
@@ -133,9 +166,23 @@ $dbname = "db_eventalize";
                         </div>
                     </div>
                     </div>
-                </div>
+                </div>';
+                
+                if (mysqli_num_rows($result3) > 0){
+                    while($row3 = $result3 -> fetch_assoc()){
+                        $pacote = $row3['cd_pacote'];
+                        $sql4 = "SELECT * FROM tb_pacote WHERE cd_pacote = $pacote";
+                        $result4 = $conn->query($sql4);
+                    }
+                    if (mysqli_num_rows($result4) > 0){
+                        while ($row4 = $result4 -> fetch_assoc()) {
+                        // aqui vem o carrosel da pa 
+                        
+                        echo $row4['nm_pacote'];
+                      }}
+                }
             
-                <!-- INICIO EXIBIÇÕES DE PACOTES -->
+               echo' <!-- INICIO EXIBIÇÕES DE PACOTES -->
                 <div class="infoDescricao">
                     <h3>Esta postagem contém o pacote</h3>
                 </div>
