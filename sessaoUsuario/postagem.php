@@ -43,6 +43,12 @@ $dbname = "db_eventalize";
  
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
+                    $capa_img = getimagesize($row["url_imgcapa"]);
+                    $info_imagem = getimagesize($row["url_img2"]. $row["url_img3"] );
+                    $largura = 100; 
+                    $altura = 100;
+                    $largura_capa = 100;
+                    $altura_capa = 100;  
             echo '
             <head>
     <meta charset="UTF-8">
@@ -95,11 +101,11 @@ $dbname = "db_eventalize";
                         <div class="salvarPostagem">
                             <img src="../img/icones/icon-salvar-detalhes.png" alt="">
                         </div>
-                        <img src='.$row["url_imgcapa"].' " style="width:">
+                        <img src='.$row["url_imgcapa"].' " style="width:'.$largura_capa.'%;height:'.$altura_capa.'%;">
                     </div>
                     <div class="fotoLateral">
-                    <img src="'.$row["url_img2"].'" style="width:">
-                    <img src="'.$row["url_img3"].'" style="width:">
+                    <img src="'.$row["url_img2"].'" style="width:'.$largura.'%;height:'.$altura.'%;">
+                    <img src="'.$row["url_img3"].'" style="width:'.$largura.'%;height:'.$altura.'%;">
                     </div>
                     <div class="dataPostagem">
                         <h3>postado em 14 de fevereiro de 2023, às 11h20</h3>
@@ -137,12 +143,7 @@ $dbname = "db_eventalize";
                     if (mysqli_num_rows($result4) > 0){
                         while ($row4 = $result4 -> fetch_assoc()) {
                         // aqui vem o carrosel da pa 
-                        
-                        echo $row4['nm_pacote'];
-                      }}
-                }
-            
-               echo' <!-- INICIO EXIBIÇÕES DE PACOTES -->
+                        echo' <!-- INICIO EXIBIÇÕES DE PACOTES -->
                 <div class="infoDescricao">
                     <h3>Esta postagem contém o pacote</h3>
                 </div>
@@ -153,7 +154,7 @@ $dbname = "db_eventalize";
                 <div class="slides-container">
                     <!-- slides -->
                     <div class="slide" data-slide>
-                    <div class="tituloInfoPacote">
+                    <div class="tituloInfoPacote" '.$row4['nm_pacote'].'>
                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
                         <h3>Decoração florida para casamentos elegantes</h3>
                     </div>
@@ -243,9 +244,14 @@ $dbname = "db_eventalize";
                     </div>
             
             
-        </div>
+        </div>';
+                    
+                      }}
+                }
             
-                <!-- MAIS SOBRE A EMPRESA -->
+               
+            
+                '<!-- MAIS SOBRE A EMPRESA -->
                 <div class="maisSobre">
                     <h3>Mais sobre a empresa</h3>
                     <div class="gridMaisSobre">
@@ -265,15 +271,18 @@ $dbname = "db_eventalize";
                 </div>
             </div>
             
-            <script src="../js/menu.js"></script>
-            <script src="../sessaoUsuario/js/carousel.js"></script>
+            
             
             </body>';
             }
         }
+        
     
 
 ?>
+
+        <script src="../js/menu.js"></script>
+            <script src="../sessaoUsuario/js/carousel.js"></script>
 
 
 
