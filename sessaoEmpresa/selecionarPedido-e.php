@@ -1,6 +1,7 @@
 <?php
 
 //NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
+//acho que nao estamos mais usando isso
 
 $nm_cliente = $_POST["nm_cliente"];
 
