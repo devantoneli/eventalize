@@ -280,7 +280,7 @@ body, html{
     background-repeat: no-repeat;
     background-size: 40%;
     background-position: center;
-
+    border-radius: 10px;
     clip-path: inset(0% 0 0% 0);
     
 }
@@ -294,14 +294,17 @@ body, html{
 
 #preview-capa{
     opacity: 0;
+    border-radius: 10px;
 }
 
 #preview-2{
     opacity: 0;
+    border-radius: 10px;
 }
 
 #preview-3{
     opacity: 0;
+    border-radius: 10px;
 }
 
 .img2 {
@@ -313,7 +316,7 @@ body, html{
     background-repeat: no-repeat;
     background-size: 40%;
     background-position: center;
-
+    border-radius: 10px;
     clip-path: inset(0% 0 0% 0);
 }
 
@@ -326,7 +329,7 @@ body, html{
     background-repeat: no-repeat;
     background-size: 40%;
     background-position: center;
-
+    border-radius: 10px;
     clip-path: inset(0% 0 0% 0);
 }
 
@@ -358,6 +361,43 @@ body, html{
 .imagens h1{
     margin-left: 17%;
     font-size: 2em;
+}
+.uploadImgPedido{
+    width: 30.5em;
+    height: 20em;
+    margin-bottom: 2vw;
+    background-color: rgb(204, 204, 204);
+    background-image: url('../../img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    border-radius: 10px;
+    clip-path: inset(0% 0 0% 0);
+}
+.uploadImg{
+    display: block;
+    width: 14em;
+    height: 10em; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('../../img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+    border-radius: 5%;
+    clip-path: inset(0% 0 0% 0);
+}
+
+.uploadImg2{
+    display: block;
+    width: 14em;
+    height: 10em; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('../../img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+    border-radius: 5%;
+    clip-path: inset(0% 0 0% 0);
 }
 
 .alinhaInputs {

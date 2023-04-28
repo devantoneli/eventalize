@@ -351,7 +351,6 @@
     text-align: center;
     width: 18vw;
     height: 10vw;
-    /* padding: 5%;  */
     background-color: rgb(204, 204, 204);
     background-image: url('../../img/icones/icon-upload.svg');
     background-repeat: no-repeat;
@@ -365,8 +364,7 @@
     height: 100%;
     object-fit: cover;
     top: 0;
-    left: 0;
-    
+    left: 0;   
 }
 
 #preview-capa {
