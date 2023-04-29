@@ -92,6 +92,8 @@ if ($conn->query($sql)=== TRUE){
     echo "Error: " . $sql . "<br>" .  $conn->error;
 }
 
+
+//CASO VCS SE ESQUEÇAM, AS IMAGENS NÃO ESTÃO SENDO EXIBIDAS, POIS NÃO ESTAMOS PEDINDO PARA ELAS SEREM EXIBIDAS, NÃO SURTEM!
 $conn->close();
 
 ?>
