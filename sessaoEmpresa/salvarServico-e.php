@@ -11,7 +11,7 @@ $cd_tiposervico = $_POST['cd_tiposervico'];
 
 // BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
 
-var_dump($_POST);
+// var_dump($_POST);
 
 $servername = "localhost";
 $username = "root";
