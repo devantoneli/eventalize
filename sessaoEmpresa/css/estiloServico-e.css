@@ -205,6 +205,10 @@ body, html{
     grid-template-columns: 45em 45em;
 }
 
+.digitacao{
+    grid-area: 1/1/1/1;
+}
+
 .centralizaSections {
     margin: 3vw 15vw;
 }
@@ -213,6 +217,7 @@ body, html{
     margin-bottom: 3vw;
     display: grid;
     grid-template-columns: 9vw 3vw 18vw;
+    grid-template-rows: auto;
     max-width: 30vw;
 }
 
@@ -350,6 +355,7 @@ body, html{
 .grid-imagens {
     display: grid;
     grid-template-columns: 16.5em 10em;
+    grid-column: 1/1;
 }
 
 .imagens{
