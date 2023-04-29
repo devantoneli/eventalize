@@ -14,7 +14,7 @@
     /* grid-template-rows: 100px 1fr minmax(0, 1fr); */
   }
   
-.header {
+/* .header {
     grid-column: 1 / span 4;
     grid-row: 1;
     display: grid;
@@ -146,13 +146,13 @@ button.menuIcon{
 .menuPerfil a:hover{
     color:#E34C6D;
     transform: translateY(5px);
-    /* background-color: whitesmoke; */
+    background-color: whitesmoke;
 }
 
 .open{
     display: block;
     right: 2%; 
-}
+} */
 
 .inicioPostagens{
     /* background-color: #3ED1FF; */
@@ -356,6 +356,8 @@ button.menuIcon{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 40vw;
+    height: 30vw;
 }
 
 
@@ -411,16 +413,23 @@ button.menuIcon{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 26vw;
+    height: 14.3vw;
 }
 
 .fotoDestaquePacote img{
     border-radius: 15px;
-    width: auto;
+    /* width: auto; */
+    object-fit: cover;
+
 }
 
 .fotoLateralPacote img{
     border-radius: 15px;
-    width: auto;
+    /* width: auto; */
+    object-fit: cover;
+    margin-bottom: 5%;
+
 }
 
 .tituloInfoPacote{
