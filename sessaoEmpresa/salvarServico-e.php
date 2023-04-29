@@ -1,16 +1,17 @@
 <?php
+
 $nm_servico = $_POST['nm_servico'];
 $ds_servico = $_POST['ds_servico'];
-$vl_servico = $_POST['vl_servico'];
-$cd_personaliz = $_POST['cd_personaliz'];
-$cd_orcament = $_POST['cd_orcament'];
-$cd_local = $_POST['cd_local'];
+$vl_servico = $_POST["vl_servico"];
+$cd_personaliz = $_POST["cd_personaliz"];
+$cd_orcament = $_POST["cd_orcament"];
+$cd_local = $_POST["cd_local"];
 // $cd_empresa = $_POST['cd_empresa'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
 // BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
 
-var_dump($_POST);
+// var_dump($_POST);
 
 $servername = "localhost";
 $username = "root";
@@ -50,7 +51,7 @@ if(isset($_POST['url_img2'])) {
     $data = base64_decode($post_img2);
     $nm_img2 = 'img2-'.$cd_servico.'.jpeg';
     //UPLOAD DE ARQUIVO CONVERTIDO
-    $caminho_img2 = 'imgServicos/' . $nm_img2;
+    $caminho_img2 = '../bancoImagens/servicos/' . $nm_img2;
     file_put_contents($caminho_img2, $data);
     // construir o caminho completo para a imagem a partir do diretório raiz do projeto
     $url_img2 = '../bancoImagens/servicos/' .$nm_img2;
@@ -77,7 +78,7 @@ if(isset($_POST['url_img3'])) {
 }
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) values ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
 }else if ($semimg2 == true){
     $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img3) values ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
 }else {
@@ -88,23 +89,12 @@ if ($semimg2 == false && $semimg3 == false){
 if ($conn->query($sql)=== TRUE){
     echo '<h1>Informações inseridas</h1>';
 } else{
-    echo "Error updating record: " . $conn->error;
+    echo "Error: " . $sql . "<br>" .  $conn->error;
 }
 
-$conn->close();
 
+//CASO VCS SE ESQUEÇAM, AS IMAGENS NÃO ESTÃO SENDO EXIBIDAS, POIS NÃO ESTAMOS PEDINDO PARA ELAS SEREM EXIBIDAS, NÃO SURTEM!
+$conn->close();
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<img src="<?php echo($url_imgcapa)?>">
-</body>
-</html>

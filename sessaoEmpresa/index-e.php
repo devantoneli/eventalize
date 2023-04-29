@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo-e.css">
+    <link rel="stylesheet" href="css/estilo-e.css">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
-    <title>Início</title>
+    <link rel="icon" href="../img/index/logo.png">
+    <title>Início Empresa - Eventalize</title>
 </head>
 <body>
-<!-- MENU EMPRESA -->
 
+<!--INICIO MENU EMPRESA -->
     <div class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
-            <div id="logoImagem"></div>
+            <div id="logoImagem"><a href="../sessaoEmpresa/index-e.php"></a></div>
             
             <ul class="opcoesMenu">
                 <li class=""><a href="#" class="opcaoMenu" aria-current="page">Seu portfólio</a></li>
@@ -49,11 +50,13 @@
                     <a href=""><h4>Configurações de perfil</h4></a>
                     <a href=""><h4>Postagens</h4></a>
                     <a href=""><h4>Estatísticas de venda</h4></a>
-                    <a href="/index.html"><h4>Sair</h4></a>
+                    <a href="../index.html"><h4>Sair</h4></a>
                 </section>
             </div>
         </header>
     </div>
+<!--FIM MENU EMPRESA -->
+
 
 <!-- CORPO  -->
 
@@ -242,6 +245,6 @@
 
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/menu-e.js"></script>
 </body>
 </html>

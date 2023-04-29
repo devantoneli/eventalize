@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'League Spartan';
-    src: url('/font/LeagueSpartan.ttf');
+    src: url('../font/LeagueSpartan.ttf');
 }
 
 .bg-gradPrincipal {
@@ -15,6 +15,8 @@
 .html, body {
     padding: 0;
     margin: 0;
+    font-family: 'League Spartan';
+    
 }
 
 /* MENU EMPRESA */
@@ -54,6 +56,7 @@
     background: none;
     border: none;
     color: white;
+    cursor: pointer;
 }
 
 .botaoSeta:hover {
@@ -92,7 +95,7 @@
     width: 4vw;
     height: 4vw;
     border-radius: 50%;
-    background-image: url('/img/icones/logoBranca.svg');
+    background-image: url('../../img/icones/logoBranca.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -104,6 +107,7 @@
     height: 4vw;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 /* @media (max-width: 480px) {
@@ -170,18 +174,21 @@
     padding-left: 2vw;
     font-size: 1.2vw;
     text-align: left;
-    font-family: 'League Spartan Regular';
+    font-family: 'League Spartan';
     background-color: rgb(255, 255, 255);
 }
 
 #menuPerfil a{
     text-decoration: none;
+    font-family: 'League Spartan';
     height: 0;
     width: 10vw;
+    color: #5356ad;
 }
 
 #menuPerfil h4:hover{
     color: #FF3E83;
+    text-decoration: none;
 }
 
 /* CORPO INICIO - grid de cards */

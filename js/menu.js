@@ -10,7 +10,7 @@ function menuOpen(){
 
 //MENU CLIENTE 
 
-function menuOpen(){
+function menuCliente(){
     let menuMobile = document.querySelector('.menuPerfil');
     if (menuMobile.classList.contains('open')) {
         menuMobile.classList.remove('open');

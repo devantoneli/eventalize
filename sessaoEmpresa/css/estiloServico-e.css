@@ -12,10 +12,190 @@ body, html{
     src: url('/font/LeagueSpartan.ttf');
 }
 
-.menu {
+.bg-gradPrincipal {
+    background: linear-gradient(270deg, #3ED1FF -3.33%, #FF3E83 68.74%, #FFA856 103.43%);
+}
+
+
+/* TELA INICIO EMPRESA */
+
+.html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'League Spartan';
+    
+}
+
+/* MENU EMPRESA */
+
+.alinhaElementos {
+    display: grid !important;
+    align-items: center;
+    grid-template-columns: 10vw 71vw 5vw;
+}
+
+.alinhaLogo {
+    display: grid;
+    align-items: center;
+    height: 0;
+    width: 0;
+    margin-bottom: 4vw;
+    grid-template-columns: 4vw 5vw 3vw;
+}
+
+.opcoesMenu {
+    display: grid;
+    text-align: center;
+    grid-template-columns: 13% 10% 15% 13%;
+    padding: 2%;
+}
+
+.opcoesMenu li{
+    list-style: none;
+}
+
+.opcaoMenu:hover{
+    color: white;
+    text-shadow: 0px 2px 18px white, 0px 2px 18px white;
+}
+
+.botaoSeta {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.botaoSeta:hover {
+    color: white;
+
+}
+
+.setaMenu:hover {
+    filter:drop-shadow(0 2px 2px rgb(255, 255, 255));
+}
+
+.menuEmpresa {
+    margin: 0;
     width: 100%;
-    height: 3vw;
-    background-color: rgb(255, 74, 105);
+    max-width: 100%;
+}
+
+.opcaoSele {
+    font-family: 'League Spartan';
+    color: white;
+    text-decoration: none;
+    font-style: none;
+    font-size: 100%;
+    text-shadow: 0px 1px 16px white;
+}
+
+.opcaoMenu {
+    font-family: 'League Spartan';
+    color: white;
+    text-decoration: none;
+    font-style: none;
+    font-size: 1.5vw;
+}
+
+#logoImagem {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-image: url('../../img/icones/logoBranca.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-left: 5vw;
+}
+
+#inserirPerfil {
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+/* @media (max-width: 480px) {
+    .alinhaElementos {
+        display: grid;
+        align-items: baseline;
+        grid-template-columns: 50% 50%;
+    }
+    
+    .opcoesMenu {
+        display: grid;
+        text-align: center;
+        grid-template-columns: 10% 10% 10% 10% 10%;
+    }
+  } */
+
+/* menu suspenso */
+
+#menu{
+    z-index: 1;
+    border-radius: 4%;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 11vw;
+    top: 5.9vw;
+    right: 10vw;
+    height: 17vw;
+    color:#5356ad;
+    grid-template-rows: 2.5vw 2.5vw 2.5vw 2.5vw 2.5vw;
+    display: none;
+    padding-top: 0.3vw;
+    padding-left: 2vw;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: 'League Spartan';
+    background-color: rgb(255, 255, 255);
+}
+
+#menu a{
+    text-decoration: none;
+    height: 0;
+    width: 10vw;
+}
+
+#menu h4:hover{
+    color: #FF3E83;
+}
+
+/* MENU PERFIL SUSPENSO */
+
+#menuPerfil{
+    z-index: 1;
+    border-radius: 4%;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+    position: absolute;
+    width: 11vw;
+    top: 5.9vw;
+    right: 0.5vw;
+    height: 14.3vw;
+    color:#5356ad;
+    grid-template-rows: 3.5vw 2.5vw 3.5vw 2.5vw;
+    display: none;
+    padding-top: 0.3vw;
+    padding-left: 2vw;
+    font-size: 1.2vw;
+    text-align: left;
+    font-family: 'League Spartan';
+    background-color: rgb(255, 255, 255);
+}
+
+#menuPerfil a{
+    text-decoration: none;
+    font-family: 'League Spartan';
+    height: 0;
+    width: 10vw;
+    color: #5356ad;
+}
+
+#menuPerfil h4:hover{
+    color: #FF3E83;
+    text-decoration: none;
 }
 
 /* RADIO DECISIVO */
@@ -23,6 +203,10 @@ body, html{
 .grid-Principal {
     display: grid;
     grid-template-columns: 45em 45em;
+}
+
+.digitacao{
+    grid-area: 1/1/1/1;
 }
 
 .centralizaSections {
@@ -33,6 +217,7 @@ body, html{
     margin-bottom: 3vw;
     display: grid;
     grid-template-columns: 9vw 3vw 18vw;
+    grid-template-rows: auto;
     max-width: 30vw;
 }
 
@@ -100,7 +285,7 @@ body, html{
     background-repeat: no-repeat;
     background-size: 40%;
     background-position: center;
-
+    border-radius: 10px;
     clip-path: inset(0% 0 0% 0);
     
 }
@@ -114,14 +299,17 @@ body, html{
 
 #preview-capa{
     opacity: 0;
+    border-radius: 10px;
 }
 
 #preview-2{
     opacity: 0;
+    border-radius: 10px;
 }
 
 #preview-3{
     opacity: 0;
+    border-radius: 10px;
 }
 
 .img2 {
@@ -133,7 +321,7 @@ body, html{
     background-repeat: no-repeat;
     background-size: 40%;
     background-position: center;
-
+    border-radius: 10px;
     clip-path: inset(0% 0 0% 0);
 }
 
@@ -146,7 +334,7 @@ body, html{
     background-repeat: no-repeat;
     background-size: 40%;
     background-position: center;
-
+    border-radius: 10px;
     clip-path: inset(0% 0 0% 0);
 }
 
@@ -167,17 +355,55 @@ body, html{
 .grid-imagens {
     display: grid;
     grid-template-columns: 16.5em 10em;
+    grid-column: 1/1;
 }
 
 .imagens{
     display: grid;
     grid-template-rows: 5em 21em 5em 20em;
-    margin-top: -6em;
+    margin-top: -10em;
 }
 
 .imagens h1{
     margin-left: 17%;
     font-size: 2em;
+}
+.uploadImgPedido{
+    width: 30.5em;
+    height: 20em;
+    margin-bottom: 2vw;
+    background-color: rgb(204, 204, 204);
+    background-image: url('../../img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+    border-radius: 10px;
+    clip-path: inset(0% 0 0% 0);
+}
+.uploadImg{
+    display: block;
+    width: 14em;
+    height: 10em; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('../../img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+    border-radius: 5%;
+    clip-path: inset(0% 0 0% 0);
+}
+
+.uploadImg2{
+    display: block;
+    width: 14em;
+    height: 10em; 
+    background-color: rgb(204, 204, 204);
+    background-image: url('../../img/icones/icon-upload.svg');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+    border-radius: 5%;
+    clip-path: inset(0% 0 0% 0);
 }
 
 .alinhaInputs {
@@ -188,6 +414,7 @@ body, html{
 
 .radios {
     max-width: 75%;
+    margin-bottom: 5em;
 }
 
 .personalizacao {
@@ -227,8 +454,8 @@ body, html{
 
 .criar {
     display: block;
-    margin: 3em 25vw;
-    width: 14em;
+    margin: -11em 0 10em 29em;
+    width: 13em;
     height: 3em;
     border-radius: 2em;
     font-size: 1.7em;
