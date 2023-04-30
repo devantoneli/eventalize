@@ -10,7 +10,7 @@ $cd_tiposervico = $_POST['cd_tiposervico'];
 
 // BACK-END para salvar alterações enviadas pelo arquivo edicaoServico-e.php
 
-// var_dump($_POST);
+var_dump($_POST);
 
 $servername = "localhost";
 $username = "root";
@@ -77,7 +77,7 @@ if ($semimg2 == false && $semimg3 == false){
 }else if ($semimg2 == true){
     $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
 }else {
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico=$cd_servico";
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico', ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico=$cd_servico";
 }
 
 
@@ -101,6 +101,6 @@ $conn->close();
     <title>Document</title>
 </head>
 <body>
-<img src="<?php echo($url_imgcapa)?>">
+<img src="">
 </body>
 </html> -->

@@ -2,9 +2,8 @@
 
 // AQUI ESTAREMOS SELCIONANDO AS INFORMAÇÕES DO SERVIÇO SELECIONADO, PARA QUE A EMPRESA POSSA EDITÁ-LOS
 
-// if (isset($_GET['cd_servico'])) {
-    // $cd_servico = $_GET['cd_servico'];
-
+    if (isset($cd_servico)){
+    $cd_servico = $_GET['cd_servico'];
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -12,13 +11,14 @@
 
     $conn = new mysqli($servername, $username, $password, $db_name);
 
-    $sql = "SELECT * FROM tb_servico WHERE cd_servico = 811";
+    $sql = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
+        echo $cd_servico;
     }
-// }
+}
 
 ?>
 
@@ -99,7 +99,7 @@
 
 <!-- SESSAO SERVICO -->  
     <section class="servico">
-        <form class="grid-Principal" action="atualizarServico-e.php" method="POST">
+        <form class="grid-Principal" action="atualizarServico-e.php" method="post">
             <div class="digitacao">
                 <input type="hidden" name="cd_servico" value="<?php echo($row["cd_servico"])?>">
                 <input class="input-Digita" type="text" placeholder="Título do serviço" name="nm_servico" value="<?php if (isset($row)) { echo $row['nm_servico']; } ?>">
