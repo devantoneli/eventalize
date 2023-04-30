@@ -24,8 +24,6 @@ $query = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
 
-
-
 ?>
 
 <!DOCTYPE html>

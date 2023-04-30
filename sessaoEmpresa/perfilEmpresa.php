@@ -60,7 +60,7 @@
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
-                        <h3>Lana Silva</h3>
+                        <h3>$nm_usuarioempresa</h3>
                         <h4>Fotógrafa Social</h4>
                         </div>
                         <div class="loc">
@@ -155,9 +155,6 @@
                         </div>
                   </div>
             </div>
-            <div class="iconEditarEmpresa">
-                <img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">
-            </div>
 
 <?php
 
@@ -177,34 +174,37 @@ $conn = new mysqli($servername, $username, $password, $db_name);
 }
             
 // SELECIONANDO AS INFORMAÇÕES QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico FROM tb_servico";
+$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico";
             
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
             
 // a função mysqli_num_rows serve para verificar se a consulta retornou algum resultado
 
 if(mysqli_num_rows($result_query) > 0){
+  echo'
+      <div class="inicioPacotes">
+      <h2>Serviços</h2>';
     while($row = mysqli_fetch_assoc($result_query)){
 
         //dentro desse while, preciso colocar a tela 'Perfil Empresa', que irá conter o card do servico, que assim que clicado levará à página de detalhes (CONSULTA). ainda nesse card, teremos um botão de editar (EDITAR) e um de excluir (EXCLUIR), que realizarão suas respectivas funções
 
         echo'
           <form action="edicaoServico-e.php">
-            <div class="inicioPacotes">
-                <h2>Serviços</h2>
                 <div class="gridPacotes">
+                <a href="../sessaoCliente/detalheServico.php">
                 <div class="cardPacotes">
                     <div class="conteudoPacote">
-                        <img src="../bancoImagens/empresas/imagens-perfil-empresa/pacote1.png" alt="">
-                        <input type="hidden" value= '. $row["cd_servico"] . ' name="cd_servico">
+                        <img src="'. $row["url_imgcapa"] .'" alt="">
+                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
                         <h3>' . $row["nm_servico"] . '</h3>
-                        <ul>
-                            <li>' . $row["ds_servico"] . '</li>
-                        </ul>
+                        <h3>' . $row["ds_servico"] . '</h3>
+                        <h3>' .$row["vl_servico"] .'</h3>
                         <div class="botoesPacote">
                             <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">Editar</button>
                         </div>
+                        </a>
                     </div>
+                </div>
                 </div>
             </div>
             </form>';

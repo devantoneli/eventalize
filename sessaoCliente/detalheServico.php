@@ -4,7 +4,6 @@
 
 //**corresponde a pág consultarservico.php no outro arquivo **//
 
-$cd_servico = $_GET['cd_servico'];
 
 $servername = "localhost";
 $username = "root";
@@ -18,7 +17,7 @@ if($conn->connect_error){
 }
 
 // SELECIONANDO AS INFORMAÇÕES DA TB_SERVICO QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
+$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa, url_img2, url_img3, cd_empresa FROM tb_servico";
 //estou usando $cd_servico para selecionar um serviço específico da empresa, ou seja, o serviço em que o cliente vai clicar
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
@@ -103,18 +102,20 @@ if(mysqli_num_rows($result_query) > 0){
         <div class="grid-detalhePacCol1">
           <!-- Slideshow container -->
               <div class="slideshow-container">
+            <input type="hidden" value=<?php echo($row["cd_servico"]);?> name="cd_servico">
+
 
               <!-- Full-width images with number and caption text -->
               <div class="mySlides fade">
-                <img class="img-fotoPacote" src="imgDetalheServico/fotoPacoteServico.jpg" alt="" style="width: 100%">
+                <img class="img-fotoPacote" src="<?php echo($row["url_imgcapa"]);?>" alt="" style="width: 100%">
               </div>
 
               <div class="mySlides fade">
-                <img class="img-fotoPacote" src="imgDetalheServico/cao.png" alt="" style="width: 100%">
+                <img class="img-fotoPacote" src="<?php echo($row["url_img2"]);?>" alt="" style="width: 100%">
               </div>
 
               <div class="mySlides fade">
-                <img class="img-fotoPacote" src="imgDetalheServico/fotoPacoteServico.jpg" alt="" style="width: 100%">
+                <img class="img-fotoPacote" src="<?php echo($row["url_img3"]);?>" alt="" style="width: 100%">
               </div>
 
               <!-- Next and previous buttons -->
@@ -137,7 +138,6 @@ if(mysqli_num_rows($result_query) > 0){
 
         <div class="grid-detalhePacCol2">
 
-            <input type="hidden" value=<?php echo($cd_servico);?> name="cd_servico">
             <h3 id="nomePacote" name="nm_servico"><?php echo($row['nm_servico']) ?></h3>
             <div class="grid-alinhaAvalia">
                 <svg id="svg-Estrela" class="corRosa" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">

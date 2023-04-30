@@ -2,9 +2,7 @@
 
 // BACKEND PARA A EMPRESA EXCLUIR UM SERVIÇO DE SEU PERFIL
 
-if(isset($_GET['cd_servico'])){
 $cd_servico = $_GET['cd_servico'];
-}
 
 $servername = "localhost";
 $username = "root";
@@ -18,7 +16,7 @@ if($conn->connect_error){
 }
 
 // SELECIONANDO NA TB_PACOTESERVICO O CD_SERVICO DO SERVICO QUE FOI SELECIONADO, PARA QUE ELE POSSA SER EXCLUÍDO DE AMBAS AS TABELAS
-$sql = "SELECT * FROM tb_pacoteservico WHERE cd_servico = '$cd_servico'";
+$sql = "SELECT * FROM tb_pacoteservico WHERE cd_servico = ('$cd_servico')";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
