@@ -1,6 +1,6 @@
 <?php
 
-//CRIANDO A POSTAGEM DO LADO DA EMPRESA (FAZENDO OS INSERTS)
+//INSERT DE POSTAGEM EMPRESA (CRIAÇÃO DE POSTAGEM)
 
 if(isset($_POST['nm_postagem']) && isset($_POST['ds_postagem'])){
     $nm_postagem = $_POST['nm_postagem'];
