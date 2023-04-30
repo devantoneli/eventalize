@@ -101,6 +101,6 @@ $conn->close();
     <title>Document</title>
 </head>
 <body>
-<img src="">
+<img src="<?php echo($url_imgcapa)?>">
 </body>
 </html> -->
