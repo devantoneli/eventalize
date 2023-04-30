@@ -28,7 +28,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estiloServico-e.css">
+    <link rel="stylesheet" href="../sessaoEmpresa/css/estiloServico-e.css">
     <link rel="icon" href="../img/index/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <title>Criar Serviço/Pacote</title>
@@ -151,8 +151,7 @@
                         <a>Não</a></label>
                     </div>
                 </div>
-<!-- BOTAO DO FORM -->         
-                <button class="criar" type="submit">Editar Serviço</button>
+        
             </div>
 <!-- INPUT PARA IMAGENS -->
             <div class="imagens">
@@ -180,6 +179,11 @@
                         </label>
                     </div>
                 </div>
+                <!-- BOTAO DO FORM --> 
+                <div>
+                <button class="editar" type="submit">Editar Serviço</button>
+                </div>
+
         </form>
     </section>
 
