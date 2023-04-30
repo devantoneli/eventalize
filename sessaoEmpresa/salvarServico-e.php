@@ -1,5 +1,7 @@
 <?php
 
+//CRIANDO SERVIÇO (INSERT)
+
 $nm_servico = $_POST['nm_servico'];
 $ds_servico = $_POST['ds_servico'];
 $vl_servico = $_POST["vl_servico"];
