@@ -2,8 +2,9 @@
 
 // AQUI ESTAREMOS SELCIONANDO AS INFORMAÇÕES DO SERVIÇO SELECIONADO, PARA QUE A EMPRESA POSSA EDITÁ-LOS
 
-    if (isset($cd_servico)){
-    $cd_servico = $_GET['cd_servico'];
+// if (isset($_GET['cd_servico'])) {
+    // $cd_servico = $_GET['cd_servico'];
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -11,14 +12,13 @@
 
     $conn = new mysqli($servername, $username, $password, $db_name);
 
-    $sql = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
+    $sql = "SELECT * FROM tb_servico WHERE cd_servico = 811";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        echo $cd_servico;
     }
-}
+// }
 
 ?>
 
@@ -28,7 +28,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../sessaoEmpresa/css/estiloServico-e.css">
+    <link rel="stylesheet" href="css/estiloServico-e.css">
     <link rel="icon" href="../img/index/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <title>Criar Serviço/Pacote</title>
@@ -99,7 +99,7 @@
 
 <!-- SESSAO SERVICO -->  
     <section class="servico">
-        <form class="grid-Principal" action="atualizarServico-e.php" method="post">
+        <form class="grid-Principal" action="atualizarServico-e.php" method="POST">
             <div class="digitacao">
                 <input type="hidden" name="cd_servico" value="<?php echo($row["cd_servico"])?>">
                 <input class="input-Digita" type="text" placeholder="Título do serviço" name="nm_servico" value="<?php if (isset($row)) { echo $row['nm_servico']; } ?>">
@@ -151,7 +151,8 @@
                         <a>Não</a></label>
                     </div>
                 </div>
-        
+<!-- BOTAO DO FORM -->         
+                <button class="criar" type="submit">Editar Serviço</button>
             </div>
 <!-- INPUT PARA IMAGENS -->
             <div class="imagens">
@@ -179,11 +180,6 @@
                         </label>
                     </div>
                 </div>
-                <!-- BOTAO DO FORM --> 
-                <div>
-                <button class="editar" type="submit">Editar Serviço</button>
-                </div>
-
         </form>
     </section>
 
