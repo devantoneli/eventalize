@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Eventalize</title>
+    <link rel="icon" href="img/index/logo.png">
+    <link rel="stylesheet" href="css/estilo.css">
+    <!-- <link rel="stylesheet" href="entrar.css"> -->
+</head>
+<body id="overflowEntrar">
+
+    <!--HEADER homepage-->
+    <header>
+        <div class="logoHome">
+            <img src="img/index/logo.png" alt="logo">
+        </div>
+            <div class="headerHome">
+                <a href="">Início</a>
+                <a href="sessaoUsuario/explore.php">Explore</a>
+                <a href="">Sobre Nós</a>
+            </div>
+            <div class="headerHomePerfil">
+                <button class="estiloVazio" id="entrarHome" onclick="novaSection(1)"><a href="entrar.html">Entrar</a></button>
+                <button class="estiloVazio" id="entrarHome" onclick="novaSection(0)"><a>Cadastrar</a></button>
+            </div>
+            <button class="menuIcon" onclick="menuOpen()"><img  src="img/index/menuicon.svg" width="30px"></button>
+    </header>
+
+    <div class="circleEntrar">
+        <section id="cadastrarCirc">
+            <h1 class="fontCirc">Cadastrar</h1>
+            
+            <div class="grid-cadastCirc">
+
+                <a class="fraseCadastrar">Para continuar, por favor, selecione uma das opções abaixo: </a>
+
+                <div class="grid-Cards">
+                <a class="irAte" href="sessaoEmpresa/cadastrandoEmpresa.html"></a>
+                <div class="card-Empresa cards">
+                    <p>Cadastre-se como</p>
+                    <a class="aGradiente">Empresa</a>
+                    <p>E preste serviços, venda ou alugue seus produtos para eventos e festas e mais!</p>
+                </div>
+             
+
+                <a class="irAteCliente" href="sessaoCliente/cadastrandoCliente.html"></a>
+                <div class="card-Cliente cards">
+                    <p>Cadastre-se como</p>
+                    <a class="aGradiente">Cliente</a>
+                    <p>E contrate serviços, compre e alugue produtos, explore e crie diversas postagens e mais! </p>
+                </div>
+              
+                </div>
+
+            </div>
+        </section>
+    </div>

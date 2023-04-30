@@ -23,7 +23,7 @@ $dbname = "db_eventalize";
     die("Não foi possível conectar ao banco de dados: " . $conn->connect_error);
     }
 
-    $cd_postagem = $_GET ['cd_postagem'];
+    // $cd_postagem = $_GET ['cd_postagem'];
     // $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
     $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 19';
     $result = $conn->query($sql);
@@ -69,13 +69,13 @@ $dbname = "db_eventalize";
                         <img src="../img/index/logo.png" alt="logo">
                     </div>
                         <div class="headerHome">
-                            <a href="">Início</a>
+                            <a href="../index.html">Início</a>
                             <a href="../sessaoUsuario/explore.php">Explore</a>
                             <a href="">Sobre Nós</a>
                         </div>
                         <div class="headerHomePerfil">
-                            <button class="estiloVazio" id="entrarHome" onclick="novaSection(1)"><a href="../login.php">Entrar</a></button>
-                            <button class="estiloVazio" id="entrarHome" onclick="novaSection(0)"><a href="../login.php">Cadastrar</a></button>
+                            <button class="estiloVazio" id="entrarHome" onclick="novaSection(1)"><a href="../entrar.html">Entrar</a></button>
+                            <button class="estiloVazio" id="entrarHome" onclick="novaSection(0)"><a href="../cadastrar.html">Cadastrar</a></button>
                         </div>
                         <button class="menuIcon" onclick="menuOpen()"><img  src="../img/index/menuicon.svg" width="30px"></button>
                 </header>
