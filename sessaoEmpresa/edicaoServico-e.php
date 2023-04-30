@@ -12,7 +12,7 @@
 
     $conn = new mysqli($servername, $username, $password, $db_name);
 
-    $sql = "SELECT * FROM tb_servico WHERE cd_servico = 811";
+    $sql = "SELECT * FROM tb_servico WHERE cd_servico = 816";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {

@@ -70,7 +70,7 @@ if(isset($_POST['url_img3'])) {
     $semimg3 = true;
 }
 
-echo ($url_img3);
+// echo ($url_img3);
 
 if ($semimg2 == false && $semimg3 == false){
     $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
