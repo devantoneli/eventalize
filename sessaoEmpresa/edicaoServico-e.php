@@ -1,24 +1,30 @@
 <?php
 
-// AQUI ESTAREMOS SELCIONANDO AS INFORMAÇÕES DO SERVIÇO SELECIONADO, PARA QUE A EMPRESA POSSA EDITÁ-LOS
+// ESSA TELA SERÁ EXIBIDA QUANDO O CLIENTE, QUE PODE ESTAR TANTO NO PERFIL DE UMA EMPRESA QUANTO NA BUSCA DE SERVIÇOS, CLICAR EM UM SERVIÇO PARA VER SEUS DETALHES
 
-// if (isset($_GET['cd_servico'])) {
-    $cd_servico = $_GET['cd_servico'];
+//**corresponde a pág consultarservico.php no outro arquivo **//
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db_name = "db_eventalize";
+$cd_servico = $_GET['cd_servico'];
 
-    $conn = new mysqli($servername, $username, $password, $db_name);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
 
-    $sql = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
-    $result = $conn->query($sql);
+$conn = new mysqli($servername, $username, $password, $db_name);
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-    }
-// }
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+// SELECIONANDO AS INFORMAÇÕES DA TB_SERVICO QUE QUERO EXIBIR NA TELA DETALHES
+$query = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
+//estou usando $cd_servico para selecionar um serviço específico da empresa, ou seja, o serviço em que o cliente vai clicar
+
+$result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
+$row = mysqli_fetch_assoc($result_query);
+
+
 
 ?>
 
