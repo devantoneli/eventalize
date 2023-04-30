@@ -16,7 +16,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "db_eventalize";
-// $cd_postagem = $_GET['cd_postagem'];
+$cd_postagem = $_GET['cd_postagem'];
+
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
@@ -24,17 +25,17 @@ $dbname = "db_eventalize";
     }
 
     // $cd_postagem = $_GET ['cd_postagem'];
-    // $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
-    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 19';
+    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
+    // $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 19';
     $result = $conn->query($sql);
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
-    // $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = '.$cd_postagem.'';
-    $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 19';
+    $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = '.$cd_postagem.'';
+    // $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 19';
     $result2 = $conn->query($sql2);
     $row2 = $result2 -> fetch_assoc();
     // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
-    // $sql3 = 'SELECT vwcodigospostagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
-    $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 45';
+    $sql3 = 'SELECT vwcodigospostagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
+    // $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 45';
     $result3 = $conn->query($sql3);
 
     // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
