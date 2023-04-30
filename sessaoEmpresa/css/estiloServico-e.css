@@ -464,7 +464,7 @@ body, html{
     color: white;  
     font-weight: bolder; 
 }
-.editar{
+/* .editar{
     display: block;
     margin: 0 0 10em 2em;
     width: 13em;
@@ -475,7 +475,7 @@ body, html{
     background-color: #FF3E83;
     color: white;  
     font-weight: bolder; 
-}
+} */
 
 .criar button{
     cursor: pointer;
