@@ -1,9 +1,6 @@
 <?php
 
-// ESSA TELA SERÁ EXIBIDA QUANDO O CLIENTE, QUE PODE ESTAR TANTO NO PERFIL DE UMA EMPRESA QUANTO NA BUSCA DE SERVIÇOS, CLICAR EM UM SERVIÇO PARA VER SEUS DETALHES
-
-//**corresponde a pág consultarservico.php no outro arquivo **//
-
+// ESSA TELA SERÁ EXIBIDA QUANDO A EMPRESA SELECIONAR UM SERVIÇO PARA EDITÁ-LO
 $cd_servico = $_GET['cd_servico'];
 
 $servername = "localhost";

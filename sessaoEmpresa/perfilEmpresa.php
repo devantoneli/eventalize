@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
+<!-- ESSA TELA TEM COMO FUNÇÕES, POR ENQUANTO, EXCLUIR, EDITAR E VISUALIZAR OS SERVIÇOS DE UMA EMPRESA -->
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="imagens/logo.png">
+    <!-- <link rel="icon" href="imagens/logo.png"> -->
     <link rel="stylesheet" href="css/perfil-empresa.css"/>
+    <link rel="icon" href="../img/index/logo.png">
     <title>Perfil - Eventalize</title>
 </head>
 <body>
@@ -189,25 +193,34 @@ if(mysqli_num_rows($result_query) > 0){
         //dentro desse while, preciso colocar a tela 'Perfil Empresa', que irá conter o card do servico, que assim que clicado levará à página de detalhes (CONSULTA). ainda nesse card, teremos um botão de editar (EDITAR) e um de excluir (EXCLUIR), que realizarão suas respectivas funções
 
         echo'
-          <form action="edicaoServico-e.php">
                 <div class="gridPacotes">
-                <a href="../sessaoCliente/detalheServico.php">
                 <div class="cardPacotes">
                     <div class="conteudoPacote">
                         <img src="'. $row["url_imgcapa"] .'" alt="">
-                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
                         <h3>' . $row["nm_servico"] . '</h3>
                         <h3>' . $row["ds_servico"] . '</h3>
                         <h3>' .$row["vl_servico"] .'</h3>
                         <div class="botoesPacote">
-                            <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">Editar</button>
-                        </div>
-                        </a>
+
+                        <form action="edicaoServico-e.php">
+                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
+                        <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">Editar</button>
+                        </form>
+                            
+                        <form action="../sessaoCliente/detalheServico.php">
+                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
+                        <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">ver</button>
+                        </form>
+
+                        <form action="deletarServico-e.php">
+                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
+                        <button class="deletarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
+                        </form>
+
                     </div>
                 </div>
                 </div>
-            </div>
-            </form>';
+      </div>';
        }
     } else{
       echo "Nenhum registro encontrado";

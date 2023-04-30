@@ -1,9 +1,8 @@
 <?php
 
-// ESSA TELA SERÁ EXIBIDA QUANDO O CLIENTE, QUE PODE ESTAR TANTO NO PERFIL DE UMA EMPRESA QUANTO NA BUSCA DE SERVIÇOS, CLICAR EM UM SERVIÇO PARA VER SEUS DETALHES
+//EXIBINDO AS INFORMAÇÕES DOS DETALHES DO SERVIÇO SELECIONADO
 
-//**corresponde a pág consultarservico.php no outro arquivo **//
-
+$cd_servico = $_GET['cd_servico'];
 
 $servername = "localhost";
 $username = "root";
@@ -17,23 +16,17 @@ if($conn->connect_error){
 }
 
 // SELECIONANDO AS INFORMAÇÕES DA TB_SERVICO QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa, url_img2, url_img3, cd_empresa FROM tb_servico";
+$query = "SELECT * FROM tb_servico  WHERE cd_servico = '$cd_servico'";
 //estou usando $cd_servico para selecionar um serviço específico da empresa, ou seja, o serviço em que o cliente vai clicar
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
 
-// SELECIONANDO AS INFORMAÇÕES DA TB_EMPRESA QUE QUERO EXIBIR NA TELA DETALHES
+$query2 = "SELECT * FROM tb_empresa WHERE cd_empresa = '" . $row['cd_empresa'] . "'";
+//$row['cd_empresa'] -> está buscando, através da FK cd_empresa presente na tb_servico, as informações da empresa de acordo com o serviço selecionado (nesse caso, só estamos usando o nome da empresa 'nm_fantasia')
 
-if(mysqli_num_rows($result_query) > 0){
-
-  $query2 = "SELECT * FROM tb_empresa WHERE cd_empresa = '" . $row['cd_empresa'] . "'";
-  //$row['cd_empresa'] -> está buscando, através da FK cd_empresa presente na tb_servico, as informações da empresa de acordo com o serviço selecionado (nesse caso, só estamos usando o nome da empresa 'nm_fantasia')
-
-  $result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
-  $row2 = mysqli_fetch_assoc($result_query2);
-}
-
+$result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
+$row2 = mysqli_fetch_assoc($result_query2);
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +36,9 @@ if(mysqli_num_rows($result_query) > 0){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/detalhesPacote.css">
-    <title>Detalhes do Pacote - Eventalize</title>
-    <link rel="icon" href="imgCriandoServico/logo.png">
+    <link rel="icon" href="../img/index/logo.png">
+    <title>Detalhes do Serviço - Eventalize</title>
+    <!-- <link rel="icon" href="imgCriandoServico/logo.png"> -->
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
 
 </head>
@@ -97,7 +91,7 @@ if(mysqli_num_rows($result_query) > 0){
         </svg>
           <h2 id="palavraPacote" class="corLilas">Serviços</h2>
       </div>
-      <form action="detalhes.php">
+      <form action="detalheServico.php">
     <div class="grid-detalhesPacote">
         <div class="grid-detalhePacCol1">
           <!-- Slideshow container -->
@@ -148,6 +142,7 @@ if(mysqli_num_rows($result_query) > 0){
 
               <div class="grid-alinhaPerfil">
                 <img class="img-fotoPerfil" src="imgDetalheServico/fotoPerfil.jpg" alt="">
+                
                 <h6><?php echo($row2['nm_fantasia'])?></h6>
                 <!-- <div class="alinha-text-perfil">
                       <img src="imagens/fotografia.svg" alt="">
