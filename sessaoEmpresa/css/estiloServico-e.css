@@ -462,7 +462,11 @@ body, html{
     border: none;
     background-color: #FF3E83;
     color: white;  
-    font-weight: bolder;  
+    font-weight: bolder; 
+}
+
+.criar button{
+    cursor: pointer;
 }
 
 /* SERVICO */

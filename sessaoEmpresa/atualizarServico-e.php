@@ -10,7 +10,7 @@ $cd_tiposervico = $_POST['cd_tiposervico'];
 
 // BACK-END para salvar alterações enviadas pelo arquivo edicaoServico-e.php
 
-var_dump($_POST);
+// var_dump($_POST);
 
 $servername = "localhost";
 $username = "root";
@@ -30,10 +30,10 @@ $post_imgcapa = str_replace(' ', '+', $post_imgcapa);
 $data = base64_decode($post_imgcapa);
 $nm_imgcapa = 'capa'.$cd_servico.'.jpeg';
 //UPLOAD DE ARQUIVO CONVERTIDO
-$caminho_capa = '/sistema/eventalize/bancoImagens/servicos/' . $nm_imgcapa;
+$caminho_capa = '../bancoImagens/servicos/' . $nm_imgcapa;
 file_put_contents($caminho_capa, $data);
 // construir o caminho completo para a imagem a partir do diretório raiz do projeto
-$url_imgcapa = '/sistema/eventalize/bancoImagens/servicos/' .$nm_imgcapa;
+$url_imgcapa = '../bancoImagens/servicos/' .$nm_imgcapa;
 
 
 if(isset($_POST['url_img2'])) {
@@ -44,10 +44,10 @@ if(isset($_POST['url_img2'])) {
     $data = base64_decode($post_img2);
     $nm_img2 = 'img2-'.$cd_servico.'.jpeg';
     //UPLOAD DE ARQUIVO CONVERTIDO
-    $caminho_img2 = '/sistema/eventalize/bancoImagens/servicos/' . $nm_img2;
+    $caminho_img2 = '../bancoImagens/servicos/' . $nm_img2;
     file_put_contents($caminho_img2, $data);
     // construir o caminho completo para a imagem a partir do diretório raiz do projeto
-    $url_img2 = '/sistema/eventalize/bancoImagens/servicos/' .$nm_img2;
+    $url_img2 = '../bancoImagens/servicos/' .$nm_img2;
     $semimg2 = false;
 }else {
     $semimg2 = true;
@@ -61,10 +61,10 @@ if(isset($_POST['url_img3'])) {
     $data = base64_decode($post_img3);
     $nm_img3 = 'img3-'.$cd_servico.'.jpeg';
     //UPLOAD DE ARQUIVO CONVERTIDO
-    $caminho_img3 = '/sistema/eventalize/bancoImagens/servicos/' . $nm_img3;
+    $caminho_img3 = '../bancoImagens/servicos/' . $nm_img3;
     file_put_contents($caminho_img3, $data);
     // construir o caminho completo para a imagem a partir do diretório raiz do projeto
-    $url_img3 = '/sistema/eventalize/bancoImagens/servicos/' .$nm_img3;
+    $url_img3 = '../bancoImagens/servicos/' .$nm_img3;
     $semimg3 = false;
 }else {
     $semimg3 = true;
@@ -92,7 +92,7 @@ $conn->close();
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,4 +103,4 @@ $conn->close();
 <body>
 <img src="<?php echo($url_imgcapa)?>">
 </body>
-</html>
+</html> -->
