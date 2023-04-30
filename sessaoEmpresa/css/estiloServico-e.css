@@ -464,6 +464,18 @@ body, html{
     color: white;  
     font-weight: bolder; 
 }
+.editar{
+    display: block;
+    margin: 0 0 10em 2em;
+    width: 13em;
+    height: 3em;
+    border-radius: 2em;
+    font-size: 1.7em;
+    border: none;
+    background-color: #FF3E83;
+    color: white;  
+    font-weight: bolder; 
+}
 
 .criar button{
     cursor: pointer;
