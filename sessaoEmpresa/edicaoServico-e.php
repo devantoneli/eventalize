@@ -3,7 +3,7 @@
 // AQUI ESTAREMOS SELCIONANDO AS INFORMAÇÕES DO SERVIÇO SELECIONADO, PARA QUE A EMPRESA POSSA EDITÁ-LOS
 
 // if (isset($_GET['cd_servico'])) {
-    // $cd_servico = $_GET['cd_servico'];
+    $cd_servico = $_GET['cd_servico'];
 
     $servername = "localhost";
     $username = "root";
@@ -12,7 +12,7 @@
 
     $conn = new mysqli($servername, $username, $password, $db_name);
 
-    $sql = "SELECT * FROM tb_servico WHERE cd_servico = 816";
+    $sql = "SELECT * FROM tb_servico WHERE cd_servico = '$cd_servico'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
