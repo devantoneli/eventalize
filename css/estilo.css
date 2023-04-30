@@ -53,6 +53,8 @@ header{
     text-decoration: none;
     font-size: 20px;
     padding: 5px 10px;
+    cursor: pointer;
+
 }
 
 .menuIcon{
@@ -119,7 +121,6 @@ button.menuIcon {
     border: none;
     background-color: #E94F91;
     font-size: 25px;
-    color: white;
     font-weight: 500;
     text-align: center;
     transition: 0.3s ease-in-out;
@@ -128,6 +129,13 @@ button.menuIcon {
 
 button.buttonMain:hover{
     transform: translateY(-10px);
+}
+
+button.buttonMain a{
+    text-decoration: none;
+    display: block;
+    color: white;
+
 }
 
 .circlePositionMain {
@@ -263,6 +271,10 @@ button.buttonMain:hover{
     text-align: center;
     font-size: 1.5em;
     font-weight: 500;
+}
+
+.clientCard a, .companyCard a{
+    text-decoration: none;
 }
 
 /*CATEGORIAS DE SERVIÇOS icons homepage*/
@@ -1603,6 +1615,8 @@ footer {
     text-decoration: none;
 }
 
+
+
 /* Animação do círculo para cadastro e login */
 
 @keyframes arrastaCirculo{
@@ -1663,7 +1677,6 @@ footer {
     position: absolute;
     display: flex;
     z-index: 3;
-
 }
 
 .ajusImg{
@@ -1695,6 +1708,7 @@ footer {
     font-family: 'League Spartan';
     font-size: 4em;
     color: white;
+    text-align: center;
 }
 
 .grid-loginCirc {
@@ -1848,4 +1862,37 @@ footer {
 
 .grid-Cards {
     display: flex;
+}
+
+/*ADAPTAÇÃO ENTRAR HTML*/
+
+.circleEntrar{
+    position: relative;
+    width: 90vw;
+    height: 90vw;
+    left: 4.5vw;
+    top: 0vw;
+    background: linear-gradient(180deg, #E95092 0%, #A385BF 50%, #829ED4 100%);
+    clip-path: circle();
+    /* overflow-y: hidden; */
+}
+
+#loginCircEntrar {
+    position: relative;
+    top: 7vw;
+    display: block;
+    text-align: center;
+}
+
+#overflowEntrar{
+    overflow-y: hidden;
+}
+
+/*ADAPTACÃO CADASTRAR HTML*/
+
+#cadastrarCirc {
+    position: relative;
+    top: 7vw;
+    display: block;
+    text-align: center;
 }
