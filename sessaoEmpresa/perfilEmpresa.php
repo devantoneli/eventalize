@@ -9,51 +9,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="icon" href="imagens/logo.png"> -->
     <link rel="stylesheet" href="css/perfil-empresa.css"/>
+    <link rel="stylesheet" href="css/menu-e.css"/>
     <link rel="icon" href="../img/index/logo.png">
     <title>Perfil - Eventalize</title>
 </head>
 <body>
     <div class="inicioPerfil">
-    <header>
-            <!-- <h3>aqui fica o menu</h3> -->
-            
-    <div class="logo">
-        <img src="imagens/logoBranca.png" alt="logo">
-    </div>
-        <div class="headerInicioCliente">
-            <a href="">Início</a>
-            <a href="">Feed</a>
-            <a href="">Pedidos</a>
-            <a href="">Mensagens</a>
+    <!--INICIO MENU EMPRESA -->
+<div class="bg-gradPrincipal menuEmpresa">
+    <header class="alinhaElementos">
+        <div id="logoImagem"><a href="../sessaoEmpresa/index-e.php"></a></div>
+        
+        <ul class="opcoesMenu">
+            <li class=""><a href="#" class="opcaoMenu" aria-current="page">Seu portfólio</a></li>
+            <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
+            <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
+            <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
+        </ul>
+    
+        <div class="alinhaLogo">
+            <button class="botaoSeta" id="iconSeta">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" fill="currentColor" class="bi bi-chevron-down setaMenu" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            </button>
+
+            <section id="menu">
+                <a href=""><h5>Pedidos</h5></a>
+                <a href=""><h5>Criar Serviços e Pacotes</h5></a>
+                <a href=""><h5>Mensagens</h5></a>
+                <a href=""><h5>Pontuações</h5></a>
+                <a href=""><h5>Configurações</h5></a>
+            </section>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+            </svg>
+
+            <div id="inserirPerfil"></div>
+
+            <section id="menuPerfil">
+                <a href=""><h5>Perfil</h5></a>
+                <a href=""><h5>Postagens</h5></a>
+                <a href=""><h5>Estatísticas de venda</h5></a>
+                <a href="../index.html"><h5>Sair</h5></a>
+            </section>
         </div>
-       
-        <div  class="headerClientePerfil" >
-            <div class="iconCliente">
-                <a href="#"><img src="imagens/setaempresa.svg" alt="Carrinho"></a>
-                <a href="#"><img src="imagens/icon-notificacao.svg" alt="Notificações"></a>
-              </div>
-        <!-- <button class="menuIcon" onclick="menuOpen()"><img  src="imagens/vector.svg" style="height: 50px;" width="30px"></button> -->
-        </div>
-        <section class="menuPerfil">
-          <a href=""><h4>Pedidos</h4></a>
-          <a href=""><h4>Serviços e Pacotes</h4></a>
-          <a href=""><h4>Perfil</h4></a>
-          <a href=""><h4>Mensagens</h4></a>
-          <a href=""><h4>Pontuações</h4></a>
-          <a href=""><h4>Configurações</h4></a>
-      </section>
-      <button class="menuIcon2" onclick="menuOpenPerfil()"><img  src="imagens/vector2.svg" style="height: 50px;" width="30px"></button>
-      <div class="headerMenuCliente">
-        <a href="">Início</a>
-        <a href="">Feed</a>
-        <a href="">Pedidos</a>
-        <a href="">Perfil</a>
-        <a href="">Postagens</a>
-        <a href="">Configurações</a>
-        <a href="">Sair</a>
-    </div>
-    <button class="menuIcon3" onclick="menuOpenCliente()"><img  src="imagens/vector.svg" style="height: 50px;" width="30px"></button>
-  </header>
+    </header>
+</div>
+<!--FIM MENU EMPRESA -->
         
     
     
@@ -159,7 +163,7 @@
                         </div>
                   </div>
             </div>
-
+            
 <?php
 
 // ESSA PÁGINA IRÁ CONTER OS BOTÕES PARA QUE A EMPRESA POSSA, CONSULTAR, EDITAR E EXCLUIR SEU SERVIÇO 
@@ -184,30 +188,31 @@ $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . 
 if(mysqli_num_rows($result_query) > 0){
   echo'
       <div class="inicioPacotes">
-      <h2>Serviços</h2>';
+      <h2>Serviços</h2>
+      <div class="gridPacotes">';
     while($row = mysqli_fetch_assoc($result_query)){
 
         //dentro desse while, preciso colocar a tela 'Perfil Empresa', que irá conter o card do servico, que assim que clicado levará à página de detalhes (CONSULTA). ainda nesse card, teremos um botão de editar (EDITAR) e um de excluir (EXCLUIR), que realizarão suas respectivas funções
 
         echo'
-                <div class="gridPacotes">
                 <div class="cardPacotes">
                     <div class="conteudoPacote">
+                    <form action="../sessaoCliente/detalheServico.php">
+                    <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
+                    <button type="submit" style="background: transparent; border: none; cursor: pointer;">
                         <img src="'. $row["url_imgcapa"] .'" alt="">
                         <h3>' . $row["nm_servico"] . '</h3>
-                        <h3>' . $row["ds_servico"] . '</h3>
-                        <h3>' .$row["vl_servico"] .'</h3>
+                        <h4>' . $row["ds_servico"] . '</h4>
+                        <h2>R$' .$row["vl_servico"] .'</h2>
+                        </button>
                         <div class="botoesPacote">
+                        </form>
 
                         <form action="edicaoServico-e.php">
                         <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
                         <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">Editar</button>
                         </form>
                             
-                        <form action="../sessaoCliente/detalheServico.php">
-                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
-                        <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">ver</button>
-                        </form>
 
                         <form action="deletarServico-e.php">
                         <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
@@ -215,7 +220,7 @@ if(mysqli_num_rows($result_query) > 0){
                         </form>
 
                     </div>
-                </div>
+                
                 </div>
       </div>';
        }
@@ -228,7 +233,8 @@ if(mysqli_num_rows($result_query) > 0){
   ?>
         </div>
     </div>
-
+  </div>
     <script src="js/carouseul.js"></script>
+    <script src="js/menu-e.js"></script>
 </body>
 </html>
