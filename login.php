@@ -21,6 +21,7 @@ if ($conn->connect_error) {
 $nm_email = $_POST['nm_email'];
 $nm_senha = $_POST['nm_senha'];
 
+
 $sql = "SELECT * FROM tb_empresa WHERE nm_emailempresa = '$nm_email' AND nm_senhaempresa = '$nm_senha'";
 $result = $conn->query($sql);
 
@@ -36,7 +37,6 @@ if ($result->num_rows == 1 ) {
 
   $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
   $_SESSION['nm_fantasia'] = $empresa['nm_fantasia'];
-  $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
 
   header("Location: /sistema/eventalize/sessaoEmpresa/index-e.php ");
 
