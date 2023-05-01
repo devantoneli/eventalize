@@ -82,7 +82,7 @@ if ($result->num_rows > 0) {
                 $biografia = substr($row4['ds_biografia'], 0, 25) . '...';
                 
             }else {
-                $sql3 = "SELECT * FROM tb_cliente where cd_cliente = $cliente";
+                $sql3 = "SELECT * FROM tb_cliente WHERE cd_cliente = $cliente";
                 $result3 = $conn->query($sql3);
                 echo (mysqli_error($conn));
                 $row3 = $result3->fetch_assoc();

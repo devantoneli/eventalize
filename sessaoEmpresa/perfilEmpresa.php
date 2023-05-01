@@ -181,6 +181,7 @@ $query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FRO
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
             
 // a função mysqli_num_rows serve para verificar se a consulta retornou algum resultado
+
 if(mysqli_num_rows($result_query) > 0){
   echo'
       <div class="inicioPacotes">
