@@ -424,6 +424,9 @@ button.menuIcon{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-top: 2vw !important;
+    height: 16vw;
+
 }
 
 .fotoDestaquePacote img{
