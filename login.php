@@ -1,6 +1,6 @@
 <?php
 // validar as entradas do usuário
-if(empty($_POST['usuario']) || empty($_POST['senha'])) {
+if(empty($_POST['nm_email']) || empty($_POST['nm_senha'])) {
   echo "Por favor, preencha todos os campos.";
   exit();
 }
@@ -18,15 +18,29 @@ if ($conn->connect_error) {
 }
 
 // verificar as informações de login
-$username = $_POST['usuario'];
-$password = $_POST['senha'];
+$nm_email = $_POST['nm_email'];
+$nm_senha = $_POST['nm_senha'];
 
-$sql = "SELECT * FROM tb_empresa WHERE nm_emailempresa = '$username' AND nm_senhaempresa = '$password'";
+$sql = "SELECT * FROM tb_empresa WHERE nm_emailempresa = '$nm_email' AND nm_senhaempresa = '$nm_senha'";
 $result = $conn->query($sql);
 
-if ($result->num_rows == 1) {
+if ($result->num_rows == 1 ) {
   // informações de login válidas, redirecionar o usuário para a página inicial
+
+  $empresa = $result->fetch_assoc();
+
+  //se nao tem sessao...
+  if(!isset($_SESSION)){
+    session_start();
+  }
+
+  $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
+  $_SESSION['nm_fantasia'] = $empresa['nm_fantasia'];
+  $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
+
   header("Location: /sistema/eventalize/sessaoEmpresa/index-e.php ");
+
+
 
   exit();
 } else {

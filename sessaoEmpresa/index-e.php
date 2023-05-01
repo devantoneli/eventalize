@@ -1,3 +1,13 @@
+<?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include('../protect.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,10 +56,10 @@
                 <div id="inserirPerfil"></div>
 
                 <section id="menuPerfil">
-                    <a href=""><h4>Perfil</h4></a>
+                    <a href="perfilEmpresa.php"><h4>Perfil</h4></a>
                     <a href=""><h4>Postagens</h4></a>
                     <a href=""><h4>Estatísticas de venda</h4></a>
-                    <a href="../index.html"><h4>Sair</h4></a>
+                    <a href="../logout.php"><h4>Sair</h4></a>
                 </section>
             </div>
         </header>
@@ -63,7 +73,7 @@
             <div id="perfilEmpresa"></div>
 
             <div class="grid-LinhaTripla">
-                <h1>Olá, $nm_fantasia</h1>
+                <h1>Olá, <?php echo $_SESSION['nm_fantasia'];?></h1>
                 <p>Aqui está o relatório da última semana: </p>
                 <div class="grid-RelatRapid">
                     <div class="relatRapid">

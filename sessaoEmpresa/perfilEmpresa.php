@@ -1,3 +1,37 @@
+<?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+            
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+$sql = "SELECT * FROM tb_empresa";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0 ) {
+  // informações de login válidas, redirecionar o usuário para a página inicial
+
+  $empresa = $result->fetch_assoc();
+
+  //se nao tem sessao...
+  if(!isset($_SESSION)){
+    session_start();
+  }
+
+  $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
+  $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
+  
+}
+
+include('../protect.php');
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -49,10 +83,10 @@
             <div id="inserirPerfil"></div>
 
             <section id="menuPerfil">
-                <a href=""><h5>Perfil</h5></a>
+                <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
                 <a href=""><h5>Postagens</h5></a>
                 <a href=""><h5>Estatísticas de venda</h5></a>
-                <a href="../index.html"><h5>Sair</h5></a>
+                <a href="../logout.php"><h5>Sair</h5></a>
             </section>
         </div>
     </header>
@@ -68,7 +102,7 @@
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
-                        <h3>$nm_usuarioempresa</h3>
+                        <h3><?php echo $_SESSION['nm_usuarioempresa'];?></h3>
                         <h4>Fotógrafa Social</h4>
                         </div>
                         <div class="loc">
@@ -168,12 +202,7 @@
 
 // ESSA PÁGINA IRÁ CONTER OS BOTÕES PARA QUE A EMPRESA POSSA, CONSULTAR, EDITAR E EXCLUIR SEU SERVIÇO 
           
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db_name = "db_eventalize";
-            
-$conn = new mysqli($servername, $username, $password, $db_name);
+
             
   if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
@@ -203,6 +232,7 @@ if(mysqli_num_rows($result_query) > 0){
                     <button type="submit" style="background: transparent; border: none; cursor: pointer;">
                         <img src="'. $row["url_imgcapa"] .'" alt="">
                         <h3>' . $row["nm_servico"] . '</h3>
+
                         <h4>' . $row["ds_servico"] . '</h4>
                         <h2>R$' .$row["vl_servico"] .'</h2>
                         </button>
