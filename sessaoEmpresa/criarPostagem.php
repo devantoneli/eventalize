@@ -1,8 +1,6 @@
 <?php
 
-if(isset($_POST['cd_pedido'])){
-    $cd_pedido = $_POST['cd_pedido'];
-}
+$cd_pedido = $_GET['cd_pedido'];
 
 
 $servername = "localhost";
@@ -93,6 +91,7 @@ if (mysqli_num_rows($result) > 0) {
         <div class="cardCriarPostagem">
             <!-- UPLOAD imagens -->
                 <h1>Adicionar Imagens</h1>
+                <!-- <input type="hidden" name="cd_postagem" value=""> -->
                 <label class="uploadImgPedido" for="img-inputCapa" id="img2">
                     <input hidden class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
                     <input id="linkimgCapa" value="mudara" type="hidden" name="url_imgcapa">

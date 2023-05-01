@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/index/logo.png">
     <link rel="stylesheet" href="css/criarPostagem-e.css">
+    <link rel="icon" href="../img/index/logo.png">
     <title>Selecionar Pedido - Eventalize</title>
 </head>
 <body>
-    <!-- MENU EMPRESA -->
 
+    <!--INICIO MENU EMPRESA -->
     <div class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
             <div id="logoImagem"></div>
@@ -33,7 +33,6 @@
                 <section id="menu">
                     <a href=""><h4>Pedidos</h4></a>
                     <a href=""><h4>Serviços e Pacotes</h4></a>
-                    <a href=""><h4>Perfil</h4></a>
                     <a href=""><h4>Mensagens</h4></a>
                     <a href=""><h4>Pontuações</h4></a>
                     <a href=""><h4>Configurações</h4></a>
@@ -46,7 +45,7 @@
                 <div id="inserirPerfil"></div>
 
                 <section id="menuPerfil">
-                    <a href=""><h4>Configurações de perfil</h4></a>
+                    <a href=""><h4>Perfil</h4></a>
                     <a href=""><h4>Postagens</h4></a>
                     <a href=""><h4>Estatísticas de venda</h4></a>
                     <a href="../index.html"><h4>Sair</h4></a>
@@ -54,6 +53,8 @@
             </div>
         </header>
     </div>
+    <!--FIM MENU EMPRESA -->
+
 
     <div class="grid-Principal">
         <div class="cardSelecaoPedido">
@@ -66,16 +67,13 @@
                         <button type="submit">Pesquisar</button>
                     </div>
                 </div>
-            </form>
+            </form>  
 
-                    
-                    <?php
+<?php
 
 //NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
 
-if (isset($_GET['nm_cliente'])) {
-    $nm_cliente = $_POST["nm_cliente"];
-}
+$nm_cliente = $_POST["nm_cliente"];
 
 $servername = "localhost";
 $username = "root";
@@ -101,15 +99,18 @@ if(mysqli_num_rows($result_query) > 0){
             <input type="checkbox" name="cardSelecao" class="cardSelecao">
             <div class="cardConteudo">
             <img src="../bancoImagens/empresas/pedido.svg" alt="">
+            
         <div class="infoCard">
              <p>Pedido nº' . $row["cd_pedido"] .'</p>
              <h2>' .$row["nm_cliente"] .'</h2>
              <p>' . $row["dt_pedido"] . '</p>
              <p>Mais detalhes desse pedido</p>
         </div>
+
         <div class="precoPedido">
             <h1>R$' . $row["vl_pedido"] . '</h1>
             <form action="criarPostagem.php">
+            <input type="hidden" value= '.$row["cd_pedido"] . ' name="cd_pedido">
             <button type="submit">Selecionar Pedido</button>
             </form>
         </div>
@@ -121,21 +122,7 @@ if(mysqli_num_rows($result_query) > 0){
 }
     
 ?>
-                
-                <!-- <div class="card">
-                    <input type="checkbox" name="cardSelecao" class="cardSelecao">
-                    <div class="card-content">
-                    <h2>Card 2</h2>
-                    <p>Some content here</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <input type="checkbox" name="cardSelecao" class="cardSelecao">
-                    <div class="card-content">
-                    <h2>Card 3</h2>
-                    <p>Some content here</p>
-                    </div> -->
+
                 </div>
             </div>
         </div>
