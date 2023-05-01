@@ -91,7 +91,7 @@ include('../protect.php');
             <div class="infoPerfil">
                 <div class="bioPerfil">
                     <div class="fotoPerfil">
-                    <img src="imagens/fotografa.jpg" alt="">
+                    <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
@@ -99,14 +99,14 @@ include('../protect.php');
                         <h4>Fotógrafa Social</h4>
                         </div>
                         <div class="loc">
-                            <img src="imagens/loc.svg" alt="">
+                            <img src="../bancoImagens/empresas/imagens-perfil-empresa/loc.svg" alt="">
                             <h4>Santos - SP</h4>
                         </div>
                             <div class="avaliacaoPerfil">
-                                <img src="imagens/star.svg" alt="">
+                                <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4>4,8</h4>
                             </div>
-                            <button class="editarPerfil"><img src="imagens/useredit.svg" alt="">Editar Perfil</button>
+                            <button class="editarPerfil"><img src="../bancoImagens/empresas/imagens-perfil-empresa/useredit.svg" alt="">Editar Perfil</button>
                     </div>
                 </div>
             </div>
@@ -200,6 +200,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db_name = "db_eventalize";
+$cd_empresa = $_SESSION['cd_empresa'];
             
 $conn = new mysqli($servername, $username, $password, $db_name);
             
@@ -208,7 +209,7 @@ $conn = new mysqli($servername, $username, $password, $db_name);
 }
             
 // SELECIONANDO AS INFORMAÇÕES QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico";
+$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico where cd_empresa = $cd_empresa";
             
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
             
