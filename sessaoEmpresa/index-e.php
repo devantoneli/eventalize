@@ -73,7 +73,9 @@ include('../protect.php');
 <!-- CORPO  -->
 
         <div class="grid-BoasVindasEmp">
-            <div id="perfilEmpresa"></div>
+            <div id="perfilEmpresa">
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
+            </div>
 
             <div class="grid-LinhaTripla">
                 <h1>Olá, <?php echo $_SESSION['nm_fantasia'];?></h1>
