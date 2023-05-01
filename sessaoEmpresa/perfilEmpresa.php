@@ -45,7 +45,7 @@ include('../protect.php');
     <!--INICIO MENU EMPRESA -->
 <div class="bg-gradPrincipal menuEmpresa">
     <header class="alinhaElementos">
-        <div id="logoImagem"><a href="../sessaoEmpresa/index-e.php"></a></div>
+    <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
         
         <ul class="opcoesMenu">
             <li class=""><a href="#" class="opcaoMenu" aria-current="page">Seu portfólio</a></li>
