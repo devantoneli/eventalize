@@ -4,31 +4,24 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db_name = "db_eventalize";
-            
-$conn = new mysqli($servername, $username, $password, $db_name);
+// $sql = "SELECT * FROM tb_empresa";
+// $result = $conn->query($sql);
 
-$sql = "SELECT * FROM tb_empresa";
-$result = $conn->query($sql);
+// if ($result->num_rows > 0 ) {
+//   // informações de login válidas, redirecionar o usuário para a página inicial
 
-if ($result->num_rows > 0 ) {
-  // informações de login válidas, redirecionar o usuário para a página inicial
+//   $empresa = $result->fetch_assoc();
 
-  $empresa = $result->fetch_assoc();
+//   //se nao tem sessao...
+//   if(!isset($_SESSION)){
+//     session_start();
+//   }
 
-  //se nao tem sessao...
-  if(!isset($_SESSION)){
-    session_start();
-  }
-
-  $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
-  $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
+  // $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
+  // $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
   
-}
-
+// }
+var_dump($_SESSION['nm_usuarioempresa']);
 include('../protect.php');
 
 ?>
@@ -70,7 +63,7 @@ include('../protect.php');
 
             <section id="menu">
                 <a href=""><h5>Pedidos</h5></a>
-                <a href=""><h5>Criar Serviços e Pacotes</h5></a>
+                <a href="criacaoServico-e.html"><h5>Criar Serviços e Pacotes</h5></a>
                 <a href=""><h5>Mensagens</h5></a>
                 <a href=""><h5>Pontuações</h5></a>
                 <a href=""><h5>Configurações</h5></a>
@@ -203,6 +196,12 @@ include('../protect.php');
 // ESSA PÁGINA IRÁ CONTER OS BOTÕES PARA QUE A EMPRESA POSSA, CONSULTAR, EDITAR E EXCLUIR SEU SERVIÇO 
           
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+            
+$conn = new mysqli($servername, $username, $password, $db_name);
             
   if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
