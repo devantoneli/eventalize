@@ -58,7 +58,7 @@ $row = mysqli_fetch_assoc($result_query);
 
             <section id="menu">
                 <a href=""><h4>Pedidos</h4></a>
-                <a href=""><h4>Serviços e Pacotes</h4></a>
+                <a href="criacaoServico-e.html"><h4>Criar Serviços e Pacotes</h4></a>
                 <a href=""><h4>Perfil</h4></a>
                 <a href=""><h4>Mensagens</h4></a>
                 <a href=""><h4>Pontuações</h4></a>
@@ -80,7 +80,7 @@ $row = mysqli_fetch_assoc($result_query);
         </div>
     </header>
 </div>
-<!-- FIM MENU -->
+<!-- FIM MENU EMPRESA -->
 <div class="centralizaSections">
 
     <h1 class="meioH1">Este é um</h1>

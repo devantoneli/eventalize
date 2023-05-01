@@ -43,7 +43,7 @@ include('../protect.php');
 
                 <section id="menu">
                     <a href=""><h4>Pedidos</h4></a>
-                    <a href=""><h4>Serviços e Pacotes</h4></a>
+                    <a href="criacaoServico-e.html"><h4>Criar Serviços e Pacotes</h4></a>
                     <a href=""><h4>Mensagens</h4></a>
                     <a href=""><h4>Pontuações</h4></a>
                     <a href=""><h4>Configurações</h4></a>
