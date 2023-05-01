@@ -1,5 +1,11 @@
 <?php
 
+if(!isset($_SESSION)){
+  session_start();
+}
+
+include('../protect.php');
+
 //EXIBINDO AS INFORMAÇÕES DOS DETALHES DO SERVIÇO SELECIONADO
 
 $cd_servico = $_GET['cd_servico'];
@@ -76,7 +82,9 @@ $row2 = mysqli_fetch_assoc($result_query2);
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
             </svg>
 
-            <div id="inserirPerfil"></div>
+            <div id="inserirPerfil">
+              <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
+            </div>
 
             <section id="menuPerfil">
                 <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
@@ -146,7 +154,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
             </div>
 
               <div class="grid-alinhaPerfil">
-                <img class="img-fotoPerfil" src="imgDetalheServico/fotoPerfil.jpg" alt="">
+                <img class="img-fotoPerfil" src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
                 
                 <h6><?php echo($row2['nm_fantasia'])?></h6>
                 <!-- <div class="alinha-text-perfil">
