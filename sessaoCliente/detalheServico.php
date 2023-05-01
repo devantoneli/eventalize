@@ -36,6 +36,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/detalhesPacote.css">
+    <link rel="stylesheet" href="../sessaoEmpresa/css/menu-e.css">
     <link rel="icon" href="../img/index/logo.png">
     <title>Detalhes do Serviço - Eventalize</title>
     <!-- <link rel="icon" href="imgCriandoServico/logo.png"> -->
@@ -44,45 +45,49 @@ $row2 = mysqli_fetch_assoc($result_query2);
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-        <img src="imgCriandoServico/logo.svg" alt="logo">
-    </div>
-        <div class="headerInicioCliente">
-            <a href="">Início</a>
-            <a href="">Feed</a>
-            <a href="">Pedidos</a>
-            <a href="">Mensagens</a>
-        </div>
-        <div class="headerPesquisa">
-          <input type="text" placeholder="Procure Serviços">
-          <img src="imgCriandoServico/lupa.svg" alt="" width="30px">
-        </div>
-        <div  class="headerClientePerfil" >
-            <div class="iconCliente">
-                <a href="#"><img src="imgCriandoServico/icon-carrinho.svg" alt="Carrinho"></a>
-                <a href="#"><img src="imgCriandoServico/icon-notificacao.svg" alt="Notificações"></a>
-              </div>
+  <!--INICIO MENU EMPRESA -->
+<div class="bg-gradPrincipal menuEmpresa">
+    <header class="alinhaElementos">
+        <div id="logoImagem"><a href="../sessaoEmpresa/index-e.php"></a></div>
+        
+        <ul class="opcoesMenu">
+            <li class=""><a href="#" class="opcaoMenu" aria-current="page">Seu portfólio</a></li>
+            <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
+            <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
+            <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
+        </ul>
+    
+        <div class="alinhaLogo">
+            <button class="botaoSeta" id="iconSeta">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" fill="currentColor" class="bi bi-chevron-down setaMenu" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            </button>
 
+            <section id="menu">
+                <a href=""><h5>Pedidos</h5></a>
+                <a href=""><h5>Criar Serviços e Pacotes</h5></a>
+                <a href=""><h5>Mensagens</h5></a>
+                <a href=""><h5>Pontuações</h5></a>
+                <a href=""><h5>Configurações</h5></a>
+            </section>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+            </svg>
+
+            <div id="inserirPerfil"></div>
+
+            <section id="menuPerfil">
+                <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
+                <a href=""><h5>Postagens</h5></a>
+                <a href=""><h5>Estatísticas de venda</h5></a>
+                <a href="../logout.php"><h5>Sair</h5></a>
+            </section>
         </div>
-        <section class="menuPerfil">
-          <a href="">Perfil</a>
-          <a href="">Postagens</a>
-          <a href="">Configurações</a>
-          <a href="">Sair</a>
-      </section>
-      <button class="menuIcon2" onclick="menuOpenPerfil()"><img  src="imgCriandoServico/vector2.svg" style="height: 50px;" width="30px"></button>
-      <div class="headerMenuCliente">
-        <a href="">Início</a>
-        <a href="">Feed</a>
-        <a href="">Pedidos</a>
-        <a href="">Perfil</a>
-        <a href="">Postagens</a>
-        <a href="">Configurações</a>
-        <a href="">Sair</a>
-    </div>
-    <button class="menuIcon3" onclick="menuOpenCliente()"><img  src="imgCriandoServico/vector.svg" style="height: 50px;" width="30px"></button>
-  </header>
+    </header>
+</div>
+<!--FIM MENU EMPRESA -->
 
     <div class="bordaPrincipal">
       <div class="grid-setaPacotes">
@@ -201,6 +206,8 @@ $row2 = mysqli_fetch_assoc($result_query2);
     </form>
     <script src="js/menucliente.js"></script>
     <script src="js/detalhesPacote.js"></script>
+    <script src="../sessaoEmpresa/js/menu-e.js"></script>
+
 </body>
 </html>
 
