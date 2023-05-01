@@ -12,11 +12,12 @@
 
 <?php
 
+$cd_postagem = $_GET['cd_postagem'];
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "db_eventalize";
-$cd_postagem = $_GET['cd_postagem'];
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -25,16 +26,16 @@ $cd_postagem = $_GET['cd_postagem'];
     }
 
     // $cd_postagem = $_GET ['cd_postagem'];
-    $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
+    $sql = "SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = '$cd_postagem'"; //(pra quando o da raiza estiver pronto)
     // $sql = 'SELECT nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3 FROM tb_postagem WHERE cd_postagem = 19';
     $result = $conn->query($sql);
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA
-    $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = '.$cd_postagem.'';
+    $sql2 = "SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = '$cd_postagem'";
     // $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 19';
     $result2 = $conn->query($sql2);
     $row2 = $result2 -> fetch_assoc();
     // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
-    $sql3 = 'SELECT vwcodigospostagem WHERE cd_postagem = '.$cd_postagem.''; //(pra quando o da raiza estiver pronto)
+    $sql3 = "SELECT * FROM vwcodigospostagem WHERE cd_postagem = '$cd_postagem'"; //(pra quando o da raiza estiver pronto)
     // $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 45';
     $result3 = $conn->query($sql3);
 
@@ -83,6 +84,7 @@ $cd_postagem = $_GET['cd_postagem'];
 
                 <div class="grid-container"> <!--DIV QUE CARREGA O LAYOUT GRID DA PÁGINA TODA-->
                    <!-- INICIO POSTAGENS -->
+                 
                   <div class="inicioPostagens">
                     <div class="fotoDestaque">
                         <div class="curtidasPostagem">
@@ -128,32 +130,37 @@ $cd_postagem = $_GET['cd_postagem'];
                 if (mysqli_num_rows($result3) > 0){
                     while($row3 = $result3 -> fetch_assoc()){
                         $pacote = $row3['cd_pacote'];
-                        $sql4 = "SELECT * FROM tb_pacote WHERE cd_pacote = $pacote";
+                        $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = $pacote";
+                        // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = 342";
                         $result4 = $conn->query($sql4);
                     }
                     if (mysqli_num_rows($result4) > 0){
+                        echo'
+                        <!-- INICIO EXIBIÇÕES DE PACOTES -->
+                        <div class="infoDescricao">
+                            <h3>Esta postagem contém o pacote</h3>
+                        </div>
+                        <div class="inicioInfoPostagem">
+                        <div class="quadroPacote">
+                            
+                    ';
+
                         while ($row4 = $result4 -> fetch_assoc()) {
                             $capa_img_pacote = getimagesize($row4["url_imgcapa"]);
-                            $info_imagem_pacote = getimagesize($row4["url_img2"]. $row4["url_img3"] );
+                            // $info_imagem_pacote = getimagesize($row4["url_img2"]. $row4["url_img3"] );
                             $largura_capa_pacote = 100;
                             $altura_capa_pacote = 100;
                             $largura_pacote = 100; 
                             $altura_pacote = 100;
                         // aqui vem o carrosel da pa 
-                        echo' <!-- INICIO EXIBIÇÕES DE PACOTES -->
-                <div class="infoDescricao">
-                    <h3>Esta postagem contém o pacote</h3>
-                </div>
-                <div class="inicioInfoPostagem">
-                <div class="quadroPacote">
-                    
-            
-                <div class="slides-container">
-                    <!-- slides -->
-                    <div class="slide" data-slide>
+                        echo'
+                        
+                        <div class="slides-container">
+                            <!-- slides -->
+                            <div class="slide" data-slide>
                     <div class="tituloInfoPacote" >
                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>'.$row4['nm_pacote'].'</h3>
+                        <h3>'.$row4['nm_servico'].'</h3>
                     </div>
                     <div class="fotoDestaquePacote">
                         <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_pacote.'%;height:'.$altura_capa_pacote.'%;">
@@ -165,30 +172,11 @@ $cd_postagem = $_GET['cd_postagem'];
                     </div>
             
                     <div class="descricaoInfoPacote">
-                        <h3>'.$row4['ds_pacote'].'</h3>
-                    </div>
-                    
-                    <div class="slide" data-slide>
-                    <div class="tituloInfoPacote" >
-                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>'.$row4['nm_pacote'].'</h3>
-                    </div>
-                    <div class="fotoDestaquePacote">
-                        <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_pacote.'%;height:'.$altura_capa_pacote.'%;">
-                    </div>
-            
-                    <div class="fotoLateralPacote">
-                        <img src="'.$row4["url_img2"].'" style="width:'.$largura_pacote.'%;height:'.$altura_pacote.'%;">
-                        <img src="'.$row4["url_img3"].'" style="width:'.$largura_pacote.'%;height:'.$altura_pacote.'%;">
-                    </div>
-            
-                    <div class="descricaoInfoPacote">
-                        <h3>'.$row4['ds_pacote'].'</h3>
-                    </div>
-                    
-            
-                    
-                </div>
+                        <h3>'.$row4['ds_servico'].'</h3>
+                    </div>                    
+                </div>';
+                        }}}}}
+?>
                    
             
                    
@@ -204,14 +192,8 @@ $cd_postagem = $_GET['cd_postagem'];
                     </div>
             
             
-        </div>';
-                    
-                      }}
-                }
-            
-               
-            
-                echo '<!-- MAIS SOBRE A EMPRESA -->
+        </div>
+                <!-- MAIS SOBRE A EMPRESA -->
                 <div class="maisSobre">
                     <h3>Mais sobre a empresa</h3>
                     <div class="gridMaisSobre">
@@ -233,18 +215,6 @@ $cd_postagem = $_GET['cd_postagem'];
             
             
             
-            </body>';
-            }
-        }
-        
-    
-
-?>
-
-        <script src="/js/menu.js"></script>
+            </body>
+               <script src="/js/menu.js"></script>
         <script src="../sessaoUsuario/js/carousel.js"></script>
-
-
-
-
-<!-- </html> -->
