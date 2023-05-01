@@ -21,7 +21,7 @@ if(!isset($_SESSION)){
   // $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
   
 // }
-var_dump($_SESSION['nm_usuarioempresa']);
+// var_dump($_SESSION['nm_usuarioempresa']);
 include('../protect.php');
 
 ?>
