@@ -38,6 +38,7 @@ if ($result->num_rows == 1 ) {
   $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
   $_SESSION['nm_fantasia'] = $empresa['nm_fantasia'];
   $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
+  $_SESSION['url_fotoperfil'] = $empresa['url_fotoperfil'];
 
   header("Location: /sistema/eventalize/sessaoEmpresa/index-e.php ");
 
