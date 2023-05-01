@@ -29,7 +29,7 @@ include('../protect.php');
             <div id="logoImagem"><a href="../sessaoEmpresa/index-e.php"></a></div>
             
             <ul class="opcoesMenu">
-                <li class=""><a href="#" class="opcaoMenu" aria-current="page">Início</a></li>
+                <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
                 <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
                 <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
                 <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
@@ -43,8 +43,8 @@ include('../protect.php');
                 </button>
 
                 <section id="menu">
-                <a href="criacaoServico-e.html"><h5>Criar Serviços e Pacotes</h5></a>
-                <a href=""><h5>Criar Postagens</h5></a>
+                <a href="criacaoServico-e.html"><h5>Criar Serviço ou Pacote</h5></a>
+                <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
