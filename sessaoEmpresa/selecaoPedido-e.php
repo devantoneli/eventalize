@@ -62,7 +62,7 @@
             <form action="selecaoPedido-e.php" method="post">
                 <div class="inputPesquisa">
                     <!-- <input type="text" name="cd_empresa" placeholder="Código da empresa"> -->
-                    <input type="text" name="nm_cliente" placeholder="Pesquisar pedido">
+                    <input class="pesquisarInput" type="text" name="nm_cliente" placeholder="Pesquisar pedido">
                     <div class="botaoPesquisaPedido">
                         <button type="submit">Pesquisar</button>
                     </div>
@@ -96,7 +96,6 @@ if(mysqli_num_rows($result_query) > 0){
         echo
         '<div class="cards">
             <div class="card">
-            <input type="checkbox" name="cardSelecao" class="cardSelecao">
             <div class="cardConteudo">
             <img src="../bancoImagens/empresas/pedido.svg" alt="">
             
@@ -104,14 +103,14 @@ if(mysqli_num_rows($result_query) > 0){
              <p>Pedido nº' . $row["cd_pedido"] .'</p>
              <h2>' .$row["nm_cliente"] .'</h2>
              <p>' . $row["dt_pedido"] . '</p>
-             <p>Mais detalhes desse pedido</p>
+             <a href="">Mais detalhes desse pedido</a>
         </div>
 
         <div class="precoPedido">
             <h1>R$' . $row["vl_pedido"] . '</h1>
             <form action="criarPostagem.php">
             <input type="hidden" value= '.$row["cd_pedido"] . ' name="cd_pedido">
-            <button type="submit">Selecionar Pedido</button>
+            <button type="submit" class="botaoPedido">Selecionar Pedido</button>
             </form>
         </div>
     </div>
