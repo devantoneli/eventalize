@@ -136,7 +136,7 @@
     height: 10vw;
     grid-template-rows: 3.8vw 3.8vw;
     display: none;
-    padding-top: 1vw;
+    /* padding-top: 1vw; */
     padding-left: 1vw;
     font-size: 1.5vw;
     text-align: left;

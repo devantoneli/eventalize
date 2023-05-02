@@ -12,6 +12,13 @@ body, html{
     src: url('/font/LeagueSpartan.ttf');
 }
 
+/* .bg-gradPrincipal {
+    background: linear-gradient(270deg, #3ED1FF -3.33%, #FF3E83 68.74%, #FFA856 103.43%);
+} */
+
+
+/* TELA INICIO EMPRESA */
+
 .bg-gradPrincipal {
     background: linear-gradient(270deg, #3ED1FF -3.33%, #FF3E83 68.74%, #FFA856 103.43%);
 }
@@ -23,7 +30,6 @@ body, html{
     padding: 0;
     margin: 0;
     font-family: 'League Spartan';
-    
 }
 
 /* MENU EMPRESA */
@@ -31,7 +37,7 @@ body, html{
 .alinhaElementos {
     display: grid !important;
     align-items: center;
-    grid-template-columns: 10vw 71vw 5vw;
+    grid-template-columns: 10vw 71vw 18.1vw;
 }
 
 .alinhaLogo {
@@ -46,7 +52,7 @@ body, html{
 .opcoesMenu {
     display: grid;
     text-align: center;
-    grid-template-columns: 13% 10% 15% 13%;
+    grid-template-columns: 8% 10% 17% 13%;
     padding: 2%;
 }
 
@@ -109,7 +115,7 @@ body, html{
     margin-left: 5vw;
 }
 
-#inserirPerfil {
+#inserirPerfil img {
     width: 4vw;
     height: 4vw;
     border-radius: 50%;
@@ -117,37 +123,20 @@ body, html{
     cursor: pointer;
 }
 
-/* @media (max-width: 480px) {
-    .alinhaElementos {
-        display: grid;
-        align-items: baseline;
-        grid-template-columns: 50% 50%;
-    }
-    
-    .opcoesMenu {
-        display: grid;
-        text-align: center;
-        grid-template-columns: 10% 10% 10% 10% 10%;
-    }
-  } */
-
-/* menu suspenso */
-
 #menu{
     z-index: 1;
     border-radius: 4%;
     filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
     position: absolute;
     width: 11vw;
-    top: 5.9vw;
-    right: 10vw;
-    height: 17vw;
-    color:#5356ad;
-    grid-template-rows: 2.5vw 2.5vw 2.5vw 2.5vw 2.5vw;
+    top: 6vw;
+    right: 15vw;
+    height: 10vw;
+    grid-template-rows: 3.8vw 3.8vw;
     display: none;
-    padding-top: 0.3vw;
-    padding-left: 2vw;
-    font-size: 1.2vw;
+    /* padding-top: 2.5vw; */
+    padding-left: 1vw;
+    font-size: 1.5vw;
     text-align: left;
     font-family: 'League Spartan';
     background-color: rgb(255, 255, 255);
@@ -157,9 +146,11 @@ body, html{
     text-decoration: none;
     height: 0;
     width: 10vw;
+    /* color:#5356ad; */
+
 }
 
-#menu h4:hover{
+#menu h5:hover{
     color: #FF3E83;
 }
 
@@ -172,14 +163,14 @@ body, html{
     position: absolute;
     width: 11vw;
     top: 5.9vw;
-    right: 0.5vw;
-    height: 14.3vw;
+    right: 2vw;
+    height: 17vw;
     color:#5356ad;
-    grid-template-rows: 3.5vw 2.5vw 3.5vw 2.5vw;
+    grid-template-rows: 2.5vw 2.5vw 2.5vw 3.5vw 2.5vw;
     display: none;
-    padding-top: 0.3vw;
-    padding-left: 2vw;
-    font-size: 1.2vw;
+    /* padding-top: 1vw; */
+    padding-left: 1vw;
+    font-size: 1.5vw;
     text-align: left;
     font-family: 'League Spartan';
     background-color: rgb(255, 255, 255);
@@ -187,15 +178,13 @@ body, html{
 
 #menuPerfil a{
     text-decoration: none;
-    font-family: 'League Spartan';
     height: 0;
     width: 10vw;
-    color: #5356ad;
+    /* color: #5356ad; */
 }
 
-#menuPerfil h4:hover{
+#menuPerfil h5:hover{
     color: #FF3E83;
-    text-decoration: none;
 }
 
 /* RADIO DECISIVO */
