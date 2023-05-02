@@ -58,6 +58,40 @@ function lerImgCapa() {
   document.getElementById("img-input3").addEventListener("change", lerImg3, false);
 
 //FIM SCRIPT DE criacaoServico-e.html
+
+//MODAL SERVIÇO EDITADO
+
+
+
+
+
+
+  function exibirModal() {
+  const svg = document.querySelector('svg');
+  const h3 = document.querySelector('#animacao');
+  const botao = document.querySelector('#mostrarAnimacao');
+
+  svg.addEventListener('click', function() {
+    svg.classList.toggle('active');
+  });
+
+  function mostrarAnimacao() {
+    h3.classList.toggle('hidden');
+    h3.classList.toggle('active');
+  }
+
+  botao.addEventListener('click', mostrarAnimacao);
+    // exibe a modal
+    document.getElementById("modal").style.display = "block";
+  
+    // esconde a modal após 3 segundos
+    setTimeout(function() {
+      document.getElementById("modal").style.display = "none";
+    }, 3000);
+  console.log("ENTROU AQUI");
+
+  }
+
   
   
   
