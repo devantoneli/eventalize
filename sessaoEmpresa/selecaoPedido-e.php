@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION)){
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -78,7 +84,7 @@ if(isset($_POST["nm_cliente"])){
     }else {
         $nm_cliente = "";
     }
-
+    $cd_empresa = $_SESSION['cd_empresa'];
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -86,13 +92,14 @@ $dbname = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '$nm_cliente%'";
+$sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
 
 if(mysqli_num_rows($result_query) > 0){
     while($row = mysqli_fetch_assoc($result_query)){
+        if($row["cd_empresa"]==$cd_empresa){
         echo
         '<div class="cards">
             <div class="card">
@@ -115,6 +122,7 @@ if(mysqli_num_rows($result_query) > 0){
         </div>
     </div>
 </div>';
+        }
 }
     }else{
         $sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
@@ -122,6 +130,7 @@ if(mysqli_num_rows($result_query) > 0){
         $row = mysqli_fetch_assoc($result_query);
         if(mysqli_num_rows($result_query) > 0){
             while($row = mysqli_fetch_assoc($result_query)){
+                if($row["cd_empresa"]==$cd_empresa){
                 echo
         '<div class="cards">
             <div class="card">
@@ -143,7 +152,7 @@ if(mysqli_num_rows($result_query) > 0){
             </form>
         </div>
         </div>
-    </div>';
+    </div>';}
             }
         }else {
             echo"Nenhum registro encontrado.";
