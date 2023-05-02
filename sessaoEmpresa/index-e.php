@@ -81,41 +81,41 @@ include('../protect.php');
                 <p>Aqui está o relatório da última semana: </p>
                 <div class="grid-RelatRapid">
                     <div class="relatRapid">
-                        <p>Segunda</p>
-                        <p>03/04/23</p>
+                        <h2 style="color: white;">Segunda</h2>
+                        <p style="color: white;">03/04/23</p>
 
                         <p><a>+5</a> Serviços</p>
                         <p><a>+5</a> Clientes</p>
-                        <p><a>+5</a> Serviço/cliente</p>
+                        <p><a>5</a> Serviço/cliente</p>
                     </div>
                     <div class="relatRapid">
-                        <div class="relatRapid">
-                            <p>Segunda</p>
-                            <p>03/04/23</p>
+                        <div class="relatRapid" style="background-color: #968EC7 !important;">
+                            <h2 style="color: white;">Terça</h2>
+                            <p style="color: white;">04/04/23</p>
     
-                            <p><a>+5</a> Serviços</p>
-                            <p><a>+5</a> Clientes</p>
-                            <p><a>+5</a> Serviço/cliente</p>
+                            <p><a>+10</a> Serviços</p>
+                            <p><a>+4</a> Clientes</p>
+                            <p><a>2,5</a> Serviço/cliente</p>
                         </div>
                     </div>
                     <div class="relatRapid">
-                        <div class="relatRapid">
-                            <p>Segunda</p>
-                            <p>03/04/23</p>
+                        <div class="relatRapid" style="background-color: #FF3E83 !important;">
+                            <h2 style="color: white;">Quarta</h2>
+                            <p style="color: white;">05/04/23</p>
     
-                            <p><a>+5</a> Serviços</p>
-                            <p><a>+5</a> Clientes</p>
-                            <p><a>+5</a> Serviço/cliente</p>
+                            <p><a>+24</a> Serviços</p>
+                            <p><a>+16</a> Clientes</p>
+                            <p><a>1,5</a> Serviço/cliente</p>
                         </div>
                     </div>
                     <div class="relatRapid">
-                        <div class="relatRapid">
-                            <p>Segunda</p>
-                            <p>03/04/23</p>
+                        <div class="relatRapid" style="background-color: #FFA856 !important;">
+                            <h2 style="color: white;">Quinta</h2>
+                            <p style="color: white;">06/04/23</p>
     
-                            <p><a>+5</a> Serviços</p>
-                            <p><a>+5</a> Clientes</p>
-                            <p><a>+5</a> Serviço/cliente</p>
+                            <p><a>+14</a> Serviços</p>
+                            <p><a>+6</a> Clientes</p>
+                            <p><a>2,3</a> Serviço/cliente</p>
                         </div>
                     </div>
                 </div>
