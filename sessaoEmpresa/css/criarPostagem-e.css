@@ -182,9 +182,8 @@
     margin-top: 5%;
     margin-bottom: 5%;
     width: 80vw;
-    height: 70vw;
     background-color: white;
-    border-radius: 3%;
+    border-radius: 3em;
     border: 1px solid  rgb(141, 141, 141);
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -193,6 +192,20 @@
     overflow: auto;
     scrollbar-gutter: end;
 
+}
+
+.pesquisarInput{
+    padding: 0em 1.2em;
+}
+
+.botaoPedido {
+    background-color: #FF3E83;
+    height: 3em;
+    width: 15em;
+    font-weight: bold;
+    border: none;
+    color: white;
+    border-radius: 1em;
 }
 
 /* Estiliza a barra de rolagem para navegadores que usam o motor WebKit, como o Google Chrome e o Safari */
