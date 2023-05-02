@@ -1,5 +1,13 @@
 <?php
 
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include('../protect.php');
+
+
 $cd_pedido = $_GET['cd_pedido'];
 
 
@@ -117,9 +125,9 @@ if (mysqli_num_rows($result) > 0) {
 
                 <!-- PERFIL DA EMPRESA -->
                 <div class="fotoPerfil">
-                    <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
+                    <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
                     <div> 
-                    <h2>Aline Doces</h2>
+                    <h2><?php echo $_SESSION['nm_fantasia'];?></h2>
                     </div>
                 </div>
 
