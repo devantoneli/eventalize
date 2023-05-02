@@ -29,9 +29,9 @@ if(mysqli_num_rows($result_query) > 0){
         $sql3 ="DELETE FROM tb_servico WHERE cd_servico=('$cd_servico')";
 
         if($conn->query($sql3) === TRUE)
-        echo
+       
         //SE A CONEXÃO COM $sql3 FUNCIONAR, EXIBIREMOS ESSA MENSAGEM:
-        '<h1>EXCLUIDO COM SUCESSO</h1>';
+        header('Location: perfilEmpresa.php');
     } else{
         echo "Error deleting record: " . $conn->error;
     }
@@ -39,8 +39,7 @@ if(mysqli_num_rows($result_query) > 0){
     $sql2 = "DELETE FROM tb_servico WHERE cd_servico=$cd_servico";
 
     if($conn->query($sql2) === TRUE){
-    echo
-    '<h1>EXCLUIDO COM SUCESSO</h1>';
+    header('Location: perfilEmpresa.php');
     
   } else {
     echo "Error deleting record: " . $conn->error;

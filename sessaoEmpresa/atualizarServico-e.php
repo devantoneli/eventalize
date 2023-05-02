@@ -38,7 +38,6 @@ echo "se AESFFAm";
 $semcapa = false;
 }else {
     $semcapa = true;
-    echo "sem CAPA";
 }
 
 if(isset($_POST['url_img2']) && $_POST['url_img2'] != "mudara") {
@@ -56,7 +55,6 @@ if(isset($_POST['url_img2']) && $_POST['url_img2'] != "mudara") {
     $semimg2 = false;
 }else {
     $semimg2 = true;
-    echo "sem img2";
 }
 
 if(isset($_POST['url_img3']) && $_POST['url_img3'] != "mudara") {
@@ -74,7 +72,6 @@ if(isset($_POST['url_img3']) && $_POST['url_img3'] != "mudara") {
     $semimg3 = false;
 }else {
     $semimg3 = true;
-    echo "sem img3";
 }
 
 // echo ($url_img3);
@@ -102,8 +99,7 @@ if ($semimg2 == false && $semimg3 == false){
 
 
 if ($conn->query($sql)=== TRUE){
-    echo '<h1>Informações alteradas com sucesso</h1>';
-    echo $sql;
+    header('Location: perfilEmpresa.php');
 } else{
     echo "Error updating record: " . $conn->error;
 }

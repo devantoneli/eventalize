@@ -183,7 +183,7 @@ include('../protect.php');
         <path d="M136.8 79.6586L136.815 79.6436L136.83 79.6282L145.249 70.8434L162.849 88.077L154.034 96.8922L104.235 146.691L95.4349 155.491L87.0309 146.722L87.0162 146.706L87.0012 146.691L65.6586 125.349L56.8284 116.519L74.062 99.2851L82.8922 108.115L82.9055 108.129L82.9191 108.142L94.4441 119.24L95.8578 120.601L97.2456 119.213L136.8 79.6586Z" fill="white" stroke="#F5468A" stroke-width="4" class="svg-elem-2 active"></path>
         </svg>
         <h1 id="animacao" class="hidden">Serviço criado com sucesso! </h1>
-        <a href="index-e.php">Voltar para o início</a>
+        <a href="perfilEmpresa.php">Voltar para o início</a>
         
         </div>
 </center>
