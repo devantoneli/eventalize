@@ -63,35 +63,36 @@ function lerImgCapa() {
 
 
 
+const h3 = document.querySelector('#animacao');
 
-
-
+function mostrarAnimacao() {
+  h3.classList.toggle('hidden');
+  h3.classList.toggle('active');
+}
   function exibirModal() {
   const svg = document.querySelector('svg');
-  const h3 = document.querySelector('#animacao');
+  
   const botao = document.querySelector('#mostrarAnimacao');
-
-  svg.addEventListener('click', function() {
     svg.classList.toggle('active');
-  });
+    svg.style.fill = "blue";
 
-  function mostrarAnimacao() {
-    h3.classList.toggle('hidden');
-    h3.classList.toggle('active');
-  }
 
+
+  mostrarAnimacao();
   botao.addEventListener('click', mostrarAnimacao);
     // exibe a modal
     document.getElementById("modal").style.display = "block";
+    document.getElementById("escurecer").style.display = "block";
+    var elemento = document.getElementById("topo");
+    var posicao = elemento.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({top: posicao, behavior: "smooth"});
   
     // esconde a modal após 3 segundos
-    setTimeout(function() {
-      document.getElementById("modal").style.display = "none";
-    }, 3000);
-  console.log("ENTROU AQUI");
+    // setTimeout(function() {
+    //   document.getElementById("modal").style.display = "none";
+    // }, 3000);
 
   }
-
-  
+  console.log("youg");
   
   

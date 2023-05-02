@@ -22,8 +22,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
-
 //CONVERSAO BASE64 PARA JPEG
+if(isset($_POST['url_imgcapa']) && $_POST['url_imgcapa'] != "mudara") {
 $post_imgcapa = $_POST['url_imgcapa'];
 $post_imgcapa = str_replace('data:image/jpeg;base64,', '', $post_imgcapa);
 $post_imgcapa = str_replace(' ', '+', $post_imgcapa);
@@ -34,9 +34,14 @@ $caminho_capa = '../bancoImagens/servicos/' . $nm_imgcapa;
 file_put_contents($caminho_capa, $data);
 // construir o caminho completo para a imagem a partir do diretório raiz do projeto
 $url_imgcapa = '../bancoImagens/servicos/' .$nm_imgcapa;
+echo "se AESFFAm";
+$semcapa = false;
+}else {
+    $semcapa = true;
+    echo "sem CAPA";
+}
 
-
-if(isset($_POST['url_img2'])) {
+if(isset($_POST['url_img2']) && $_POST['url_img2'] != "mudara") {
     // //CONVERSAO BASE64 PARA JPEG
     $post_img2 = $_POST['url_img2'];
     $post_img2 = str_replace('data:image/jpeg;base64,', '', $post_img2);
@@ -51,9 +56,10 @@ if(isset($_POST['url_img2'])) {
     $semimg2 = false;
 }else {
     $semimg2 = true;
+    echo "sem img2";
 }
 
-if(isset($_POST['url_img3'])) {
+if(isset($_POST['url_img3']) && $_POST['url_img3'] != "mudara") {
     // //CONVERSAO BASE64 PARA JPEG
     $post_img3 = $_POST['url_img3'];
     $post_img3 = str_replace('data:image/jpeg;base64,', '', $post_img3);
@@ -68,21 +74,36 @@ if(isset($_POST['url_img3'])) {
     $semimg3 = false;
 }else {
     $semimg3 = true;
+    echo "sem img3";
 }
 
 // echo ($url_img3);
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+    if($semcapa == false){
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+    }else{
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+    }
+    
 }else if ($semimg2 == true){
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+    if($semcapa == false){
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico=$cd_servico";}
+    else{
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+    }
 }else {
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico=$cd_servico";
+    if($semcapa == false){
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico=$cd_servico";}
+    else{
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_img2='$url_img2' WHERE cd_servico=$cd_servico";
+    }
 }
 
 
 if ($conn->query($sql)=== TRUE){
     echo '<h1>Informações alteradas com sucesso</h1>';
+    echo $sql;
 } else{
     echo "Error updating record: " . $conn->error;
 }

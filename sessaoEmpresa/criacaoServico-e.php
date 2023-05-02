@@ -1,123 +1,7 @@
-
-
 <?php
-
-//CRIANDO SERVIÇO (INSERT)
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nm_servico = $_POST['nm_servico'];
-$ds_servico = $_POST['ds_servico'];
-$vl_servico = $_POST["vl_servico"];
-$cd_personaliz = $_POST["cd_personaliz"];
-$cd_orcament = $_POST["cd_orcament"];
-$cd_local = $_POST["cd_local"];
-// $cd_empresa = $_POST['cd_empresa'];
-$cd_tiposervico = $_POST['cd_tiposervico'];
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_eventalize";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
-
-//ULTIMA PRIMARY KEY para somar um e fazer a primary key atual, para nomear as imagens corretamente
-$sql = "SELECT MAX(cd_servico) as 'ultimo' FROM tb_servico";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$cd_servico = $row['ultimo'] + 1;
-
-//CONVERSAO BASE64 PARA JPEG
-$post_imgcapa = $_POST['url_imgcapa'];
-$post_imgcapa = str_replace('data:image/jpeg;base64,', '', $post_imgcapa);
-$post_imgcapa = str_replace(' ', '+', $post_imgcapa);
-$data = base64_decode($post_imgcapa);
-$nm_imgcapa = 'capa'.$cd_servico.'.jpeg';
-//UPLOAD DE ARQUIVO CONVERTIDO
-$caminho_capa = '../bancoImagens/servicos/' . $nm_imgcapa;
-file_put_contents($caminho_capa, $data);
-// construir o caminho completo para a imagem a partir do diretório raiz do projeto
-$url_imgcapa = '../bancoImagens/servicos/' .$nm_imgcapa;
-
-
-if(isset($_POST['url_img2'])) {
-    // //CONVERSAO BASE64 PARA JPEG
-    $post_img2 = $_POST['url_img2'];
-    $post_img2 = str_replace('data:image/jpeg;base64,', '', $post_img2);
-    $post_img2 = str_replace(' ', '+', $post_img2);
-    $data = base64_decode($post_img2);
-    $nm_img2 = 'img2-'.$cd_servico.'.jpeg';
-    //UPLOAD DE ARQUIVO CONVERTIDO
-    $caminho_img2 = '../bancoImagens/servicos/' . $nm_img2;
-    file_put_contents($caminho_img2, $data);
-    // construir o caminho completo para a imagem a partir do diretório raiz do projeto
-    $url_img2 = '../bancoImagens/servicos/' .$nm_img2;
-    $semimg2 = false;
-}else {
-    $semimg2 = true;
-}
-
-if(isset($_POST['url_img3'])) {
-    // //CONVERSAO BASE64 PARA JPEG
-    $post_img3 = $_POST['url_img3'];
-    $post_img3 = str_replace('data:image/jpeg;base64,', '', $post_img3);
-    $post_img3 = str_replace(' ', '+', $post_img3);
-    $data = base64_decode($post_img3);
-    $nm_img3 = 'img3-'.$cd_servico.'.jpeg';
-    //UPLOAD DE ARQUIVO CONVERTIDO
-    $caminho_img3 = '../bancoImagens/servicos/' . $nm_img3;
-    file_put_contents($caminho_img3, $data);
-    // construir o caminho completo para a imagem a partir do diretório raiz do projeto
-    $url_img3 = '../bancoImagens/servicos/' .$nm_img3;
-    $semimg3 = false;
-}else {
-    $semimg3 = true;
-}
-
-if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
-}else if ($semimg2 == true){
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img3) values ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
-}else {
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2) values ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
-}
-
-$onclick = "";
-
-if ($conn->query($sql)=== TRUE){
-    // header("Location: ../sessaoEmpresa/servicoCriadoModal.html");
-$onclick = "document.querySelector('svg').classList.add('active'); exibirModal()";
-    
-} else{
-    echo "Error: " . $sql . "<br>" .  $conn->error;
-}
-
-
-
-
-//CASO VCS SE ESQUEÇAM, AS IMAGENS NÃO ESTÃO SENDO EXIBIDAS, POIS NÃO ESTAMOS PEDINDO PARA ELAS SEREM EXIBIDAS, NÃO SURTEM!
-$conn->close();
-
-}else{
-    echo'<H1>TA VAZIO!</H1>';
-}
-
-
-
-// BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
-
-// var_dump($_POST);
-
-
+include('../protect.php');
 
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -134,7 +18,7 @@ $conn->close();
 <body>
 <!-- FRONT-END formulário para criação de um serviço, enviando para o arquivo salvarServico.php-->
     <!--INICIO MENU EMPRESA -->
-    <div class="bg-gradPrincipal menuEmpresa">
+    <div id="topo" class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
         <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
             
@@ -251,7 +135,7 @@ $conn->close();
                 </div>
 
 <!-- BOTAO DO FORM -->         
-                <!-- <button class="criar" type="submit" id="mostrarAnimacao" onclick = "</*?php echo$onclick; ?*/>">Criar Serviço</button> -->
+                <button class="criar" type="submit" id="mostrarAnimacao">Criar Serviço</button>
             </div>
             
             
@@ -284,41 +168,69 @@ $conn->close();
                 </div>
         </form>
     </section>
-    <button class="criar" id="mostrarAnimacao" onclick = "exibirModal()">Criar Serviço</button>
+    
+    <div id="escurecer"></div>
 
 
 <!-- SESSAO PACOTE -->
     <section class="pacote">
 
     </section>
-
+    <center>
     <div class="servicoAtt" id="modal">
         <svg width="215" height="215" viewBox="0 0 215 215" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="107.5" cy="107.5" r="107.5" fill="#F5468A" class="svg-elem-1"></circle>
-        <path d="M136.8 79.6586L136.815 79.6436L136.83 79.6282L145.249 70.8434L162.849 88.077L154.034 96.8922L104.235 146.691L95.4349 155.491L87.0309 146.722L87.0162 146.706L87.0012 146.691L65.6586 125.349L56.8284 116.519L74.062 99.2851L82.8922 108.115L82.9055 108.129L82.9191 108.142L94.4441 119.24L95.8578 120.601L97.2456 119.213L136.8 79.6586Z" fill="white" stroke="#F5468A" stroke-width="4" class="svg-elem-2"></path>
+        <circle cx="107.5" cy="107.5" r="107.5" fill="#F5468A" class="svg-elem-1 active"></circle>
+        <path d="M136.8 79.6586L136.815 79.6436L136.83 79.6282L145.249 70.8434L162.849 88.077L154.034 96.8922L104.235 146.691L95.4349 155.491L87.0309 146.722L87.0162 146.706L87.0012 146.691L65.6586 125.349L56.8284 116.519L74.062 99.2851L82.8922 108.115L82.9055 108.129L82.9191 108.142L94.4441 119.24L95.8578 120.601L97.2456 119.213L136.8 79.6586Z" fill="white" stroke="#F5468A" stroke-width="4" class="svg-elem-2 active"></path>
         </svg>
-        <h3 id="animacao" class="hidden">Serviço editado com sucesso! </h3>
+        <h1 id="animacao" class="hidden">Serviço criado com sucesso! </h1>
+        <a href="index-e.php">Voltar para o início</a>
         
         </div>
-   
+</center>
 </div>
 
 
 <style>
-    .hidden {
+    /* .hidden {
     display: none;
+    } */
+
+    .servicoAtt{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 50%;
+        display: none;
+        position: absolute;
+        width: 50%;
+        top: 20%;
+        left: 23%;
+        background-color: white;
+        z-index: 3;
+        padding-top: 5%;
     }
 
-
+    #escurecer {
+        display: none;
+        width: 100%;
+        height: 166%;
+        background-color: black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        opacity: 0.5;
+    }
     
     svg .svg-elem-1 {
     stroke-dashoffset: 677.4424205218055px;
     stroke-dasharray: 677.4424205218055px;
-    fill: transparent;
+    /* fill: transparent; */
     -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
-                            fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
-            transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
-                    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+    transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
     }
 
     svg.active .svg-elem-1 {
@@ -329,11 +241,11 @@ $conn->close();
     svg .svg-elem-2 {
     stroke-dashoffset: 301.8009033203125px;
     stroke-dasharray: 301.8009033203125px;
-    fill: transparent;
+    /* fill: transparent; */
     -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
-                            fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
-            transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
-                    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+    transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
+    fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
     }
 
     svg.active .svg-elem-2 {
@@ -341,23 +253,8 @@ $conn->close();
     fill: rgb(255, 255, 255);
     }
 
-    body{
-        background-color: purple;
-    }
-
-    .servicoAtt{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-        display: none;
-        background-color: white;
-    }
-
-
     #animacao {
-    opacity: 0;
+    opacity: 1;
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -370,7 +267,7 @@ $conn->close();
 
     @keyframes fadeIn {
     from {
-        opacity: 0;
+        opacity: 1;
     }
     to {
         opacity: 1;
@@ -387,3 +284,122 @@ $conn->close();
     <script src="js/menu-e.js"></script>
 </body>
 </html>
+
+<?php
+$onclick = "";
+if(!isset($_SESSION)){
+    session_start();
+  }
+//CRIANDO SERVIÇO (INSERT)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nm_servico = $_POST['nm_servico'];
+$ds_servico = $_POST['ds_servico'];
+$vl_servico = $_POST["vl_servico"];
+$cd_personaliz = $_POST["cd_personaliz"];
+$cd_orcament = $_POST["cd_orcament"];
+$cd_local = $_POST["cd_local"];
+$cd_empresa = $_SESSION['cd_empresa'];
+$cd_tiposervico = $_POST['cd_tiposervico'];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+//ULTIMA PRIMARY KEY para somar um e fazer a primary key atual, para nomear as imagens corretamente
+$sql = "SELECT MAX(cd_servico) as 'ultimo' FROM tb_servico";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$cd_servico = $row['ultimo'] + 1;
+
+//CONVERSAO BASE64 PARA JPEG
+$post_imgcapa = $_POST['url_imgcapa'];
+$post_imgcapa = str_replace('data:image/jpeg;base64,', '', $post_imgcapa);
+$post_imgcapa = str_replace(' ', '+', $post_imgcapa);
+$data = base64_decode($post_imgcapa);
+$nm_imgcapa = 'capa'.$cd_servico.'.jpeg';
+//UPLOAD DE ARQUIVO CONVERTIDO
+$caminho_capa = '../bancoImagens/servicos/' . $nm_imgcapa;
+file_put_contents($caminho_capa, $data);
+// construir o caminho completo para a imagem a partir do diretório raiz do projeto
+$url_imgcapa = '../bancoImagens/servicos/' .$nm_imgcapa;
+
+
+if(isset($_POST['url_img2'])) {
+    // //CONVERSAO BASE64 PARA JPEG
+    $post_img2 = $_POST['url_img2'];
+    $post_img2 = str_replace('data:image/jpeg;base64,', '', $post_img2);
+    $post_img2 = str_replace(' ', '+', $post_img2);
+    $data = base64_decode($post_img2);
+    $nm_img2 = 'img2-'.$cd_servico.'.jpeg';
+    //UPLOAD DE ARQUIVO CONVERTIDO
+    $caminho_img2 = '../bancoImagens/servicos/' . $nm_img2;
+    file_put_contents($caminho_img2, $data);
+    // construir o caminho completo para a imagem a partir do diretório raiz do projeto
+    $url_img2 = '../bancoImagens/servicos/' .$nm_img2;
+    $semimg2 = false;
+}else {
+    $semimg2 = true;
+}
+
+if(isset($_POST['url_img3'])) {
+    // //CONVERSAO BASE64 PARA JPEG
+    $post_img3 = $_POST['url_img3'];
+    $post_img3 = str_replace('data:image/jpeg;base64,', '', $post_img3);
+    $post_img3 = str_replace(' ', '+', $post_img3);
+    $data = base64_decode($post_img3);
+    $nm_img3 = 'img3-'.$cd_servico.'.jpeg';
+    //UPLOAD DE ARQUIVO CONVERTIDO
+    $caminho_img3 = '../bancoImagens/servicos/' . $nm_img3;
+    file_put_contents($caminho_img3, $data);
+    // construir o caminho completo para a imagem a partir do diretório raiz do projeto
+    $url_img3 = '../bancoImagens/servicos/' .$nm_img3;
+    $semimg3 = false;
+}else {
+    $semimg3 = true;
+}
+
+if ($semimg2 == false && $semimg3 == false){
+    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
+}else if ($semimg2 == true){
+    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img3) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
+}else {
+    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
+}
+
+
+
+if ($conn->query($sql)=== TRUE){
+    // header("Location: ../sessaoEmpresa/servicoCriadoModal.html");
+?>
+<script>
+    exibirModal();
+</script>
+<?php
+    
+} else{
+    echo "Error: " . $sql . "<br>" .  $conn->error;
+}
+
+
+
+
+//CASO VCS SE ESQUEÇAM, AS IMAGENS NÃO ESTÃO SENDO EXIBIDAS, POIS NÃO ESTAMOS PEDINDO PARA ELAS SEREM EXIBIDAS, NÃO SURTEM!
+$conn->close();
+
+}
+
+
+// BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
+
+// var_dump($_POST);
+
+
+
+?>
