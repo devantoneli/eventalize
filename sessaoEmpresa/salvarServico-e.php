@@ -1,6 +1,10 @@
 <?php
 
 //CRIANDO SERVIÇO (INSERT)
+if(!isset($_SESSION)){
+    session_start();
+  }
+
 
 $nm_servico = $_POST['nm_servico'];
 $ds_servico = $_POST['ds_servico'];
@@ -8,7 +12,7 @@ $vl_servico = $_POST["vl_servico"];
 $cd_personaliz = $_POST["cd_personaliz"];
 $cd_orcament = $_POST["cd_orcament"];
 $cd_local = $_POST["cd_local"];
-// $cd_empresa = $_POST['cd_empresa'];
+$cd_empresa = $_SESSION['cd_empresa'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
 // BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
@@ -80,11 +84,11 @@ if(isset($_POST['url_img3'])) {
 }
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
 }else if ($semimg2 == true){
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img3) values ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img3) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
 }else {
-    $sql = "INSERT INTO tb_servico(nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2) values ('$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
+    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
 }
 
 

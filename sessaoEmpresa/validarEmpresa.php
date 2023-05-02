@@ -27,7 +27,7 @@ $sql = 'INSERT INTO tb_empresa (nm_fantasia,cd_cnpj, nm_usuarioempresa, nm_email
 
 
 if($conn->query($sql)=== TRUE){
-    header('Location: /sistema/eventalize/index-e.php');
+    header('Location: ../entrar.html');
 }
 else{
     echo "Erro: " . $sql . "<br>" . $conn->error;
