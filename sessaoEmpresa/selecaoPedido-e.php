@@ -73,7 +73,11 @@
 
 //NESSE ARQUIVO, ESTAREMOS SELECIONANDO O PEDIDO QUE A EMPRESA DESEJA FAZER A POSTAGEM
 
-$nm_cliente = $_POST["nm_cliente"];
+if(isset($_POST["nm_cliente"])){
+    $nm_cliente = $_POST["nm_cliente"];
+    }else {
+        $nm_cliente = "";
+    }
 
 $servername = "localhost";
 $username = "root";
@@ -82,11 +86,7 @@ $dbname = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-if($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
-
-$sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
+$sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '$nm_cliente%'";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
@@ -117,7 +117,37 @@ if(mysqli_num_rows($result_query) > 0){
 </div>';
 }
     }else{
-        echo "Nenhum registro encontrado";
+        $sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%$nm_cliente%'";
+        $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+        $row = mysqli_fetch_assoc($result_query);
+        if(mysqli_num_rows($result_query) > 0){
+            while($row = mysqli_fetch_assoc($result_query)){
+                echo
+        '<div class="cards">
+            <div class="card">
+            <div class="cardConteudo">
+            <img src="../bancoImagens/empresas/pedido.svg" alt="">
+            
+        <div class="infoCard">
+             <p>Pedido nº' . $row["cd_pedido"] .'</p>
+             <h2>' .$row["nm_cliente"] .'</h2>
+             <p>' . $row["dt_pedido"] . '</p>
+             <a href="">Mais detalhes desse pedido</a>
+        </div>
+
+        <div class="precoPedido">
+            <h1>R$' . $row["vl_pedido"] . '</h1>
+            <form action="criarPostagem.php">
+            <input type="hidden" value= '.$row["cd_pedido"] . ' name="cd_pedido">
+            <button type="submit" class="botaoPedido">Selecionar Pedido</button>
+            </form>
+        </div>
+        </div>
+    </div>';
+            }
+        }else {
+            echo"Nenhum registro encontrado.";
+        }
 }
     
 ?>

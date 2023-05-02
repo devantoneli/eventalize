@@ -16,7 +16,7 @@ if($conn->connect_error){
 }
 
 // SELECIONANDO NA TB_PACOTESERVICO O CD_SERVICO DO SERVICO QUE FOI SELECIONADO, PARA QUE ELE POSSA SER EXCLUÍDO DE AMBAS AS TABELAS
-$sql = "SELECT * FROM tb_pacoteservico WHERE cd_servico = ('$cd_servico')";
+$sql = "SELECT * FROM tb_pacoteservico WHERE cd_servico = $cd_servico";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
@@ -35,8 +35,8 @@ if(mysqli_num_rows($result_query) > 0){
     } else{
         echo "Error deleting record: " . $conn->error;
     }
-} /*else{
-    $sql2 = "DELETE FROM tb_servico WHERE cd_servico=('$cd_servico')";
+}else{
+    $sql2 = "DELETE FROM tb_servico WHERE cd_servico=$cd_servico";
 
     if($conn->query($sql2) === TRUE){
     echo
@@ -45,7 +45,7 @@ if(mysqli_num_rows($result_query) > 0){
   } else {
     echo "Error deleting record: " . $conn->error;
     }
-}*/
+}
     
 $conn->close();
 ?>
