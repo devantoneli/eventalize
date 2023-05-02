@@ -48,7 +48,7 @@ include('../protect.php');
     <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
         
         <ul class="opcoesMenu">
-            <li class=""><a href="#" class="opcaoMenu" aria-current="page">Seu portfólio</a></li>
+            <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
             <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
             <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
             <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
@@ -56,29 +56,31 @@ include('../protect.php');
     
         <div class="alinhaLogo">
             <button class="botaoSeta" id="iconSeta">
-            <svg xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" fill="currentColor" class="bi bi-chevron-down setaMenu" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
             </svg>
             </button>
 
             <section id="menu">
-                <a href=""><h5>Pedidos</h5></a>
-                <a href="criacaoServico-e.html"><h5>Criar Serviços e Pacotes</h5></a>
-                <a href=""><h5>Mensagens</h5></a>
-                <a href=""><h5>Pontuações</h5></a>
-                <a href=""><h5>Configurações</h5></a>
+                <!-- <a href=""><h5>Pedidos</h5></a> -->
+                <a href="criacaoServico-e.html"><h5>Cria Serviço ou Pacote</h5></a>
+                <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
             </section>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16" style="cursor:pointer;">
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
             </svg>
 
-            <div id="inserirPerfil"></div>
+            <div id="inserirPerfil">
+              <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
+            </div>
 
             <section id="menuPerfil">
                 <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
+                <a href=""><h5>Pontuações</h5></a>
                 <a href=""><h5>Postagens</h5></a>
                 <a href=""><h5>Estatísticas de venda</h5></a>
+                <a href=""><h5>Configurações</h5></a>
                 <a href="../logout.php"><h5>Sair</h5></a>
             </section>
         </div>
@@ -96,7 +98,7 @@ include('../protect.php');
                     <div class="infoEmpresa">
                         <div class="info">
                         <h3><?php echo $_SESSION['nm_usuarioempresa'];?></h3>
-                        <h4>Fotógrafa Social</h4>
+                        <h4><?php echo $_SESSION['ds_biografia'];?></h4>
                         </div>
                         <div class="loc">
                             <img src="../bancoImagens/empresas/imagens-perfil-empresa/loc.svg" alt="">
@@ -112,7 +114,7 @@ include('../protect.php');
             </div>
 
             <div class="inicioPostagens">
-                <h2>Meus Trabalhos (relacionado as postagens)</h2>
+                <h2>Meus Trabalhos</h2>
                 <div class="carrossel">
                     <div class="seta-direita">&#8250;</div>
                     <div class="seta-esquerda">&#8249;</div>
