@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação</title>
+</head>
+<body>
+    <div class="servicoAtt" id="modal">
+    <svg width="215" height="215" viewBox="0 0 215 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="107.5" cy="107.5" r="107.5" fill="#F5468A" class="svg-elem-1"></circle>
+    <path d="M136.8 79.6586L136.815 79.6436L136.83 79.6282L145.249 70.8434L162.849 88.077L154.034 96.8922L104.235 146.691L95.4349 155.491L87.0309 146.722L87.0162 146.706L87.0012 146.691L65.6586 125.349L56.8284 116.519L74.062 99.2851L82.8922 108.115L82.9055 108.129L82.9191 108.142L94.4441 119.24L95.8578 120.601L97.2456 119.213L136.8 79.6586Z" fill="white" stroke="#F5468A" stroke-width="4" class="svg-elem-2"></path>
+    </svg>
+    <h3 id="animacao" class="hidden">Serviço editado com sucesso! </h3>
+    <!-- <button id="mostrarAnimacao">Clique aqui</button> -->
+    <!-- <button onclick="document.querySelector('svg').classList.add('active'); document.querySelector('#animacao').classList.remove('hidden');">Clique aqui</button> -->
+    </div>
+    <!-- <button id="mostrarAnimacao" onclick="document.querySelector('svg').classList.add('active'); exibirModal()">Clique aqui</button> -->
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+        <style>
+        .hidden {
+        display: none;
+        }
+ 
+    
+        
+        svg .svg-elem-1 {
+        stroke-dashoffset: 677.4424205218055px;
+        stroke-dasharray: 677.4424205218055px;
+        fill: transparent;
+        -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+                                fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+                transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0s,
+                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.8s;
+        }
+
+        svg.active .svg-elem-1 {
+        stroke-dashoffset: 0;
+        fill: rgb(245, 70, 138);
+        }
+
+        svg .svg-elem-2 {
+        stroke-dashoffset: 301.8009033203125px;
+        stroke-dasharray: 301.8009033203125px;
+        fill: transparent;
+        -webkit-transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
+                                fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+                transition: stroke-dashoffset 1s cubic-bezier(0.47, 0, 0.745, 0.715) 0.12s,
+                        fill 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0.9s;
+        }
+
+        svg.active .svg-elem-2 {
+        stroke-dashoffset: 0;
+        fill: rgb(255, 255, 255);
+        }
+
+        .servicoAtt{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            /* display: none; */
+            background-color: white;
+        }
+
+
+        #animacao {
+        opacity: 0;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        color: rgb(245, 70, 138);
+        animation-delay: 2s;
+        }
+
+        
+
+
+        @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+        }
+
+
+
+
+            
+        </style>
+
+    <script src="js/scriptServico-e.js"></script>
+        
+</body>
+</html>

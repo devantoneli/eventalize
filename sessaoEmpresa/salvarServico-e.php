@@ -89,10 +89,14 @@ if ($semimg2 == false && $semimg3 == false){
 
 
 if ($conn->query($sql)=== TRUE){
-    echo '<h1>Informações inseridas</h1>';
+    // header("Location: ../sessaoEmpresa/servicoCriadoModal.html");
+    echo'<script src="js/scriptServico-e.js"></script>';
+   echo' <script>exibirModal();</script>';
 } else{
     echo "Error: " . $sql . "<br>" .  $conn->error;
 }
+
+
 
 
 //CASO VCS SE ESQUEÇAM, AS IMAGENS NÃO ESTÃO SENDO EXIBIDAS, POIS NÃO ESTAMOS PEDINDO PARA ELAS SEREM EXIBIDAS, NÃO SURTEM!
