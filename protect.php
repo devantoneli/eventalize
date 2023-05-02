@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 if(!isset($_SESSION['cd_empresa'])){
-    die("Você não tem acesso a essa página");
+    die(header("Location: /sistema/eventalize/index.html"));
 };
 
 ?>
