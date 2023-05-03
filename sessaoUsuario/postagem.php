@@ -137,7 +137,7 @@ $dbname = "db_eventalize";
                         $pacote = $row3['cd_pacote'];
                         // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = $pacote";
                         // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = 342";
-                        $sql4 = "SELECT * FROM tb_pacote WHERE cd_pacote = $pacote";
+                        $sql4 = "SELECT * FROM tb_servico WHERE cd_servico = 0";
                         $result4 = $conn->query($sql4);
                     }
                     if (mysqli_num_rows($result4) > 0){
@@ -166,7 +166,7 @@ $dbname = "db_eventalize";
                             <div class="slide" data-slide>
                     <div class="tituloInfoPacote" >
                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>'.$row4['nm_pacote'].'</h3>
+                        <h3>'.$row4['nm_servico'].'</h3>
                     </div>
                     <div class="fotoDestaquePacote">
                         <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_pacote.'%;height:'.$altura_capa_pacote.'%;">
@@ -178,7 +178,7 @@ $dbname = "db_eventalize";
                     </div>
             
                     <div class="descricaoInfoPacote">
-                        <h3>'.$row4['ds_pacote'].'</h3>
+                        <h3>'.$row4['ds_servico'].'</h3>
                     </div>                    
                 </div>
                
