@@ -80,7 +80,7 @@ if ($result->num_rows > 0) {
                 $row4 = $result4->fetch_assoc();
                 $nome = $row4['nm_fantasia'];
                 $biografia = substr($row4['ds_biografia'], 0, 25) . '...';
-                
+                $perfil = $row4['url_fotoperfil'];
             }else {
                 $sql3 = "SELECT * FROM tb_cliente WHERE cd_cliente = $cliente";
                 $result3 = $conn->query($sql3);
@@ -88,6 +88,7 @@ if ($result->num_rows > 0) {
                 $row3 = $result3->fetch_assoc();
                 $nome = $row3['nm_cliente'];
                 $biografia = 'Cliente';
+                $perfil = "";
             }
            
             
@@ -102,7 +103,7 @@ if ($result->num_rows > 0) {
                         </div>
 
                         <div class="autor">
-                        <img class="perfil" src="">
+                        <img class="perfil" src="'.$perfil.'">
                         
                         <div class="infoAutor">
                         <h3>'.$nome.'</h3>
