@@ -27,6 +27,7 @@
                 </header>
 <?php
 
+
 $cd_postagem = $_GET['cd_postagem'];
 
 $servername = "localhost";
