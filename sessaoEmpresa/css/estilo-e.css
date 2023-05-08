@@ -273,13 +273,14 @@ div {
     padding-bottom: 8vw;
     padding-top: 2vw;
     font-size: 1.5vw;
-    display: grid;
-    grid-template-rows: 30% 30% 30% 30%;
+    display: flex;
+    flex-direction: column;
 }
 
 .pedidAndament {
     width: 100%;
     height: 9.5vw;
+    margin-bottom: 0.7em;
     padding: 1.5vw 1.5vw;
     border: 0.6vw solid #7696F2;
     border-radius: 1.2vw;

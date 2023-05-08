@@ -6,6 +6,24 @@ if(!isset($_SESSION)){
 
 include('../protect.php');
 
+    $cd_empresa = $_SESSION['cd_empresa'];
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $db_name = "db_eventalize";
+
+    $conn = new mysqli($servername, $username, $password, $db_name);
+
+    if($conn->connect_error){
+        die("Falha na conexão: " . $conn->connect_error);
+    }
+
+
+    $sql = "SELECT * FROM vwpedidos WHERE cd_empresa = $cd_empresa AND nm_status<>'finalizado'";
+    $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+    $row = mysqli_fetch_assoc($result_query);
+
 ?>
 
 <!DOCTYPE html>
@@ -191,69 +209,38 @@ include('../protect.php');
                 <h2>Pedidos em andamento <div id="icon-pedidsAndament"></div></h2>
 
                 <div class="blocoLaranja">
-                    <div class="pedidAndament">
-                        <a>Festa na Piscina</a>
-                        <p>Marcos F.</p>
+                    <?php 
+                    if(mysqli_num_rows($result_query) > 0){
+                        while($row = mysqli_fetch_assoc($result_query)){
+                            echo 
+                            ' <div class="pedidAndament">
+                            <a>'.$row['nm_status'].'</a>
+                            <p>Marcos F.</p>
+    
+                            <div class="img-cliPedAndamnt"></div>
+    
+                            <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
+                                <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
+                            </svg>
+    
+                            <div class="font-acaoPendent"><a>'.$row['nm_status'].'</a></div>
+    
+                            <div class="andamento"><div class="barraProgresso"></div>
+                            </div>
+                        </div>';
+                    
+                        }
+                    }else{
+                        echo "Nenhum pedido em andamento";
+                    }
+                    
+                    
+                    ?>
 
-                        <div class="img-cliPedAndamnt"></div>
+                    
 
-                        <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                            <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                        </svg>
 
-                        <div class="font-acaoPendent"><a>Ação pendente</a></div>
-
-                        <div class="andamento"><div class="barraProgresso"></div>
-                        </div>
-                    </div>
-
-                    <div class="pedidAndament">
-                        <a>Festa na Piscina</a>
-                        <p>Marcos F.</p>
-
-                        <div class="img-cliPedAndamnt"></div>
-
-                        <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                            <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                        </svg>
-
-                        <div class="font-acaoPendent"><a>Ação pendente</a></div>
-
-                        <div class="andamento"><div class="barraProgresso"></div>
-                        </div>
-                    </div>
-
-                    <div class="pedidAndament">
-                        <a>Festa na Piscina</a>
-                        <p>Marcos F.</p>
-
-                        <div class="img-cliPedAndamnt"></div>
-
-                        <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                            <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                        </svg>
-
-                        <div class="font-acaoPendent"><a>Ação pendente</a></div>
-
-                        <div class="andamento"><div class="barraProgresso"></div>
-                        </div>
-                    </div>
-
-                    <div class="pedidAndament">
-                        <a>Festa na Piscina</a>
-                        <p>Marcos F.</p>
-
-                        <div class="img-cliPedAndamnt"></div>
-
-                        <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                            <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                        </svg>
-
-                        <div class="font-acaoPendent"><a>Ação pendente</a></div>
-
-                        <div class="andamento"><div class="barraProgresso"></div>
-                        </div>
-                    </div>
+            
                 </div>
 
         </div>
