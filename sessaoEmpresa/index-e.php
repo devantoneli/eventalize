@@ -214,8 +214,8 @@ include('../protect.php');
                         while($row = mysqli_fetch_assoc($result_query)){
                             echo 
                             ' <div class="pedidAndament">
-                            <a>'.$row['nm_status'].'</a>
-                            <p>Marcos F.</p>
+                            <a>'.$row['nm_pacote'].'</a>
+                            <p>'.$row['nm_titular_pagamento'].'</p>
     
                             <div class="img-cliPedAndamnt"></div>
     
