@@ -1,10 +1,35 @@
 .divisaoArea{
-    grid-template-columns:0.25fr 0.001fr 1fr ;
+    grid-template-columns:0.15fr 0.001fr 1fr ;
     display: grid;
-    margin: 5%;
+    margin: 3%;
 }
 .conversasPerfil{
     grid-column: 1/1 ;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr ;
+}
+/* .conversasLateral{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr ;
+} */
+.conversasPerfil img{
+    width: 65%;
+    height: 70%;
+    clip-path: circle();
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+.alinha{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.conversasPerfil h3{
+    text-align: center;
 }
 .mensagensPerfil{
     grid-column: 3/3;
@@ -19,10 +44,13 @@
    clip-path: circle();
    border: 2px solid black;
 } */
+
 .infoCliente{
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 
     
 }
@@ -33,7 +61,7 @@
     /* justify-items: center;
     box-sizing: border-box;  */
     border-right: 1px solid  rgb(141, 141, 141);
-    height: 45em;
+    height: 60em;
 }
 .infoCliente h2{
     text-align: right;
@@ -42,10 +70,11 @@
     
 }
 .infoCliente img{
-    width: 15%;
-    height: 100%;
+    width: 8%;
+    height: 10%;
     clip-path: circle();
     display: grid;
     justify-content: right;
    
 }
+

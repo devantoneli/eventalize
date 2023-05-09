@@ -17,6 +17,10 @@ $conn = new mysqli($servername, $username, $password, $db_name);
 if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
+
+    $sql = "SELECT * FROM tb_cliente WHERE cd_cliente = 1"; //(pra quando o da raiza estiver pronto)
+    $result = $conn->query($sql);
+    $row = $result -> fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +30,7 @@ if($conn->connect_error){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+    <link rel="icon" href="../img/index/logo.png">
     <link rel="stylesheet" href="../sessaoEmpresa/css/menu-e.css">
     <link rel="stylesheet" href="../sessaoEmpresa/css/chatEmpresa-e.css">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
@@ -79,9 +84,25 @@ if($conn->connect_error){
 
      <!--INICIO CONVERSAS CHAT -->
      <div class="divisaoArea">
-
+     <h2>Conversas</h2>
     <div class="conversasPerfil">
-        <h2>Conversas</h2>
+        <div class="alinha">
+        <h3>Smash Party</h3>
+        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+        </div>
+        <div class="alinha">
+        <h3>Smash Party</h3>
+        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+        </div>
+        <div class="alinha">
+        <h3>Smash Party</h3>
+        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+        </div>
+        <div class="alinha">
+        <h3>Smash Party</h3>
+        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+        </div>
+
     </div>
 
     <div class="linhaDivisao"></div>
@@ -89,8 +110,8 @@ if($conn->connect_error){
     <div class="mensagensPerfil">
         <br>
         <div class="infoCliente">
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>">
-        <h2>Amanda Silva</h2>
+        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+        <h2><?php echo $row['nm_cliente'];?> <?php echo $row['nm_sobrenome'];?></h2>
         </div>
     </div>
 
