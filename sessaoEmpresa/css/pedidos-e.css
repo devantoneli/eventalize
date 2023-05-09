@@ -1,0 +1,52 @@
+body{
+    background-color: #F2DDEF;
+}
+
+.blocoPedidos{
+    background-color: white;
+    border-radius: 9px;
+    margin: 5%;
+}
+
+#txtNovosPedidos{
+    font-size: 2.2em;
+    color: #C94FB8;
+    text-align: center;
+    padding-top: 2%;
+}
+
+.gridNovosPedidos{
+    display: grid;
+    grid-template-columns: 0.2fr 0.6fr 0.6fr 0.4fr 0.5fr 0.5fr;
+    grid-template-rows: auto;
+    justify-content: center;
+    justify-items: center;
+}
+
+.gridNovosPedidos h3{
+    font-size: 1.6em;
+    padding: 5%;
+}
+
+.cardNvPedidos{
+    display: grid;
+    grid-template-columns: 0.2fr 0.6fr 0.6fr 0.4fr 0.5fr 0.5fr;
+    justify-items: center;
+    text-align: center;
+    justify-content: center;
+    background: rgba(141, 153, 255, 0.3);;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    margin: 1%;
+}
+
+.pedidosAndamento{
+    background-color: #FFD9DE;
+}
+
+#txtPedidosAndamento{
+    font-size: 2.2em;
+    color: #FF5F76;
+    text-align: center;
+    padding-top: 2%;
+}
