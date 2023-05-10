@@ -65,15 +65,15 @@
                 <h3>Valor</h3>
                 <h3>Datado para</h3>
                 <h3>Requerido em</h3>
-            </div>
 
-            <div class="cardNvPedidos">
+                <div class="cardNvPedidos">
                 <h3>548</h3>
                 <h3>Larissa Silva <br> Rua Tal, nº 4 - Bairro São Vicente, SP</h3>
                 <h3>Pacote Festa de Aniversário e serviços avulsos</h3>
                 <h3>R$ 450,00</h3>
                 <h3>15/02/2023 <br>10h</h3>
                 <h3>20/01/2023 <br>13h24</h3>
+                </div>
             </div>
         </div>
     </section>
@@ -81,6 +81,19 @@
     <section class="pedidosAndamento">
         <div class="blocoPedidos">
         <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
+        <div class="gridPedidosAndamento">
+            <div id="cardPedido">
+                <h2>Festa na piscina</h2>
+                <ul>
+                    <li>100 fotos</li>
+                    <li>1 álbum</li>
+                    <li>1 banner</li>
+                </ul>
+            </div>
+            <div id="statusPedido">
+                <h2>Ação pendente - Confirmar alteração de endereço</h2>
+            </div>
+        </div>
         </div>
     </section>
 </body>

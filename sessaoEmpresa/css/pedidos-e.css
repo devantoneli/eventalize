@@ -17,28 +17,64 @@ body{
 
 .gridNovosPedidos{
     display: grid;
-    grid-template-columns: 0.2fr 0.6fr 0.6fr 0.4fr 0.5fr 0.5fr;
-    grid-template-rows: auto;
-    justify-content: center;
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-template-rows: repeat(auto, 1fr); */
+    /* justify-content: center; */
     justify-items: center;
+    /* background-color: aqua; */
+    margin: 1%;
+
 }
 
 .gridNovosPedidos h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.6em;
     padding: 5%;
+    width: 80%;
+    text-align: center;
 }
 
 .cardNvPedidos{
+    grid-area: 2/1/2/ 7;
     display: grid;
-    grid-template-columns: 0.2fr 0.6fr 0.6fr 0.4fr 0.5fr 0.5fr;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    background: rgba(129, 139, 235, 0.3);;
+    border: 2px solid #000000;
+    border-radius: 8px;
     justify-items: center;
+
+}
+
+.cardNvPedidos h3{
     text-align: center;
-    justify-content: center;
-    background: rgba(141, 153, 255, 0.3);;
+}
+
+/* .cardNvPedidos{
+    grid-area: 2/1/2/7;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+    justify-items: center;
+    
+    text-align: center;
+    background: rgba(129, 139, 235, 0.3);;
     border: 2px solid #000000;
     border-radius: 8px;
     margin: 1%;
 }
+
+.cardNvPedidos h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6em;
+    width: 80%;
+    background-color: blueviolet;
+    
+} */
 
 .pedidosAndamento{
     background-color: #FFD9DE;
@@ -49,4 +85,40 @@ body{
     color: #FF5F76;
     text-align: center;
     padding-top: 2%;
+}
+
+.gridPedidosAndamento{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 0.4fr 1fr;
+}
+
+#statusPedido{
+    background-color: #7696F2;
+    color: white;
+    border-radius: 9px;
+    width: 95%;
+    height: 30%;
+    text-align: center;
+}
+
+#cardPedido{
+    background-image: url("https://th.bing.com/th/id/OIP.Rv9lVuyM2wfoqw41ERDjdAHaHb?pid=ImgDet&rs=1");
+    width: 80%;
+    border-radius: 9px;
+    border: 5px solid #7696F2;
+    box-shadow: inset 0px 284px 187px #7696F2;
+    
+}
+
+#cardPedido h2{
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+#cardPedido li{
+    font-size: 1.8em;
+    color: white;
+
 }
