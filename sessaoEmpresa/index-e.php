@@ -24,6 +24,10 @@ include('../protect.php');
     $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
     $row = mysqli_fetch_assoc($result_query);
 
+    
+    $result_query2 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+    $row2 = mysqli_fetch_assoc($result_query2);
+
 ?>
 
 <!DOCTYPE html>
@@ -146,29 +150,22 @@ include('../protect.php');
                     <h2>Novos pedidos <div id="icon-novsPedids"></div></h2>
 
                     <div class="blocoRoxo">
+                <?php
+                    if(mysqli_num_rows($result_query2) > 0){
+                        while($row2 = mysqli_fetch_assoc($result_query2)){
+                
+                            ?>
                         <div class="novoPedido">
-                            <div class="imgServico"></div>
+                            <div class="imgServico" style="background-image: url('<?php echo($row['url_imgcapa']); ?>')"></div>
 
-                            <div class="imgCliente"></div>
+                            <div class="imgCliente" style="background-image: url('<?php echo($row['url_fotoperfil']); ?>')"></div>
                         </div>
-
-                        <div class="novoPedido">
-                            <div class="imgServico"></div>
-                            
-                            <div class="imgCliente"></div>
-                        </div>
-                        
-                        <div class="novoPedido">
-                            <div class="imgServico"></div>
-                            
-                            <div class="imgCliente"></div>
-                        </div>
-                        
-                        <div class="novoPedido">
-                            <div class="imgServico"></div>
-                            
-                            <div class="imgCliente"></div>
-                        </div>
+                        <?php
+                        }
+                    }else{
+                        echo "<h1 style='font-weight: 100;width: 150%;'>Nenhum pedido novo</h1>";
+                    }    
+                ?>           
                     </div>
                 </div>
 
@@ -212,18 +209,43 @@ include('../protect.php');
                     <?php 
                     if(mysqli_num_rows($result_query) > 0){
                         while($row = mysqli_fetch_assoc($result_query)){
+
+                            ?>
+                            <div class="pedidAndament" style="background-image: url('<?php echo($row['url_imgcapa']); ?>')">
+
+                        <?php
                             echo 
-                            ' <div class="pedidAndament">
+                            '
                             <a>'.$row['nm_pacote'].'</a>
-                            <p>'.$row['nm_titular_pagamento'].'</p>
-    
-                            <div class="img-cliPedAndamnt"></div>
-    
-                            <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
+                            <p>'.$row['nm_cliente'].'</p>';
+                            if($row['url_fotoperfil']==''){
+                            ?>
+                            <div class="img-cliPedAndamnt" style="background-image: url('https://as1.ftcdn.net/v2/jpg/05/60/26/08/1000_F_560260880_O1V3Qm2cNO5HWjN66mBh2NrlPHNHOUxW.jpg');"></div>
+                            <?php
+                            }else {
+                            ?>
+                            <div class="img-cliPedAndamnt" style="background-image: url('<?php echo($row['url_fotoperfil']); ?>');"></div>
+                            <?php 
+                            }
+
+                            if($row['nm_status'] == 'Elaboração do serviço em processo' || $row['nm_status'] == 'Execução do serviço em processo' || $row['nm_status'] == 'Aguardando data agendada' || $row['nm_status'] == 'Cancelamento em processo'){
+                                ?>
+                                <svg style="transform: translate(-0.5em, -9.2em);" class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
                                 <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                            </svg>
+                                </svg>
+                                <?php
+                            }else{
+                                ?>
+                                <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
+                                <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
+                                </svg>
+                                <?php
+                            }
+                            
+                            
+                            
     
-                            <div class="font-acaoPendent"><a>'.$row['nm_status'].'</a></div>
+                            echo'<div class="font-acaoPendent"><a>'.$row['nm_status'].'</a></div>
     
                             <div class="andamento"><div class="barraProgresso"></div>
                             </div>

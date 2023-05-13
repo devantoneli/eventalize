@@ -285,7 +285,7 @@ div {
     border: 0.6vw solid #7696F2;
     border-radius: 1.2vw;
     box-shadow: inset -186px 2px 129px rgba(0, 0, 0, 0.9);
-    background-image: url('../imgInicioEmpresa/imgServico.jpg');
+    background-color: rgb(128, 128, 250);
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -305,6 +305,9 @@ div {
     height: 4.5vw;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position: center;
     margin: -17% 0vw 16% 23vw;
 }
 
