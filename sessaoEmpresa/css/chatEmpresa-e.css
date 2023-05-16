@@ -6,8 +6,9 @@
 .conversasPerfil{
     grid-column: 1/1 ;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr ;
     grid-template-columns: 1fr ;
+    
 }
 /* .conversasLateral{
     display: grid;
@@ -21,6 +22,18 @@
     display: grid;
     justify-content: center;
     justify-items: center;
+}
+.scroll{
+    position: fixed;
+   left: 0;
+   top: 250px;
+   bottom: 0;
+   width: 15%;
+   overflow-y: scroll;
+   height: 70%;
+}
+.scroll div:hover{
+    background-color: gray;
 }
 .alinha{
     display: flex;
@@ -61,7 +74,7 @@
     /* justify-items: center;
     box-sizing: border-box;  */
     border-right: 1px solid  rgb(141, 141, 141);
-    height: 60em;
+    height: 42em;
 }
 .infoCliente h2{
     text-align: right;

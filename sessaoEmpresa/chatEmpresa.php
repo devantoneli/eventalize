@@ -86,35 +86,44 @@ if($conn->connect_error){
      <div class="divisaoArea">
      <h2>Conversas</h2>
     <div class="conversasPerfil">
-        <div class="alinha">
-        <h3>Smash Party</h3>
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+        <div class="scroll">
+            <div class="alinha">
+                <h3>Smash Party</h3>
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+            </div>
+            <div class="alinha">
+                <h3>Smash Party</h3>
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+            </div>
+            <div class="alinha">
+                <h3>Smash Party</h3>
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+            </div>
+            <div class="alinha">
+                <h3>Smash Party</h3>
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+            </div>
+            <div class="alinha">
+                <h3>Smash Party</h3>
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+            </div>
+            <div class="alinha">
+                <h3>Smash Party</h3>
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+            </div>
         </div>
-        <div class="alinha">
-        <h3>Smash Party</h3>
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
-        </div>
-        <div class="alinha">
-        <h3>Smash Party</h3>
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
-        </div>
-        <div class="alinha">
-        <h3>Smash Party</h3>
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
-        </div>
-
     </div>
 
     <div class="linhaDivisao"></div>
 
-    <div class="mensagensPerfil">
-        <br>
-        <div class="infoCliente">
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
-        <h2><?php echo $row['nm_cliente'];?> <?php echo $row['nm_sobrenome'];?></h2>
-        </div>
-    </div>
 
+    <div class="mensagensPerfil">
+            <br>
+            <div class="infoCliente">
+                <img src="<?php echo $_SESSION['url_fotoperfil'];?>"  alt="imagem">
+                <h2><?php echo $row['nm_cliente'];?> <?php echo $row['nm_sobrenome'];?></h2>
+            </div>
+        </div>
      </div>
      <!--FIM CONVERSAS CHAT -->
 </body>
