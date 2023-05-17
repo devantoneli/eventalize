@@ -1,13 +1,9 @@
 .inicioCarrinho{
     display: grid;
     grid-template-rows: auto auto;
-    background-color: blue;
+    /* background-color: blue; */
     margin: 3% 0 0 12%;
     row-gap: 20%;
-}
-
-.tituloCarrinho{
-    background-color: aquamarine;
 }
 
 .tituloCarrinho h3{
@@ -20,29 +16,25 @@
     font-size: 1.5em;
     color: black;
     font-weight: 500;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
 }
 
 .pedidoEmpresa{
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    justify-content: left;
+    align-items: center;
     margin: 3% 0 0 12%;
-    background-color: cadetblue;
-    grid-column-gap: 0;
-}
-
-.fotoEmpresa{
-    background-color: blue;
 
 }
 
-.fotoEmpresa img{
-    width: 100%;
-    max-width: 10%;
+.pedidoEmpresa img{
+    width: 100px;
+    aspect-ratio: 3/2;
     clip-path: circle();
+    object-fit: contain;
 }
 
-.nomeEmpresa{
-    background-color:blueviolet;
-
+.selecioneItem{
+    display: flex;
+    
 }
