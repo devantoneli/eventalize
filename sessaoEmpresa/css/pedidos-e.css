@@ -100,6 +100,66 @@ body{
     width: 95%;
     height: 30%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.gridPedidoInfo{
+    display: grid;
+    grid-template-columns: 0.1fr 0.6fr 0.6fr;
+    /* grid-template-rows:  0.2fr 0.6fr 0.6fr ; */
+    background-color: #C94FB8;
+}
+
+.gridPedidoInfo img{
+  width: 160px;
+  clip-path: circle();
+}
+
+.infoPedido{
+    /* grid-area: 1 / 2 / 1 / 2; */
+    display: grid;
+    grid-template-rows: 35px 20px 33px;
+    justify-items: flex-start;
+    line-height: 0.01;
+}
+
+.infoPedido h2{
+    color: #000000;
+    font-size: 1.6em;
+}
+
+.infoPedido h4{
+    color: #000000;
+    font-size: 1em;
+    
+}
+
+
+.testePreco{
+    background-color: aqua;
+}
+
+.testePreco h1{
+    color: #000000;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.gridIcons{
+    background-color:#FF5F76;
+    grid-area: 2/1/2/4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.gridIcons h1{
+    color: #000000;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+    margin-left: 15%;
 }
 
 #cardPedido{
@@ -121,4 +181,14 @@ body{
     font-size: 1.8em;
     color: white;
 
+}
+
+.gridStatusPedido{
+    display: grid;
+    grid-template-rows:  0.4fr 0.4fr 0.4fr 0.4fr;
+}
+
+.direcaoPedidos{
+    display: flex;
+    flex-direction: column;
 }

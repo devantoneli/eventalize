@@ -90,9 +90,30 @@
                     <li>1 banner</li>
                 </ul>
             </div>
+            
             <div id="statusPedido">
                 <h2>Ação pendente - Confirmar alteração de endereço</h2>
+                <div class="gridPedidoInfo">
+                <img src="../bancoImagens/postagens/fotodestaque.jpg" alt="">
+                <div class="infoPedido">
+                <h2>Marcos F.</h2>
+                <h3>Rua Tal nº 6 - Bairro</h3>
+                <h4>São Vicente - SP</h4>
+                </div>
+                <div class="dataPedido">
+                    <h1>20/04/2023</h1>
+                    <h3>Domingo, 15h</h3>
+                </div>
+
+                <div class="gridIcons">
+                <!-- <div class="testePreco"> -->
+                <h1>R$220,00</h1>
+                <h2>dfdfd</h2>
+                </div>
+                <!-- </div> -->
+            
             </div>
+
         </div>
         </div>
     </section>
