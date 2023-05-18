@@ -2,7 +2,7 @@
     display: grid;
     grid-template-rows: auto auto;
     /* background-color: blue; */
-    margin: 3% 0 0 12%;
+    margin: 3% 0 0 8%;
     row-gap: 20%;
 }
 
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    margin: 3% 0 0 12%;
+    margin: 3% 0 0 8%;
 
 }
 
@@ -34,7 +34,56 @@
     object-fit: contain;
 }
 
-.selecioneItem{
-    display: flex;
+.selecionaItem{
+    display: grid;
+    grid-template-columns: min-content min-content auto;
+    /* grid-template-rows: auto; */
+    gap: 3%;
+    margin: 3% 0 0 8%;
+    align-items: center;
     
+    
+}
+
+.selecionaItem input{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+.imgPedido img{
+    width: 300px;
+    /* border-radius: 10px; */
+    border: 5px solid transparent;
+    background-clip: padding-box;
+    border-image-slice: 1;
+    border-image-source: radial-gradient(67.47% 91.91% at 73.26% 36.72%, #3ED1FF 0%, #FF3E83 67.5%, #FFA856 100%);
+}
+
+.infoPedido{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    /* background-color: #FF3E83; */
+    margin-top: -3%;
+}
+
+.infoPedido h1{
+    color: black;
+    font-size: 2em;
+    font-weight: 500;
+   
+    /* width: 70%; */
+}
+
+.infoPedido h3{
+    /* background-image: url('/bancoImagens/clientes/fundogradiente.png');
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; */
+    color: black;
+    font-size: 2em;
+    font-weight: 800;
+    margin-top: 5%;
 }
