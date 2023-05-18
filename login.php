@@ -25,8 +25,11 @@ $nm_senha = $_POST['nm_senha'];
 $sql = "SELECT * FROM tb_empresa WHERE nm_emailempresa = '$nm_email' AND nm_senhaempresa = '$nm_senha'";
 $result = $conn->query($sql);
 
+$sql2 = "SELECT * FROM tb_cliente WHERE nm_emailcliente = '$nm_email' AND nm_senhacliente = '$nm_senha'";
+$result2 = $conn->query($sql2);
+
 if ($result->num_rows == 1 ) {
-  // informações de login válidas, redirecionar o usuário para a página inicial
+  // informações de login válidas, redirecionar a empresa para a página inicial
 
   $empresa = $result->fetch_assoc();
 
@@ -46,7 +49,24 @@ if ($result->num_rows == 1 ) {
 
 
   exit();
-} else {
+} if ($result2->num_rows == 1 ) {
+  // informações de login válidas, redirecionar o cliente para a página inicial
+
+  $cliente = $result2->fetch_assoc();
+
+  //se nao tem sessao...
+  if(!isset($_SESSION)){
+    session_start();
+  }
+
+  $_SESSION['cd_cliente'] = $cliente['cd_cliente'];
+  $_SESSION['nm_cliente'] = $cliente['nm_cliente'];
+  $_SESSION['nm_usuariocliente'] = $cliente['nm_usuariocliente'];
+  // $_SESSION['url_fotoperfil'] = $empresa['url_fotoperfil'];
+  // $_SESSION['ds_biografia'] = $empresa['ds_biografia'];
+
+  header("Location: sessaoCliente/index-c.php ");
+}else {
   // informações de login inválidas, exibir mensagem de erro
   echo "Nome de usuário ou senha inválido(s).";
   exit();
