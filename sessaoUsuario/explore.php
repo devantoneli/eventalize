@@ -1,5 +1,7 @@
 <?php 
 
+    session_start();
+
 //TELA BACK E FRONT DE EXPLORAR, que carrega as imagens das capas de cada pedido ou pacote/serviço publicado tanto pela empresa, quanto pelo cliente
 
 $servername = "localhost";
@@ -35,7 +37,95 @@ if ($result->num_rows > 0) {
 </head>
 <body>
     <!-- MENU -->
-    <header>
+    <?php
+        if(isset($_SESSION['cd_empresa'])){
+            ?>
+            <link rel="stylesheet" href="../sessaoEmpresa/css/estilo-e.css">
+            <div class="bg-gradPrincipal menuEmpresa">
+            <header class="alinhaElementos">
+                <div id="logoImagem"><a href="../sessaoEmpresa/index-e.php"></a></div>
+                
+                <ul class="opcoesMenu">
+                    <li class=""><a href="../sessaoEmpresa/index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
+                    <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
+                    <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
+                    <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
+                </ul>
+            
+                <div class="alinhaLogo">
+                    <button class="botaoSeta" id="iconSeta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                    </svg>
+                    </button>
+    
+                    <section id="menu">
+                    <a href="criacaoServico-e.php"><h5>Criar Serviço ou Pacote</h5></a>
+                    <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
+                    </section>
+    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                    </svg>
+    
+                    <div id="inserirPerfil">
+                        <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
+                    </div>
+    
+                    <section id="menuPerfil">
+                    <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
+                    <a href=""><h5>Pontuações</h5></a>
+                    <a href=""><h5>Postagens</h5></a>
+                    <a href=""><h5>Estatísticas de venda</h5></a>
+                    <a href=""><h5>Configurações</h5></a>
+                    <a href="../logout.php"><h5>Sair</h5></a>
+                </section>
+                </div>
+            </header>
+        </div>
+        <?php
+        }else if (isset($_SESSION['cd_cliente'])){
+            ?>
+            <link rel="stylesheet" href="../sessaoCliente/css/iniciocliente.css">
+            <link rel="stylesheet" href="../sessaoCliente/css/menu-c.css">
+            <div class="grid-container">
+            <div class="header">
+                <div class="logo">
+                <img src="../img/icones/logoBranca.svg" alt="">
+                </div>
+                <div class="menu">
+                    <a href="../sessaoCliente/index-c.php">Início</a>
+                    <a href="../sessaoUsuario/explore.php">Feed</a>
+                    <a href="">Mensagens</a>
+                    <a href="">Seus Pedidos</a>
+                </div>
+    
+                <div class="headerPesquisa">
+                    <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços">
+                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                </div>
+                <div class="headerClientePerfil" >
+                    <!-- <div class="iconCliente"> -->
+                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                    <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                    <!-- </div> -->
+                    
+                    <button class="menuIcon2" onclick="menuOpen()"><img src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
+                </div>
+                <section class="menuPerfil">
+                    <a href="">Perfil</a>
+                    <a href="">Postagens</a>
+                    <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
+                    <a href="">Configurações</a>
+                    <a href="../logout.php">Sair</a>
+                </section>
+            </div>
+        </div>
+        <script src="../sessaoCliente/js/menu-c.js"></script>
+        <?php
+        }else {
+            ?>
+            <header>
         <div class="logoHome">
             <img src="../img/index/logo.png" alt="logo">
         </div>
@@ -50,6 +140,9 @@ if ($result->num_rows > 0) {
             </div>
             <button class="menuIcon" onclick="menuOpen()"><img  src="img/index/menuicon.svg" width="30px"></button>
     </header>
+    <?php
+        }
+    ?>
     <!-- FIM MENU -->
 <div class="row">
     <!-- CORPO - GRID DE POSTAGENS -->

@@ -111,13 +111,12 @@ a.notificacao, a.notificacao img{
     /* background-color: chocolate; */
 }
 
-button.menuIcon{
+button.menuIcon2{
     grid-column: 3 / 3;
     width: 3em;
     background-color: transparent;
     border: none;
     cursor: pointer;
-
 }
 
 .menuPerfil a{
