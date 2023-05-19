@@ -18,7 +18,7 @@ if(!isset($_SESSION)){
     <div class="grid-container">
   <div class="header">
     <div class="logo">
-        <img src="logoBranca.png" alt="">
+        <img src="../img/icones/logoBranca.svg" alt="">
     </div>
     <div class="menu">
         <a href="">Início</a>
@@ -29,7 +29,7 @@ if(!isset($_SESSION)){
 
     <div class="headerPesquisa">
           <input type="text" placeholder="Procure Serviços">
-          <img src="lupa.svg" alt="" width="30px">
+          <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
         </div>
         <div class="headerClientePerfil" >
             <!-- <div class="iconCliente"> -->
