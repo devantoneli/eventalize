@@ -33,10 +33,10 @@ if(!isset($_SESSION)){
         </div>
         <div class="headerClientePerfil" >
             <!-- <div class="iconCliente"> -->
-                <a href="#" class="carrinho"><img src="icon-carrinho.svg" alt="Carrinho"></a>
-                <a href="#" class ="notificacao"><img src="icon-notificacao.svg" alt="Notificações"></a>
+                <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
               <!-- </div> -->
-        <button class="menuIcon" onclick="menuOpen()"><img  src="vector.svg" style="height: 50px;" width="30px"></button>
+        <button class="menuIcon" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
         </div>
         <section class="menuPerfil">
           <a href="">Perfil</a>
@@ -55,10 +55,10 @@ if(!isset($_SESSION)){
                 <div class="textoInicio">
                     <h1>Ayla Decorações</h1>
                     <p>@decoration</p>
-                    <img src="decoracaoouro.svg" alt="">
+                    <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
                     <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
                 </div>
-                <img src="logoEmpresa.jpg" alt="">
+                <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
                 <button>Visitar Perfil</button>
             </div>
         </div>
@@ -67,10 +67,10 @@ if(!isset($_SESSION)){
                 <div class="textoInicio">
                     <h1>Ayla Decorações</h1>
                     <p>@decoration</p>
-                    <img src="decoracaoouro.svg" alt="">
+                    <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
                     <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
                 </div>
-                <img src="logoEmpresa.jpg" alt="">
+                <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
                 <button>Visitar Perfil</button>
             </div>
         </div>
@@ -79,10 +79,10 @@ if(!isset($_SESSION)){
                 <div class="textoInicio">
                     <h1>Ayla Decorações</h1>
                     <p>@decoration</p>
-                    <img src="decoracaoouro.svg" alt="">
+                    <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
                     <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
                 </div>
-                <img src="logoEmpresa.jpg" alt="">
+                <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
                 <button>Visitar Perfil</button>
             </div>
         </div>
@@ -137,14 +137,14 @@ if(!isset($_SESSION)){
 </div>
 
 <div class="iconsCategorias">
-    <img src="auxiliar.svg" alt="auxiliar" title="auxiliar">
-    <img src="atracao.svg" alt="atracao" title="atração">
-    <img src="comida.svg" alt="comida" title="comida">
-    <img src="decoracao.svg" alt="decoracao" title="decoração">
-    <img src="equipamento.svg" alt="equipamento" title="equipamento">
-    <img src="espaco.svg" alt="espaco" title="espaço">
-    <img src="fotografia.svg" alt="fotografia" title="fotografia">
-    <img src="musica.svg" alt="musica" title="música">
+    <img src="../img/index/auxiliar.svg" alt="auxiliar" title="auxiliar">
+    <img src="../img/index/atracao.svg" alt="atracao" title="atração">
+    <img src="../img/index/comida.svg" alt="comida" title="comida">
+    <img src="../img/index/decoracao.svg" alt="decoracao" title="decoração">
+    <img src="../img/index/equipamento.svg" alt="equipamento" title="equipamento">
+    <img src="../img/index/espaco.svg" alt="espaco" title="espaço">
+    <img src="../img/index/fotografia.svg" alt="fotografia" title="fotografia">
+    <img src="../img/index/musica.svg" alt="musica" title="música">
 </div>
 
 <div class="categorias">
@@ -155,12 +155,12 @@ if(!isset($_SESSION)){
     <div class="gridPostagens">
         <div class="imgPostagens">
             <!-- <img src="post2.jpg" alt=""> -->
-            <img src="post1.jpg" alt="">
-            <img src="post3.jpg" alt="">
-            <img src="post4.jpg" alt="">
-            <img src="post5.jpg" alt="">
-            <img src="post6.jpg" alt="">
-            <img src="post5.jpg" alt="">
+            <img src="../bancoImagens/clientes/post1.jpg" alt="">
+            <img src="../bancoImagens/clientes/post3.jpg" alt="">
+            <img src="../bancoImagens/clientes/post4.jpg" alt="">
+            <img src="../bancoImagens/clientes/post5.jpg" alt="">
+            <img src="../bancoImagens/clientes/post6.jpg" alt="">
+            <img src="../bancoImagens/clientes/post5.jpg" alt="">
         </div>
     </div>
 </div>
@@ -170,9 +170,9 @@ if(!isset($_SESSION)){
 </div>
 
 <div class="classificacaoEmpresa">
-    <img src="ouro.svg" alt="">
-    <img src="prata.svg" alt="">
-    <img src="bronze.svg" alt="">
+    <img src="../bancoImagens/clientes/ouro.svg" alt="">
+    <img src="../bancoImagens/clientes/prata.svg" alt="">
+    <img src="../bancoImagens/clientes/bronze.svg" alt="">
 </div>
 
 <div class="textoClassificacao">
