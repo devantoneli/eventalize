@@ -55,6 +55,11 @@
     </div>
 <!--FIM MENU EMPRESA -->
 <body>
+    <div class="acessoRapido">
+        <h3 id="roxo">Novos Pedidos</h3>
+        <h3 id="rosa">Em andamento</h3>
+        <h3 id="azul">Outros</h3>
+    </div>
     <section class="novosPedidos">
         <div class="blocoPedidos">
             <h2 id="txtNovosPedidos">Novos pedidos</h2>
@@ -101,7 +106,7 @@
                 <h4>São Vicente - SP</h4>
                 </div>
                 <div class="dataPedido">
-                    <div>
+                    <div id="iconCalendario">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
                     <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
                     <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
@@ -162,7 +167,10 @@
                 <h3>548</h3>
                 <h3>Pacote Festa de Aniversário e serviços avulsos</h3>
                 <h3>R$ 450,00</h3>
-                <h3>Arquivado</h3>
+                <h3 id="txtArquivado">Arquivado</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
                 </div>
             </div>
         </div>

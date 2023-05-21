@@ -1,11 +1,49 @@
+body{
+    background: linear-gradient(180deg, #F2DDEF 0%, #FFD9DE 100%);
+}
+
+.acessoRapido{
+    position: fixed;
+    text-align: center;
+    margin-top: 3%;
+}
+
+#roxo{
+    background-color: #C94FB8;
+    width: 150px;
+    height: 55px;
+    color: white;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+#rosa{
+    background-color: #FF5F76;
+    width: 150px;
+    height: 55px;
+    color: white;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+#azul{
+    background-color: #8084E8;
+    width: 150px;
+    height: 55px;
+    color: white;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
 .novosPedidos{
-    background-color: yellow;
+    background-color: #F0A9E6;
 }
 
 .blocoPedidos{
     background-color: white;
     border-radius: 9px;
     margin: 5%;
+    padding: 2%;
 }
 
 #txtNovosPedidos{
@@ -30,7 +68,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.6em;
+    font-size: 1.4em;
     padding: 5%;
     width: 80%;
     text-align: center;
@@ -76,7 +114,7 @@
 } */
 
 .pedidosAndamento{
-    background-color: red;
+    background-color: #FF9FAD;
 }
 
 #txtPedidosAndamento{
@@ -210,7 +248,7 @@
 }
 
 .outros{
-    background-color: blue;
+    background-color: #A6A9E5;
 }
 
 #txtPedidosOutros{
@@ -222,8 +260,8 @@
 
 .gridOutros{
     display: grid;
-    grid-template-columns: repeat(4, 0.3fr);
-    justify-items: center;
+    grid-template-columns: repeat(5, 0.3fr);
+    /* justify-items: center; */
     margin: 1%;
 
 }
@@ -232,23 +270,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.6em;
+    font-size: 1.4em;
     padding: 5%;
     width: 80%;
     text-align: center;
 }
 
+.gridOutros svg{
+    align-items: center;
+}
+
 .cardOutrosPedidos{
     grid-area: 2/1/2/ 7;
     display: grid;
-    grid-template-columns: repeat(4, 0.3fr);
+    grid-template-columns: repeat(5, 0.3fr);
     /* grid-template-rows: repeat(auto, 1fr); */
-    background: rgba(129, 139, 235, 0.3);;
-    border: 2px solid #000000;
-    border-radius: 8px;
+    /* border: 2px solid #000000; */
+    /* border-radius: 8px; */
     justify-items: center;
 }
 
 .cardOutrosPedidos h3{
     text-align: center;
 }
+
+#txtArquivado{
+    background-color: #BFB5FF;
+    border-radius: 15px;
+}
+
+
