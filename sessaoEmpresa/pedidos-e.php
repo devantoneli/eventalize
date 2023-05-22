@@ -55,6 +55,11 @@
     </div>
 <!--FIM MENU EMPRESA -->
 <body>
+    <div class="acessoRapido">
+        <h3 id="roxo">Novos Pedidos</h3>
+        <h3 id="rosa">Em andamento</h3>
+        <h3 id="azul">Outros</h3>
+    </div>
     <section class="novosPedidos">
         <div class="blocoPedidos">
             <h2 id="txtNovosPedidos">Novos pedidos</h2>
@@ -101,19 +106,73 @@
                 <h4>São Vicente - SP</h4>
                 </div>
                 <div class="dataPedido">
-                    <h1>20/04/2023</h1>
-                    <h3>Domingo, 15h</h3>
+                    <div id="iconCalendario">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                    </div>
+                    <div>
+                        <h1>20/04/2023</h1>
+                        <h3>Domingo, 15h</h3>
+                    </div>
                 </div>
 
                 <div class="gridIcons">
                 <!-- <div class="testePreco"> -->
                 <h1>R$220,00</h1>
-                <h2>dfdfd</h2>
+                <div class="iconsFuncPedidos">
+                    <!-- INICIO ICON CHAT -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+                </svg>  
+                    <!-- FINAL ICON CHAT -->
+                    
+                    <!-- INICIO ICON MAIS -->
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                    </svg>
+                <!-- FINAL ICON MAIS -->
+
+                <!-- INICIO ICON CONTRATO -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
+                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z"/>
+                </svg>
+                <!-- FINAL ICON CONTRATO -->
+
+                <h3>Chat</h3>
+                <h3>Mais</h3>
+                <h3>Contr.</h3>
+                </div>
                 </div>
                 <!-- </div> -->
-            
             </div>
 
+        </div>
+        </div>
+    </section>
+
+    <section class="outros">
+        <div class="blocoPedidos">
+            <h1 id="txtPedidosOutros">Outros</h1>
+            <div class="gridOutros">
+                <h3>Cod.</h3>
+                <h3>Pedido</h3>
+                <h3>Valor</h3>
+                <h3>Status final</h3>
+
+                <div class="cardOutrosPedidos">
+                <h3>548</h3>
+                <h3>Pacote Festa de Aniversário e serviços avulsos</h3>
+                <h3>R$ 450,00</h3>
+                <h3 id="txtArquivado">Arquivado</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+                </div>
+            </div>
         </div>
         </div>
     </section>

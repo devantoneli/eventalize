@@ -1,11 +1,49 @@
 body{
-    background-color: #F2DDEF;
+    background: linear-gradient(180deg, #F2DDEF 0%, #FFD9DE 100%);
+}
+
+.acessoRapido{
+    position: fixed;
+    text-align: center;
+    margin-top: 3%;
+}
+
+#roxo{
+    background-color: #C94FB8;
+    width: 150px;
+    height: 55px;
+    color: white;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+#rosa{
+    background-color: #FF5F76;
+    width: 150px;
+    height: 55px;
+    color: white;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+#azul{
+    background-color: #8084E8;
+    width: 150px;
+    height: 55px;
+    color: white;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.novosPedidos{
+    background-color: #F0A9E6;
 }
 
 .blocoPedidos{
     background-color: white;
     border-radius: 9px;
     margin: 5%;
+    padding: 2%;
 }
 
 #txtNovosPedidos{
@@ -30,7 +68,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.6em;
+    font-size: 1.4em;
     padding: 5%;
     width: 80%;
     text-align: center;
@@ -45,7 +83,6 @@ body{
     border: 2px solid #000000;
     border-radius: 8px;
     justify-items: center;
-
 }
 
 .cardNvPedidos h3{
@@ -77,7 +114,7 @@ body{
 } */
 
 .pedidosAndamento{
-    background-color: #FFD9DE;
+    background-color: #FF9FAD;
 }
 
 #txtPedidosAndamento{
@@ -98,7 +135,7 @@ body{
     color: white;
     border-radius: 9px;
     width: 95%;
-    height: 30%;
+    height: 20%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -108,7 +145,7 @@ body{
     display: grid;
     grid-template-columns: 0.1fr 0.6fr 0.6fr;
     /* grid-template-rows:  0.2fr 0.6fr 0.6fr ; */
-    background-color: #C94FB8;
+    /* background-color: #C94FB8; */
 }
 
 .gridPedidoInfo img{
@@ -131,10 +168,12 @@ body{
 
 .infoPedido h4{
     color: #000000;
-    font-size: 1em;
-    
+    font-size: 1em; 
 }
 
+.infoPedido h3{
+    color: #000000;
+}
 
 .testePreco{
     background-color: aqua;
@@ -147,7 +186,7 @@ body{
 }
 
 .gridIcons{
-    background-color:#FF5F76;
+    /* background-color:#FF5F76; */
     grid-area: 2/1/2/4;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -168,7 +207,6 @@ body{
     border-radius: 9px;
     border: 5px solid #7696F2;
     box-shadow: inset 0px 284px 187px #7696F2;
-    
 }
 
 #cardPedido h2{
@@ -180,7 +218,6 @@ body{
 #cardPedido li{
     font-size: 1.8em;
     color: white;
-
 }
 
 .gridStatusPedido{
@@ -192,3 +229,74 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.dataPedido{
+    display: grid;
+    grid-template-columns: 0.3fr 0.2fr;
+    color: #318839;
+    font-size: 1.2em;
+    align-items: first baseline;
+    justify-content: center;
+}
+
+.iconsFuncPedidos{
+    display: grid;
+    grid-template-columns: 0.2fr 0.2fr 0.2fr;
+    justify-content: center;
+    align-items: center;
+    color: #7696F2;
+}
+
+.outros{
+    background-color: #A6A9E5;
+}
+
+#txtPedidosOutros{
+    font-size: 2.2em;
+    color: #8084E8;
+    text-align: center;
+    padding-top: 2%;
+}
+
+.gridOutros{
+    display: grid;
+    grid-template-columns: repeat(5, 0.3fr);
+    /* justify-items: center; */
+    margin: 1%;
+
+}
+
+.gridOutros h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    padding: 5%;
+    width: 80%;
+    text-align: center;
+}
+
+.gridOutros svg{
+    align-items: center;
+}
+
+.cardOutrosPedidos{
+    grid-area: 2/1/2/ 7;
+    display: grid;
+    grid-template-columns: repeat(5, 0.3fr);
+    /* grid-template-rows: repeat(auto, 1fr); */
+    /* border: 2px solid #000000; */
+    /* border-radius: 8px; */
+    justify-items: center;
+}
+
+.cardOutrosPedidos h3{
+    text-align: center;
+}
+
+#txtArquivado{
+    background-color: #BFB5FF;
+    border-radius: 15px;
+}
+
+
