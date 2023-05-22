@@ -272,12 +272,14 @@ button.menuIcon{
     z-index: 2;
     display: flex;
     justify-content: center;
+    margin: 5% 0 5% 0;
+
 }
 
 .iconsCategorias img{
     width: 7%;
     height: 7%;
-    margin: 5% 0 8% 2%;
+    margin: 0 0 0 2%;
     cursor: pointer; 
 }
 
@@ -389,7 +391,7 @@ button.menuIcon{
     column-count: 3;
     column-gap: 20px;
     
-    margin: 5% 15% 5% 15%;
+    margin: 0 15% 0 15%;
     /* row-gap: 50px; */
   /* column-fill: auto; */
     /* grid-column: 2/3; */
@@ -436,7 +438,7 @@ button.menuIcon{
     width: 30em;
     height: 7em;
       /* background-color: #f0f0f0; */
-    margin: 5% 5% 0 5%;
+    margin: 0 2% 5% 2%;
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -499,6 +501,112 @@ button.menuIcon{
     margin-left: 20px;
     width: 20px;
 }
+
+.cardPacotes {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.cardPacotes .imagemPacote {
+    position: relative;
+}
+
+.cardPacotes .imagemPacote img {
+    width: 20em;
+    height: 30em;
+    border-radius: 30px;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+    background: linear-gradient(-10deg, #000000 25%, transparent 90%), url("/sistema/eventalize/bancoImagens/clientes/cardPacote.jpg");
+    background-size: cover;
+    z-index: 0;
+}
+
+.cardPacotes .textoPacote {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.textoPacote h2 {
+    font-size: 2.2em;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 0.5%;
+    /* margin-top: 35%; */
+}
+
+.textoPacote h4{
+    font-size: 1.2em;
+    color: white;
+    font-weight: 100;
+    margin-bottom: 4%;
+}
+
+.textoPacote h5{
+    font-size: 2em;
+    color: white;
+    font-weight: 100;
+    margin-bottom: 4%;
+}
+
+.botaoPacote{
+    padding: 5px;
+    background-color: #FFA856;
+    color: white;
+    font-size: 1em;
+    width: 110px;
+    height: 40px;
+    border-style: none;
+    border-radius: 50px;
+}
+
+.gridPacote{
+    column-count: 4;
+    margin: 0 5% 0 5%;
+}
+
+/* .imagemPacote{
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} */
+
+
+/* .textoPacote{
+    font-size: 1.5em;
+    font-weight: 500;
+    
+} */
+
+/* .sombra{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+} */
+
+/* .cardPacotes::before{
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+} */
 
 /* .imgEstrela{
     

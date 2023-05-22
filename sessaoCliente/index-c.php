@@ -14,6 +14,7 @@ include('../protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/iniciocliente.css">
+    <link rel="icon" href="../img/index/logo.png">
     <title>Início - Eventalize</title>
 </head>
 <body>
@@ -274,6 +275,79 @@ include('../protect.php');
     </div>
 </div>
 
+<div class="categorias">
+    <h1>Esses pacotes estão bombando!</h1>
+</div>
+
+<div class="gridPacote">
+    <div class="cardPacotes">
+        <div class="imagemPacote">
+            <img src="" alt="">
+        </div>
+        
+        <div class="textoPacote">
+            <h2>Casa de Festa</h2>
+            <div class="descPacote">
+                <h4>Espaço para alugar</h4>
+            </div>
+            <div class="percoPacote">
+                <h5>R$ 1500,00</h5>
+            </div>
+            <button class="botaoPacote">Ver mais</button>
+        </div>
+    </div>
+
+    <div class="cardPacotes">
+        <div class="imagemPacote">
+            <img src="" alt="">
+        </div>
+        
+        <div class="textoPacote">
+            <h2>Casa de Festa</h2>
+            <div class="descPacote">
+                <h4>Espaço para alugar</h4>
+            </div>
+            <div class="percoPacote">
+                <h5>R$ 1500,00</h5>
+            </div>
+            <button class="botaoPacote">Ver mais</button>
+        </div>
+    </div>
+
+    <div class="cardPacotes">
+        <div class="imagemPacote">
+            <img src="" alt="">
+        </div>
+        
+        <div class="textoPacote">
+            <h2>Casa de Festa</h2>
+            <div class="descPacote">
+                <h4>Espaço para alugar</h4>
+            </div>
+            <div class="percoPacote">
+                <h5>R$ 1500,00</h5>
+            </div>
+            <button class="botaoPacote">Ver mais</button>
+        </div>
+    </div>
+
+    <div class="cardPacotes">
+        <div class="imagemPacote">
+            <img src="" alt="">
+        </div>
+        
+        <div class="textoPacote">
+            <h2>Casa de Festa</h2>
+            <div class="descPacote">
+                <h4>Espaço para alugar</h4>
+            </div>
+            <div class="percoPacote">
+                <h5>R$ 1500,00</h5>
+            </div>
+            <button class="botaoPacote">Ver mais</button>
+        </div>
+    </div>
+</div>
     <!-- <div class="empresasAvaliacao"></div>
     <div class="empresasAvaliacao"></div> -->
 
