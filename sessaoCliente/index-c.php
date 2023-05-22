@@ -171,46 +171,115 @@ include('../protect.php');
 </div>
 
 <div class="categorias">
-    <h1>Conheça a classificação de Empresas</h1>
+    <h1>Empresas com Melhor Avaliação</h1>
 </div>
 
-<div class="classificacaoEmpresa">
-    <img src="../bancoImagens/clientes/ouro.svg" alt="">
-    <img src="../bancoImagens/clientes/prata.svg" alt="">
-    <img src="../bancoImagens/clientes/bronze.svg" alt="">
+<div class="gridAvaliacao">
+    <div class="empresasAvaliacao">
+        <!-- <div class="perfilFoto"> -->
+        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
+            <!-- <div class="cardTexto"> -->
+            <div class="textoEmpresa">
+                <h1>Casa Noturna •</h1>
+            </div>
+            <div class="infoAvaliacao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <p class="tamAvaliacao">4,8</p>
+            </div>
+            <button class="botaoSeguir">Seguir</button>
+            <!-- </div> -->
+        <!-- </div> -->
+    </div>
+
+    <div class="empresasAvaliacao">
+        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
+            <div class="textoEmpresa">
+                <h1>Casa Noturna •</h1>
+            </div>
+            <div class="infoAvaliacao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <p class="tamAvaliacao">4,8</p>
+            </div>
+        <button class="botaoSeguir">Seguir</button>
+    </div>
 </div>
 
-<div class="textoClassificacao">
-    <h1>Empresa Ouro</h1>
-    <h1>Empresa Prata</h1>
-    <h1>Empresa Bronze</h1>
+<div class="gridAvaliacao">
+    <div class="empresasAvaliacao">
+        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
+            <div class="textoEmpresa">
+                <h1>Casa Noturna •</h1>
+            </div>
+            <div class="infoAvaliacao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <p class="tamAvaliacao">4,8</p>
+            </div>
+        <button class="botaoSeguir">Seguir</button>
+    </div>
+
+    <div class="empresasAvaliacao">
+        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
+            <div class="textoEmpresa">
+                <h1>Casa Noturna •</h1>
+            </div>
+            <div class="infoAvaliacao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <p class="tamAvaliacao">4,8</p>
+            </div>
+        <button class="botaoSeguir">Seguir</button>
+    </div>
 </div>
 
-<div class="descClassificacao">
-    <ul>
-        <li>Empresa ativa</li>
-        <li>Avaliação a partir de 4,5</p></li>
-        <li>+ 100 dias de tempo na Eventalize</li>
-        <li>+ 30 prestações de serviços no mês</li>
-        <li>+ 200 serviços vendidos</li>
-    </ul>
+<div class="gridAvaliacao">
+    <div class="empresasAvaliacao">
+        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
+            <div class="textoEmpresa">
+                <h1>Casa Noturna •</h1>
+            </div>
+            <div class="infoAvaliacao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <p class="tamAvaliacao">4,8</p>
+            </div>
+        <button class="botaoSeguir">Seguir</button>
+    </div>
 
-    <ul>
-        <li>Empresa ativa</li>
-        <li>Avaliação a partir de 4,5</p></li>
-        <li>+ 100 dias de tempo na Eventalize</li>
-        <li>+ 30 prestações de serviços no mês</li>
-        <li>+ 200 serviços vendidos</li>
-    </ul>
-
-    <ul>
-        <li>Empresa ativa</li>
-        <li>Avaliação a partir de 4,5</p></li>
-        <li>+ 100 dias de tempo na Eventalize</li>
-        <li>+ 30 prestações de serviços no mês</li>
-        <li>+ 200 serviços vendidos</li>
-    </ul>
+    <div class="empresasAvaliacao">
+        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
+            <div class="textoEmpresa">
+                <h1>Casa Noturna •</h1>
+            </div>
+            <div class="infoAvaliacao">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <p class="tamAvaliacao">4,8</p>
+            </div>
+        <button class="botaoSeguir">Seguir</button>
+    </div>
 </div>
+
+    <!-- <div class="empresasAvaliacao"></div>
+    <div class="empresasAvaliacao"></div> -->
+
+
+ <!-- <img class="imgEmpresa"></img> -->
+        <!-- <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt=""> -->
 
 <!-- <div class="cardServico">
     <div class="imgServico">

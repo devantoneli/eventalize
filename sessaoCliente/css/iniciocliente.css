@@ -263,7 +263,7 @@ button.menuIcon{
 }
 
 .categorias h1{
-    font-size: 2.5em;
+    font-size: 2em;
     color: black;
 }
 
@@ -275,8 +275,8 @@ button.menuIcon{
 }
 
 .iconsCategorias img{
-    width: 8%;
-    height: 8%;
+    width: 7%;
+    height: 7%;
     margin: 5% 0 8% 2%;
     cursor: pointer; 
 }
@@ -334,7 +334,7 @@ button.menuIcon{
     /* align-items: center; */
     justify-content: flex-start;
     background-position: center;
-    background-image: linear-gradient(30deg, #000000 5%, transparent 70%), url("/eventalize/bancoImagens/clientes/fundoservico.jpg");
+    background-image: linear-gradient(30deg, #000000 5%, transparent 70%), url("/sistema/eventalize/bancoImagens/clientes/fundoservico.jpg");
     background-size: cover;
     z-index: 0;
     position: relative;
@@ -412,41 +412,121 @@ button.menuIcon{
     margin-bottom: 2%;
 }
 
-.classificacaoEmpresa{
+.gridAvaliacao{
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr); */
+    /* column-count: 2;
+    column-gap: 50px;
+    row-gap: 50px; */
+    /* display: grid; */
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 350px;
-    align-items: center;
-    margin: 5% 0 2% 0;
+
 }
 
-.classificacaoEmpresa img{
+.empresasAvaliacao{
+    /* grid-area: 1/2/1/2; */
+    /* width: 30em; */
+    /* height: 7em; */
+    background-color: white;
+    /* margin: 5% 0; */
+    /* margin-top: 2%; */
+    width: 30em;
+    height: 7em;
+      /* background-color: #f0f0f0; */
+    margin: 5% 5% 0 5%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 4px 5px 5px 4px rgba(0, 0, 0, 0.1);
+    /* margin-top: 5%; */
+}
+
+.empresasAvaliacao img{
+    clip-path: circle();
+    width: 5em;
+    height: 5em;
+    background-color: white;
+    margin: 3%;
+}
+
+/* .cardTexto{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+} */
+
+.textoEmpresa {
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+.textoEmpresa h1{
+    font-size: 1.5em;
+    font-weight: 500;
+    
+}
+
+.botaoSeguir{
+    padding: 5px 10px;
+    background-color: #FF3E83;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    width: 20%;
+    height: 30%;
+    margin-left: 7%;
+    cursor: pointer;
+}
+
+.infoAvaliacao {
+    /* display: flex;
+    align-items: center; */
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+    /* flex-direction: column; */
+}
+
+.tamAvaliacao p{
+    font-size: 0.8em;
+    
+}
+
+.infoAvaliacao img{
+    margin-left: 20px;
+    width: 20px;
+}
+
+/* .imgEstrela{
+    
+} */
+
+
+
+/* .empresasAvaliacao p{
+    font-size: 2em;
+} */
+
+/* .perfilFoto{
+    display: flex;
+    align-items: center;
+} */
+
+/* .empresasAvaliacao img{
     width: 10%;
     height: 10%;
 }
 
-.textoClassificacao{
-    display: flex;
-    justify-content: center;
-    /* margin: 0 10% 0 10%; */
-    align-items: center;
-    gap: 300px;
-}
+.imgEmpresa img{
+    clip-path: circle();
+    width: 15%;
+    background-color: #3ED1FF;
+} */
 
-.descClassificacao{
-    display: flex;
-    justify-content: space-around;
-    gap: 200px;
-    align-items: center;
-    margin: 2% 5% 2% 11%;
-    /* width: 80%; */
-}
 
-.descClassificacao li{
-    list-style-type: none;
-    font-size: 1.3em;
-    
-}
 
   
 
