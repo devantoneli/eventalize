@@ -241,7 +241,9 @@ body{
 
 .iconsFuncPedidos{
     display: grid;
-    grid-template-columns: 0.2fr 0.2fr 0.2fr;
+    grid-template-columns: 0.1fr 0.1fr 0.1fr;
+    column-gap: 50px;
+    margin-left: 25%;
     justify-content: center;
     align-items: center;
     color: #7696F2;
