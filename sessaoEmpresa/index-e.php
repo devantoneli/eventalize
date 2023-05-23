@@ -10,7 +10,7 @@ include('../protect.php');
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $db_name = "db_eventalize";
 
     $conn = new mysqli($servername, $username, $password, $db_name);
