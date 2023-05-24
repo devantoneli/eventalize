@@ -8,6 +8,10 @@ body{
     margin-top: 3%;
 }
 
+a{
+    text-decoration: none;
+}
+
 #roxo{
     background-color: #C94FB8;
     width: 150px;
@@ -15,6 +19,9 @@ body{
     color: white;
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #rosa{
@@ -24,6 +31,9 @@ body{
     color: white;
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #azul{
@@ -33,6 +43,9 @@ body{
     color: white;
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .novosPedidos{
@@ -300,5 +313,7 @@ body{
     background-color: #BFB5FF;
     border-radius: 15px;
 }
+
+
 
 
