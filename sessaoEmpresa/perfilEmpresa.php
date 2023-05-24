@@ -51,7 +51,7 @@ include('../protect.php');
             <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
             <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
             <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
-            <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
+            <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
         </ul>
     
         <div class="alinhaLogo">
