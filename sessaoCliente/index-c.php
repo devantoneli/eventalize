@@ -6,6 +6,27 @@ if(!isset($_SESSION)){
 
 include('../protect.php');
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+    //LÓGICA PARA POSTAGENS DA SEMANA
+    // $sql = "SELECT * FROM tb_postagem WHERE cd_avaliacao = 5"; 
+    // $result = $conn->query($sql);
+    // $row = $result -> fetch_assoc();
+
+    //LÓGICA PARA EMPRESAS COM MAIOR AVALIAÇÃO
+    //Precisamos de um select que calcule as avaliações das postagens da empresa, some e faça uma média baseado na quantidade de postagens que a empresa tem.
+
+    //LÓGICA PARA PACOTES QUE ESTÃO BOMBANDO
+    //Precisamos de um select que calcule a quantidade qual o pacote que esta mais sendo comprado e aparecendo na tabela pedidos.
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -123,6 +144,7 @@ include('../protect.php');
     <div class="gridPostagens">
         <div class="imgPostagens">
             <!-- <img src="post2.jpg" alt=""> -->
+            <!-- <?php echo $row['url_imgcapa'];?> -->
             <img src="../bancoImagens/clientes/post1.jpg" alt="">
             <img src="../bancoImagens/clientes/post3.jpg" alt="">
             <img src="../bancoImagens/clientes/post4.jpg" alt="">
