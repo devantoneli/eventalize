@@ -19,9 +19,9 @@
       </div>
       <div class="menu">
           <a href="">Início</a>
-          <a href="">Inspira-se</a>
-          <a href="">Sobre Nós</a>
-          <a href="">Contato</a>
+          <a href="">Feed</a>
+          <a href="">Mensagens</a>
+          <a href="">Seus Pedidos</a>
       </div>
   
       <div class="headerPesquisa">
@@ -47,18 +47,18 @@
   
 
   <!-- INICIO TEXTO CARRINHO -->
-  <div class="inicioCarrinho">
+  <!-- <div class="inicioCarrinho">
   <div class="tituloCarrinho">
     <h3>Meu Carrinho</h3>
   </div>
   <div class="textoSelecione">
     <h3>Selecione seus pedidos para prosseguir com a compra.</h3>
   </div>
-</div>
+</div> -->
 
   <!-- INICIO PEDIDOS NO CARRINHO -->
 
-  <div class="pedidoEmpresa">
+  <!-- <div class="pedidoEmpresa">
       <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
       <h3>Smash Party</h3>
   </div>
@@ -124,6 +124,190 @@
       </div>
   </div>
   </div>
+
+  <div class="produtoSelecionado">
+    <h3>Carrinho</h3>
+    <div id="itensCarrinho"></div>
+  </div> -->
+
+  <div class="inicioCarrinho">
+    <div class="tituloCarrinho">
+      <h3>Meu Carrinho</h3>
+    </div>
+    <div class="textoSelecione">
+      <h3>Selecione seus pedidos para prosseguir com a compra.</h3>
+    </div>
+  </div>
+  
+  <!-- INICIO PEDIDOS NO CARRINHO -->
+  
+  <div class="pedidoEmpresa">
+    <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
+    <h3>Smash Party</h3>
+  </div>
+  
+  <div class="selecionaItem">
+    <div>
+      <input type="radio" class="add-to-cart">
+    </div>
+    <div class="imgPedido">
+      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
+    </div>
+    <div>
+      <div class="infoPedido"> 
+        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
+        <h3>R$ 850,00</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="selecionaItem">
+    <div>
+      <input type="radio" class="add-to-cart">
+    </div>
+    <div class="imgPedido">
+      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
+    </div>
+    <div>
+      <div class="infoPedido"> 
+        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
+        <h3>R$ 850,00</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pedidoEmpresa">
+    <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
+    <h3>Smash Party</h3>
+  </div>
+  
+  <div class="selecionaItem">
+    <div>
+      <input type="radio" class="add-to-cart">
+    </div>
+    <div class="imgPedido">
+      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
+    </div>
+    <div>
+      <div class="infoPedido"> 
+        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
+        <h3>R$ 850,00</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="selecionaItem">
+    <div>
+      <input type="radio" class="add-to-cart">
+    </div>
+    <div class="imgPedido">
+      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
+    </div>
+    <div>
+      <div class="infoPedido"> 
+        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
+        <h3>R$ 850,00</h3>
+      </div>
+    </div>
+  </div>
+  
+  <div class="produtoSelecionado">
+    <h1>Carrinho</h1>
+    <div id="itensCarrinho"></div>
+  </div>
+  
+  <script>
+    function addCarrinho() {
+      const nomeProduto = this.parentNode.parentNode.querySelector('.infoPedido h1').textContent;
+      const itemCarrinho = document.createElement('div');
+      itemCarrinho.classList.add('itensCarrinho');
+      itemCarrinho.innerHTML = `<div class="selecionaItem">
+        <div>
+          <input type="radio" class="add-to-cart">
+        </div>
+        <div class="imgPedido">
+          <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
+        </div>
+        <div>
+          <div class="infoPedido"> 
+            <h1>${nomeProduto}</h1>
+            <span class="removerBotao">Deletar</span>
+            <h3>R$ 850,00</h3>
+          </div>
+        </div>
+      </div>`;
+      document.getElementById('itensCarrinho').appendChild(itemCarrinho);
+      bindRemoveButton(itemCarrinho.querySelector('.removerBotao'));
+    }
+  
+    function removerDoCarrinho() {
+      const itemCarrinho = this.parentNode.parentNode;
+      itemCarrinho.parentNode.removeChild(itemCarrinho);
+    }
+  
+    function bindAdicionarNoCarrinho(input) {
+      input.addEventListener('click', addCarrinho);
+    }
+  
+    function bindRemoveButton(input) {
+      input.addEventListener('click', removerDoCarrinho);
+    }
+  
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(bindAdicionarNoCarrinho);
+  
+    const removeButtons = document.querySelectorAll('.removerBotao');
+    removeButtons.forEach(bindRemoveButton);
+  </script>
+
+  
+  
+  
+
+  <!-- <script>
+    function addCarrinho (){
+      const nomeProduto = this.parentNode.queryselector('h1').textContent;
+      const itemCarrinho = document.createElement('div');
+      itemCarrinho.classList.add('itennsCarrinho');
+      itemCarrinho.innerHTML = `<div class="selecionaItem">
+  <div>
+    <input type="radio">
+  </div>
+    <div class="imgPedido">
+      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
+    </div>
+    <div>
+     <div class="infoPedido"> 
+    <h1>${nomeProduto}</h1>
+    <span class="removerBotao">Deletar</span>
+    <h3>R$ 850,00</h3>
+      </div>
+  </div>
+  </div>`
+  document.querySelector('itensCarrinho').appendChild(itemCarrinho);
+  bindRemoveButton(itemCarrinho.querySelector('.removerBotao'))
+    }
+
+    function removerDoCarrinho(){
+      const itemCarrinho = this.parentNode;
+      itemCarrinho.parentNode.removeChild(itemCarrinho);
+    }
+
+    function bindAdicionarNoCarrinho (input){
+      input.addEventListener('click', AdicionarNoCarrinho)
+    }
+
+    function bindRemoveButton(input){
+      input.addEventListener('click', removerDoCarrinho)
+    }
+
+    const addToCartButton = document.querySelectorAll('add-to-cart');
+    addToCartButton.forEach(bindAdicionarNoCarrinho);
+
+    const removeButton = document.querySelectorAll('remover.Botao');
+    removeButton.forEach(bindRemoveButton);
+
+  </script> -->
 
  
   
