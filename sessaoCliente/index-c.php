@@ -20,12 +20,18 @@ if($conn->connect_error){
     // $sql = "SELECT * FROM tb_postagem WHERE cd_avaliacao = 5"; 
     // $result = $conn->query($sql);
     // $row = $result -> fetch_assoc();
+    //PROBLEMA: Não temos atributos de data para realizar está lógica.
+    //SOLUÇÃO: Substituir por postagens de maior avaliação.
 
     //LÓGICA PARA EMPRESAS COM MAIOR AVALIAÇÃO
     //Precisamos de um select que calcule as avaliações das postagens da empresa, some e faça uma média baseado na quantidade de postagens que a empresa tem.
+    //PROBLEMA: A gente precisa fazer uma lógica para apresentar as empresas de maior avaliação. A unica forma de fazer isso é lidando com a tabela de postagens, onde os clientes podem avaliar as postagens das empresas, porém tem um problema. Para fazer o select precisamos selecionar as empresas que tem mais de uma postagem feita pela cliente, somar as avaliações e realizar a média baseada na quantidade de postagens que seus clientes realizaram. Até ai tudo bem, mas quando é realizada a consulta ela não retorna nada, já que todas as postagens e avaliações que os clientes fazem estão desacompanhadas de cd empresa, impossibilitando a consulta sql.
+    //SOLUÇÃO: Adicionar cd empresa em postagens feitas por cliente
 
     //LÓGICA PARA PACOTES QUE ESTÃO BOMBANDO
-    //Precisamos de um select que calcule a quantidade qual o pacote que esta mais sendo comprado e aparecendo na tabela pedidos.
+    //Precisamos de um select que calcule qual o pacote que esta mais sendo comprado e aparecendo na tabela pedidos.
+    //PROBLEMA: Não tem como realizar esta consulta porque a tabela pedidos não carrega cd pacote.
+    //SOLUÇÃO: Adicionar cd pacote na tabela pedido.
 
 ?>
 <!DOCTYPE html>
