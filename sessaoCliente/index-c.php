@@ -33,8 +33,12 @@ include('../protect.php');
             </div>
 
             <div class="headerPesquisa">
-                <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços">
-                <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                <form action="index-c.php" method="get">
+                <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                <button>
+                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                </button>
+                </form>
             </div>
             <div class="headerClientePerfil" >
                 <!-- <div class="iconCliente"> -->
@@ -53,6 +57,7 @@ include('../protect.php');
         </div>
     </div>
 <!-- FIM MENU -->
+
 
 <div class="carousel">
     <div class="carousel-slides">
@@ -94,49 +99,6 @@ include('../protect.php');
         </div>
     </div>
 </div>
-
-  <!-- <div class="carousel">
-    <div class="carousel-slides">
-      <div class="slide">
-        <div class="divInicio">
-          <div class="textoInicio">
-            <h1 class="slide-title">Ayla Decorações</h1>
-            <p class="slide-description">@decoration</p>
-            <img class="slide-image" src="decoracaoouro.svg" alt="Decoração Ouro">
-            <h4 class="slide-caption">Decorações para o seu casamento, festa infantil e muito mais!</h4>
-          </div>
-          <img class="slide-logo" src="logoEmpresa.jpg" alt="Logo da Empresa">
-          <button class="slide-button">Visitar Perfil</button>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="divInicio">
-            <div class="textoInicio">
-              <h1 class="slide-title">Ayla Decorações</h1>
-              <p class="slide-description">@decoration</p>
-              <img class="slide-image" src="decoracaoouro.svg" alt="Decoração Ouro">
-              <h4 class="slide-caption">Decorações para o seu casamento, festa infantil e muito mais!</h4>
-            </div>
-            <img class="slide-logo" src="logoEmpresa.jpg" alt="Logo da Empresa">
-            <button class="slide-button">Visitar Perfil</button>
-          </div>
-      </div>
-      <div class="slide"></div>
-    </div>
-  </div> -->
-  
-  
-
-<!-- <div class="divInicio">
-    <div class="textoInicio">
-      <h1>Ayla Decorações</h1>
-      <p>@decoration</p>
-      <img src="decoracaoouro.svg" alt="">
-      <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
-    </div>
-    <img src="logoEmpresa.jpg" alt="">
-    <button>Visitar Perfil</button>
-</div> -->
 
 <div class="categorias">
     <h1>Navegue por categorias</h1>
@@ -242,7 +204,7 @@ include('../protect.php');
         <button class="botaoSeguir">Seguir</button>
     </div>
 </div>
-
+<!-- 
 <div class="gridAvaliacao">
     <div class="empresasAvaliacao">
         <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
@@ -253,7 +215,7 @@ include('../protect.php');
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt="">
                 <p class="tamAvaliacao">4,8</p>
             </div>
         <button class="botaoSeguir">Seguir</button>
@@ -268,12 +230,12 @@ include('../protect.php');
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+                <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt="">
                 <p class="tamAvaliacao">4,8</p>
             </div>
         <button class="botaoSeguir">Seguir</button>
     </div>
-</div>
+</div> -->
 
 <div class="categorias">
     <h1>Esses pacotes estão bombando!</h1>

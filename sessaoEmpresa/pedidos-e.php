@@ -1,5 +1,14 @@
+<?php
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include('../protect.php');
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,11 +65,11 @@
 <!--FIM MENU EMPRESA -->
 <body>
     <div class="acessoRapido">
-        <h3 id="roxo">Novos Pedidos</h3>
-        <h3 id="rosa">Em andamento</h3>
-        <h3 id="azul">Outros</h3>
+        <a href="#novosPedidos"><h3 id="roxo">Novos Pedidos</h3></a>
+        <a href="#emAndamento"><h3 id="rosa">Em andamento</h3></a>
+        <a href="#Outros"><h3 id="azul">Outros</h3></a>
     </div>
-    <section class="novosPedidos">
+    <section class="novosPedidos" id="novosPedidos">
         <div class="blocoPedidos">
             <h2 id="txtNovosPedidos">Novos pedidos</h2>
             <div class="gridNovosPedidos">
@@ -83,7 +92,7 @@
         </div>
     </section>
 
-    <section class="pedidosAndamento">
+    <section class="pedidosAndamento" id="emAndamento">
         <div class="blocoPedidos">
         <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
         <div class="gridPedidosAndamento">
@@ -154,7 +163,7 @@
         </div>
     </section>
 
-    <section class="outros">
+    <section class="outros" id="Outros">
         <div class="blocoPedidos">
             <h1 id="txtPedidosOutros">Outros</h1>
             <div class="gridOutros">
@@ -176,5 +185,7 @@
         </div>
         </div>
     </section>
+
+    <script src="js/menu-e.js"></script>
 </body>
 </html>

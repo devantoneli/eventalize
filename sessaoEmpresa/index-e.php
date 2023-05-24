@@ -10,7 +10,7 @@ include('../protect.php');
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $db_name = "db_eventalize";
 
     $conn = new mysqli($servername, $username, $password, $db_name);
@@ -52,7 +52,7 @@ include('../protect.php');
             
             <ul class="opcoesMenu">
                 <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
+                <li class="nav-item"><a href="pedidos-e.php" class="opcaoMenu">Pedidos</a></li>
                 <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
                 <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
             </ul>
