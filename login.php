@@ -8,7 +8,7 @@ if(empty($_POST['nm_email']) || empty($_POST['nm_senha'])) {
 // conectar ao banco de dados
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

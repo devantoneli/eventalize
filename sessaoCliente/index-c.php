@@ -28,7 +28,7 @@ include('../protect.php');
             <div class="menu">
                 <a href="">Início</a>
                 <a href="../sessaoUsuario/explore.php">Feed</a>
-                <a href="">Mensagens</a>
+                <a href="chatCliente.php">Mensagens</a>
                 <a href="">Seus Pedidos</a>
             </div>
 
