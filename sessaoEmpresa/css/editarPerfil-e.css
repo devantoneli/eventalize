@@ -1,0 +1,73 @@
+.estiloForm{
+    display: grid;
+    grid-template-rows: auto auto ;
+    grid-template-columns: 1.5fr 2.5fr;
+    gap: 10px; 
+}
+
+.grid-item {
+    /* background-color: #f2f2f2; */
+    padding: 60px;
+    text-align: center;
+  }
+  
+  .grid-item.row2-col1 {
+    grid-row: 2;
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .grid-item.row2-col1 img{
+    width: 450px;
+    height: 290px;
+    clip-path: circle();
+    display: grid;
+    justify-content: right;
+  }
+  
+  .grid-item.row2-col2 {
+    grid-row: 2 / span 3;
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 25px;
+  }
+  .grid-item.row2-col2 input[type="text"]{
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #FF3E83;
+  }
+  .grid-item2 {
+    /* background-color: #f2f2f2; */
+    padding: 60px;
+    text-align: center;
+  }
+
+  .botoes{
+    display: flex;
+    justify-content: end;
+  }
+
+ .salvarInfo input{
+    display: inline-block;
+    margin-right: 50px; 
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 15px;
+    width: 150px;
+ }
+ .corLaranja{
+    background-color: #FF975E;
+    color: white;
+    border: 2px solid #FF975E;
+ }
+ .corRosa{
+    background-color: #FF3E83;
+    color: white;
+    border: 2px solid #FF3E83;
+ }

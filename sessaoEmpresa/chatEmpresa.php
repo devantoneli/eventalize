@@ -18,7 +18,7 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-    $sql = "SELECT * FROM tb_cliente WHERE cd_cliente = 1"; //(pra quando o da raiza estiver pronto)
+    $sql = "SELECT * FROM tb_cliente WHERE cd_cliente = 1"; 
     $result = $conn->query($sql);
     $row = $result -> fetch_assoc();
 ?>
