@@ -33,8 +33,8 @@ if($conn->connect_error){
     FROM tb_pacotepedido pp
     GROUP BY pp.cd_pacote
     ORDER BY total_compras DESC";
-    $result3 = $conn->query($sql);
-    $row3=$result->fetch_assoc();
+    $result3 = $conn->query($sql3);
+    $row3=$result3->fetch_assoc();
     
 ?>
 <!DOCTYPE html>
