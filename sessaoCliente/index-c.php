@@ -29,10 +29,13 @@ if($conn->connect_error){
     //SOLUÇÃO: Adicionar cd empresa em postagens feitas por cliente
 
     //LÓGICA PARA PACOTES QUE ESTÃO BOMBANDO
-    //Precisamos de um select que calcule qual o pacote que esta mais sendo comprado e aparecendo na tabela pedidos.
-    //PROBLEMA: Não tem como realizar esta consulta porque a tabela pedidos não carrega cd pacote.
-    //SOLUÇÃO: Adicionar cd pacote na tabela pedido.
-
+    $sql3 = "SELECT pp.cd_pacote, COUNT(pp.cd_pacote) AS total_compras
+    FROM tb_pacotepedido pp
+    GROUP BY pp.cd_pacote
+    ORDER BY total_compras DESC";
+    $result3 = $conn->query($sql);
+    $row3=$result->fetch_assoc();
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
