@@ -293,7 +293,7 @@ if($conn->connect_error){
                             <h4>'.$descricaoPacote.'</h4>
                         </div>
                         <div class="percoPacote">
-                            <h5>'.$valorPacote.'</h5>
+                            <h5> R$'.$valorPacote.'</h5>
                         </div>
                         <button class="botaoPacote">Ver mais</button>
                     </div>
