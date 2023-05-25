@@ -29,10 +29,12 @@ if($conn->connect_error){
     //SOLUÇÃO: Adicionar cd empresa em postagens feitas por cliente
 
     //LÓGICA PARA PACOTES QUE ESTÃO BOMBANDO
-    $sql3 = "SELECT pp.cd_pacote, COUNT(pp.cd_pacote) AS total_compras
-    FROM tb_pacotepedido pp
-    GROUP BY pp.cd_pacote
-    ORDER BY total_compras DESC";
+    $sql3 = "SELECT pp.cd_pacote, COUNT(pp.cd_pacote) AS total_compras, p.nm_pacote, p.ds_pacote, p.vl_pacote
+              FROM tb_pacotepedido pp
+              JOIN tb_pacote p ON pp.cd_pacote = p.cd_pacote
+              GROUP BY pp.cd_pacote, p.nm_pacote, p.ds_pacote, p.vl_pacote
+              ORDER BY total_compras DESC
+              LIMIT 4";
     $result3 = $conn->query($sql3);
     $row3=$result3->fetch_assoc();
     
@@ -271,76 +273,90 @@ if($conn->connect_error){
 <div class="categorias">
     <h1>Esses pacotes estão bombando!</h1>
 </div>
+    <?php 
+        if (mysqli_num_rows($result3) > 0) {
+            
+            while ($row3 = mysqli_fetch_assoc($result3)) {
+                $nomePacote = $row3['nm_pacote'];
+                $descricaoPacote = $row3['ds_pacote'];
+                $valorPacote = $row3['vl_pacote'];
+              
+                echo '<div class="gridPacote">
+                <div class="cardPacotes">
+                    <div class="imagemPacote">
+                        <img src="" alt="">
+                    </div>
+                    
+                    <div class="textoPacote">
+                        <h2> '.$nomePacote.' </h2>
+                        <div class="descPacote">
+                            <h4>'.$descricaoPacote.'</h4>
+                        </div>
+                        <div class="percoPacote">
+                            <h5>'.$valorPacote.'</h5>
+                        </div>
+                        <button class="botaoPacote">Ver mais</button>
+                    </div>
+                </div>
+            
+                <div class="cardPacotes">
+                    <div class="imagemPacote">
+                        <img src="" alt="">
+                    </div>
+                    
+                    <div class="textoPacote">
+                        <h2>Casa de Festa</h2>
+                        <div class="descPacote">
+                            <h4>Espaço para alugar</h4>
+                        </div>
+                        <div class="percoPacote">
+                            <h5>R$ 1500,00</h5>
+                        </div>
+                        <button class="botaoPacote">Ver mais</button>
+                    </div>
+                </div>
+            
+                <div class="cardPacotes">
+                    <div class="imagemPacote">
+                        <img src="" alt="">
+                    </div>
+                    
+                    <div class="textoPacote">
+                        <h2>Casa de Festa</h2>
+                        <div class="descPacote">
+                            <h4>Espaço para alugar</h4>
+                        </div>
+                        <div class="percoPacote">
+                            <h5>R$ 1500,00</h5>
+                        </div>
+                        <button class="botaoPacote">Ver mais</button>
+                    </div>
+                </div>
+            
+                <div class="cardPacotes">
+                    <div class="imagemPacote">
+                        <img src="" alt="">
+                    </div>
+                    
+                    <div class="textoPacote">
+                        <h2>Casa de Festa</h2>
+                        <div class="descPacote">
+                            <h4>Espaço para alugar</h4>
+                        </div>
+                        <div class="percoPacote">
+                            <h5>R$ 1500,00</h5>
+                        </div>
+                        <button class="botaoPacote">Ver mais</button>
+                    </div>
+                </div>
+            </div>';
+            }
+        } else {
+            echo "Nenhum pacote encontrado.";
+        }
 
-<div class="gridPacote">
-    <div class="cardPacotes">
-        <div class="imagemPacote">
-            <img src="" alt="">
-        </div>
-        
-        <div class="textoPacote">
-            <h2>Casa de Festa</h2>
-            <div class="descPacote">
-                <h4>Espaço para alugar</h4>
-            </div>
-            <div class="percoPacote">
-                <h5>R$ 1500,00</h5>
-            </div>
-            <button class="botaoPacote">Ver mais</button>
-        </div>
-    </div>
+    ?>
 
-    <div class="cardPacotes">
-        <div class="imagemPacote">
-            <img src="" alt="">
-        </div>
-        
-        <div class="textoPacote">
-            <h2>Casa de Festa</h2>
-            <div class="descPacote">
-                <h4>Espaço para alugar</h4>
-            </div>
-            <div class="percoPacote">
-                <h5>R$ 1500,00</h5>
-            </div>
-            <button class="botaoPacote">Ver mais</button>
-        </div>
-    </div>
-
-    <div class="cardPacotes">
-        <div class="imagemPacote">
-            <img src="" alt="">
-        </div>
-        
-        <div class="textoPacote">
-            <h2>Casa de Festa</h2>
-            <div class="descPacote">
-                <h4>Espaço para alugar</h4>
-            </div>
-            <div class="percoPacote">
-                <h5>R$ 1500,00</h5>
-            </div>
-            <button class="botaoPacote">Ver mais</button>
-        </div>
-    </div>
-
-    <div class="cardPacotes">
-        <div class="imagemPacote">
-            <img src="" alt="">
-        </div>
-        
-        <div class="textoPacote">
-            <h2>Casa de Festa</h2>
-            <div class="descPacote">
-                <h4>Espaço para alugar</h4>
-            </div>
-            <div class="percoPacote">
-                <h5>R$ 1500,00</h5>
-            </div>
-            <button class="botaoPacote">Ver mais</button>
-        </div>
-    </div>
-</div>
     <!-- <div class="empresasAvaliacao"></div>
     <div class="empresasAvaliacao"></div> -->
 
