@@ -53,12 +53,43 @@
         <div class="titulo">
             <h2>Histórico de Pedidos</h2>
         </div>
+
+        <div class="infoPedido">
+            <div class="alinhaPedido">
+                <li>Nº:0543255</li>
+                <li>Pedido realizado em</li>
+                <li>Este é um</li>
+                <li>Pacote Personalizado</li>
+                <li>Situação</li>
+                <li>Status</li>
+            </div>
+
+            <div class="alinhaInfoPedido">
+                <li>Aline Silva</li>
+                <li>10/05/2023</li>
+                <li>Pacote</li>
+                <li id="pacotePersonalizado">Não</li>
+                <li class="status">Aprovado</li>
+                <li class="status">Pagamento realizado</li>
+            </div>
+        </div>
+
+        <div class="imgHistoricoPedido">
+            <img src="../bancoImagens/clientes/casaEventos.jpg" alt="">
+        </div>
+
+        <div class="textoHistorico">
+                <h2 class="estiloEmpresa">Empresa: Smash Party</h2><br>
+                <h3>Aluguel: casa noturna de 10 horas, no dia 30 de Junho.</h3>
+        </div>
+
+        <div class="textoValor">
+            <h2>Valor</h2><br>
+            <h3>R$ 850,00</h3>
+        </div>
+
+        <hr>
     </div>
-
-
-
-
-
 
 
 <script src="js/menu-c.js"></script>
