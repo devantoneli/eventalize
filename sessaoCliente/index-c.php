@@ -273,89 +273,36 @@ if($conn->connect_error){
 <div class="categorias">
     <h1>Esses pacotes estão bombando!</h1>
 </div>
-    <?php 
-        if (mysqli_num_rows($result3) > 0) {
+<div class="gridPacote">
+    <?php
+    if (mysqli_num_rows($result3) > 0) {
+        while ($row3 = mysqli_fetch_assoc($result3)) {
+            $nomePacote = $row3['nm_pacote'];
+            $descricaoPacote = $row3['ds_pacote'];
+            $valorPacote = $row3['vl_pacote'];
             
-            while ($row3 = mysqli_fetch_assoc($result3)) {
-                $nomePacote = $row3['nm_pacote'];
-                $descricaoPacote = $row3['ds_pacote'];
-                $valorPacote = $row3['vl_pacote'];
-              
-                echo '<div class="gridPacote">
-                <div class="cardPacotes">
+            echo '<div class="cardPacotes">
                     <div class="imagemPacote">
                         <img src="" alt="">
                     </div>
-                    
                     <div class="textoPacote">
-                        <h2> '.$nomePacote.' </h2>
+                        <h2>'.$nomePacote.'</h2>
                         <div class="descPacote">
                             <h4>'.$descricaoPacote.'</h4>
                         </div>
-                        <div class="percoPacote">
-                            <h5> R$'.$valorPacote.'</h5>
+                        <div class="precoPacote">
+                            <h5>R$'.$valorPacote.'</h5>
                         </div>
                         <button class="botaoPacote">Ver mais</button>
                     </div>
-                </div>
-            
-                <div class="cardPacotes">
-                    <div class="imagemPacote">
-                        <img src="" alt="">
-                    </div>
-                    
-                    <div class="textoPacote">
-                        <h2>Casa de Festa</h2>
-                        <div class="descPacote">
-                            <h4>Espaço para alugar</h4>
-                        </div>
-                        <div class="percoPacote">
-                            <h5>R$ 1500,00</h5>
-                        </div>
-                        <button class="botaoPacote">Ver mais</button>
-                    </div>
-                </div>
-            
-                <div class="cardPacotes">
-                    <div class="imagemPacote">
-                        <img src="" alt="">
-                    </div>
-                    
-                    <div class="textoPacote">
-                        <h2>Casa de Festa</h2>
-                        <div class="descPacote">
-                            <h4>Espaço para alugar</h4>
-                        </div>
-                        <div class="percoPacote">
-                            <h5>R$ 1500,00</h5>
-                        </div>
-                        <button class="botaoPacote">Ver mais</button>
-                    </div>
-                </div>
-            
-                <div class="cardPacotes">
-                    <div class="imagemPacote">
-                        <img src="" alt="">
-                    </div>
-                    
-                    <div class="textoPacote">
-                        <h2>Casa de Festa</h2>
-                        <div class="descPacote">
-                            <h4>Espaço para alugar</h4>
-                        </div>
-                        <div class="percoPacote">
-                            <h5>R$ 1500,00</h5>
-                        </div>
-                        <button class="botaoPacote">Ver mais</button>
-                    </div>
-                </div>
-            </div>';
-            }
-        } else {
-            echo "Nenhum pacote encontrado.";
+                </div>';
         }
-
+    } else {
+        echo "Nenhum pacote encontrado.";
+    }
     ?>
+</div>
+
 
     <!-- <div class="empresasAvaliacao"></div>
     <div class="empresasAvaliacao"></div> -->
@@ -399,7 +346,6 @@ function resumeCarousel() {
 var carousel = document.querySelector('.carousel');
 carousel.addEventListener('mouseenter', pauseCarousel);
 carousel.addEventListener('mouseleave', resumeCarousel);
-
     </script>
 </body>
 </html>
