@@ -46,6 +46,7 @@ if($conn->connect_error){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/iniciocliente.css">
+    <link rel="stylesheet" href="css/menu-c.css">
     <link rel="icon" href="../img/index/logo.png">
     <title>Início - Eventalize</title>
 </head>
@@ -67,9 +68,7 @@ if($conn->connect_error){
             <div class="headerPesquisa">
                 <form action="index-c.php" method="get">
                 <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
-                <button>
                     <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
-                </button>
                 </form>
             </div>
             <div class="headerClientePerfil" >
@@ -84,6 +83,7 @@ if($conn->connect_error){
                 <a href="">Postagens</a>
                 <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
                 <a href="">Configurações</a>
+                <a href="historicopedido-c.php">Histórico de Pedidos</a>
                 <a href="../logout.php">Sair</a>
             </section>
         </div>

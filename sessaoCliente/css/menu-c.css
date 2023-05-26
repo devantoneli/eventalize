@@ -19,14 +19,15 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     background-color: aquamarine;
-}
+}*/
 
 .menu{
     grid-column: 2 / span 2; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-} */
+} 
+
 
 .grid-container {
     display: grid;
@@ -78,6 +79,7 @@
     /* background-color: bisque; */
     grid-column: 3 / 4;
 }
+
   
 .headerPesquisa input {
     width: 25em;
@@ -182,7 +184,8 @@ button.menuIcon2{
 
 .open{
     display: block;
-    right: 2%; 
+    right: 2%;
+    z-index: 1; 
 }
 
 /* .headerMenuCliente a{
