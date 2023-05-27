@@ -6,6 +6,8 @@ if(!isset($_SESSION)){
 
 include('../protect.php');
 
+$cd_cliente = $_SESSION["cd_cliente"];
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,6 +18,12 @@ $conn = new mysqli($servername, $username, $password, $db_name);
 if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
+
+$query = "SELECT * FROM tb_cliente WHERE cd_cliente = '$cd_cliente'";
+
+$result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
+$row = mysqli_fetch_assoc($result_query);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -66,24 +74,25 @@ if($conn->connect_error){
         </div>
     </div>
 <!-- FIM MENU -->
-<form class="estiloForm">
+<form class="estiloForm" action="editandoPerfil-c.php">
     <div class="grid-item">
         <h1>Editar Perfil</h1>
     </div>
     <div class="grid-item row2-col1">
-        <img src="https://img.freepik.com/fotos-gratis/conceito-de-felicidade-bem-estar-e-confianca-mulher-afro-americana-atraente-alegre-corte-de-cabelo-encaracolado-peito-de-bracos-cruzados-em-pose-poderosa-e-segura-sorrindo-determinado-usar-sueter-amarelo_176420-35063.jpg?w=1380&t=st=1685022961~exp=1685023561~hmac=4f081a0f9390ea957df9be7baab8fcfd304aac1cd90f8fee7a8e76666af5077b" alt="imagem">
+        <img src="<?php echo($row['url_fotoperfil']);?>" alt="">
         <h3>Edite sua foto de perfil</h3>
     </div>
     <div class="grid-item row2-col2">
+        <input type="hidden" name="cd_cliente" value="<?php echo($row["cd_cliente"])?>">
         <h3>Editar Nome:</h3>
-        <input type="text" name="nm_cliente">
-        <h3>Editar Biografia:</h3>
-        <input type="text">
-        <h3>Editar Usuário:</h3>
-        <input type="text" name="nm_usuariocliente">
+        <input type="text" name="nm_cliente" value="<?php echo($row["nm_cliente"])?>">
+        <h3>Editar Sobrenome:</h3>
+        <input type="text" name="nm_sobrenome" value="<?php echo($row["nm_sobrenome"])?>">
+        <h3>Editar Usuario:</h3>
+        <input type="text" name="nm_usuariocliente" value="<?php echo($row["nm_usuariocliente"])?>">
         <div class="botoes">
         <div class="salvarInfo">
-            <input type="submit" value="Cancelar" class="corLaranja">
+           <a href="perfil-c.php"><input type="button" value="Cancelar" class="corLaranja"></a>
             <input type="submit" value="Salvar" class="corRosa">
             </div>
     </div>

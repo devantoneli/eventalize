@@ -108,7 +108,8 @@ include('../protect.php');
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4>4,8</h4>
                             </div>
-                            <button class="editarPerfil"><img src="../bancoImagens/empresas/imagens-perfil-empresa/useredit.svg" alt="">Editar Perfil</button>
+                            <a href="editarPerfil-e.php"> <button class="editarPerfil"><img src="../bancoImagens/empresas/imagens-perfil-empresa/useredit.svg" alt="">Editar Perfil</button></a>
+                           
                     </div>
                 </div>
             </div>

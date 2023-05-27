@@ -62,7 +62,7 @@ if ($result->num_rows == 1 ) {
   $_SESSION['cd_cliente'] = $cliente['cd_cliente'];
   $_SESSION['nm_cliente'] = $cliente['nm_cliente'];
   $_SESSION['nm_usuariocliente'] = $cliente['nm_usuariocliente'];
-  // $_SESSION['url_fotoperfil'] = $empresa['url_fotoperfil'];
+  $_SESSION['url_fotoperfil'] = $cliente['url_fotoperfil'];
   // $_SESSION['ds_biografia'] = $empresa['ds_biografia'];
 
   header("Location: sessaoCliente/index-c.php ");
