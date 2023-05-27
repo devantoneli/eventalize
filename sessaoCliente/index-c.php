@@ -24,12 +24,19 @@ if($conn->connect_error){
     //SOLUÇÃO: Substituir por postagens de maior avaliação.
 
     //LÓGICA PARA EMPRESAS COM MAIOR AVALIAÇÃO
-    //Precisamos de um select que calcule as avaliações das postagens da empresa, some e faça uma média baseado na quantidade de postagens que a empresa tem.
-    //PROBLEMA: A gente precisa fazer uma lógica para apresentar as empresas de maior avaliação. A unica forma de fazer isso é lidando com a tabela de postagens, onde os clientes podem avaliar as postagens das empresas, porém tem um problema. Para fazer o select precisamos selecionar as empresas que tem mais de uma postagem feita pela cliente, somar as avaliações e realizar a média baseada na quantidade de postagens que seus clientes realizaram. Até ai tudo bem, mas quando é realizada a consulta ela não retorna nada, já que todas as postagens e avaliações que os clientes fazem estão desacompanhadas de cd empresa, impossibilitando a consulta sql.
-    //SOLUÇÃO: Adicionar cd empresa em postagens feitas por cliente
+    $sql2 = "SELECT e.nm_fantasia, e.url_fotoperfil, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
+    FROM tb_postagem po
+    JOIN tb_pacotepedido tp ON tp.cd_pedido = po.cd_pedido
+    JOIN tb_pedido pe ON pe.cd_pedido = tp.cd_pedido
+    JOIN tb_pacote pa ON pa.cd_pacote = tp.cd_pacote
+    JOIN tb_empresa e ON e.cd_empresa = pe.cd_empresa
+    GROUP BY e.nm_fantasia, e.url_fotoperfil
+    ORDER BY media_avaliacao DESC LIMIT 4";
+    $result2 = $conn->query($sql2);
+    $row2 = $result2->fetch_assoc();
 
     //LÓGICA PARA PACOTES QUE ESTÃO BOMBANDO
-    $sql3 = "SELECT pp.cd_pacote, COUNT(pp.cd_pacote) AS total_compras, p.nm_pacote, p.ds_pacote, p.vl_pacote
+    $sql3 = "SELECT pp.cd_pacote, COUNT(pp.cd_pacote) AS total_compras, p.nm_pacote, p.ds_pacote, p.vl_pacote, p.url_imgcapa
               FROM tb_pacotepedido pp
               JOIN tb_pacote p ON pp.cd_pacote = p.cd_pacote
               GROUP BY pp.cd_pacote, p.nm_pacote, p.ds_pacote, p.vl_pacote
@@ -171,6 +178,18 @@ if($conn->connect_error){
 </div>
 
 <div class="gridAvaliacao">
+    <?php
+    if(mysqli_num_rows($result2) > 0){
+        while($row2 = mysqli_fetch_assoc($result2)){
+            $nomeFantasia = $row2['nm_fantasia'];
+            $urlFotoPerfil = $row2['url_fotoperfil'];
+            $mediaAvaliacao = $row2['media_avaliacao'];
+            // echo $nomeFantasia;
+            // echo $urlFotoPerfil;
+            // echo $mediaAvaliacao;
+        }
+    }
+    ?>
     <div class="empresasAvaliacao">
         <!-- <div class="perfilFoto"> -->
         <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
@@ -280,6 +299,7 @@ if($conn->connect_error){
             $nomePacote = $row3['nm_pacote'];
             $descricaoPacote = $row3['ds_pacote'];
             $valorPacote = $row3['vl_pacote'];
+            $imgCapa = $row3['url_imgcapa'];
             
             echo '<div class="cardPacotes">
                     <div class="imagemPacote">
