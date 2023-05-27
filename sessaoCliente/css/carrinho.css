@@ -55,12 +55,16 @@
 
 .imgPedido img{
     width: 300px;
-    /* border-radius: 10px; */
+    border-radius: 30px;
+}
+
+/* .imgPedido img{ codigo caso queira voltar com a borda gradiente
+    width: 300px;
     border: 5px solid transparent;
     background-clip: padding-box;
     border-image-slice: 1;
     border-image-source: radial-gradient(67.47% 91.91% at 73.26% 36.72%, #3ED1FF 0%, #FF3E83 67.5%, #FFA856 100%);
-}
+} */
 
 .infoPedido{
     display: grid;
@@ -82,8 +86,34 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent; */
-    color: black;
+    color: transparent;
+    background: radial-gradient(37.47% 91.91% at 33.26% 36.72%, #3ED1FF 0%, #FF3E83 67.5%, #FFA856 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
     font-size: 2em;
     font-weight: 800;
     margin-top: 5%;
 }
+
+
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Inicialmente oculto na lateral direita */
+    width: 300px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+  }
+  
+  .cart {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    padding: 20px;
+  }
+  
+  .cart-open {
+    right: 0; /* Exibe a mini tela do carrinho */
+  }
