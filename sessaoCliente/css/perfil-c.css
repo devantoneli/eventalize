@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.gridPerfil{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.imgPerfil img{
+    width: 15em;
+    height: 15em;
+    clip-path: circle();
+    object-fit: cover;
+    aspect-ratio: 3/2;
+    /* background-color: aqua; */
+}
+
+.imgPerfil{
+    grid-area: 2/4/5/4;
+}
+
+.textoPerfil{
+    grid-area: 3/5/3/7;
+    margin-left: 10%;
+    margin-bottom: -10%;
+}
+
+.textoPerfil h2{
+    font-size: 1.8em;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+.textoPerfil h3{
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.textoPublicacoes{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-area: 6/5/6/5;
+}
+
+.textoPublicacoes h2{
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.botaoEditarPerfil{
+    text-align: center;
+    
+}
+
+.botaoEditarPerfil button{
+    text-decoration: none;
+    background-color: #3ED1FF;
+    border-style: none;
+    color: white;
+    width: 10em;
+    height: auto;
+    padding: 3%;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.botaoEditarPerfil:hover{
+    opacity: 80%;
+}
+
+/* .gridPublicações{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-area: 1/5/1/5;
+} */
+
+.tituloPostagem{
+    grid-area: 8/2/8/5;
+}
+
+.tituloPostagem h2{
+    font-size: 1.8em;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+.tituloPostagem h3{
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: center;
+    width: 90;
+}
