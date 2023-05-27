@@ -6,10 +6,10 @@ if(!isset($_SESSION)){
 
 include('../protect.php');
 
-$cd_cliente = $_SESSION["cd_cliente"];
-$nm_cliente = $_GET['nm_cliente'];
-$nm_sobrenome = $_GET['nm_sobrenome'];
-$nm_usuariocliente = $_GET['nm_usuariocliente'];
+$cd_empresa = $_SESSION["cd_empresa"];
+$nm_fantasia = $_GET['nm_fantasia'];
+$ds_biografia = $_GET['ds_biografia'];
+$nm_usuarioempresa = $_GET['nm_usuarioempresa'];
 
 $servername = "localhost";
 $username = "root";
@@ -22,10 +22,10 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql = "UPDATE tb_cliente SET nm_cliente='$nm_cliente',nm_sobrenome='$nm_sobrenome', nm_usuariocliente='$nm_usuariocliente' WHERE cd_cliente='$cd_cliente'";
+$sql = "UPDATE tb_empresa SET nm_fantasia='$nm_fantasia',ds_biografia='$ds_biografia', nm_usuarioempresa='$nm_usuarioempresa' WHERE cd_empresa='$cd_empresa'";
 
 if ($conn->query($sql)=== TRUE){
-    header('Location: perfil-c.php');
+    header('Location: perfilEmpresa.php');
 } else{
     echo "Error updating record: " . $conn->error;
 }

@@ -6,7 +6,7 @@ if(!isset($_SESSION)){
 
 include('../protect.php');
 
-
+$cd_empresa = $_SESSION["cd_empresa"];
 
 $servername = "localhost";
 $username = "root";
@@ -19,9 +19,9 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-    $sql = "SELECT * FROM tb_empresa WHERE cd_empresa = 1"; 
-    $result = $conn->query($sql);
-    $row = $result -> fetch_assoc();
+   $query = "SELECT * FROM tb_empresa WHERE cd_empresa = '$cd_empresa'"; 
+    $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
+    $row = mysqli_fetch_assoc($result_query);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -83,24 +83,24 @@ if($conn->connect_error){
         </header>
     </div>
 <!--FIM MENU EMPRESA -->
-<form class="estiloForm">
+<form class="estiloForm" action="editandoPerfil-e.php">
     <div class="grid-item">
         <h1>Editar Perfil</h1>
     </div>
     <div class="grid-item row2-col1">
-        <img src="https://img.freepik.com/fotos-gratis/mulher-interessada-com-cabelo-ondulado-tirando-selfie_197531-16717.jpg?w=1380&t=st=1685027872~exp=1685028472~hmac=5a7e7c455945fbfb46766e4efe959eb1f2aa20323e859235929f8c98f60d70af" alt="imagem">
+        <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="imagem">
         <h3>Edite sua foto de perfil</h3>
     </div>
     <div class="grid-item row2-col2">
         <h3>Editar Nome Fantasia:</h3>
-        <input type="text" name="nm_cliente">
+        <input type="text" name="nm_fantasia" value="<?php echo($row["nm_fantasia"])?>">
         <h3>Editar Biografia:</h3>
-        <input type="text">
+        <input type="text" name="ds_biografia" value="<?php echo($row["ds_biografia"])?>">
         <h3>Editar Usuário:</h3>
-        <input type="text" name="nm_usuariocliente">
+        <input type="text" name="nm_usuarioempresa" value="<?php echo($row["nm_usuarioempresa"])?>">
         <div class="botoes">
         <div class="salvarInfo">
-            <input type="submit" value="Cancelar" class="corLaranja">
+            <input type="button" value="Cancelar" class="corLaranja">
             <input type="submit" value="Salvar" class="corRosa">
             </div>
     </div>
