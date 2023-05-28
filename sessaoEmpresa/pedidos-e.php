@@ -5,6 +5,14 @@ if(!isset($_SESSION)){
 
 include('../protect.php');
 
+$cd_empresa = $_SESSION["cd_empresa"];
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
 ?>
 
 <!DOCTYPE html>
@@ -92,10 +100,27 @@ include('../protect.php');
         </div>
     </section>
 
+<?php
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+$query = "SELECT * FROM tb_pedido WHERE nm_status = 'Elaboração do serviço em processo' AND cd_empresa = $cd_empresa";
+$result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
+$row = mysqli_fetch_assoc($result_query);
+echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
+
+if(mysqli_num_rows($result_query) > 0){
+    echo '
     <section class="pedidosAndamento" id="emAndamento">
         <div class="blocoPedidos">
-        <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
-        <div class="gridPedidosAndamento">
+            <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
+            <div class="gridPedidosAndamento">';
+    while($row = mysqli_fetch_assoc($result_query)){
+        echo '
             <div id="cardPedido">
                 <h2>Festa na piscina</h2>
                 <ul>
@@ -106,62 +131,58 @@ include('../protect.php');
             </div>
             
             <div id="statusPedido">
-                <h2>Ação pendente - Confirmar alteração de endereço</h2>
+                <h2>'. $row['nm_status'] .'</h2>
                 <div class="gridPedidoInfo">
-                <img src="../bancoImagens/postagens/fotodestaque.jpg" alt="">
-                <div class="infoPedido">
-                <h2>Marcos F.</h2>
-                <h3>Rua Tal nº 6 - Bairro</h3>
-                <h4>São Vicente - SP</h4>
-                </div>
-                <div class="dataPedido">
-                    <div id="iconCalendario">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                    </svg>
+                    <img src="../bancoImagens/postagens/fotodestaque.jpg" alt="">
+                    <div class="infoPedido">
+                        <h2>Marcos F.</h2>
+                        <h3>Rua Tal nº 6 - Bairro</h3>
+                        <h4>São Vicente - SP</h4>
                     </div>
-                    <div>
-                        <h1>20/04/2023</h1>
-                        <h3>Domingo, 15h</h3>
+                    <div class="dataPedido">
+                        <div id="iconCalendario">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                                <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h1>'. $row['dt_pedido'] .'</h1>
+                            <h3>Domingo, 15h</h3>
+                        </div>
                     </div>
-                </div>
-
-                <div class="gridIcons">
-                <!-- <div class="testePreco"> -->
-                <h1>R$220,00</h1>
-                <div class="iconsFuncPedidos">
-                    <!-- INICIO ICON CHAT -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
-                </svg>  
-                    <!-- FINAL ICON CHAT -->
-                    
-                    <!-- INICIO ICON MAIS -->
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                    </svg>
-                <!-- FINAL ICON MAIS -->
-
-                <!-- INICIO ICON CONTRATO -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
-                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z"/>
-                </svg>
-                <!-- FINAL ICON CONTRATO -->
-
-                <h3>Chat</h3>
-                <h3>Mais</h3>
-                <h3>Contr.</h3>
-                </div>
-                </div>
-                <!-- </div> -->
+                    <div class="gridIcons">
+                        <h1>R$'. $row['vl_pedido'] .'</h1>
+                        <div class="iconsFuncPedidos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+                            </svg>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                            </svg>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 16 16">
+                                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z"/>
+                            </svg>
+                            
+                            <h3>Chat</h3>
+                            <h3>Mais</h3>
+                            <h3>Contr.</h3>
+                        </div>
+                    </div>
+                </div>';
+    }
+    echo '
             </div>
-
-        </div>
         </div>
     </section>
+    ';
+}
+?>
+
+
 
     <section class="outros" id="Outros">
         <div class="blocoPedidos">

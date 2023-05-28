@@ -245,7 +245,7 @@ a{
 
 .dataPedido{
     display: grid;
-    grid-template-columns: 0.3fr 0.2fr;
+    grid-template-columns: 0.2fr 0.5fr;
     color: #318839;
     font-size: 1.2em;
     align-items: first baseline;
