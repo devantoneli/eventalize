@@ -120,7 +120,7 @@ if(mysqli_num_rows($result_query) > 0){
             <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
             <div class="gridPedidosAndamento">';
     while($row = mysqli_fetch_assoc($result_query)){
-        echo '
+        echo 'APARECE ESQUIDITO
             <div id="cardPedido">
                 <h2>Festa na piscina</h2>
                 <ul>

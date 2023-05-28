@@ -115,9 +115,9 @@ if($conn->connect_error){
                     // echo('Não');
                 }
             }
-            // echo $nomeCliente;
-            // echo $dtPedido;
-            // echo $stPedido;
+            echo $nomeCliente;
+            echo $dtPedido;
+            echo $stPedido;
             
          
         }
