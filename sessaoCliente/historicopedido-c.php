@@ -21,6 +21,15 @@ if($conn->connect_error){
 }
 
 //LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO
+    $sql=" SELECT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz
+    FROM tb_pedido p
+    INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
+    INNER JOIN tb_cliente c ON ip.cd_cliente = c.cd_cliente
+    INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
+    INNER JOIN tb_servico s ON e.cd_empresa = s.cd_empresa
+    WHERE c.cd_cliente = '$cd_cliente'";
+     $result=$conn->query($sql);
+     $row=$result->fetch_assoc();
 
 //LOGICA PARA CARREGAR AS INFORMAÇÕES DE PACOTE DE PEDIDO
     $sql2="SELECT p.cd_pedido, pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, e.nm_fantasia
@@ -90,7 +99,30 @@ if($conn->connect_error){
         <div class="titulo">
             <h2>Histórico de Pedidos</h2>
         </div>
-
+    <?php
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $nomeCliente = $row['nm_cliente'];
+            $dtPedido = $row['dt_pedido'];
+            $stPedido = $row['nm_status'];
+            $persPedido = $row['cd_personaliz'];
+            if($persPedido == null){
+                // echo ('Não informado');
+            }else{
+                if($persPedido == 1){
+                    // echo('Sim');
+                }else{
+                    // echo('Não');
+                }
+            }
+            // echo $nomeCliente;
+            // echo $dtPedido;
+            // echo $stPedido;
+            
+         
+        }
+    }
+    ?>
         <div class="infoPedido">
             <div class="alinhaPedido">
                 <li>Nº:0543255</li>
