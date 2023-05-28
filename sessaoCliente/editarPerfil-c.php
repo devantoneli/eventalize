@@ -74,13 +74,18 @@ $row = mysqli_fetch_assoc($result_query);
         </div>
     </div>
 <!-- FIM MENU -->
-<form class="estiloForm" action="editandoPerfil-c.php">
+
+<form class="estiloForm" action="editandoPerfil-c.php" method="post">
     <div class="grid-item">
         <h1>Editar Perfil</h1>
     </div>
     <div class="grid-item row2-col1">
-        <img src="<?php echo($row['url_fotoperfil']);?>" alt="">
-        <h3>Edite sua foto de perfil</h3>
+        <img id="preview-capa" src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
+        <h3>Editar foto</h3>
+        <label for="cardCarregarFoto" for="img-inputFotoPerfil" id="imgPerfil">
+            <input class="linkPerfil" id="img-inputFotoPerfil" value="" type="file" name="imgPerfil">
+            <input id="linkimgPerfil" value="mudara" type="hidden" name="url_fotoperfil">
+        </label>
     </div>
     <div class="grid-item row2-col2">
         <input type="hidden" name="cd_cliente" value="<?php echo($row["cd_cliente"])?>">
@@ -99,3 +104,8 @@ $row = mysqli_fetch_assoc($result_query);
     </div>
     </div>
 </form>
+
+<script src="js/scriptEditarPerfil-c.js"></script>
+
+</body>
+</html>

@@ -29,7 +29,9 @@ if(isset($_POST['url_fotoperfil']) && $_POST['url_fotoperfil'] != "mudara") {
     $caminho_imgperfil = '../bancoImagens/servicos/' . $nm_imgperfil;
     file_put_contents($caminho_imgperfil, $data);
     // construir o caminho completo para a imagem a partir do diretório raiz do projeto
-    $url_imgperfil = '../bancoImagens/servicos/' .$nm_imgperfil;
+    // $url_imgperfil = '../bancoImagens/servicos/' .$nm_imgperfil;
+    $url_imgperfil = '../bancoImagens/servicos/' . $nm_imgperfil . '?t=' . time();
+
     echo "se AESFFAm";
     $semfoto = false;
     }else {
@@ -48,6 +50,7 @@ if ($conn->query($sql)=== TRUE){
 } else{
     echo "Error updating record: " . $conn->error;
 }
+
 
 $conn->close();
 ?>

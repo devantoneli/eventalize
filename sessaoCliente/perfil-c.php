@@ -58,7 +58,7 @@
             <h2>Ana Luisa</h2><br>
             <h3>ana_3464</h3><br>
             <div class="botaoEditarPerfil">
-                <button>Editar Perfil</button>
+                <a href="editarPerfil-c.php"><button>Editar Perfil</button></a>
             </div>
             
         </div>
