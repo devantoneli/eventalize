@@ -110,7 +110,7 @@ if($conn->connect_error){
 
 $query = "SELECT * FROM tb_pedido WHERE nm_status = 'Elaboração do serviço em processo' AND cd_empresa = $cd_empresa";
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
-$row = mysqli_fetch_assoc($result_query);
+
 echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
 
 if(mysqli_num_rows($result_query) > 0){
