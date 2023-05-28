@@ -35,7 +35,7 @@ if($conn->connect_error){
     <!-- <link rel="stylesheet" href="css/menu-e.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <link rel="icon" href="../img/index/logo.png">
-    <title>Início Empresa - Eventalize</title>
+    <title>Editar Perfil - Eventalize</title>
 </head>
 <body>
 
@@ -83,14 +83,20 @@ if($conn->connect_error){
         </header>
     </div>
 <!--FIM MENU EMPRESA -->
-<form class="estiloForm" action="editandoPerfil-e.php">
+<form class="estiloForm" action="editandoPerfil-e.php" method="post">
     <div class="grid-item">
         <h1>Editar Perfil</h1>
     </div>
+
     <div class="grid-item row2-col1">
-        <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="imagem">
-        <h3>Edite sua foto de perfil</h3>
+        <img id="preview-capa" src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="imagem">
+        <h3>Editar foto</h3>
+        <label for="cardCarregarFoto" for="img-inputFotoPerfil" id="imgPerfil">
+            <input class="linkPerfil" id="img-inputFotoPerfil" value="" type="file" name="imgPerfil">
+            <input id="linkimgPerfil" value="mudara" type="hidden" name="url_fotoperfil">
+        </label>
     </div>
+
     <div class="grid-item row2-col2">
         <h3>Editar Nome Fantasia:</h3>
         <input type="text" name="nm_fantasia" value="<?php echo($row["nm_fantasia"])?>">
@@ -107,3 +113,8 @@ if($conn->connect_error){
     </div>
     </div>
 </form>
+
+    <script src="js/scriptEditarPerfil-e.js"></script>
+
+</body>
+</html>
