@@ -1,3 +1,49 @@
+<?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include('../protect.php');
+
+$cd_cliente = $_SESSION["cd_cliente"];
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO
+    $sql=" SELECT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz
+    FROM tb_pedido p
+    INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
+    INNER JOIN tb_cliente c ON ip.cd_cliente = c.cd_cliente
+    INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
+    INNER JOIN tb_servico s ON e.cd_empresa = s.cd_empresa
+    WHERE c.cd_cliente = '$cd_cliente'";
+     $result=$conn->query($sql);
+     $row=$result->fetch_assoc();
+
+//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PACOTE DE PEDIDO
+    $sql2="SELECT p.cd_pedido, pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, e.nm_fantasia
+    FROM tb_pedido p
+    INNER JOIN tb_pacotepedido pp ON p.cd_pedido = pp.cd_pedido
+    INNER JOIN tb_pacote pac ON pp.cd_pacote = pac.cd_pacote
+    INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
+    INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
+    WHERE ip.cd_cliente = '$cd_cliente'";
+    $result2=$conn->query($sql2);
+    $row2=$result2->fetch_assoc();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,7 +99,30 @@
         <div class="titulo">
             <h2>Histórico de Pedidos</h2>
         </div>
-
+    <?php
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $nomeCliente = $row['nm_cliente'];
+            $dtPedido = $row['dt_pedido'];
+            $stPedido = $row['nm_status'];
+            $persPedido = $row['cd_personaliz'];
+            if($persPedido == null){
+                // echo ('Não informado');
+            }else{
+                if($persPedido == 1){
+                    // echo('Sim');
+                }else{
+                    // echo('Não');
+                }
+            }
+            // echo $nomeCliente;
+            // echo $dtPedido;
+            // echo $stPedido;
+            
+         
+        }
+    }
+    ?>
         <div class="infoPedido">
             <div class="alinhaPedido">
                 <li>Nº:0543255</li>
@@ -73,7 +142,21 @@
                 <li class="status">Pagamento realizado</li>
             </div>
         </div>
-
+        <?php
+          if(mysqli_num_rows($result2) > 0){
+            while($row2 = mysqli_fetch_assoc($result2)){
+                $nomePacote = $row2['nm_pacote'];
+                $descPacote = $row2['ds_pacote'];
+                $vlPacote = $row2['vl_pacote'];
+                $nomeFantasia=$row2['nm_fantasia'];
+                // echo $nomePacote;
+                // echo $descPacote;
+                // echo $vlPacote;
+                // echo $nomeFantasia;
+             
+            }
+        }
+        ?>
         <div class="imgHistoricoPedido">
             <img src="../bancoImagens/clientes/casaEventos.jpg" alt="">
         </div>
