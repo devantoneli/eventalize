@@ -102,28 +102,22 @@ if($conn->connect_error){
     <?php
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
-            $nomeCliente = $row['nm_cliente'];
-            $dtPedido = $row['dt_pedido'];
-            $stPedido = $row['nm_status'];
-            $persPedido = $row['cd_personaliz'];
-            if($persPedido == null){
-                // echo ('Não informado');
+            $nm_cliente = $row['nm_cliente'];
+            $dt_pedido = $row['dt_pedido'];
+            $nm_status = $row['nm_status'];
+            $cd_personaliz = $row['cd_personaliz'];
+            $personaliza = '';
+            if($cd_personaliz == null){
+                echo ('Não informado');
             }else{
-                if($persPedido == 1){
-                    // echo('Sim');
+                if($cd_personaliz == 1){
+                    $personaliza = "Sim";
                 }else{
-                    // echo('Não');
+                    $personaliza = "Não";
                 }
             }
-            echo $nomeCliente;
-            echo $dtPedido;
-            echo $stPedido;
-            
-         
-        }
-    }
-    ?>
-        <div class="infoPedido">
+            echo'
+            <div class="infoPedido">
             <div class="alinhaPedido">
                 <li>Nº:0543255</li>
                 <li>Pedido realizado em</li>
@@ -134,14 +128,18 @@ if($conn->connect_error){
             </div>
 
             <div class="alinhaInfoPedido">
-                <li>Aline Silva</li>
-                <li>10/05/2023</li>
+                <li>'.$nm_cliente.'</li>
+                <li>'.$dt_pedido.'</li>
                 <li>Pacote</li>
-                <li id="pacotePersonalizado">Não</li>
-                <li class="status">Aprovado</li>
+                <li id="pacotePersonalizado">'.$personaliza.'</li>
+                <li class="status">'.$nm_status.'</li>
                 <li class="status">Pagamento realizado</li>
             </div>
-        </div>
+        </div>';   
+        }
+    }
+    ?>
+      
         <?php
           if(mysqli_num_rows($result2) > 0){
             while($row2 = mysqli_fetch_assoc($result2)){
