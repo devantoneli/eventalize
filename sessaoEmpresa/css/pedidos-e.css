@@ -139,8 +139,12 @@ a{
 
 .gridPedidosAndamento{
     display: grid;
-    justify-items: center;
-    grid-template-columns: 0.4fr 1fr;
+}
+
+.card-Andamento{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin-bottom: 5%;
 }
 
 #statusPedido{

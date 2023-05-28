@@ -110,7 +110,7 @@ if($conn->connect_error){
 
 $query = "SELECT * FROM tb_pedido WHERE nm_status = 'Elaboração do serviço em processo' AND cd_empresa = $cd_empresa";
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
-$row = mysqli_fetch_assoc($result_query);
+
 echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
 
 if(mysqli_num_rows($result_query) > 0){
@@ -120,7 +120,7 @@ if(mysqli_num_rows($result_query) > 0){
             <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
             <div class="gridPedidosAndamento">';
     while($row = mysqli_fetch_assoc($result_query)){
-        echo 'APARECE ESQUIDITO
+        echo '<div class="card-Andamento">
             <div id="cardPedido">
                 <h2>Festa na piscina</h2>
                 <ul>
@@ -172,7 +172,7 @@ if(mysqli_num_rows($result_query) > 0){
                             <h3>Contr.</h3>
                         </div>
                     </div>
-                </div>';
+                </div></div></div>';
     }
     echo '
             </div>
