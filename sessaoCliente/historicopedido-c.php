@@ -105,13 +105,13 @@ echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result2);
         </div>
     <?php
     if(mysqli_num_rows($result) > 0){
-        $nm_cliente = $row['nm_cliente'];
-        $dt_pedido = $row['dt_pedido'];
-        $nm_status = $row['nm_status'];
+        // $nm_cliente = $row['nm_cliente'];
+        // $dt_pedido = $row['dt_pedido'];
+        // $nm_status = $row['nm_status'];
         $cd_personaliz = $row['cd_personaliz'];
         $personaliza = '';
         if($cd_personaliz == null){
-            $personaliza = "-";
+            $personaliza = "Não definido";
         }else{
             if($cd_personaliz == 1){
                 $personaliza = "Sim";
@@ -133,11 +133,11 @@ echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result2);
             </div>
 
             <div class="alinhaInfoPedido">
-                <li>'.$nm_cliente.'</li>
-                <li>'.$dt_pedido.'</li>
+                <li>'.$row['nm_cliente'].'</li>
+                <li>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</li>
                 <li>Pacote</li>
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
-                <li class="status">'.$nm_status.'</li>
+                <li class="status">'.$row['nm_status'].'</li>
                 <li class="status">Pagamento realizado</li>
             </div>
         </div>';   
