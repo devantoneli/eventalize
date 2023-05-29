@@ -64,13 +64,40 @@
         </div>
 
         <div class="textoPublicacoes">
-            <h2>Publicações</h2>
+            <h2>Postagens</h2>
         </div>
 
         <!-- <div class="gridPublicações"> -->
             <div class="tituloPostagem">
-                <h2>Festa de 12 anos da minha filha!!</h2><br>
+                <h2>Festa de 10 anos do meu sobrinho!!</h2><br>
                 <h3>Colaboradores: @decorazoes @candybolo @lembrancinhas @coxinha_doce</h3>
+            </div>
+
+            <div class="postsPerfilCliente">
+                <div class="imgPosts1">
+                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                </div>
+                <div class="imgPosts2">
+                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="linhaDivisao"></div>
+
+            <div class="tituloPostagem2">
+                <h2>Festa de 10 anos do meu sobrinho!!</h2><br>
+                <h3>Colaboradores: @decorazoes @candybolo @lembrancinhas @coxinha_doce</h3>
+            </div>
+
+            <div class="postsPerfilCliente2">
+                <div class="imgPosts-1">
+                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                </div>
+                <div class="imgPosts-2">
+                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                </div>
             </div>
         <!-- </div> -->
     </div>

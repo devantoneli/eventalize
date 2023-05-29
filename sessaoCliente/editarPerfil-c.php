@@ -34,7 +34,7 @@ $row = mysqli_fetch_assoc($result_query);
     <link rel="stylesheet" href="css/menu-c.css">
     <link rel="stylesheet" href="css/editarPerfil-c.css">
     <link rel="icon" href="../img/index/logo.png">
-    <title>Início - Eventalize</title>
+    <title>Editar Perfil - Eventalize</title>
 </head>
 <body>
 
