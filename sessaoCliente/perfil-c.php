@@ -1,3 +1,30 @@
+<?php
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include('../protect.php');
+
+$cd_cliente = $_SESSION["cd_cliente"];
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM tb_postagem WHERE cd_cliente = '$cd_cliente'";
+
+
+$result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -52,11 +79,11 @@
 
     <div class="gridPerfil">
         <div class="imgPerfil">
-            <img src="../bancoImagens/clientes/fotoclienteperfil.jpg" alt="">
+            <img src="<?php echo ($_SESSION["url_fotoperfil"])?>" alt="">
         </div>
         <div class="textoPerfil">
-            <h2>Ana Luisa</h2><br>
-            <h3>ana_3464</h3><br>
+            <h2><?php echo($_SESSION['nm_cliente'])?></h2><br>
+            <h3>@<?php echo($_SESSION['nm_usuariocliente'])?></h3><br>
             <div class="botaoEditarPerfil">
                 <a href="editarPerfil-c.php"><button>Editar Perfil</button></a>
             </div>
@@ -67,23 +94,36 @@
             <h2>Postagens</h2>
         </div>
 
+<?php
+
+if(mysqli_num_rows($result_query3) > 0){
+    echo'
         <!-- <div class="gridPublicações"> -->
-            <div class="tituloPostagem">
-                <h2>Festa de 10 anos do meu sobrinho!!</h2><br>
+            <div class="tituloPostagem">';
+    while($row = mysqli_fetch_assoc($result_query3)){
+            echo'
+                <h2>'.$row['nm_postagem'].'</h2><br>
                 <h3>Colaboradores: @decorazoes @candybolo @lembrancinhas @coxinha_doce</h3>
             </div>
 
             <div class="postsPerfilCliente">
                 <div class="imgPosts1">
-                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                    <img src="'.$row['url_imgcapa'].'" alt="">
                 </div>
                 <div class="imgPosts2">
-                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
-                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
+                    <img src="'.$row['url_img2'].'" alt="">
+                    <img src="'.$row['url_img3'].'" alt="">
                 </div>
             </div>
+            <div class="linhaDivisao"></div>'
+            ;
+    }
+     echo'   <!-- </div> -->
+    </div>';
+}
+?>
 
-            <div class="linhaDivisao"></div>
+<!-- <div class="linhaDivisao"></div>
 
             <div class="tituloPostagem2">
                 <h2>Festa de 10 anos do meu sobrinho!!</h2><br>
@@ -98,13 +138,7 @@
                     <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
                     <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
                 </div>
-            </div>
-        <!-- </div> -->
-    </div>
-
-
-
-
+            </div>' -->
 <script src="js/menu-c.js"></script>
 
 </body>

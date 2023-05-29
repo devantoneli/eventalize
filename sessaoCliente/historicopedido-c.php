@@ -88,10 +88,8 @@ if($conn->connect_error){
     </div>
 <!-- FIM MENU -->
 
-    <div class="gridHistorico">
-        <div class="titulo">
-            <h2>Histórico de Pedidos</h2>
-        </div>
+<h2>Histórico de Pedidos</h2>
+
     <?php
     if(mysqli_num_rows($result) > 0){
         // $nm_cliente = $row['nm_cliente'];
@@ -111,6 +109,9 @@ if($conn->connect_error){
         while($row = mysqli_fetch_assoc($result)){
           
             echo'
+            <div class="gridHistorico">
+        <div class="titulo">
+        </div>
             <div class="infoPedido">
             <div class="alinhaPedido">
                 <li>Nº:0543255</li>
@@ -132,7 +133,7 @@ if($conn->connect_error){
         </div>
         
         <div class="imgHistoricoPedido">
-        <img src="../bancoImagens/clientes/casaEventos.jpg" alt="">
+        <img src="'.$row['url_imgcapa'].'" alt="">
     </div>
 
     <div class="textoHistorico">
@@ -142,7 +143,7 @@ if($conn->connect_error){
 
     <div class="textoValor">
         <h2>Valor</h2><br>
-        <h3>R$ 850,00</h3>
+        <h3>R$'.$row['vl_pacote'].'</h3>
     </div>
 
     <hr>

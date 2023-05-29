@@ -7,13 +7,14 @@
 
 .grid-item {
     /* background-color: #f2f2f2; */
-    padding: 60px;
+    padding: 4%;
     text-align: center;
   }
 
   .grid-item h1{
     font-size: 2em;
     font-weight: 500;
+    margin-top: 5%;
   }
   
   .grid-item.row2-col1 {
@@ -62,7 +63,7 @@
 
  .salvarInfo input{
     display: inline-block;
-    margin-top: 80px;
+    margin-top: 2%;
     margin-right: 50px; 
     border-radius: 30px;
     font-size: 20px;
