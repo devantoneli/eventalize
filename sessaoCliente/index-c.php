@@ -114,6 +114,7 @@ if($conn->connect_error){
 
 <div class="carousel">
     <div class="carousel-slides">
+        
 <?php
     if(mysqli_num_rows($result4) > 0){
         while($row4 = mysqli_fetch_assoc($result4)){
@@ -124,6 +125,7 @@ if($conn->connect_error){
             
           echo ' <div class="slide">
           <div class="divInicio">
+                <div class="divInicioSombra" style="background-image:linear-gradient(30deg, #000000 5%, transparent 70%), url(../bancoImagens/clientes/fundoServico.jpg);"></div>
               <div class="textoInicio">
                   <h1>'. $nm_fantasia.'</h1>
                   <p>@'.$nm_usuarioempresa .'</p>
