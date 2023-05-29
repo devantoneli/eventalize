@@ -65,10 +65,11 @@ $row = mysqli_fetch_assoc($result_query);
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
             <section class="menuPerfil">
-                <a href="">Perfil</a>
+                <a href="perfil-c.php">Perfil</a>
                 <a href="">Postagens</a>
                 <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
                 <a href="">Configurações</a>
+                <a href="historicopedido.php">Histórico de Pedidos</a>
                 <a href="../logout.php">Sair</a>
             </section>
         </div>
@@ -93,7 +94,7 @@ $row = mysqli_fetch_assoc($result_query);
         <input type="text" name="nm_cliente" value="<?php echo($row["nm_cliente"])?>">
         <h3>Editar Sobrenome:</h3>
         <input type="text" name="nm_sobrenome" value="<?php echo($row["nm_sobrenome"])?>">
-        <h3>Editar Usuario:</h3>
+        <h3>Editar Usuário:</h3>
         <input type="text" name="nm_usuariocliente" value="<?php echo($row["nm_usuariocliente"])?>">
         <div class="botoes">
         <div class="salvarInfo">
@@ -106,6 +107,7 @@ $row = mysqli_fetch_assoc($result_query);
 </form>
 
 <script src="js/scriptEditarPerfil-c.js"></script>
+<script src="js/menu-c.js"></script>
 
 </body>
 </html>
