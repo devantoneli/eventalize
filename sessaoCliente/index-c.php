@@ -17,11 +17,14 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
     //LÓGICA PARA POSTAGENS DA SEMANA
-    // $sql = "SELECT * FROM tb_postagem WHERE cd_avaliacao = 5"; 
-    // $result = $conn->query($sql);
-    // $row = $result -> fetch_assoc();
-    //PROBLEMA: Não temos atributos de data para realizar está lógica.
-    //SOLUÇÃO: Substituir por postagens de maior avaliação.
+    $sql = "SELECT url_imgcapa 
+    FROM tb_postagem 
+    WHERE MONTH(dt_postagem) = MONTH(CURRENT_DATE) 
+    AND YEAR(dt_postagem) = YEAR(CURRENT_DATE) 
+    ORDER BY dt_postagem 
+    DESC LIMIT 7";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
 
     //LÓGICA PARA EMPRESAS COM MAIOR AVALIAÇÃO
     $sql2 = "SELECT e.nm_fantasia, e.url_fotoperfil, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
@@ -31,7 +34,7 @@ if($conn->connect_error){
     JOIN tb_pacote pa ON pa.cd_pacote = tp.cd_pacote
     JOIN tb_empresa e ON e.cd_empresa = pe.cd_empresa
     GROUP BY e.nm_fantasia, e.url_fotoperfil
-    ORDER BY media_avaliacao DESC LIMIT 4";
+    ORDER BY media_avaliacao DESC LIMIT 7";
     $result2 = $conn->query($sql2);
     $row2 = $result2->fetch_assoc();
 
@@ -44,6 +47,18 @@ if($conn->connect_error){
               LIMIT 4";
     $result3 = $conn->query($sql3);
     $row3=$result3->fetch_assoc();
+
+    //LÓGICA PARA CARROSEL
+    $sql4 = 'SELECT e.nm_fantasia, e.url_fotoperfil, e.ds_biografia, e.nm_usuarioempresa, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
+    FROM tb_postagem po
+    JOIN tb_pacotepedido tp ON tp.cd_pedido = po.cd_pedido
+    JOIN tb_pedido pe ON pe.cd_pedido = tp.cd_pedido
+    JOIN tb_pacote pa ON pa.cd_pacote = tp.cd_pacote
+    JOIN tb_empresa e ON e.cd_empresa = pe.cd_empresa
+    GROUP BY e.nm_fantasia, e.url_fotoperfil
+    ORDER BY media_avaliacao DESC LIMIT 4';
+    $result4 = $conn->query($sql4);
+    $row4 = $result4->fetch_assoc();
     
 ?>
 <!DOCTYPE html>
@@ -97,45 +112,33 @@ if($conn->connect_error){
     </div>
 <!-- FIM MENU -->
 
-
 <div class="carousel">
     <div class="carousel-slides">
-        <div class="slide">
-            <div class="divInicio">
-                <div class="textoInicio">
-                    <h1>Ayla Decorações</h1>
-                    <p>@decoration</p>
-                    <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
-                    <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
-                </div>
-                <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
-                <button>Visitar Perfil</button>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="divInicio">
-                <div class="textoInicio">
-                    <h1>Ayla Decorações</h1>
-                    <p>@decoration</p>
-                    <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
-                    <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
-                </div>
-                <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
-                <button>Visitar Perfil</button>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="divInicio">
-                <div class="textoInicio">
-                    <h1>Ayla Decorações</h1>
-                    <p>@decoration</p>
-                    <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
-                    <h4>Decorações para o seu casamento, festa infantil e muito mais!</h4>
-                </div>
-                <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
-                <button>Visitar Perfil</button>
-            </div>
-        </div>
+<?php
+    if(mysqli_num_rows($result4) > 0){
+        while($row4 = mysqli_fetch_assoc($result4)){
+            $nm_fantasia = $row4['nm_fantasia'];
+            $ds_biografia= $row4['ds_biografia'];
+            $nm_usuarioempresa = $row4['nm_usuarioempresa'];
+            $url_fotoperfil = $row4['url_fotoperfil'];
+            
+          echo ' <div class="slide">
+          <div class="divInicio">
+              <div class="textoInicio">
+                  <h1>'. $nm_fantasia.'</h1>
+                  <p>@'.$nm_usuarioempresa .'</p>
+                  <img src="../bancoImagens/clientes/decoracaoouro.svg" alt="">
+                  <h4>'. $ds_biografia.'</h4>
+              </div>
+              <img src="'.$url_fotoperfil.'" alt="">
+              <button>Visitar Perfil</button>
+          </div>
+      </div>';
+          
+        }
+    }
+    ?>
+
     </div>
 </div>
 
@@ -160,16 +163,18 @@ if($conn->connect_error){
 
 <div class="grid">
     <div class="gridPostagens">
-        <div class="imgPostagens">
-            <!-- <img src="post2.jpg" alt=""> -->
-            <!-- <?php echo $row['url_imgcapa'];?> -->
-            <img src="../bancoImagens/clientes/post1.jpg" alt="">
-            <img src="../bancoImagens/clientes/post3.jpg" alt="">
-            <img src="../bancoImagens/clientes/post4.jpg" alt="">
-            <img src="../bancoImagens/clientes/post5.jpg" alt="">
-            <img src="../bancoImagens/clientes/post6.jpg" alt="">
-            <img src="../bancoImagens/clientes/post5.jpg" alt="">
-        </div>
+    <?php
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $url_imgcapa = $row['url_imgcapa'];
+            // echo $url_imgcapa;
+           echo '<div class="imgPostagens">
+           <img src= '.$url_imgcapa.' alt="">
+       </div>';
+        }
+    }
+    ?>
+       
     </div>
 </div>
 
@@ -187,45 +192,26 @@ if($conn->connect_error){
             // echo $nomeFantasia;
             // echo $urlFotoPerfil;
             // echo $mediaAvaliacao;
+            echo '<div class="empresasAvaliacao">
+            <img src="'.$urlFotoPerfil .'" alt="">
+                <div class="textoEmpresa">
+                    <h1>'.$nomeFantasia.'•</h1>
+                </div>
+                <div class="infoAvaliacao">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                    <p class="tamAvaliacao">'.$mediaAvaliacao .'</p>
+                </div>
+                <button class="botaoSeguir">Seguir</button>
+        </div>';
         }
     }
     ?>
-    <div class="empresasAvaliacao">
-        <!-- <div class="perfilFoto"> -->
-        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
-            <!-- <div class="cardTexto"> -->
-            <div class="textoEmpresa">
-                <h1>Casa Noturna •</h1>
-            </div>
-            <div class="infoAvaliacao">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-            </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
-                <p class="tamAvaliacao">4,8</p>
-            </div>
-            <button class="botaoSeguir">Seguir</button>
-            <!-- </div> -->
-        <!-- </div> -->
-    </div>
-
-    <div class="empresasAvaliacao">
-        <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
-            <div class="textoEmpresa">
-                <h1>Casa Noturna •</h1>
-            </div>
-            <div class="infoAvaliacao">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
-                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-            </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
-                <p class="tamAvaliacao">4,8</p>
-            </div>
-        <button class="botaoSeguir">Seguir</button>
-    </div>
+    
 </div>
 
-<div class="gridAvaliacao">
+<!-- <div class="gridAvaliacao">
     <div class="empresasAvaliacao">
         <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
             <div class="textoEmpresa">
@@ -235,7 +221,7 @@ if($conn->connect_error){
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+             
                 <p class="tamAvaliacao">4,8</p>
             </div>
         <button class="botaoSeguir">Seguir</button>
@@ -250,12 +236,12 @@ if($conn->connect_error){
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
+               
                 <p class="tamAvaliacao">4,8</p>
             </div>
         <button class="botaoSeguir">Seguir</button>
     </div>
-</div>
+</div> -->
 <!-- 
 <div class="gridAvaliacao">
     <div class="empresasAvaliacao">
@@ -303,7 +289,8 @@ if($conn->connect_error){
             
             echo '<div class="cardPacotes">
                     <div class="imagemPacote">
-                        <img src="" alt="">
+                        <img src="'.$row3['url_imgcapa'].'" alt="">
+                        <div class="sombra"></div>
                     </div>
                     <div class="textoPacote">
                         <h2>'.$nomePacote.'</h2>
