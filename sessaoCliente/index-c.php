@@ -304,6 +304,7 @@ if($conn->connect_error){
             echo '<div class="cardPacotes">
                     <div class="imagemPacote">
                         <img src="'.$row3['url_imgcapa'].'" alt="">
+                        <div class="sombra"></div>
                     </div>
                     <div class="textoPacote">
                         <h2>'.$nomePacote.'</h2>
