@@ -21,7 +21,7 @@ if($conn->connect_error){
 }
 
 //LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E PACOTE DE PEDIDO
-    $sql=" SELECT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
+    $sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
     pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, pac.url_imgcapa, e.nm_fantasia
     FROM tb_pedido p
     INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
@@ -150,22 +150,6 @@ if($conn->connect_error){
         }
     }
     ?>
-      
-        <!-- <?php
-        //   if(mysqli_num_rows($result2) > 0){
-        //     while($row2 = mysqli_fetch_assoc($result2)){
-        //         $nomePacote = $row2['nm_pacote'];
-        //         $descPacote = $row2['ds_pacote'];
-        //         $vlPacote = $row2['vl_pacote'];
-        //         $nomeFantasia=$row2['nm_fantasia'];
-                // echo $nomePacote;
-                // echo $descPacote;
-                // echo $vlPacote;
-                // echo $nomeFantasia;
-             
-            // }
-        // }
-        ?> -->
  
 
 
