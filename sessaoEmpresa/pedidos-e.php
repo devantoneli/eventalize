@@ -13,6 +13,13 @@ $username = "root";
 $password = "";
 $db_name = "db_eventalize";
 
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -71,44 +78,84 @@ $db_name = "db_eventalize";
         </header>
     </div>
 <!--FIM MENU EMPRESA -->
+
+
 <body>
     <div class="acessoRapido">
         <a href="#novosPedidos"><h3 id="roxo">Novos Pedidos</h3></a>
         <a href="#emAndamento"><h3 id="rosa">Em andamento</h3></a>
         <a href="#Outros"><h3 id="azul">Outros</h3></a>
     </div>
+
+
+<?php
+
+$query3 = "SELECT *
+FROM tb_pedido AS p
+JOIN tb_infopagamento AS ip ON ip.cd_infopagamento = p.cd_infopagamento
+JOIN tb_pacotepedido as pp ON p.cd_pedido = pp.cd_pedido
+JOIN tb_pacote as pac on pp.cd_pacote = pac.cd_pacote
+JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
+JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
+JOIN tb_cep AS cep ON cep.cd_cep = e.cd_cep
+JOIN tb_bairro AS b on b.cd_bairro = cep.cd_bairro
+JOIN tb_cidade AS cid on cid.cd_cidade = b.cd_cidade
+WHERE nm_status = 'Aguardando confirmação' AND cd_empresa = '$cd_empresa'";
+
+
+
+$result_query3 = mysqli_query($conn, $query3) or die(' Erro na query:' . $query3 . ' ' . mysqli_error($conn));
+
+echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query3);
+if(mysqli_num_rows($result_query3) > 0){
+    echo'
     <section class="novosPedidos" id="novosPedidos">
         <div class="blocoPedidos">
             <h2 id="txtNovosPedidos">Novos pedidos</h2>
             <div class="gridNovosPedidos">
+            <div class="categoriasNvPedidos">
                 <h3>Cod.</h3>
                 <h3>Cliente e local</h3>
                 <h3>Pedido</h3>
                 <h3>Valor</h3>
                 <h3>Datado para</h3>
                 <h3>Requerido em</h3>
-
+                </div>';
+    while($row3 = mysqli_fetch_assoc($result_query3)){
+            echo'
                 <div class="cardNvPedidos">
-                <h3>548</h3>
-                <h3>Larissa Silva <br> Rua Tal, nº 4 - Bairro São Vicente, SP</h3>
-                <h3>Pacote Festa de Aniversário e serviços avulsos</h3>
-                <h3>R$ 450,00</h3>
+                <h3>'.$row3['cd_pedido'].'</h3>
+                <h3>'.$row3['nm_cliente'].' <br> '.$row3['nm_rua'].',  '.$row3['qt_numeroendereco'].' - '.$row3['nm_bairro'].' / '.$row3['nm_cidade'].' - '.$row3['sg_uf'].'</h3>
+                <h3>'.$row3['nm_pacote'].'</h3>
+                <h3>R$'. str_replace('.', ',', $row3['vl_pedido']) .'</h3>
                 <h3>15/02/2023 <br>10h</h3>
-                <h3>20/01/2023 <br>13h24</h3>
-                </div>
-            </div>
+                <h3>'.date('d/m/Y', strtotime($row3['dt_pedido'])).'<br>13h24</h3>
+                </div>';
+    }
+            echo '</div>
         </div>
-    </section>
+    </section>';
+}
+?>
 
 <?php
 
-$conn = new mysqli($servername, $username, $password, $db_name);
+//SELECT DOS PEDIDOS EM ANDAMENTO
+$query = "SELECT *
+FROM tb_pedido AS p
+JOIN tb_infopagamento AS ip ON ip.cd_infopagamento = p.cd_infopagamento
+JOIN tb_pacotepedido as pp ON p.cd_pedido = pp.cd_pedido
+JOIN tb_pacote as pac on pp.cd_pacote = pac.cd_pacote
+JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
+JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
+JOIN tb_cep AS cep ON cep.cd_cep = e.cd_cep
+JOIN tb_bairro AS b on b.cd_bairro = cep.cd_bairro
+JOIN tb_cidade AS cid on cid.cd_cidade = b.cd_cidade
+WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo') 
+AND p.cd_empresa = $cd_empresa 
+ORDER BY p.dt_pedido DESC";
 
-if($conn->connect_error){
-    die("Falha na conexão: " . $conn->connect_error);
-}
 
-$query = "SELECT * FROM tb_pedido WHERE nm_status = 'Elaboração do serviço em processo' AND cd_empresa = $cd_empresa";
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 
 echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
@@ -122,22 +169,18 @@ if(mysqli_num_rows($result_query) > 0){
     while($row = mysqli_fetch_assoc($result_query)){
         echo '<div class="card-Andamento">
             <div id="cardPedido">
-                <h2>Festa na piscina</h2>
-                <ul>
-                    <li>100 fotos</li>
-                    <li>1 álbum</li>
-                    <li>1 banner</li>
-                </ul>
+                <h2>'.$row['nm_pacote'].'</h2>
+                    <h4>'.$row['ds_pacote'].'</h4>
             </div>
             
             <div id="statusPedido">
                 <h2>'. $row['nm_status'] .'</h2>
                 <div class="gridPedidoInfo">
-                    <img src="../bancoImagens/postagens/fotodestaque.jpg" alt="">
+                    <img src="'.$row['url_fotoperfil'].'" alt="">
                     <div class="infoPedido">
-                        <h2>Marcos F.</h2>
-                        <h3>Rua Tal nº 6 - Bairro</h3>
-                        <h4>São Vicente - SP</h4>
+                        <h2>'.$row['nm_cliente'].'</h2>
+                        <h3>'.substr($row['nm_rua'], 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
+                        <h4>'.$row['nm_cidade'].' - '.$row['sg_uf'] .'</h4>
                     </div>
                     <div class="dataPedido">
                         <div id="iconCalendario">
@@ -147,12 +190,12 @@ if(mysqli_num_rows($result_query) > 0){
                             </svg>
                         </div>
                         <div>
-                            <h1>'. $row['dt_pedido'] .'</h1>
+                            <h1>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</h1>
                             <h3>Domingo, 15h</h3>
                         </div>
                     </div>
                     <div class="gridIcons">
-                        <h1>R$'. $row['vl_pedido'] .'</h1>
+                        <h1>R$'. str_replace('.', ',', $row['vl_pedido']) .'</h1>
                         <div class="iconsFuncPedidos">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
                                 <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
@@ -180,32 +223,48 @@ if(mysqli_num_rows($result_query) > 0){
     </section>
     ';
 }
-?>
 
+//SELECT DOS FINALIZADOS E CANCELADOS
+$query2 = "SELECT *
+FROM tb_pedido AS p
+JOIN tb_pacotepedido as pp ON p.cd_pedido = pp.cd_pedido
+JOIN tb_pacote as pac on pp.cd_pacote = pac.cd_pacote
+WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo') AND cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
+$result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
 
+echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query2);
 
+if(mysqli_num_rows($result_query2) > 0){
+    echo'
     <section class="outros" id="Outros">
         <div class="blocoPedidos">
             <h1 id="txtPedidosOutros">Outros</h1>
             <div class="gridOutros">
+                <div class="categorias">
                 <h3>Cod.</h3>
                 <h3>Pedido</h3>
                 <h3>Valor</h3>
                 <h3>Status final</h3>
+                </div>';
+    while($row2 = mysqli_fetch_assoc($result_query2)){
+        echo'
+        <div class="cardOutrosPedidos">
+        <h3>'.$row2['cd_pedido'].'</h3>
+        <h3>'.$row2['nm_pacote'].'</h3>
+        <h3>R$'. str_replace('.', ',', $row2['vl_pedido']) .'</h3>
+        <h3 id="txtArquivado">'.$row2['nm_status'].'</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+        </svg>
+        </div>';
+    }
+    echo'
 
-                <div class="cardOutrosPedidos">
-                <h3>548</h3>
-                <h3>Pacote Festa de Aniversário e serviços avulsos</h3>
-                <h3>R$ 450,00</h3>
-                <h3 id="txtArquivado">Arquivado</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                </svg>
-                </div>
-            </div>
         </div>
         </div>
-    </section>
+    </section>';
+}
+?>
 
     <script src="js/menu-e.js"></script>
 </body>

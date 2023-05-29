@@ -42,6 +42,10 @@ if($conn->connect_error){
     $result2=$conn->query($sql2);
     $row2=$result2->fetch_assoc();
 
+echo 'Quantidade de registros retornados info pedido: ' . mysqli_num_rows($result);
+echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result2);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -101,21 +105,22 @@ if($conn->connect_error){
         </div>
     <?php
     if(mysqli_num_rows($result) > 0){
-        while($row = mysqli_fetch_assoc($result)){
-            $nm_cliente = $row['nm_cliente'];
-            $dt_pedido = $row['dt_pedido'];
-            $nm_status = $row['nm_status'];
-            $cd_personaliz = $row['cd_personaliz'];
-            $personaliza = '';
-            if($cd_personaliz == null){
-                echo ('Não informado');
+        $nm_cliente = $row['nm_cliente'];
+        $dt_pedido = $row['dt_pedido'];
+        $nm_status = $row['nm_status'];
+        $cd_personaliz = $row['cd_personaliz'];
+        $personaliza = '';
+        if($cd_personaliz == null){
+            $personaliza = "-";
+        }else{
+            if($cd_personaliz == 1){
+                $personaliza = "Sim";
             }else{
-                if($cd_personaliz == 1){
-                    $personaliza = "Sim";
-                }else{
-                    $personaliza = "Não";
-                }
+                $personaliza = "Não";
             }
+        }
+        while($row = mysqli_fetch_assoc($result)){
+          
             echo'
             <div class="infoPedido">
             <div class="alinhaPedido">
