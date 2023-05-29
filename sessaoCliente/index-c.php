@@ -17,11 +17,14 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
     //LÓGICA PARA POSTAGENS DA SEMANA
-    // $sql = "SELECT * FROM tb_postagem WHERE cd_avaliacao = 5"; 
-    // $result = $conn->query($sql);
-    // $row = $result -> fetch_assoc();
-    //PROBLEMA: Não temos atributos de data para realizar está lógica.
-    //SOLUÇÃO: Substituir por postagens de maior avaliação.
+    $sql = "SELECT url_imgcapa 
+    FROM tb_postagem 
+    WHERE MONTH(dt_postagem) = MONTH(CURRENT_DATE) 
+    AND YEAR(dt_postagem) = YEAR(CURRENT_DATE) 
+    ORDER BY dt_postagem 
+    DESC LIMIT 6;";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
 
     //LÓGICA PARA EMPRESAS COM MAIOR AVALIAÇÃO
     $sql2 = "SELECT e.nm_fantasia, e.url_fotoperfil, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
@@ -160,6 +163,14 @@ if($conn->connect_error){
 
 <div class="grid">
     <div class="gridPostagens">
+    <?php
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $url_imgcapa = $row['url_imgcapa'];
+            // echo $url_imgcapa;
+        }
+    }
+    ?>
         <div class="imgPostagens">
             <!-- <img src="post2.jpg" alt=""> -->
             <!-- <?php echo $row['url_imgcapa'];?> -->
