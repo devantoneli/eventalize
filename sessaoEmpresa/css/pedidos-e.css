@@ -67,7 +67,8 @@ a{
 }
 
 .gridNovosPedidos{
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: repeat(6, 1fr);
     /* grid-template-rows: repeat(auto, 1fr); */
     /* justify-content: center; */
@@ -96,6 +97,7 @@ a{
     border: 2px solid #000000;
     border-radius: 8px;
     justify-items: center;
+    margin-bottom: 2%;
 }
 
 .cardNvPedidos h3{
@@ -232,9 +234,10 @@ a{
     color: white;
 }
 
-#cardPedido li{
-    font-size: 1.8em;
+#cardPedido h4{
+    font-size: 1.3em;
     color: white;
+    text-align: center;
 }
 
 .gridStatusPedido{
@@ -278,7 +281,8 @@ a{
 }
 
 .gridOutros{
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: repeat(5, 0.3fr);
     /* justify-items: center; */
     margin: 1%;
@@ -319,5 +323,14 @@ a{
 }
 
 
+.categorias{
+    display: grid;
+    grid-template-columns: repeat(5, 0.5fr);
+}
+
+.categoriasNvPedidos{
+    display: grid;
+    grid-template-columns: repeat(6, 0.5fr);
+}
 
 
