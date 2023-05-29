@@ -49,15 +49,33 @@
     <div class="formPagamento">
         <h3>Forma de Pagamento</h3>
         <div >
+            <form method="post" >
             <select name="escolha" class="selecionaPagamento">
-                <option value="" selected disabled>Selecione uma forma</option>
-                <option value="opcao1">Cartão de Crédito</option>
-                <option value="opcao2">Cartão de Débito</option>
-                <option value="opcao3">Pix</option>
+                <option value="0" >Selecione uma forma</option>
+                <option value="1" >Cartão de Crédito</option>
+                <option value="2">Cartão de Débito</option>
+                <option value="3">Pix</option>
               </select>
-              
+              <input type="submit" value="enviar">
+            </form>
         </div>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $opcao = $_POST["escolha"];
 
+    if ($opcao == "0") {
+    echo'';
+    }elseif ($opcao == "1") {
+      echo "Você selecionou a Opção 1.";
+    } elseif ($opcao == "2") {
+      echo "Você selecionou a Opção 2.";
+    } elseif ($opcao == "3") {
+      echo "Você selecionou a Opção 3.";
+    } else {
+      echo "Opção inválida.";
+    }
+  }
+?>
     
     </div>
 
