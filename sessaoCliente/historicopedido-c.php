@@ -20,30 +20,19 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO
-    $sql=" SELECT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz
+//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E PACOTE DE PEDIDO
+    $sql=" SELECT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
+    pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, pac.url_imgcapa, e.nm_fantasia
     FROM tb_pedido p
     INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
     INNER JOIN tb_cliente c ON ip.cd_cliente = c.cd_cliente
     INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
     INNER JOIN tb_servico s ON e.cd_empresa = s.cd_empresa
-    WHERE c.cd_cliente = '$cd_cliente'";
-     $result=$conn->query($sql);
-     $row=$result->fetch_assoc();
-
-//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PACOTE DE PEDIDO
-    $sql2="SELECT p.cd_pedido, pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, e.nm_fantasia
-    FROM tb_pedido p
     INNER JOIN tb_pacotepedido pp ON p.cd_pedido = pp.cd_pedido
     INNER JOIN tb_pacote pac ON pp.cd_pacote = pac.cd_pacote
-    INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
-    INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
     WHERE ip.cd_cliente = '$cd_cliente'";
-    $result2=$conn->query($sql2);
-    $row2=$result2->fetch_assoc();
-
-echo 'Quantidade de registros retornados info pedido: ' . mysqli_num_rows($result);
-echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result2);
+     $result=$conn->query($sql);
+     $row=$result->fetch_assoc();
 
 
 ?>
