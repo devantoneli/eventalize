@@ -129,42 +129,44 @@ if($conn->connect_error){
                 <li class="status">'.$row['nm_status'].'</li>
                 <li class="status">Pagamento realizado</li>
             </div>
-        </div>';   
+        </div>
+        
+        <div class="imgHistoricoPedido">
+        <img src="../bancoImagens/clientes/casaEventos.jpg" alt="">
+    </div>
+
+    <div class="textoHistorico">
+            <h2 class="estiloEmpresa">'.$row['nm_fantasia'].'</h2><br>
+            <h3>'.$row['ds_pacote'].'</h3>
+    </div>
+
+    <div class="textoValor">
+        <h2>Valor</h2><br>
+        <h3>R$ 850,00</h3>
+    </div>
+
+    <hr>
+</div>';   
         }
     }
     ?>
       
-        <?php
-          if(mysqli_num_rows($result2) > 0){
-            while($row2 = mysqli_fetch_assoc($result2)){
-                $nomePacote = $row2['nm_pacote'];
-                $descPacote = $row2['ds_pacote'];
-                $vlPacote = $row2['vl_pacote'];
-                $nomeFantasia=$row2['nm_fantasia'];
+        <!-- <?php
+        //   if(mysqli_num_rows($result2) > 0){
+        //     while($row2 = mysqli_fetch_assoc($result2)){
+        //         $nomePacote = $row2['nm_pacote'];
+        //         $descPacote = $row2['ds_pacote'];
+        //         $vlPacote = $row2['vl_pacote'];
+        //         $nomeFantasia=$row2['nm_fantasia'];
                 // echo $nomePacote;
                 // echo $descPacote;
                 // echo $vlPacote;
                 // echo $nomeFantasia;
              
-            }
-        }
-        ?>
-        <div class="imgHistoricoPedido">
-            <img src="../bancoImagens/clientes/casaEventos.jpg" alt="">
-        </div>
-
-        <div class="textoHistorico">
-                <h2 class="estiloEmpresa">Empresa: Smash Party</h2><br>
-                <h3>Aluguel: casa noturna de 10 horas, no dia 30 de Junho.</h3>
-        </div>
-
-        <div class="textoValor">
-            <h2>Valor</h2><br>
-            <h3>R$ 850,00</h3>
-        </div>
-
-        <hr>
-    </div>
+            // }
+        // }
+        ?> -->
+ 
 
 
 <script src="js/menu-c.js"></script>
