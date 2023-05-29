@@ -7,7 +7,7 @@
 
 .grid-item {
     /* background-color: #f2f2f2; */
-    padding: 50px;
+    padding: 2%;
     text-align: center;
   }
 
@@ -61,7 +61,7 @@
   }
 
   .salvarInfo{
-    margin-top: 80px;
+    margin-top: 3%;
   }
 
  .salvarInfo input{

@@ -128,7 +128,7 @@ if(mysqli_num_rows($result_query3) > 0){
                 <h3>'.$row3['nm_cliente'].' <br> '.$row3['nm_rua'].',  '.$row3['qt_numeroendereco'].' - '.$row3['nm_bairro'].' / '.$row3['nm_cidade'].' - '.$row3['sg_uf'].'</h3>
                 <h3>'.$row3['nm_pacote'].'</h3>
                 <h3>R$'. str_replace('.', ',', $row3['vl_pedido']) .'</h3>
-                <h3>15/02/2023 <br>10h</h3>
+                <h3>15/02/2023 <br>'.date('H:i', strtotime($row3['hr_agendamento'])).'</h3>
                 <h3>'.date('d/m/Y', strtotime($row3['dt_pedido'])).'<br>13h24</h3>
                 </div>';
     }
@@ -191,7 +191,7 @@ if(mysqli_num_rows($result_query) > 0){
                         </div>
                         <div>
                             <h1>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</h1>
-                            <h3>Domingo, 15h</h3>
+                            <h3>Domingo, '.$row['hr_agendamento'].'h</h3>
                         </div>
                     </div>
                     <div class="gridIcons">
