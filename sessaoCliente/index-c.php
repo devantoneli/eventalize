@@ -22,7 +22,7 @@ if($conn->connect_error){
     WHERE MONTH(dt_postagem) = MONTH(CURRENT_DATE) 
     AND YEAR(dt_postagem) = YEAR(CURRENT_DATE) 
     ORDER BY dt_postagem 
-    DESC LIMIT 6;";
+    DESC LIMIT 7";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
@@ -168,19 +168,13 @@ if($conn->connect_error){
         while($row = mysqli_fetch_assoc($result)){
             $url_imgcapa = $row['url_imgcapa'];
             // echo $url_imgcapa;
+           echo '<div class="imgPostagens">
+           <img src= '.$url_imgcapa.' alt="">
+       </div>';
         }
     }
     ?>
-        <div class="imgPostagens">
-            <!-- <img src="post2.jpg" alt=""> -->
-            <!-- <?php echo $row['url_imgcapa'];?> -->
-            <img src="../bancoImagens/clientes/post1.jpg" alt="">
-            <img src="../bancoImagens/clientes/post3.jpg" alt="">
-            <img src="../bancoImagens/clientes/post4.jpg" alt="">
-            <img src="../bancoImagens/clientes/post5.jpg" alt="">
-            <img src="../bancoImagens/clientes/post6.jpg" alt="">
-            <img src="../bancoImagens/clientes/post5.jpg" alt="">
-        </div>
+       
     </div>
 </div>
 
@@ -195,16 +189,14 @@ if($conn->connect_error){
             $nomeFantasia = $row2['nm_fantasia'];
             $urlFotoPerfil = $row2['url_fotoperfil'];
             $mediaAvaliacao = $row2['media_avaliacao'];
-            // echo $nomeFantasia;
-            // echo $urlFotoPerfil;
-            // echo $mediaAvaliacao;
+            echo $nomeFantasia;
+            echo $urlFotoPerfil;
+            echo $mediaAvaliacao;
         }
     }
     ?>
     <div class="empresasAvaliacao">
-        <!-- <div class="perfilFoto"> -->
         <img src="../bancoImagens/clientes/logoEmpresaAvaliacao.jpg" alt="">
-            <!-- <div class="cardTexto"> -->
             <div class="textoEmpresa">
                 <h1>Casa Noturna •</h1>
             </div>
@@ -212,12 +204,9 @@ if($conn->connect_error){
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-                <!-- <img src="../bancoImagens/clientes/estrelaAvaliacao.svg" alt=""> -->
                 <p class="tamAvaliacao">4,8</p>
             </div>
             <button class="botaoSeguir">Seguir</button>
-            <!-- </div> -->
-        <!-- </div> -->
     </div>
 
     <div class="empresasAvaliacao">
@@ -314,7 +303,7 @@ if($conn->connect_error){
             
             echo '<div class="cardPacotes">
                     <div class="imagemPacote">
-                        <img src="" alt="">
+                        <img src="'.$row3['url_imgcapa'].'" alt="">
                     </div>
                     <div class="textoPacote">
                         <h2>'.$nomePacote.'</h2>
