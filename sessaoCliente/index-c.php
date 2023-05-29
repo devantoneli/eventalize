@@ -49,14 +49,16 @@ if($conn->connect_error){
     $row3=$result3->fetch_assoc();
 
     //LÓGICA PARA CARROSEL
-    $sql4 = 'SELECT e.nm_fantasia, e.url_fotoperfil, e.ds_biografia, e.nm_usuarioempresa, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
+    $sql4 = 'SELECT e.nm_fantasia, e.url_fotoperfil, e.ds_biografia, e.nm_usuarioempresa,s.url_imgcapa, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
     FROM tb_postagem po
     JOIN tb_pacotepedido tp ON tp.cd_pedido = po.cd_pedido
     JOIN tb_pedido pe ON pe.cd_pedido = tp.cd_pedido
     JOIN tb_pacote pa ON pa.cd_pacote = tp.cd_pacote
     JOIN tb_empresa e ON e.cd_empresa = pe.cd_empresa
+	JOIN tb_servico s ON e.cd_empresa = s.cd_empresa
     GROUP BY e.nm_fantasia, e.url_fotoperfil
-    ORDER BY media_avaliacao DESC LIMIT 4';
+    ORDER BY media_avaliacao DESC LIMIT 4
+';
     $result4 = $conn->query($sql4);
     $row4 = $result4->fetch_assoc();
     
@@ -122,10 +124,11 @@ if($conn->connect_error){
             $ds_biografia= $row4['ds_biografia'];
             $nm_usuarioempresa = $row4['nm_usuarioempresa'];
             $url_fotoperfil = $row4['url_fotoperfil'];
+            $url_imgcapa = $row4['url_imgcapa'];
             
           echo ' <div class="slide">
           <div class="divInicio">
-                <div class="divInicioSombra" style="background-image:linear-gradient(30deg, #000000 5%, transparent 70%), url(../bancoImagens/clientes/fundoServico.jpg);"></div>
+                <div class="divInicioSombra" style="background-image:linear-gradient(30deg, #000000 5%, transparent 70%), url('.$url_imgcapa.');"></div>
               <div class="textoInicio">
                   <h1>'. $nm_fantasia.'</h1>
                   <p>@'.$nm_usuarioempresa .'</p>
