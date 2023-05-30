@@ -29,7 +29,6 @@ JOIN tb_servico as s on s.cd_servico = pac.cd_servico
 JOIN tb_empresa as e on e.cd_empresa = s.cd_empresa
 WHERE tipoServico LIKE '%$nm_tiposervico%' OR nm_pacote LIKE '%$nm_tiposervico%' OR nm_fantasia LIKE '%$nm_tiposervico%'";
 
-
 $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
 ?>
@@ -97,15 +96,18 @@ if(mysqli_num_rows($result_query3) > 0){
     <div class="gridCards">';
     while($row = mysqli_fetch_assoc($result_query3)){
         echo'    
-            <div class="cardServico">
+            <div class="cardServico" onclick="submitForm()">
                 <img src="'.$row['url_imgcapa'].'" alt="">
                 <div class="textoServico">
+                <form action="detalhePacote-c.php" method="get" id="searchForm">
+                <input type="hidden" value= '.$row["cd_pacote"].' name="cd_pacote">
                     <h2>'.substr($row['nm_pacote'], 0,50).'...</h2><br>
                     <h3>'.substr($row['ds_pacote'], 0,60).'...</h3>
                     <div class="precoServico">
                     <h4>R$'. str_replace('.', ',', $row['vl_pacote']) .'</h4>
                     </div>
                 </div>
+                </form>
                 <div class="iconCarrinho">
                 <form action="carrinho.php" method="POST">
                 <input type="submit">
@@ -130,6 +132,11 @@ if(mysqli_num_rows($result_query3) > 0){
 
     
     <script src="js/menu-c.js"></script>
+    <script>
+        function submitForm(){
+            document.getElementById("searchForm").submit();
+        }
+    </script>
 
 </body>
 </html>
