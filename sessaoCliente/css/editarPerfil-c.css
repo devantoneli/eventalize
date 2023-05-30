@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+
+
 .estiloForm{
     display: grid;
     grid-template-rows: auto auto ;
@@ -27,12 +37,12 @@
     gap: 25px;
   }
   .grid-item.row2-col1 img{
-    width: 450px;
-    height: 290px;
+    width: 20em;
+    height: 20em;
     clip-path: circle();
     display: grid;
     justify-content: right;
-    object-fit: contain;
+    object-fit: cover;
   }
   
   .grid-item.row2-col2 {
