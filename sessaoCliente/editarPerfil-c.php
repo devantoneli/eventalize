@@ -52,7 +52,7 @@ $row = mysqli_fetch_assoc($result_query);
             </div>
 
             <div class="headerPesquisa">
-                <form action="index-c.php" method="get">
+                <form action="buscaServico-c.php" method="post">
                 <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
                     <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
                 </form>

@@ -119,8 +119,8 @@ if($conn->connect_error){
                 <li>Pedido realizado em</li>
                 <li>Este é um</li>
                 <li>Pacote Personalizado</li>
-                <li>Situação</li>
                 <li>Status</li>
+                <li>Tipo de pagamento</li>
             </div>
 
             <div class="alinhaInfoPedido">
@@ -144,18 +144,17 @@ if($conn->connect_error){
 
     <div class="textoValor">
         <h2>Valor</h2><br>
-        <h3>R$'.$row['vl_pacote'].'</h3>
+        <h3>R$'. str_replace('.', ',', $row['vl_pacote']) .'</h3>
     </div>
 
     <hr>
 </div>';   
         }
     }
-    ?>
+
+?>
  
-
-
-<script src="js/menu-c.js"></script>
+    <script src="js/menu-c.js"></script>
 
 </body>
 </html>

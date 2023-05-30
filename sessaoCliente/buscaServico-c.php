@@ -24,7 +24,10 @@ if($conn->connect_error){
 
 $sql = "SELECT * FROM vwservico as vs
 JOIN tb_pacote as pc ON vs.cdPacote = pc.cd_pacote
-WHERE  tipoServico  LIKE '%$nm_tiposervico%'";
+JOIN tb_pacoteservico as pac on pac.cd_pacote = pc.cd_pacote
+JOIN tb_servico as s on s.cd_servico = pac.cd_servico
+JOIN tb_empresa as e on e.cd_empresa = s.cd_empresa
+WHERE tipoServico OR nm_pacote LIKE '%$nm_tiposervico%'";
 
 $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
