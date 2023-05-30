@@ -44,7 +44,7 @@ if($conn->connect_error){
               JOIN tb_pacote p ON pp.cd_pacote = p.cd_pacote
               GROUP BY pp.cd_pacote, p.nm_pacote, p.ds_pacote, p.vl_pacote
               ORDER BY total_compras DESC
-              LIMIT 4";
+              LIMIT 5";
     $result3 = $conn->query($sql3);
     $row3=$result3->fetch_assoc();
 
@@ -208,7 +208,10 @@ if($conn->connect_error){
                 </svg>
                     <p class="tamAvaliacao">'.$mediaAvaliacao .'</p>
                 </div>
-                <button class="botaoSeguir">Seguir</button>
+                <div class="botaoSeguir">
+                    <button>Seguir</button>
+                </div>
+                
         </div>';
         }
     }
@@ -298,15 +301,16 @@ if($conn->connect_error){
                         <div class="sombra"></div>
                     </div>
                     <div class="textoPacote">
-                        <h2>'.$nomePacote.'</h2>
+                        <h2>'.substr($nomePacote, 0,35).'...</h2>
                         <div class="descPacote">
-                            <h4>'.$descricaoPacote.'</h4>
+                            <h4>'.substr($descricaoPacote, 0,60).'...</h4>
                         </div>
-                        <div class="precoPacote">
+                        
+                    </div>
+                    <div class="precoPacote">
                             <h5>R$'.$valorPacote.'</h5>
                         </div>
                         <button class="botaoPacote">Ver mais</button>
-                    </div>
                 </div>';
         }
     } else {

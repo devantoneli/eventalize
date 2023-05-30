@@ -88,7 +88,7 @@ if($conn->connect_error){
     </div>
 <!-- FIM MENU -->
 
-<h2>Histórico de Pedidos</h2>
+
 
     <?php
     if(mysqli_num_rows($result) > 0){
@@ -111,6 +111,7 @@ if($conn->connect_error){
             echo'
             <div class="gridHistorico">
         <div class="titulo">
+        <h2>Histórico de Pedidos</h2>
         </div>
             <div class="infoPedido">
             <div class="alinhaPedido">
