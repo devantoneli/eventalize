@@ -151,11 +151,10 @@ if($conn->connect_error){
 </div>';   
         }
     }
-    ?>
+
+?>
  
-
-
-<script src="js/menu-c.js"></script>
+    <script src="js/menu-c.js"></script>
 
 </body>
 </html>
