@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../sessaoCliente/css/menu-c.css">
     <link rel="stylesheet" href="css/carrinhoPagamento.css">
+    <link rel="stylesheet" href="css/carrinhoLocal.css">
     <link rel="icon" href="../img/icones/logo.png">
     <title>Finalizando Compra</title>
     </head>
@@ -49,15 +50,17 @@
     <div class="formPagamento">
         <h3>Forma de Pagamento</h3>
         <div >
-            <form method="post" >
-            <select name="escolha" class="selecionaPagamento">
+            <form method="post" id="myForm">
+            <select name="escolha" class="selecionaPagamento" onchange="submitForm()">
                 <option value="0" >Selecione uma forma</option>
                 <option value="1" >Cartão de Crédito</option>
                 <option value="2">Cartão de Débito</option>
                 <option value="3">Pix</option>
               </select>
-              <input type="submit" value="enviar">
+              <!-- <input type="submit" value="enviar"> -->
             </form>
+
+            
         </div>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -66,11 +69,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($opcao == "0") {
     echo'';
     }elseif ($opcao == "1") {
-      echo "Você selecionou a Opção 1.";
+      echo "<div class='formCredito'>
+      <input type='text' placeholder='Nome do Titular'>
+      <div class='formdiv1'>
+          <input type='number' placeholder='Número do Cartão'>
+          <input type='number' placeholder='CVV' style='padding-left: 8%;'>
+      </div>
+      <input type='text' placeholder='Data de validade (MM/AA)'>
+  </div>
+
+  <div class='divParcela'>
+      <h3>Deseja parcelar sua compra?</h3>
+      <div>
+          <select name='escolha' class='selecionaParcela'>
+              <option  selected disabled>Selecione quantas vezes deseja parcelar</option>
+              <option value='opcao1'>Parcelar em 1x</option>
+              <option value='opcao2'>Parcelar em 2x</option>
+              <option value='opcao3'>Parcelar em 3x</option>
+              <option value='opcao4'>Parcelar em 4x</option>
+              <option value='opcao5'>Parcelar em 5x</option>
+              <option value='opcao6'>Parcelar em 6x</option>
+            </select> 
+      </div>
+  </div>'";
     } elseif ($opcao == "2") {
-      echo "Você selecionou a Opção 2.";
+      echo "<div class='formCredito'>
+      <input type='text' placeholder='Nome do Titular'>
+      <div class='formdiv1'>
+          <input type='number' placeholder='Número do Cartão'>
+          <input type='number' placeholder='CVV' style='padding-left: 8%;'>
+      </div>
+      <input type='text' placeholder='Data de validade (MM/AA)'>
+  </div>";
     } elseif ($opcao == "3") {
-      echo "Você selecionou a Opção 3.";
+      echo "Implementar API do Pix";
     } else {
       echo "Opção inválida.";
     }
@@ -140,6 +172,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
   <script src="../sessaoCliente/js/menu-c.js"></script>
+
+  <script>
+function submitForm() {
+    document.getElementById("myForm").submit();
+}
+</script>
 
 </body>
 </html>
