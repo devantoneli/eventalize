@@ -22,7 +22,7 @@ if($conn->connect_error){
 
 //LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E PACOTE DE PEDIDO
     $sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
-    pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, pac.url_imgcapa, e.nm_fantasia
+    pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, pac.url_imgcapa, e.nm_fantasia, ip.nm_tipo_pagamento
     FROM tb_pedido p
     INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
     INNER JOIN tb_cliente c ON ip.cd_cliente = c.cd_cliente
@@ -64,7 +64,7 @@ if($conn->connect_error){
             </div>
 
             <div class="headerPesquisa">
-                <form action="index-c.php" method="get">
+                <form action="buscaServico-c.php" method="post">
                 <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
                     <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
                 </form>
@@ -129,7 +129,7 @@ if($conn->connect_error){
                 <li>Pacote</li>
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
                 <li class="status">'.$row['nm_status'].'</li>
-                <li class="status">Pagamento realizado</li>
+                <li class="status">'.$row['nm_tipo_pagamento'].'</li>
             </div>
         </div>
         
