@@ -47,6 +47,7 @@
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.14) 6px 6px 6px 6px;
     position: relative;
+    margin-bottom: 5%;
 }
 
 .cardServico img{
@@ -63,7 +64,7 @@
 }
 
 .textoServico h2{
-    font-size: 1.8em;
+    font-size: 1.5em;
     font-weight: 600;
     line-height: 1.2;
 }

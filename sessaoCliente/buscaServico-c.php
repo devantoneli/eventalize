@@ -59,7 +59,7 @@ $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' '
 
             <div class="headerPesquisa">
                 <form action="buscaServico-c.php" method="post">
-                <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                <input type="text" style="padding: 2%;" placeholder="Procure Serviços" name="nm_tiposervico">
                     <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
                 </form>
             </div>
@@ -96,7 +96,7 @@ if(mysqli_num_rows($result_query3) > 0){
             <div class="cardServico">
                 <img src="'.$row['url_imgcapa'].'" alt="">
                 <div class="textoServico">
-                    <h2>'.substr($row['nm_pacote'], 0,35).'...</h2><br>
+                    <h2>'.substr($row['nm_pacote'], 0,50).'...</h2><br>
                     <h3>'.substr($row['ds_pacote'], 0,60).'...</h3>
                     <div class="precoServico">
                     <h4>R$'. str_replace('.', ',', $row['vl_pacote']) .'</h4>

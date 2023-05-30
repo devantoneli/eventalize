@@ -92,6 +92,15 @@
     margin-right: 10px;
 }
 
+.imgLupa{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-top: -7.5%;
+    margin-right: -8%;
+}
+
 .headerClientePerfil{
     grid-column: 5 / 5;
     display: grid;

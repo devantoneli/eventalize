@@ -52,12 +52,14 @@ $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' '
             </div>
 
             <div class="headerPesquisa">
-                <form action="buscaServico-c.php" method="post">
-                <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
-                <input type="submit">
-                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                <form action="buscaServico-c.php" method="post" id="searchForm">
+                    <input type="text" style="padding: 2%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                    <div class="imgLupa">
+                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm()">
+                    </div>
                 </form>
             </div>
+
             <div class="headerClientePerfil" >
                 <!-- <div class="iconCliente"> -->
                 <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
@@ -141,6 +143,13 @@ if(mysqli_num_rows($result_query3) > 0){
                 </div>
             </div>' -->
 <script src="js/menu-c.js"></script>
+
+<!-- botao lupa menu -->
+<script>
+    function submitForm() {
+        document.getElementById("searchForm").submit();
+    }
+</script>
 
 </body>
 </html>
