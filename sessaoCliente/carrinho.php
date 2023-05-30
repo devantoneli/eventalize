@@ -1,3 +1,40 @@
+<?php
+session_start();
+include('../protect.php');
+if (!isset($_SESSION['carrinho'])) {
+  $_SESSION['carrinho'] = array();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cd_pacote = $_POST['cd_pacote'];
+    $_SESSION['carrinho'][] = $cd_pacote;
+}
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_eventalize";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+    }
+
+if (!empty($_SESSION['carrinho'])) {
+    
+    $carrinho = implode(",", $_SESSION['carrinho']);
+    $sql = "SELECT p.nm_pacote,p.cd_pacote, p.vl_pacote,p.url_imgcapa, e.nm_fantasia, e.url_fotoperfil
+    FROM tb_pacote as p
+    JOIN tb_pacoteservico ps ON ps.cd_pacote = p.cd_pacote
+    JOIN tb_servico s ON ps.cd_servico = s.cd_servico
+    JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa
+    WHERE p.cd_pacote IN ($carrinho)";
+    $result = $conn->query($sql);
+}
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -140,28 +177,36 @@
   </div>
   
   <!-- INICIO PEDIDOS NO CARRINHO -->
-  
-  <div class="pedidoEmpresa">
-    <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
-    <h3>Smash Party</h3>
-  </div>
-  
-  <div class="selecionaItem">
-    <div>
-      <input type="radio" class="add-to-cart">
-    </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-      <div class="infoPedido"> 
-        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-        <h3>R$ 850,00</h3>
+  <?php
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo '<div class="pedidoEmpresa">
+        <img src="'.$row['url_fotoperfil'].'" alt="">
+        <h3>'.$row['nm_fantasia'].'</h3>
       </div>
-    </div>
-  </div>
+      
+      <div class="selecionaItem">
+        <div>
+          <input type="radio" class="add-to-cart">
+        </div>
+        <div class="imgPedido">
+          <img src="'.$row['url_imgcapa'].'" alt=""> 
+        </div>
+        <div>
+          <div class="infoPedido"> 
+            <h1>'.$row['nm_pacote'].'</h1>
+            <h3>R$ '.$row['vl_pacote'].'</h3>
+          </div>
+        </div>
+      </div>';
+    }
+} else {
+  echo "Nenhum pacote selecionado no carrinho.";
+  }
+  ?>
   
-  <div class="selecionaItem">
+  
+  <!-- <div class="selecionaItem">
     <div>
       <input type="radio" class="add-to-cart">
     </div>
@@ -218,7 +263,7 @@
   <div class="produtoSelecionado">
     <h1>Carrinho</h1>
     <div id="itensCarrinho"></div>
-  </div>
+  </div> -->
   
   <script>
     function addCarrinho() {
