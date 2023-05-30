@@ -27,7 +27,8 @@ JOIN tb_pacote as pc ON vs.cdPacote = pc.cd_pacote
 JOIN tb_pacoteservico as pac on pac.cd_pacote = pc.cd_pacote
 JOIN tb_servico as s on s.cd_servico = pac.cd_servico
 JOIN tb_empresa as e on e.cd_empresa = s.cd_empresa
-WHERE tipoServico OR nm_pacote LIKE '%$nm_tiposervico%'";
+WHERE tipoServico LIKE '%$nm_tiposervico%' OR nm_pacote LIKE '%$nm_tiposervico%' OR nm_fantasia LIKE '%$nm_tiposervico%'";
+
 
 $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
 
