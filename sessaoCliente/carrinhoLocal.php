@@ -7,7 +7,8 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
     $opcoes = $_POST['opcao'];
     $ids = implode(",", $opcoes);
         $id = str_replace("id=", "", $ids);
-       
+    
+    $valorTotal = 0;
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -134,6 +135,7 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                 <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
+                        $valorPacote =  $row['vl_pacote'];
                         echo '  
                         <div class="cardProduto">
                     <div class="cardInfo">
@@ -147,23 +149,24 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                             </div>
                         </div>
                         <div class="precoProduto">
-                            <h3>R$ '. $row['vl_pacote'] . '</h3>
+                            <h3>R$ '.number_format($valorPacote, 2, ',', '.') . '</h3>
                         </div>
                         <div class="iconDeletar">
                             <span>&#x2716;</span>
                         </div>
                         </div>
                         </div>';
+                        $valorTotal += $row['vl_pacote'];
                     }
+                   
+                    echo'<div class="precoTotal">
+                    <h3>Total: R$ '. number_format($valorTotal, 2, ',', '.').'</h3>
+                </div>';
                 }
                 else {
                     echo "Nenhum resultado encontrado.";
                 }
                 ?>
-          
-        <div class="precoTotal">
-            <h3>Total: R$ 2400,00</h3>
-        </div>
     </div>
   </div>
 
