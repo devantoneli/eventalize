@@ -93,7 +93,9 @@ if($conn->connect_error){
 <!-- FIM MENU -->
 
 
-
+<div class="titulo">
+        <h2>Histórico de Pedidos</h2>
+        </div>
     <?php
     if(mysqli_num_rows($result) > 0){
         // $nm_cliente = $row['nm_cliente'];
@@ -110,13 +112,11 @@ if($conn->connect_error){
                 $personaliza = "Não";
             }
         }
+        
         while($row = mysqli_fetch_assoc($result)){
           
             echo'
             <div class="gridHistorico">
-        <div class="titulo">
-        <h2>Histórico de Pedidos</h2>
-        </div>
             <div class="infoPedido">
             <div class="alinhaPedido">
                 <li>Nº:0543255</li>

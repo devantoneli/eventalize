@@ -88,6 +88,7 @@ if ($result->num_rows > 0) {
             ?>
             <link rel="stylesheet" href="../sessaoCliente/css/iniciocliente.css">
             <link rel="stylesheet" href="../sessaoCliente/css/menu-c.css">
+            <link rel="icon" href="../img/index/logo.png">
             <div class="grid-container">
             <div class="header">
                 <div class="logo">
@@ -96,7 +97,7 @@ if ($result->num_rows > 0) {
                 <div class="menu">
                     <a href="../sessaoCliente/index-c.php">Início</a>
                     <a href="../sessaoUsuario/explore.php">Feed</a>
-                    <a href="chatCliente.php">Mensagens</a>
+                    <a href="../sessaoCliente/chatCliente.php">Mensagens</a>
                     <a href="historicopedido-c.php">Meus Pedidos</a>
                 </div>
     

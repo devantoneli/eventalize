@@ -156,14 +156,14 @@ if($conn->connect_error){
 </div>
 
 <div class="iconsCategorias">
-    <img src="../img/index/auxiliar.svg" alt="auxiliar" title="auxiliar">
-    <img src="../img/index/atracao.svg" alt="atracao" title="atração">
-    <img src="../img/index/comida.svg" alt="comida" title="comida">
-    <img src="../img/index/decoracao.svg" alt="decoracao" title="decoração">
-    <img src="../img/index/equipamento.svg" alt="equipamento" title="equipamento">
-    <img src="../img/index/espaco.svg" alt="espaco" title="espaço">
-    <img src="../img/index/fotografia.svg" alt="fotografia" title="fotografia">
-    <img src="../img/index/musica.svg" alt="musica" title="música">
+    <img src="../img/index/auxiliar.svg" alt="auxiliar" title="Auxiliar">
+    <img src="../img/index/atracao.svg" alt="atracao" title="Atração">
+    <img src="../img/index/comida.svg" alt="comida" title="Comida">
+    <img src="../img/index/decoracao.svg" alt="decoracao" title="Decoração">
+    <img src="../img/index/equipamento.svg" alt="equipamento" title="Equipamento">
+    <img src="../img/index/espaco.svg" alt="espaco" title="Espaço">
+    <img src="../img/index/fotografia.svg" alt="fotografia" title="Fotografia">
+    <img src="../img/index/musica.svg" alt="musica" title="Música">
 </div>
 
 <div class="categorias">
