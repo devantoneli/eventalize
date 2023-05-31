@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }elseif ($opcao == "1") {
       echo "<div class='formCredito'>
       <input type='text' placeholder='Nome do Titular'>
-      <div class='formdiv1'>
+      <div class='formdiv'>
           <input type='number' placeholder='Número do Cartão'>
           <input type='number' placeholder='CVV' style='padding-left: 8%;'>
       </div>
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($opcao == "2") {
       echo "<div class='formCredito'>
       <input type='text' placeholder='Nome do Titular'>
-      <div class='formdiv1'>
+      <div class='formdiv'>
           <input type='number' placeholder='Número do Cartão'>
           <input type='number' placeholder='CVV' style='padding-left: 8%;'>
       </div>
