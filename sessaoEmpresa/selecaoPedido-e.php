@@ -9,7 +9,6 @@ if(isset($_POST["nm_cliente"])){
         $nm_cliente = "";
     }
     $cd_empresa = $_SESSION['cd_empresa'];
-    echo $cd_empresa;
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -17,7 +16,11 @@ if(isset($_POST["nm_cliente"])){
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    $sql = "SELECT * FROM vwpedidocliente WHERE nm_cliente LIKE '%" . $nm_cliente . "%' AND cd_empresa = '" . $cd_empresa . "'";
+    
+    $sql ="SELECT pc.*, pac.url_imgcapa FROM vwpedidocliente pc
+    JOIN tb_pacotepedido pp ON pp.cd_pedido = pc.cd_pedido
+    JOIN tb_pacote pac ON pac.cd_pacote = pp.cd_pacote
+    WHERE pc.nm_cliente LIKE '%" . $nm_cliente . "%' AND pc.cd_empresa = '" . $cd_empresa . "'";
     $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
    
 ?>
@@ -105,7 +108,7 @@ if (mysqli_num_rows($result_query) > 0) {
                 '<div class="cards">
                     <div class="card">
                     <div class="cardConteudo">
-                    <img src="../bancoImagens/empresas/pedido.svg" alt="">
+                    <img src="'.$row['url_imgcapa'].'" alt="">
                             
                         <div class="infoCard">
                             <p>Pedido nº' . $row["cd_pedido"] .'</p>
