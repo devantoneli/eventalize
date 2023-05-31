@@ -42,18 +42,18 @@ $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' '
     <div class="grid-container">
         <div class="header">
             <div class="logo">
-            <img src="../img/icones/logoBranca.svg" alt="">
+                <a href="index-c.php"><img src="../img/icones/logoBranca.svg" alt=""></a>
             </div>
             <div class="menu">
-                <a href="">Início</a>
+                <a href="index-c.php">Início</a>
                 <a href="../sessaoUsuario/explore.php">Feed</a>
                 <a href="chatCliente.php">Mensagens</a>
-                <a href="">Seus Pedidos</a>
+                <a href="historicopedido-c.php">Meus Pedidos</a>
             </div>
 
             <div class="headerPesquisa">
                 <form action="buscaServico-c.php" method="post" id="searchForm">
-                    <input type="text" style="padding: 2%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                    <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
                     <div class="imgLupa">
                     <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm()">
                     </div>
@@ -62,17 +62,19 @@ $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' '
 
             <div class="headerClientePerfil" >
                 <!-- <div class="iconCliente"> -->
-                <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                <form action="carrinho.php" id="botaoCarrinho">
+                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
+                </form>
                 <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
             <section class="menuPerfil">
-                <a href="">Perfil</a>
-                <a href="">Postagens</a>
+                <a href="perfil-c.php">Perfil</a>
+                <!-- <a href="">Postagens</a> -->
                 <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
+                <!-- <a href="historicopedido-c.php">Histórico de Pedidos</a> -->
                 <a href="">Configurações</a>
-                <a href="historicopedido-c.php">Histórico de Pedidos</a>
                 <a href="../logout.php">Sair</a>
             </section>
         </div>
@@ -143,13 +145,8 @@ if(mysqli_num_rows($result_query3) > 0){
                 </div>
             </div>' -->
 <script src="js/menu-c.js"></script>
-
-<!-- botao lupa menu -->
-<script>
-    function submitForm() {
-        document.getElementById("searchForm").submit();
-    }
-</script>
+<script src="js/lupa.js"></script>
+<script src="js/carrinho.js"></script>
 
 </body>
 </html>

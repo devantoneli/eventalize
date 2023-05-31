@@ -41,7 +41,7 @@ if (!empty($_SESSION['carrinho'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../sessaoCliente/css/menu-c.css">
+    <link rel="stylesheet" href="css/menu-c.css">
     <link rel="stylesheet" href="css/carrinho.css">
     <link rel="icon" href="../img/icones/logo.png">
     <title>Meu Carrinho</title>
@@ -52,30 +52,36 @@ if (!empty($_SESSION['carrinho'])) {
 <div class="grid-container">
     <div class="header">
       <div class="logo">
-          <img src="../img/icones/logoBranca.svg" alt="">
+        <a href="index-c.php"><img src="../img/icones/logoBranca.svg" alt=""></a>
       </div>
       <div class="menu">
-          <a href="">Início</a>
-          <a href="">Feed</a>
-          <a href="">Mensagens</a>
-          <a href="">Seus Pedidos</a>
+          <a href="index-c.php">Início</a>
+          <a href="../sessaoUsuario/explore.php">Feed</a>
+          <a href="chatCliente.php">Mensagens</a>
+          <a href="historicopedido-c.php">Meus Pedidos</a>
       </div>
   
       <div class="headerPesquisa">
-            <input type="text" placeholder="Procure Serviços">
-            <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                <form action="buscaServico-c.php" method="post" id="searchForm">
+                    <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                    <div class="imgLupa">
+                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm()">
+                    </div>
+                </form>
           </div>
           <div class="headerClientePerfil" >
               <!-- <div class="iconCliente"> -->
-                  <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+              <form action="carrinho.php" id="botaoCarrinho">
+                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
+                </form>
                   <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
                 <!-- </div> -->
-          <button class="menuIcon" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
+          <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
           </div>
           <section class="menuPerfil">
-            <a href="">Perfil</a>
-            <a href="">Postagens</a>
-            <a href="" style="margin-bottom: 20%">Histórico de Compras</a>
+            <a href="perfil-c.php">Perfil</a>
+            <!-- <a href="">Postagens</a> -->
+            <!-- <a href="" style="margin-bottom: 20%">Histórico de Pedidos</a> -->
             <a href="">Configurações</a>
             <a href="">Sair</a>
         </section>
@@ -364,6 +370,8 @@ if (!empty($_SESSION['carrinho'])) {
 
 
   <script src="../sessaoCliente/js/menu-c.js"></script>
+  <script src="js/lupa.js"></script>
+  <script src="js/carrinho.js"></script>
 </body>
 </html>
 

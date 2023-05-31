@@ -51,7 +51,7 @@
 
 .logo{
     grid-column: 1 / 1;
-    padding: 3% 0 0 20%;
+    padding: 3% 0 3% 30%;
 
     /* background-color: darkgreen; */
 }
@@ -97,7 +97,7 @@
     align-items: center;
     justify-content: flex-end;
     cursor: pointer;
-    margin-top: -7.5%;
+    margin-top: -8%;
     margin-right: -8%;
 }
 

@@ -7,3 +7,8 @@ function menuOpen(){
         menuMobile.classList.add('open');
     }
 }
+
+//Botão Lupa
+function submitForm() {
+    document.getElementById("searchForm").submit();
+}

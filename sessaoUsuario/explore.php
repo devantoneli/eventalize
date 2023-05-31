@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="css/estiloExplore.css">
-    <title>Explore</title>
+    <title>Explore - Eventalize</title>
 </head>
 <body>
     <!-- MENU -->
@@ -91,18 +91,22 @@ if ($result->num_rows > 0) {
             <div class="grid-container">
             <div class="header">
                 <div class="logo">
-                <img src="../img/icones/logoBranca.svg" alt="">
+                    <a href="../sessaoCliente/index-c.php"><img src="../img/icones/logoBranca.svg" alt=""></a>
                 </div>
                 <div class="menu">
                     <a href="../sessaoCliente/index-c.php">Início</a>
                     <a href="../sessaoUsuario/explore.php">Feed</a>
-                    <a href="">Mensagens</a>
-                    <a href="">Seus Pedidos</a>
+                    <a href="chatCliente.php">Mensagens</a>
+                    <a href="historicopedido-c.php">Meus Pedidos</a>
                 </div>
     
                 <div class="headerPesquisa">
-                    <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços">
-                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px">
+                    <form action="buscaServico-c.php" method="post" id="searchForm">
+                        <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                        <div class="imgLupa">
+                        <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm()">
+                        </div>
+                    </form>
                 </div>
                 <div class="headerClientePerfil" >
                     <!-- <div class="iconCliente"> -->
@@ -114,7 +118,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <section class="menuPerfil">
                     <a href="">Perfil</a>
-                    <a href="">Postagens</a>
+                    <!-- <a href="">Postagens</a> -->
                     <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
                     <a href="">Configurações</a>
                     <a href="../logout.php">Sair</a>
