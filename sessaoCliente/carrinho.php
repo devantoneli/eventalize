@@ -14,10 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['opcoes'] = $opcoes;
       header('Location: carrinhoLocal.php');
       exit;
-    } else {
-      // Nenhuma opção foi selecionada, você pode exibir uma mensagem de erro ou tomar outra ação
-      echo "Nenhuma opção selecionada.";
-    }
+    } 
 }
 
     $servername = "localhost";
@@ -206,7 +203,6 @@ if (!empty($_SESSION['carrinho'])) {
       <div class="selecionaItem">
         <div>
           <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_pacote'].' id="'.$row['cd_pacote'].'">
-          '.$row['cd_pacote'].'
         </div>
         <div class="imgPedido">
           <img src="'.$row['url_imgcapa'].'" alt=""> 
