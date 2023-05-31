@@ -8,6 +8,16 @@ if (!isset($_SESSION['carrinho'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cd_pacote = $_POST['cd_pacote'];
     $_SESSION['carrinho'][] = $cd_pacote;
+
+    if (isset($_POST['opcao'])) {
+      $opcoes = $_POST['opcao'];
+      $_SESSION['opcoes'] = $opcoes;
+      header('Location: carrinhoLocal.php');
+      exit;
+    } else {
+      // Nenhuma opção foi selecionada, você pode exibir uma mensagem de erro ou tomar outra ação
+      echo "Nenhuma opção selecionada.";
+    }
 }
 
     $servername = "localhost";
@@ -29,6 +39,7 @@ if (!empty($_SESSION['carrinho'])) {
     JOIN tb_servico s ON ps.cd_servico = s.cd_servico
     JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa
     WHERE p.cd_pacote IN ($carrinho)";
+    // echo $carrinho;
     $result = $conn->query($sql);
 }
     
@@ -185,6 +196,7 @@ if (!empty($_SESSION['carrinho'])) {
   <!-- INICIO PEDIDOS NO CARRINHO -->
   <?php
   if ($result->num_rows > 0) {
+    echo '<form action="carrinhoLocal.php" method="post">';
     while ($row = $result->fetch_assoc()) {
         echo '<div class="pedidoEmpresa">
         <img src="'.$row['url_fotoperfil'].'" alt="">
@@ -193,7 +205,8 @@ if (!empty($_SESSION['carrinho'])) {
       
       <div class="selecionaItem">
         <div>
-          <input type="radio" class="add-to-cart">
+          <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_pacote'].' id="'.$row['cd_pacote'].'">
+          '.$row['cd_pacote'].'
         </div>
         <div class="imgPedido">
           <img src="'.$row['url_imgcapa'].'" alt=""> 
@@ -206,6 +219,8 @@ if (!empty($_SESSION['carrinho'])) {
         </div>
       </div>';
     }
+    echo '<input type="submit">
+    </form>';
 } else {
   echo "Nenhum pacote selecionado no carrinho.";
   }
@@ -372,7 +387,7 @@ if (!empty($_SESSION['carrinho'])) {
   <script src="../sessaoCliente/js/menu-c.js"></script>
   <script src="js/lupa.js"></script>
   <script src="js/carrinho.js"></script>
-</body>
+  </body>
 </html>
 
         

@@ -1,3 +1,43 @@
+<?php
+
+session_start();
+include('../protect.php');
+
+if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
+    $opcoes = $_POST['opcao'];
+    $ids = implode(",", $opcoes);
+        $id = str_replace("id=", "", $ids);
+       
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "db_eventalize";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT p.nm_pacote, p.cd_pacote, p.vl_pacote, p.url_imgcapa, e.nm_fantasia, e.url_fotoperfil, s.nm_servico, ts.nm_tiposervico
+    FROM tb_pacote AS p 
+    JOIN tb_pacoteservico ps ON ps.cd_pacote = p.cd_pacote 
+    JOIN tb_servico s ON ps.cd_servico = s.cd_servico 
+    JOIN tb_tiposervico ts ON s.cd_tiposervico = ts.cd_tiposervico
+    JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa 
+    WHERE p.cd_pacote IN ($id)";
+
+    $result = $conn->query($sql);
+
+    
+} else {
+    echo "Nenhuma opção selecionada.";
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -80,7 +120,7 @@
     </div>
 
     <div class="botoesEndereco">
-        <button id="voltar">Voltar</button>
+        <button id="voltar"> Voltar</button>
         <button id="continuar">Continuar</button>
     </div>
     </div>
@@ -91,46 +131,36 @@
         <div class="tituloCarrinho">
             <h3>Carrinho</h3>
         </div>
-        <div class="cardProduto">
-            <div class="cardInfo">
-                <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
-                <div class="infoEmpresa">
-                    <h3>Confete Doces</h3>
-                    <div class="perfilEmpresa">
-                        <img src="../bancoImagens/empresas/fotoempresa.jpg" alt="">
-                        <h3>Bianca Almeida</h3>
-                        <h6>Comida</h6>
-                    </div>
-                </div>
-                <div class="precoProduto">
-                    <h3>R$ 1200,00</h3>
-                </div>
-                <div class="iconDeletar">
-                    <span>&#x2716;</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="cardProduto">
-            <div class="cardInfo">
-                <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
-                <div class="infoEmpresa">
-                    <h3>Confete Doces</h3>
-                    <div class="perfilEmpresa">
-                        <img src="../bancoImagens/empresas/fotoempresa.jpg" alt="">
-                        <h3>Bianca Almeida</h3>
-                        <h6>Comida</h6>
-                    </div>
-                </div>
-                <div class="precoProduto">
-                    <h3>R$ 1200,00</h3>
-                </div>
-                <div class="iconDeletar">
-                    <span>&#x2716;</span>
-                </div>
-            </div>
-        </div>
-
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '  
+                        <div class="cardProduto">
+                    <div class="cardInfo">
+                    <img src="'. $row['url_imgcapa'] .'" alt="">
+                        <div class="infoEmpresa">
+                            <h3>'. $row['nm_pacote'] .'</h3>
+                            <div class="perfilEmpresa">
+                                <img src="'. $row['url_fotoperfil'] .'" alt="">
+                                <h3>'. $row['nm_fantasia'] . '</h3>
+                                <h6>'. $row['nm_tiposervico'] . '</h6>
+                            </div>
+                        </div>
+                        <div class="precoProduto">
+                            <h3>R$ '. $row['vl_pacote'] . '</h3>
+                        </div>
+                        <div class="iconDeletar">
+                            <span>&#x2716;</span>
+                        </div>
+                        </div>
+                        </div>';
+                    }
+                }
+                else {
+                    echo "Nenhum resultado encontrado.";
+                }
+                ?>
+          
         <div class="precoTotal">
             <h3>Total: R$ 2400,00</h3>
         </div>
