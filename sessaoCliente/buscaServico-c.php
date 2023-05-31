@@ -100,10 +100,10 @@ if(mysqli_num_rows($result_query3) > 0){
     <div class="gridCards">';
     while($row = mysqli_fetch_assoc($result_query3)){
         echo'    
-            <div class="cardServico" onclick="submitForm()">
+            <div class="cardServico" onclick="submitCard()">
                 <img src="'.$row['url_imgcapa'].'" alt="">
                 <div class="textoServico">
-                <form action="detalhePacote-c.php" method="get" id="searchForm">
+                <form action="detalhePacote-c.php" method="get" id="searchCard">
                 <input type="hidden" value= '.$row["cd_pacote"].' name="cd_pacote">
                     <h2>'.substr($row['nm_pacote'], 0,50).'...</h2><br>
                     <h3>'.substr($row['ds_pacote'], 0,60).'...</h3>
@@ -141,8 +141,8 @@ if(mysqli_num_rows($result_query3) > 0){
     <script src="js/carrinho.js"></script>
 =======
     <script>
-        function submitForm(){
-            document.getElementById("searchForm").submit();
+        function submitCard(){
+            document.getElementById("searchCard").submit();
         }
     </script>
 
