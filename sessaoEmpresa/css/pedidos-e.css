@@ -1,5 +1,16 @@
+
+
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/font/LeagueSpartan.ttf');
+}
+
 body{
     background: linear-gradient(180deg, #F2DDEF 0%, #FFD9DE 100%);
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 .acessoRapido{
