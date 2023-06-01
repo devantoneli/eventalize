@@ -73,11 +73,11 @@ include('../protect.php');
         Servico</label>
         </div>
         <hr>
-        <div>
+        <!-- <div>
         <label for="pacote">
         <input type="radio" name="opcao" value="pacote" id="">
         <a>Pacote de serviços</a></label>
-        </div>
+        </div> -->
     </div>
 
 <!-- SESSAO SERVICO -->  

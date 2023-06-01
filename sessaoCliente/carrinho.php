@@ -6,8 +6,8 @@ if (!isset($_SESSION['carrinho'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cd_pacote = $_POST['cd_pacote'];
-    $_SESSION['carrinho'][] = $cd_pacote;
+    $cd_servico = $_POST['cd_servico'];
+    $_SESSION['carrinho'][] = $cd_servico;
 
     if (isset($_POST['opcao'])) {
       $opcoes = $_POST['opcao'];
@@ -30,12 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (!empty($_SESSION['carrinho'])) {
     
     $carrinho = implode(",", $_SESSION['carrinho']);
-    $sql = "SELECT p.nm_pacote,p.cd_pacote, p.vl_pacote,p.url_imgcapa, e.nm_fantasia, e.url_fotoperfil
-    FROM tb_pacote as p
-    JOIN tb_pacoteservico ps ON ps.cd_pacote = p.cd_pacote
-    JOIN tb_servico s ON ps.cd_servico = s.cd_servico
+    $sql = "SELECT s.nm_servico,s.cd_servico, s.vl_servico,s.url_imgcapa, e.nm_fantasia, e.url_fotoperfil
+    FROM tb_servico as s
     JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa
-    WHERE p.cd_pacote IN ($carrinho)";
+    WHERE s.cd_servico IN ($carrinho)";
     // echo $carrinho;
     $result = $conn->query($sql);
 }
@@ -202,15 +200,16 @@ if (!empty($_SESSION['carrinho'])) {
       
       <div class="selecionaItem">
         <div>
-          <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_pacote'].' id="'.$row['cd_pacote'].'">
+          <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
+          '.$row['cd_servico'].'
         </div>
         <div class="imgPedido">
           <img src="'.$row['url_imgcapa'].'" alt=""> 
         </div>
         <div>
           <div class="infoPedido"> 
-            <h1>'.$row['nm_pacote'].'</h1>
-            <h3>R$ '.$row['vl_pacote'].'</h3>
+            <h1>'.$row['nm_servico'].'</h1>
+            <h3>R$ '.$row['vl_servico'].'</h3>
           </div>
         </div>
       </div>';
@@ -218,7 +217,7 @@ if (!empty($_SESSION['carrinho'])) {
     echo '<input type="submit">
     </form>';
 } else {
-  echo "Nenhum pacote selecionado no carrinho.";
+  echo "Nenhum servico selecionado no carrinho.";
   }
   ?>
   

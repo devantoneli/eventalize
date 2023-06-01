@@ -8,7 +8,7 @@ include('../protect.php');
 
 //EXIBINDO AS INFORMAÇÕES DOS DETALHES DO SERVIÇO SELECIONADO
 
-$cd_pacote = $_GET['cd_pacote'];
+$cd_servico = $_GET['cd_servico'];
 
 $servername = "localhost";
 $username = "root";
@@ -23,10 +23,9 @@ if($conn->connect_error){
 
 // SELECIONANDO AS INFORMAÇÕES DA TB_SERVICO QUE QUERO EXIBIR NA TELA DETALHES
 $query = "SELECT * FROM vwservico as vs
-JOIN tb_pacote as pac ON vs.cdPacote = pac.cd_pacote
-JOIN tb_servico as s ON s.cd_servico = vs.cdServico
+join tb_servico as s on vs.cdServico = s.cd_servico
 JOIN tb_empresa as e ON e.cd_empresa = s.cd_empresa
-WHERE pac.cd_pacote = '$cd_pacote'";
+WHERE s.cd_servico = '$cd_servico'";
 
 //estou usando $cd_servico para selecionar um serviço específico da empresa, ou seja, o serviço em que o cliente vai clicar
 
@@ -107,14 +106,14 @@ $row2 = mysqli_fetch_assoc($result_query2);
         <svg id="svg-setaEsquerda" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
         </svg>
-          <h2 id="palavraPacote" class="corLilas">Pacote</h2>
+          <h2 id="palavraPacote" class="corLilas">Serviço</h2>
       </div>
       <form action="detalheServico.php">
     <div class="grid-detalhesPacote">
         <div class="grid-detalhePacCol1">
           <!-- Slideshow container -->
               <div class="slideshow-container">
-            <input type="hidden" value=<?php echo($row["cd_pacote"]);?> name="cd_pacote">
+            <input type="hidden" value=<?php echo($row["cd_servico"]);?> name="cd_servico">
 
 
               <!-- Full-width images with number and caption text -->
@@ -150,7 +149,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
 
         <div class="grid-detalhePacCol2">
 
-            <h3 id="nomePacote" name="nm_pacote"><?php echo($row['nm_pacote']) ?></h3>
+            <h3 id="nomePacote" name="nm_servico"><?php echo($row['nm_servico']) ?></h3>
             <div class="grid-alinhaAvalia">
                 <svg id="svg-Estrela" class="corRosa" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
                     <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
@@ -169,7 +168,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
                </div>
 
                   <div class="descPacote">
-                    <h3><?php echo($row['ds_pacote']) ?></h3>
+                    <h3><?php echo($row['ds_servico']) ?></h3>
                   </div>
                   <!-- <div class="infoPacote">
                       <ul class="listaStyle">
@@ -184,7 +183,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
         <div class="grid-detalhePacCol3">
             <div class="align-pagamento">
               <div class="grid-infoPag">
-                <h2 id="precoPacote" class="corLilas">R$<?php echo str_replace('.', ',', $row['vl_pacote']) ?></h2>
+                <h2 id="precoPacote" class="corLilas">R$<?php echo str_replace('.', ',', $row['vl_servico']) ?></h2>
               </div>
                 <div class="parcelas">
                 <h5>em até 3x sem juros</h5>
