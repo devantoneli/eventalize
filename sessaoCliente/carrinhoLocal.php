@@ -3,7 +3,7 @@
 session_start();
 include('../protect.php');
 
-if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
+if (isset($_POST['opcao'])) {
     $opcoes = $_POST['opcao'];
     $ids = implode(",", $opcoes);
         $id = str_replace("id=", "", $ids);
@@ -19,13 +19,11 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
         die("Falha na conexão com o banco de dados: " . $conn->connect_error);
     }
 
-    $sql = "SELECT p.nm_pacote, p.cd_pacote, p.vl_pacote, p.url_imgcapa, e.nm_fantasia, e.cd_empresa, e.url_fotoperfil, s.nm_servico, ts.nm_tiposervico
-    FROM tb_pacote AS p 
-    JOIN tb_pacoteservico ps ON ps.cd_pacote = p.cd_pacote 
-    JOIN tb_servico s ON ps.cd_servico = s.cd_servico 
+    $sql = "SELECT s.nm_servico, s.cd_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, e.cd_empresa, e.url_fotoperfil, s.nm_servico, ts.nm_tiposervico
+    FROM tb_servico AS s 
     JOIN tb_tiposervico ts ON s.cd_tiposervico = ts.cd_tiposervico
     JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa 
-    WHERE p.cd_pacote IN ($id)";
+    WHERE s.cd_servico IN ($id)";
 
     $result = $conn->query($sql);
 
@@ -137,15 +135,15 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                 <?php
              if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $valorPacote = $row['vl_pacote'];
+                    $valorservico = $row['vl_servico'];
                     $cdEmpresa = $row['cd_empresa'];
 
-                    // Verifica se a empresa já possui um valor total calculado e adiciona o valor do pacote atual
+                    // Verifica se a empresa já possui um valor total calculado e adiciona o valor do servico atual
                     if (isset($valorTotalPorEmpresa[$cdEmpresa])) {
-                        $valorTotalPorEmpresa[$cdEmpresa] += $valorPacote;
+                        $valorTotalPorEmpresa[$cdEmpresa] += $valorservico;
                     } else {
-                        // Se a empresa ainda não possui um valor total, inicializa com o valor do pacote atual
-                        $valorTotalPorEmpresa[$cdEmpresa] = $valorPacote;
+                        // Se a empresa ainda não possui um valor total, inicializa com o valor do servico atual
+                        $valorTotalPorEmpresa[$cdEmpresa] = $valorservico;
                     }
 
                     // Resto do código...
@@ -154,7 +152,7 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                             <div class="cardInfo">
                                 <img src="'. $row['url_imgcapa'] .'" alt="">
                                 <div class="infoEmpresa">
-                                    <h3>'. $row['nm_pacote'] .'</h3>
+                                    <h3>'. $row['nm_servico'] .'</h3>
                                     <div class="perfilEmpresa">
                                         <img src="'. $row['url_fotoperfil'] .'" alt="">
                                         <h3>'. $row['nm_fantasia'] . '</h3>
@@ -162,7 +160,7 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                                     </div>
                                 </div>
                                 <div class="precoProduto">
-                                    <h3>R$ '.number_format($valorPacote, 2, ',', '.') . '</h3>
+                                    <h3>R$ '.number_format($valorservico, 2, ',', '.') . '</h3>
                                 </div>
                                 <div class="iconDeletar">
                                     <span>&#x2716;</span>

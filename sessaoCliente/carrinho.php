@@ -5,17 +5,17 @@ if (!isset($_SESSION['carrinho'])) {
   $_SESSION['carrinho'] = array();
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cd_servico = $_POST['cd_servico'];
-    $_SESSION['carrinho'][] = $cd_servico;
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     // $cd_servico = $_POST['cd_servico'];
+//     // $_SESSION['carrinho'][] = $cd_servico;
 
-    if (isset($_POST['opcao'])) {
-      $opcoes = $_POST['opcao'];
-      $_SESSION['opcoes'] = $opcoes;
-      header('Location: carrinhoLocal.php');
-      exit;
-    } 
-}
+//     if (isset($_POST['opcao'])) {
+//       $opcoes = $_POST['opcao'];
+//       $_SESSION['opcoes'] = $opcoes;
+//       header('Location: carrinhoLocal.php');
+//       exit;
+//     } 
+// }
 
     $servername = "localhost";
     $username = "root";
@@ -30,10 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (!empty($_SESSION['carrinho'])) {
     
     $carrinho = implode(",", $_SESSION['carrinho']);
-    $sql = "SELECT s.nm_servico,s.cd_servico, s.vl_servico,s.url_imgcapa, e.nm_fantasia, e.url_fotoperfil
+    $sql = "SELECT s.nm_servico,s.cd_servico, s.vl_servico,s.url_imgcapa, e.cd_empresa, e.nm_fantasia, e.url_fotoperfil
     FROM tb_servico as s
     JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa
-    WHERE s.cd_servico IN ($carrinho)";
+    WHERE s.cd_servico IN ($carrinho) ORDER BY s.cd_empresa";
     // echo $carrinho;
     $result = $conn->query($sql);
 }
@@ -190,31 +190,74 @@ if (!empty($_SESSION['carrinho'])) {
   
   <!-- INICIO PEDIDOS NO CARRINHO -->
   <?php
+   $cd_empresa_anterior=null;
   if ($result->num_rows > 0) {
     echo '<form action="carrinhoLocal.php" method="post">';
     while ($row = $result->fetch_assoc()) {
-        echo '<div class="pedidoEmpresa">
-        <img src="'.$row['url_fotoperfil'].'" alt="">
-        <h3>'.$row['nm_fantasia'].'</h3>
-      </div>
+
+      //   echo '<div class="pedidoEmpresa">
+      //   <img src="'.$row['url_fotoperfil'].'" alt="">
+      //   <h3>'.$row['nm_fantasia'].'</h3>
+      // </div>
       
-      <div class="selecionaItem">
-        <div>
-          <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
-          '.$row['cd_servico'].'
-        </div>
-        <div class="imgPedido">
-          <img src="'.$row['url_imgcapa'].'" alt=""> 
-        </div>
-        <div>
-          <div class="infoPedido"> 
-            <h1>'.$row['nm_servico'].'</h1>
-            <h3>R$ '.$row['vl_servico'].'</h3>
-          </div>
-        </div>
+      // <div class="selecionaItem">
+      //   <div>
+      //     <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
+      //     '.$row['cd_servico'].'
+      //   </div>
+      //   <div class="imgPedido">
+      //     <img src="'.$row['url_imgcapa'].'" alt=""> 
+      //   </div>
+      //   <div>
+      //     <div class="infoPedido"> 
+      //       <h1>'.$row['nm_servico'].'</h1>
+      //       <h3>R$ '.$row['vl_servico'].'</h3>
+      //     </div>
+      //   </div>
+      // </div>';
+
+      $cd_empresa_atual = $row['cd_empresa'];
+      $cd_servico = $row['cd_servico'];
+     
+      
+      if ($cd_empresa_atual != $cd_empresa_anterior) {
+          // Iniciar uma nova div para a nova empresa
+          if ($cd_empresa_anterior !== null) {
+              // Fechar a div anterior, se não for a primeira empresa
+              echo '</div>';
+          }
+          // Abrir a div para a nova empresa
+          echo '<div class="pedidoEmpresa">
+          <img src="'.$row['url_fotoperfil'].'" alt="">
+          <h3>'.$row['nm_fantasia'].'</h3></div>
+          <div class="selecionaItem">';
+          echo '';
+      }
+  
+      // Exibir o serviço dentro da div da empresa
+      echo '<div>
+      <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
+      
+      </div>
+      <div class="imgPedido">
+      <img src="'.$row['url_imgcapa'].'" alt=""> 
+      </div>
+      <div>
+      <div class="infoPedido"> 
+      <h1>'.$row['nm_servico'].'</h1>
+      <h3>R$ '.$row['vl_servico'].'</h3>
+      </div>
       </div>';
+  
+      $cd_empresa_anterior = $cd_empresa_atual;
+      }
+      
+      // Fechar a última div
+      if ($cd_empresa_anterior !== null) {
+          echo '</div>';
+
     }
-    echo '<input type="submit">
+    echo '<input type="submit" class="continuar" value="Continuar">
     </form>';
 } else {
   echo "Nenhum servico selecionado no carrinho.";

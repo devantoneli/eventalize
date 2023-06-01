@@ -38,7 +38,7 @@
     display: grid;
     grid-template-columns: min-content min-content auto;
     /* grid-template-rows: auto; */
-    gap: 3%;
+    gap: 6%;
     margin: 3% 0 0 8%;
     align-items: center;
     
@@ -56,6 +56,14 @@
 .imgPedido img{
     width: 300px;
     border-radius: 30px;
+}
+
+.continuar {
+    padding: 0.5em 1.5em;
+    border: none;
+    font-size: 2em;
+    margin: 2em 50%;
+    border-radius: 0.5em;
 }
 
 /* .imgPedido img{ codigo caso queira voltar com a borda gradiente
