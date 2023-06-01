@@ -199,7 +199,7 @@ body, html{
 }
 
 .centralizaSections {
-    margin: 3vw 15vw;
+    margin: 6vw 15vw;
 }
 
 .cabecalho {
@@ -350,7 +350,7 @@ body, html{
 .imagens{
     display: grid;
     grid-template-rows: 5em 21em 5em 20em;
-    margin-top: -10em;
+    margin-top: -5em;
 }
 
 .imagens h1{

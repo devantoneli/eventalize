@@ -62,23 +62,9 @@ include('../protect.php');
         </header>
     </div>
     <!--FIM MENU EMPRESA -->
-
+    <h1 style="margin-left: 24%;padding-top: 2vw;position: absolute;">Novo serviço</h1>
 <div class="centralizaSections">
-
-    <h1 class="meioH1">Este é um:</h1>
-    <div class="cabecalho">
-        <div>
-        <label for="servico">
-        <input type="radio" name="opcao" value="servico" id="">
-        Servico</label>
-        </div>
-        <hr>
-        <!-- <div>
-        <label for="pacote">
-        <input type="radio" name="opcao" value="pacote" id="">
-        <a>Pacote de serviços</a></label>
-        </div> -->
-    </div>
+    
 
 <!-- SESSAO SERVICO -->  
     <section class="servico">
@@ -97,7 +83,7 @@ include('../protect.php');
                     <option value="7">Equipamento</option>
                     <option value="8">Auxiliar</option>
                 </select>
-                <input class="input-Digita" type="text" name="vl_servico" id="" placeholder="Valor">
+                <input class="input-Digita" type="number" name="vl_servico" id="" placeholder="Valor">
 <!-- RADIOS COMUNS -->
                 <div class="radios">
                     <h1>Personalização</h1>
