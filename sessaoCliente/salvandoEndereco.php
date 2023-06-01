@@ -33,7 +33,7 @@ $estado = $endereco->uf;
     }
 
 
-    header("Location: carrinhoLocal.php?cep=$cep&logradouro=$logradouro&bairro=$bairro&cidade=$cidade&estado=$estado");
+    
 
     exit();
 

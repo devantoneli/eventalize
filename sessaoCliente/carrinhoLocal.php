@@ -3,11 +3,11 @@
 session_start();
 include('../protect.php');
 
-$cep = $_GET['cep'];
-$logradouro = $_GET['logradouro'];
-$bairro = $_GET['bairro'];
-$cidade = $_GET['cidade'];
-$estado = $_GET['estado'];
+// $cep = $_GET['cep'];
+// $logradouro = $_GET['logradouro'];
+// $bairro = $_GET['bairro'];
+// $cidade = $_GET['cidade'];
+// $estado = $_GET['estado'];
 
 if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
     $opcoes = $_POST['opcao'];
@@ -99,20 +99,20 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
   </div>
 
     <div class="inicioCarrinhoLocal">
-            <form action="salvandoEndereco.php" method="POST">
+            <form action="" method="POST">
                 <div class="formEndereco">
                     <h3>Onde será realizado meu evento?</h3>
                     <div class="formdiv1">
-                    <input type="text" placeholder="Rua" name="rua" value="<?php echo $logradouro; ?>">
+                    <input type="text" placeholder="Rua" name="rua" id="rua">
                     <input type="number" placeholder="Nº" style="padding-left: 8%;" name="numero">
                 </div>
                 <div class="formdiv2">
-                    <input type="text" placeholder="CEP" name="cep" value="<?php echo $cep; ?>">
-                    <input type="text" placeholder="Bairro" name="bairro" value="<?php echo $bairro; ?>">
+                    <input type="text" placeholder="CEP" name="cep" id="cep" >
+                    <input type="text" placeholder="Bairro" name="bairro" id="bairro">
                 </div>
                 <div class="formdiv3">
-                    <input type="text" placeholder="Cidade" name="cidade" value="<?php echo $cidade; ?>">
-                    <input type="text" placeholder="Estado" name="uf" value="<?php echo $estado; ?>">
+                    <input type="text" placeholder="Cidade" name="cidade" id="cidade">
+                    <input type="text" placeholder="Estado" name="uf" id="uf">
                 </div>
                 <div class="formdiv4">
                     <input type="text" placeholder="Complemento" name="complemento">
@@ -133,7 +133,32 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                 </div>
             </form>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+        <script>
+            $(document).ready(function() {
+                // Quando o campo do CEP perder o foco
+                $('#cep').on('blur', function() {
+                    // Obtém o valor do CEP fornecido pelo usuário
+                    var cep = $(this).val();
+                    
+                    // Faz uma requisição AJAX para a API ViaCEP
+                    $.ajax({
+                    url: 'https://viacep.com.br/ws/' + cep + '/json/',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        // Preenche os campos do formulário com os dados do endereço
+                        $('#rua').val(response.logradouro);
+                        $('#bairro').val(response.bairro);
+                        $('#cidade').val(response.localidade);
+                        $('#uf').val(response.uf);
+                    }
+                    });
+                });
+                });
+
+        </script>
     <hr class="hrVertical">
 
     <div class="ladoCarrinho">
