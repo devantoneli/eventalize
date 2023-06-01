@@ -19,7 +19,7 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
         die("Falha na conexão com o banco de dados: " . $conn->connect_error);
     }
 
-    $sql = "SELECT p.nm_pacote, p.cd_pacote, p.vl_pacote, p.url_imgcapa, e.nm_fantasia, e.url_fotoperfil, s.nm_servico, ts.nm_tiposervico
+    $sql = "SELECT p.nm_pacote, p.cd_pacote, p.vl_pacote, p.url_imgcapa, e.nm_fantasia, e.cd_empresa, e.url_fotoperfil, s.nm_servico, ts.nm_tiposervico
     FROM tb_pacote AS p 
     JOIN tb_pacoteservico ps ON ps.cd_pacote = p.cd_pacote 
     JOIN tb_servico s ON ps.cd_servico = s.cd_servico 
@@ -92,39 +92,41 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
   </div>
   </div>
 
-  <div class="inicioCarrinhoLocal">
-    <div class="formEndereco">
-        <h3>Onde será realizado meu evento?</h3>
-        <div class="formdiv1">
-        <input type="text" placeholder="Rua">
-        <input type="number" placeholder="Nº" style="padding-left: 8%;">
-    </div>
-    <div class="formdiv2">
-        <input type="text" placeholder="CEP">
-        <input type="text" placeholder="Bairro">
-    </div>
-    <div class="formdiv3">
-        <input type="text" placeholder="Cidade">
-        <input type="text" placeholder="Estado">
-    </div>
-    <div class="formdiv4">
-        <input type="text" placeholder="Complemento">
-        <input type="text" placeholder="Referência">
-    </div>
+    <div class="inicioCarrinhoLocal">
+            <form action="salvandoEndereco.php" method="POST">
+                <div class="formEndereco">
+                    <h3>Onde será realizado meu evento?</h3>
+                    <div class="formdiv1">
+                    <input type="text" placeholder="Rua" name="rua">
+                    <input type="number" placeholder="Nº" style="padding-left: 8%;" name="numero">
+                </div>
+                <div class="formdiv2">
+                    <input type="text" placeholder="CEP" name="cep">
+                    <input type="text" placeholder="Bairro" name="bairro">
+                </div>
+                <div class="formdiv3">
+                    <input type="text" placeholder="Cidade" name="cidade">
+                    <input type="text" placeholder="Estado" name="uf">
+                </div>
+                <div class="formdiv4">
+                    <input type="text" placeholder="Complemento" name="complemento">
+                    <input type="text" placeholder="Referência" name="referencia">
+                </div>
 
-    <div class='formData'>
-        <h3>Qual a data e horário?</h3>
-        <div class="formdiv2">
-            <input type="date" placeholder="Data">
-            <input type="time" placeholder="Hora">
+                <div class='formData'>
+                    <h3>Qual a data e horário?</h3>
+                    <div class="formdiv2">
+                        <input type="date" placeholder="Data" name="dtAgendamento">
+                        <input type="time" placeholder="Hora" name="hrAgendamento">
+                    </div>
+                </div>
+
+                <div class="botoesEndereco">
+                    <button id="voltar"> Voltar</button>
+                    <button type="submit" id="continuar">Continuar</button>
+                </div>
+            </form>
         </div>
-    </div>
-
-    <div class="botoesEndereco">
-        <button id="voltar"> Voltar</button>
-        <button id="continuar">Continuar</button>
-    </div>
-    </div>
 
     <hr class="hrVertical">
 
@@ -133,40 +135,57 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
             <h3>Carrinho</h3>
         </div>
                 <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $valorPacote =  $row['vl_pacote'];
-                        echo '  
-                        <div class="cardProduto">
-                    <div class="cardInfo">
-                    <img src="'. $row['url_imgcapa'] .'" alt="">
-                        <div class="infoEmpresa">
-                            <h3>'. $row['nm_pacote'] .'</h3>
-                            <div class="perfilEmpresa">
-                                <img src="'. $row['url_fotoperfil'] .'" alt="">
-                                <h3>'. $row['nm_fantasia'] . '</h3>
-                                <h6>'. $row['nm_tiposervico'] . '</h6>
-                            </div>
-                        </div>
-                        <div class="precoProduto">
-                            <h3>R$ '.number_format($valorPacote, 2, ',', '.') . '</h3>
-                        </div>
-                        <div class="iconDeletar">
-                            <span>&#x2716;</span>
-                        </div>
-                        </div>
-                        </div>';
-                        $valorTotal += $row['vl_pacote'];
+             if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $valorPacote = $row['vl_pacote'];
+                    $cdEmpresa = $row['cd_empresa'];
+
+                    // Verifica se a empresa já possui um valor total calculado e adiciona o valor do pacote atual
+                    if (isset($valorTotalPorEmpresa[$cdEmpresa])) {
+                        $valorTotalPorEmpresa[$cdEmpresa] += $valorPacote;
+                    } else {
+                        // Se a empresa ainda não possui um valor total, inicializa com o valor do pacote atual
+                        $valorTotalPorEmpresa[$cdEmpresa] = $valorPacote;
                     }
-                   
-                    echo'<div class="precoTotal">
-                    <h3>Total: R$ '. number_format($valorTotal, 2, ',', '.').'</h3>
+
+                    // Resto do código...
+                    echo '  
+                        <div class="cardProduto">
+                            <div class="cardInfo">
+                                <img src="'. $row['url_imgcapa'] .'" alt="">
+                                <div class="infoEmpresa">
+                                    <h3>'. $row['nm_pacote'] .'</h3>
+                                    <div class="perfilEmpresa">
+                                        <img src="'. $row['url_fotoperfil'] .'" alt="">
+                                        <h3>'. $row['nm_fantasia'] . '</h3>
+                                        <h6>'. $row['nm_tiposervico'] . '</h6>
+                                    </div>
+                                </div>
+                                <div class="precoProduto">
+                                    <h3>R$ '.number_format($valorPacote, 2, ',', '.') . '</h3>
+                                </div>
+                                <div class="iconDeletar">
+                                    <span>&#x2716;</span>
+                                </div>
+                            </div>
+                        </div>';
+                }
+
+            // Exibe o valor total do pedido para cada empresa
+            foreach ($valorTotalPorEmpresa as $cdEmpresa => $valorTotal) {
+                echo 'Valor total do pedido para a empresa de ID '.$cdEmpresa.': R$ '.number_format($valorTotal, 2, ',', '.').'<br>';
+            }
+
+            // Calcula o valor total geral do pedido
+            $valorTotalGeral = array_sum($valorTotalPorEmpresa);
+
+            echo '<div class="precoTotal">
+                    <h3>Total: R$ '. number_format($valorTotalGeral, 2, ',', '.').'</h3>
                 </div>';
-                }
-                else {
-                    echo "Nenhum resultado encontrado.";
-                }
-                ?>
+        } else {
+            echo "Nenhum resultado encontrado.";
+        }
+?>
     </div>
   </div>
 

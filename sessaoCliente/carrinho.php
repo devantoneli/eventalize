@@ -14,10 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['opcoes'] = $opcoes;
       header('Location: carrinhoLocal.php');
       exit;
-    } else {
-      // Nenhuma opção foi selecionada, você pode exibir uma mensagem de erro ou tomar outra ação
-      echo "Nenhuma opção selecionada.";
-    }
+    } 
 }
 
     $servername = "localhost";
