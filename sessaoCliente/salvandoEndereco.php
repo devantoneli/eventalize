@@ -16,6 +16,7 @@ echo "Bairro: " . $endereco->bairro . "<br>";
 echo "Cidade: " . $endereco->localidade . "<br>";
 echo "Estado: " . $endereco->uf . "<br>";
 
+$cep = $endereco->cep;
 $logradouro = $endereco->logradouro;
 $bairro = $endereco->bairro;
 $cidade = $endereco->localidade;
@@ -32,7 +33,8 @@ $estado = $endereco->uf;
     }
 
 
-    header("Location: carrinhoLocal.php?logradouro=$logradouro&bairro=$bairro&cidade=$cidade&estado=$estado");
+    header("Location: carrinhoLocal.php?cep=$cep&logradouro=$logradouro&bairro=$bairro&cidade=$cidade&estado=$estado");
+
     exit();
 
 

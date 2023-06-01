@@ -3,6 +3,7 @@
 session_start();
 include('../protect.php');
 
+$cep = $_GET['cep'];
 $logradouro = $_GET['logradouro'];
 $bairro = $_GET['bairro'];
 $cidade = $_GET['cidade'];
@@ -106,7 +107,7 @@ if (isset($_POST['opcao']) && !empty($_POST['opcao'])) {
                     <input type="number" placeholder="Nº" style="padding-left: 8%;" name="numero">
                 </div>
                 <div class="formdiv2">
-                    <input type="text" placeholder="CEP" name="cep">
+                    <input type="text" placeholder="CEP" name="cep" value="<?php echo $cep; ?>">
                     <input type="text" placeholder="Bairro" name="bairro" value="<?php echo $bairro; ?>">
                 </div>
                 <div class="formdiv3">
