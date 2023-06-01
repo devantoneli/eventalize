@@ -39,13 +39,13 @@ if($conn->connect_error){
      <!--INICIO MENU EMPRESA -->
      <div class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
-        <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
+        <a href="index-e.php"><div id="logoImagem"></div></a>
             
             <ul class="opcoesMenu">
                 <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
+                <li class="nav-item"><a href="pedidos-e.php" class="opcaoMenu">Pedidos</a></li>
+                <li class="nav-item"><a href="perfilEmpresa.php" class="opcaoMenu">Suas postagens</a></li>
+                <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
             </ul>
         
             <div class="alinhaLogo">
@@ -57,7 +57,7 @@ if($conn->connect_error){
     
                 <section id="menu">
                     <!-- <a href=""><h5>Pedidos</h5></a> -->
-                    <a href="criacaoServico-e.html"><h5>Criar Serviço ou Pacote</h5></a>
+                    <a href="criacaoServico-e.php"><h5>Criar Serviço ou Pacote</h5></a>
                     <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
     
@@ -71,9 +71,9 @@ if($conn->connect_error){
     
                 <section id="menuPerfil">
                     <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
-                    <a href=""><h5>Pontuações</h5></a>
+                    <!-- <a href=""><h5>Pontuações</h5></a>
                     <a href=""><h5>Postagens</h5></a>
-                    <a href=""><h5>Estatísticas de venda</h5></a>
+                    <a href=""><h5>Estatísticas de venda</h5></a> -->
                     <a href=""><h5>Configurações</h5></a>
                     <a href="../logout.php"><h5>Sair</h5></a>
                 </section>
