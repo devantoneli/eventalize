@@ -10,7 +10,7 @@ include('../protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estiloServico-e.css">
-    <!-- <link rel="stylesheet" href="css/menu-e.css"> -->
+    <link rel="stylesheet" href="css/menu-e.css">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <link rel="icon" href="../img/index/logo.png">
     <title>Criar Serviço/Pacote - Eventalize</title>
@@ -20,13 +20,13 @@ include('../protect.php');
     <!--INICIO MENU EMPRESA -->
     <div id="topo" class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
-        <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
+        <a href="index-e.php"><div id="logoImagem"></div></a>
             
             <ul class="opcoesMenu">
                 <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
+                <li class="nav-item"><a href="pedidos-e.php" class="opcaoMenu">Pedidos</a></li>
+                <li class="nav-item"><a href="perfilEmpresa.php" class="opcaoMenu">Suas postagens</a></li>
+                <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
             </ul>
         
             <div class="alinhaLogo">
@@ -52,9 +52,9 @@ include('../protect.php');
     
                 <section id="menuPerfil">
                     <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
-                    <a href=""><h5>Pontuações</h5></a>
+                    <!-- <a href=""><h5>Pontuações</h5></a>
                     <a href=""><h5>Postagens</h5></a>
-                    <a href=""><h5>Estatísticas de venda</h5></a>
+                    <a href=""><h5>Estatísticas de venda</h5></a> -->
                     <a href=""><h5>Configurações</h5></a>
                     <a href="../logout.php"><h5>Sair</h5></a>
                 </section>
@@ -62,23 +62,9 @@ include('../protect.php');
         </header>
     </div>
     <!--FIM MENU EMPRESA -->
-
+    <h1 style="margin-left: 24%;padding-top: 2vw;position: absolute;">Novo serviço</h1>
 <div class="centralizaSections">
-
-    <h1 class="meioH1">Este é um:</h1>
-    <div class="cabecalho">
-        <div>
-        <label for="servico">
-        <input type="radio" name="opcao" value="servico" id="">
-        Servico</label>
-        </div>
-        <hr>
-        <!-- <div>
-        <label for="pacote">
-        <input type="radio" name="opcao" value="pacote" id="">
-        <a>Pacote de serviços</a></label>
-        </div> -->
-    </div>
+    
 
 <!-- SESSAO SERVICO -->  
     <section class="servico">
@@ -97,7 +83,7 @@ include('../protect.php');
                     <option value="7">Equipamento</option>
                     <option value="8">Auxiliar</option>
                 </select>
-                <input class="input-Digita" type="text" name="vl_servico" id="" placeholder="Valor">
+                <input class="input-Digita" type="number" name="vl_servico" id="" placeholder="Valor">
 <!-- RADIOS COMUNS -->
                 <div class="radios">
                     <h1>Personalização</h1>

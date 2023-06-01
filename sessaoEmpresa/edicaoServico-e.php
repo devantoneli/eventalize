@@ -38,6 +38,7 @@ $row = mysqli_fetch_assoc($result_query);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estiloServico-e.css">
+    <link rel="stylesheet" href="css/menu-e.css">
     <link rel="icon" href="../img/index/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <title>Criar Serviço/Pacote</title>
@@ -48,13 +49,13 @@ $row = mysqli_fetch_assoc($result_query);
     <!--INICIO MENU EMPRESA -->
     <div id="topo" class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
-        <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
+        <a href="index-e.php"><div id="logoImagem"></div></a>
             
             <ul class="opcoesMenu">
                 <li class=""><a href="index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
+                <li class="nav-item"><a href="pedidos-e.php" class="opcaoMenu">Pedidos</a></li>
+                <li class="nav-item"><a href="perfilEmpresa.php" class="opcaoMenu">Suas postagens</a></li>
+                <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
             </ul>
         
             <div class="alinhaLogo">
@@ -80,9 +81,9 @@ $row = mysqli_fetch_assoc($result_query);
     
                 <section id="menuPerfil">
                     <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
-                    <a href=""><h5>Pontuações</h5></a>
+                    <!-- <a href=""><h5>Pontuações</h5></a>
                     <a href=""><h5>Postagens</h5></a>
-                    <a href=""><h5>Estatísticas de venda</h5></a>
+                    <a href=""><h5>Estatísticas de venda</h5></a> -->
                     <a href=""><h5>Configurações</h5></a>
                     <a href="../logout.php"><h5>Sair</h5></a>
                 </section>
