@@ -3,8 +3,6 @@
 session_start();
 include('../protect.php');
 
-if (isset($_POST['opcao'])) {
-
 // $cep = $_GET['cep'];
 // $logradouro = $_GET['logradouro'];
 // $bairro = $_GET['bairro'];
@@ -12,7 +10,6 @@ if (isset($_POST['opcao'])) {
 // $estado = $_GET['estado'];
 
 if (isset($_POST['opcao'])) {
-
     $opcoes = $_POST['opcao'];
     $ids = implode(",", $opcoes);
         $id = str_replace("id=", "", $ids);
