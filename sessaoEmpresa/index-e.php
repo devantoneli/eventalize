@@ -156,9 +156,9 @@ include('../protect.php');
                 
                             ?>
                         <div class="novoPedido">
-                            <div class="imgServico" style="background-image: url('<?php echo($row['url_imgcapa']); ?>')"></div>
-
-                            <div class="imgCliente" style="background-image: url('<?php echo($row['url_fotoperfil']); ?>')"></div>
+                            <div class="imgServico" style="<?php if($row['url_imgcapa']="NULL"){echo("background: blue;");} else{?>background-image: url('<?php echo($row["url_imgcapa"]);} ?>'); <?php ?>"></div>
+                            <!-- echo($row['url_fotoperfil']) -->
+                            <div class="imgCliente" style="background-image: url('')"></div>
                         </div>
                         <?php
                         }
@@ -216,8 +216,8 @@ include('../protect.php');
                         <?php
                             echo 
                             '
-                            <a>'.$row['nm_pacote'].'</a>
-                            <p>'.$row['nm_cliente'].'</p>';
+                            <a>'.$row['nm_servico'].'</a>
+                            <p>'.$row['nm_titular_pagamento'].'</p>';
                             if($row['url_fotoperfil']==''){
                             ?>
                             <div class="img-cliPedAndamnt" style="background-image: url('https://as1.ftcdn.net/v2/jpg/05/60/26/08/1000_F_560260880_O1V3Qm2cNO5HWjN66mBh2NrlPHNHOUxW.jpg');"></div>
@@ -228,7 +228,7 @@ include('../protect.php');
                             <?php 
                             }
 
-                            if($row['nm_status'] == 'Elaboração do serviço em processo' || $row['nm_status'] == 'Execução do serviço em processo' || $row['nm_status'] == 'Aguardando data agendada' || $row['nm_status'] == 'Cancelamento em processo'){
+                            if($row['nm_status'] == 'Elaboração do serviço em processo' || $row['nm_status'] == 'Execução do serviço em processo' || $row['nm_status'] == 'Aguardando data agendada'){
                                 ?>
                                 <svg style="transform: translate(-0.5em, -9.2em);" class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
                                 <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>

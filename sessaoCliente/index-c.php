@@ -19,30 +19,32 @@ if($conn->connect_error){
     //LÓGICA PARA POSTAGENS DA SEMANA
     $sql = "SELECT url_imgcapa 
     FROM tb_postagem 
-    WHERE MONTH(dt_postagem) = MONTH(CURRENT_DATE) 
+    WHERE MONTH(dt_postagem) = 05 
     AND YEAR(dt_postagem) = YEAR(CURRENT_DATE) 
     ORDER BY dt_postagem 
     DESC LIMIT 7";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
+    // WHERE MONTH(dt_postagem) = MONTH(CURRENT_DATE) 
+
     //LÓGICA PARA EMPRESAS COM MAIOR AVALIAÇÃO
     $sql2 = "SELECT e.nm_fantasia, e.url_fotoperfil, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
     FROM tb_postagem po
-    JOIN tb_pacotepedido tp ON tp.cd_pedido = po.cd_pedido
-    JOIN tb_pedido pe ON pe.cd_pedido = tp.cd_pedido
-    JOIN tb_pacote pa ON pa.cd_pacote = tp.cd_pacote
+    JOIN tb_servicopedido sp ON sp.cd_pedido = po.cd_pedido
+    JOIN tb_pedido pe ON pe.cd_pedido = sp.cd_pedido
+    JOIN tb_servico s ON s.cd_servico = sp.cd_servico
     JOIN tb_empresa e ON e.cd_empresa = pe.cd_empresa
     GROUP BY e.nm_fantasia, e.url_fotoperfil
     ORDER BY media_avaliacao DESC LIMIT 7";
     $result2 = $conn->query($sql2);
     $row2 = $result2->fetch_assoc();
 
-    //LÓGICA PARA PACOTES QUE ESTÃO BOMBANDO
-    $sql3 = "SELECT pp.cd_pacote, COUNT(pp.cd_pacote) AS total_compras, p.nm_pacote, p.ds_pacote, p.vl_pacote, p.url_imgcapa
-              FROM tb_pacotepedido pp
-              JOIN tb_pacote p ON pp.cd_pacote = p.cd_pacote
-              GROUP BY pp.cd_pacote, p.nm_pacote, p.ds_pacote, p.vl_pacote
+    //LÓGICA PARA servicoS QUE ESTÃO BOMBANDO
+    $sql3 = "SELECT sp.cd_servico, COUNT(sp.cd_pedido) AS total_compras, s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa
+              FROM tb_servicopedido sp
+              JOIN tb_servico s ON sp.cd_servico = s.cd_servico
+              GROUP BY sp.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico
               ORDER BY total_compras DESC
               LIMIT 5";
     $result3 = $conn->query($sql3);
@@ -51,11 +53,10 @@ if($conn->connect_error){
     //LÓGICA PARA CARROSEL
     $sql4 = 'SELECT e.nm_fantasia, e.url_fotoperfil, e.ds_biografia, e.nm_usuarioempresa,s.url_imgcapa, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
     FROM tb_postagem po
-    JOIN tb_pacotepedido tp ON tp.cd_pedido = po.cd_pedido
-    JOIN tb_pedido pe ON pe.cd_pedido = tp.cd_pedido
-    JOIN tb_pacote pa ON pa.cd_pacote = tp.cd_pacote
+    JOIN tb_servicopedido sp ON sp.cd_pedido = po.cd_pedido
+    JOIN tb_pedido pe ON pe.cd_pedido = sp.cd_pedido
+    JOIN tb_servico s ON s.cd_servico = sp.cd_servico
     JOIN tb_empresa e ON e.cd_empresa = pe.cd_empresa
-	JOIN tb_servico s ON e.cd_empresa = s.cd_empresa
     GROUP BY e.nm_fantasia, e.url_fotoperfil
     ORDER BY media_avaliacao DESC LIMIT 4
 ';
@@ -181,6 +182,8 @@ if($conn->connect_error){
            <img src= '.$url_imgcapa.' alt="">
        </div>';
         }
+    }else {
+        echo "<h2>Sem destaques nessa semana!</h2>";
     }
     ?>
        
@@ -224,15 +227,15 @@ if($conn->connect_error){
 </div>
 
 <div class="categorias">
-    <h1>Esses pacotes estão bombando!</h1>
+    <h1>Esses serviços estão bombando!</h1>
 </div>
 <div class="gridPacote">
     <?php
     if (mysqli_num_rows($result3) > 0) {
         while ($row3 = mysqli_fetch_assoc($result3)) {
-            $nomePacote = $row3['nm_pacote'];
-            $descricaoPacote = $row3['ds_pacote'];
-            $valorPacote = $row3['vl_pacote'];
+            $nomeServico = $row3['nm_servico'];
+            $descricaoServico = $row3['ds_servico'];
+            $valorServico = $row3['vl_servico'];
             $imgCapa = $row3['url_imgcapa'];
             
             echo '<div class="cardPacotes">
@@ -241,20 +244,20 @@ if($conn->connect_error){
                         <div class="sombra"></div>
                     </div>
                     <div class="textoPacote">
-                        <h2>'.substr($nomePacote, 0,35).'...</h2>
+                        <h2>'.substr($nomeServico, 0,35).'...</h2>
                         <div class="descPacote">
-                            <h4>'.substr($descricaoPacote, 0,60).'...</h4>
+                            <h4>'.substr($descricaoServico, 0,60).'...</h4>
                         </div>
                         
                     </div>
                     <div class="precoPacote">
-                            <h5>R$'.$valorPacote.'</h5>
+                            <h5>R$'.$valorServico.'</h5>
                         </div>
                         <button class="botaoPacote">Ver mais</button>
                 </div>';
         }
     } else {
-        echo "Nenhum pacote encontrado.";
+        echo "Nenhum serviço encontrado.";
     }
 
 ?>

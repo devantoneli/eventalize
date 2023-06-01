@@ -20,16 +20,15 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E PACOTE DE PEDIDO
+//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E SERVICO DE PEDIDO
     $sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
-    pac.nm_pacote, pac.ds_pacote, pac.vl_pacote, pac.url_imgcapa, e.nm_fantasia, ip.nm_tipo_pagamento
+    s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, ip.nm_tipo_pagamento
     FROM tb_pedido p
     INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
     INNER JOIN tb_cliente c ON ip.cd_cliente = c.cd_cliente
     INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
-    INNER JOIN tb_servico s ON e.cd_empresa = s.cd_empresa
-    INNER JOIN tb_pacotepedido pp ON p.cd_pedido = pp.cd_pedido
-    INNER JOIN tb_pacote pac ON pp.cd_pacote = pac.cd_pacote
+    INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
+    INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
     WHERE ip.cd_cliente = '$cd_cliente'";
      $result=$conn->query($sql);
      $row=$result->fetch_assoc();
@@ -122,7 +121,7 @@ if($conn->connect_error){
                 <li>Nº:0543255</li>
                 <li>Pedido realizado em</li>
                 <li>Este é um</li>
-                <li>Pacote Personalizado</li>
+                <li>Servico Personalizado</li>
                 <li>Status</li>
                 <li>Tipo de pagamento</li>
             </div>
@@ -130,7 +129,7 @@ if($conn->connect_error){
             <div class="alinhaInfoPedido">
                 <li>'.$row['nm_cliente'].'</li>
                 <li>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</li>
-                <li>Pacote</li>
+                <li>Servico</li>
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
                 <li class="status">'.$row['nm_status'].'</li>
                 <li class="status">'.$row['nm_tipo_pagamento'].'</li>
@@ -143,12 +142,12 @@ if($conn->connect_error){
 
     <div class="textoHistorico">
             <h2 class="estiloEmpresa">'.$row['nm_fantasia'].'</h2><br>
-            <h3>'.$row['ds_pacote'].'</h3>
+            <h3>'.$row['ds_servico'].'</h3>
     </div>
 
     <div class="textoValor">
         <h2>Valor</h2><br>
-        <h3>R$'. str_replace('.', ',', $row['vl_pacote']) .'</h3>
+        <h3>R$'. str_replace('.', ',', $row['vl_servico']) .'</h3>
     </div>
 
     <hr>

@@ -18,8 +18,8 @@ if(isset($_POST["nm_cliente"])){
 
     
     $sql ="SELECT pc.*, pac.url_imgcapa FROM vwpedidocliente pc
-    JOIN tb_pacotepedido pp ON pp.cd_pedido = pc.cd_pedido
-    JOIN tb_pacote pac ON pac.cd_pacote = pp.cd_pacote
+    JOIN tb_servicopedido pp ON pp.cd_pedido = pc.cd_pedido
+    JOIN tb_servico pac ON pac.cd_servico = pp.cd_servico
     WHERE pc.nm_cliente LIKE '%" . $nm_cliente . "%' AND pc.cd_empresa = '" . $cd_empresa . "'";
     $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
    

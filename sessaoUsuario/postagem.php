@@ -135,7 +135,7 @@ $dbname = "db_eventalize";
                 
                 if (mysqli_num_rows($result3) > 0){
                     while($row3 = $result3 -> fetch_assoc()){
-                        $pacote = $row3['cd_pacote'];
+                        $pacote = $row3['cd_servico'];
                         // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = $pacote";
                         // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = 342";
                         $sql4 = "SELECT * FROM tb_servico WHERE cd_servico = 0";
@@ -153,12 +153,12 @@ $dbname = "db_eventalize";
                     ';
 
                         while ($row4 = $result4 -> fetch_assoc()) {
-                            $capa_img_pacote = getimagesize($row4["url_imgcapa"]);
-                            // $info_imagem_pacote = getimagesize($row4["url_img2"]. $row4["url_img3"] );
-                            $largura_capa_pacote = 90;
-                            $altura_capa_pacote = 90;
-                            $largura_pacote = 80; 
-                            $altura_pacote = 80;
+                            $capa_img_servico = getimagesize($row4["url_imgcapa"]);
+                            // $info_imagem_servico = getimagesize($row4["url_img2"]. $row4["url_img3"] );
+                            $largura_capa_servico = 90;
+                            $altura_capa_servico = 90;
+                            $largura_servico = 80; 
+                            $altura_servico = 80;
                         // aqui vem o carrosel da pa 
                         echo'
                         
@@ -170,12 +170,12 @@ $dbname = "db_eventalize";
                         <h3>'.$row4['nm_servico'].'</h3>
                     </div>
                     <div class="fotoDestaquePacote">
-                        <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_pacote.'%;height:'.$altura_capa_pacote.'%;">
+                        <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_servico.'%;height:'.$altura_capa_servico.'%;">
                     </div>
             
                     <div class="fotoLateralPacote">
-                        <img src="'.$row4["url_img2"].'" style="width:'.$largura_pacote.'%;height:'.$altura_pacote.'%;">
-                        <img src="'.$row4["url_img3"].'" style="width:'.$largura_pacote.'%;height:'.$altura_pacote.'%;">
+                        <img src="'.$row4["url_img2"].'" style="width:'.$largura_servico.'%;height:'.$altura_servico.'%;">
+                        <img src="'.$row4["url_img3"].'" style="width:'.$largura_servico.'%;height:'.$altura_servico.'%;">
                     </div>
             
                     <div class="descricaoInfoPacote">

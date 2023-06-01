@@ -93,20 +93,20 @@ if($conn->connect_error){
 $query3 = "SELECT *
 FROM tb_pedido AS p
 JOIN tb_infopagamento AS ip ON ip.cd_infopagamento = p.cd_infopagamento
-JOIN tb_pacotepedido as pp ON p.cd_pedido = pp.cd_pedido
-JOIN tb_pacote as pac on pp.cd_pacote = pac.cd_pacote
+JOIN tb_servicopedido as sp ON p.cd_pedido = sp.cd_pedido
+JOIN tb_servico as s on sp.cd_servico = s.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
 JOIN tb_cep AS cep ON cep.cd_cep = e.cd_cep
 JOIN tb_bairro AS b on b.cd_bairro = cep.cd_bairro
 JOIN tb_cidade AS cid on cid.cd_cidade = b.cd_cidade
-WHERE nm_status = 'Aguardando confirmação' AND cd_empresa = '$cd_empresa'";
+WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
 
 
 
 $result_query3 = mysqli_query($conn, $query3) or die(' Erro na query:' . $query3 . ' ' . mysqli_error($conn));
 
-echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query3);
+// echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query3);
 if(mysqli_num_rows($result_query3) > 0){
     echo'
     <section class="novosPedidos" id="novosPedidos">
@@ -126,7 +126,7 @@ if(mysqli_num_rows($result_query3) > 0){
                 <div class="cardNvPedidos">
                 <h3>'.$row3['cd_pedido'].'</h3>
                 <h3>'.$row3['nm_cliente'].' <br> '.$row3['nm_rua'].',  '.$row3['qt_numeroendereco'].' - '.$row3['nm_bairro'].' / '.$row3['nm_cidade'].' - '.$row3['sg_uf'].'</h3>
-                <h3>'.$row3['nm_pacote'].'</h3>
+                <h3>'.$row3['nm_servico'].'</h3>
                 <h3>R$'. str_replace('.', ',', $row3['vl_pedido']) .'</h3>
                 <h3>15/02/2023 <br>'.date('H:i', strtotime($row3['hr_agendamento'])).'</h3>
                 <h3>'.date('d/m/Y', strtotime($row3['dt_pedido'])).'<br>13h24</h3>
@@ -144,8 +144,8 @@ if(mysqli_num_rows($result_query3) > 0){
 $query = "SELECT *
 FROM tb_pedido AS p
 JOIN tb_infopagamento AS ip ON ip.cd_infopagamento = p.cd_infopagamento
-JOIN tb_pacotepedido as pp ON p.cd_pedido = pp.cd_pedido
-JOIN tb_pacote as pac on pp.cd_pacote = pac.cd_pacote
+JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
+JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
 JOIN tb_cep AS cep ON cep.cd_cep = e.cd_cep
@@ -158,7 +158,7 @@ ORDER BY p.dt_pedido DESC";
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 
-echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
+// echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
 
 if(mysqli_num_rows($result_query) > 0){
     echo '
@@ -169,8 +169,8 @@ if(mysqli_num_rows($result_query) > 0){
     while($row = mysqli_fetch_assoc($result_query)){
         echo '<div class="card-Andamento">
             <div id="cardPedido">
-                <h2>'.$row['nm_pacote'].'</h2>
-                    <h4>'.$row['ds_pacote'].'</h4>
+                <h2>'.$row['nm_servico'].'</h2>
+                    <h4>'.$row['ds_servico'].'</h4>
             </div>
             
             <div id="statusPedido">
@@ -227,12 +227,12 @@ if(mysqli_num_rows($result_query) > 0){
 //SELECT DOS FINALIZADOS E CANCELADOS
 $query2 = "SELECT *
 FROM tb_pedido AS p
-JOIN tb_pacotepedido as pp ON p.cd_pedido = pp.cd_pedido
-JOIN tb_pacote as pac on pp.cd_pacote = pac.cd_pacote
-WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo') AND cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
+JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
+JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
+WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo') AND p.cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
 $result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
 
-echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query2);
+// echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query2);
 
 if(mysqli_num_rows($result_query2) > 0){
     echo'
@@ -250,7 +250,7 @@ if(mysqli_num_rows($result_query2) > 0){
         echo'
         <div class="cardOutrosPedidos">
         <h3>'.$row2['cd_pedido'].'</h3>
-        <h3>'.$row2['nm_pacote'].'</h3>
+        <h3>'.$row2['nm_servico'].'</h3>
         <h3>R$'. str_replace('.', ',', $row2['vl_pedido']) .'</h3>
         <h3 id="txtArquivado">'.$row2['nm_status'].'</h3>
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
