@@ -100,6 +100,7 @@
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
     cursor: pointer;
+    object-fit: cover;
 }
 
 #menu{
@@ -107,13 +108,13 @@
     border-radius: 4%;
     filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
     position: absolute;
-    width: 11vw;
+    /* width: 11vw; */
     top: 6vw;
     right: 15vw;
     height: 10vw;
     grid-template-rows: 3.8vw 3.8vw;
     display: none;
-    padding-top: 2.5vw;
+    /* padding-top: 2.5vw; */
     padding-left: 1vw;
     font-size: 1.5vw;
     text-align: left;
@@ -143,13 +144,14 @@
     width: 11vw;
     top: 5.9vw;
     right: 2vw;
-    height: 17vw;
+    height: 10vw;
     color:#5356ad;
     grid-template-rows: 2.5vw 2.5vw 2.5vw 3.5vw 2.5vw;
     display: none;
-    padding-top: 1vw;
+    /* padding-top: 1vw; */
     padding-left: 1vw;
     font-size: 1.5vw;
+    font-weight: 500 !important;
     text-align: left;
     font-family: 'League Spartan';
     background-color: rgb(255, 255, 255);
