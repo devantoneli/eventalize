@@ -386,8 +386,10 @@ button.menuIcon {
 }
 
 .img-fotoPacote{
-    width: 100%;
     border-radius: 40px;
+    object-fit: cover;
+    width: 34em !important;
+    height: 25em;
 }
 
 #marginTop20{/*dando espaçamento dos < > da foto do pacote*/

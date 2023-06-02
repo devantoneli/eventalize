@@ -11,7 +11,7 @@ $db_name = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
-$sql = "SELECT * FROM tb_postagem";
+$sql = "SELECT * FROM tb_postagem where url_imgcapa<>''";
 $result = $conn->query($sql);
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
@@ -231,13 +231,94 @@ if ($result->num_rows > 0) {
             // Verifica se é a última imagem da coluna
             if ($contador % 7 === 0) {
                 // Fecha a coluna
-                echo '</div>';
+                // echo '</div>';
             }
         
             // Incrementa o contador
             $contador++;
         }
         
+   
+
+        //========================================================
+        //=============================================================================================================================================================================================================================================================================================================
+        
+        $sql5 = "SELECT * FROM tb_servico where url_imgcapa<>''";
+        $result5 = $conn->query($sql5);
+
+        $contador2 = 0;
+        while ($row5 = $result5->fetch_assoc()) {
+            // Verifica se é a primeira imagem da linha
+        
+            // Verifica se é a primeira imagem da coluna
+            if ($contador2 % 7 === 0) {
+                // Abre uma nova coluna
+                echo '<div class="column">';
+            }
+        
+            // Div que contém a imagem e informações de uma postagem
+            echo '<div class="tipoServico">';
+            // Procura o codigo para inserir o icone correspondente
+           
+            $empresa = $row5['cd_empresa'];
+            // Pega informações do autora partir do atributo cd_tipoautor da tabela postagem
+                $sql4 = "SELECT * FROM tb_empresa where cd_empresa = $empresa";
+                $result4 = $conn->query($sql4);
+                $row4 = $result4->fetch_assoc();
+                $nome = $row4['nm_fantasia'];
+                $biografia = substr($row4['ds_biografia'], 0, 25) . '...';
+                $perfil = $row4['url_fotoperfil'];
+    
+           
+            
+            //Carrega cada informação de cada postagem
+            echo '<img class="iconTipo" src="../img/icones/'.$row5['cd_tiposervico'].'.svg">';
+            echo '<div class="sombraCapa"></div>';
+            echo '<img src="'.$row5['url_imgcapa'].'">';
+            echo '<form class="infoPostagem" action="../sessaoCliente/detalheServico.php" method="get">
+                        <input type="hidden" name="cd_servico" value="'.$row5['cd_servico'].'">
+                        <div>
+                        <h3>'. $row5['nm_servico'] .'</h3>
+                        </div>
+
+                        <div class="autor">
+                        <img class="perfil" src="'.$perfil.'">
+                        
+                        <div class="infoAutor">
+                        <h3>'.$nome.'</h3>
+                        <p>'.$biografia.'</p>
+                        </div>
+                        </div>
+                  
+                        <button class="verMais" type="submit">Ver mais</button>
+                  </form>
+            ';
+            echo '</div>';
+            
+            // Incrementa o contador2 para separar as postagem com suas respectitivas colunas e posições
+            $contador2++;
+        
+            // Verifica se é a última imagem da coluna
+            if ($contador2 % 7 === 0) {
+                // Fecha a coluna quando é a última imagem
+                echo '</div>';
+            }
+        
+
+        }
+        
+        // Verifica se ainda há imagens não exibidas
+        while ($contador2 % 28 !== 0) {
+            // Verifica se é a última imagem da coluna
+            if ($contador2 % 7 === 0) {
+                // Fecha a coluna
+                echo '</div>';
+            }
+        
+            // Incrementa o contador2
+            $contador2++;
+        }
+        ?> </div><?php
         $conn->close();
         ?>
 </div>
