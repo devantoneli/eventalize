@@ -118,21 +118,28 @@ if($conn->connect_error){
             <div class="gridHistorico">
             <div class="infoPedido">
             <div class="alinhaPedido">
-                <li>Nº:0543255</li>
+                <li>Pedido nº</li>
                 <li>Pedido realizado em</li>
-                <li>Este é um</li>
+                
                 <li>Servico Personalizado</li>
                 <li>Status</li>
                 <li>Tipo de pagamento</li>
             </div>
 
             <div class="alinhaInfoPedido">
-                <li>'.$row['nm_cliente'].'</li>
+                <li>'.$row['cd_pedido'].'</li>
                 <li>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</li>
-                <li>Servico</li>
+                
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
-                <li class="status">'.$row['nm_status'].'</li>
-                <li class="status">'.$row['nm_tipo_pagamento'].'</li>
+                <li class="status">'.$row['nm_status'].'</li>';
+                $cd_pedido = $row['cd_pedido'];
+                if ($row['nm_status']=="Aguardando pagamento"){
+                    echo "<li><form action='pix/pix.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
+                }else{
+                    echo'<li class="status">'.$row['nm_tipo_pagamento'].'</li>';
+                }
+                
+                echo'
             </div>
         </div>
         
