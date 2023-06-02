@@ -3,24 +3,23 @@
 session_start();
 include('../protect.php');
 
-// $cep = $_GET['cep'];
-// $logradouro = $_GET['logradouro'];
-// $bairro = $_GET['bairro'];
-// $cidade = $_GET['cidade'];
-// $estado = $_GET['estado'];
-
 
 if (isset($_POST['opcao'])) {
     $opcoes = $_POST['opcao'];
     $ids = implode(",", $opcoes);
         $id = str_replace("id=", "", $ids);
+    } else {
+        echo "Nenhuma opção selecionada.";
+    }
     
-    $valorTotal = 0;
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "db_eventalize";
-
+    
+    $empresas = array();
+    $soma_valores = 0;
+   
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Falha na conexão com o banco de dados: " . $conn->connect_error);
@@ -34,10 +33,38 @@ if (isset($_POST['opcao'])) {
 
     $result = $conn->query($sql);
 
-    
-} else {
-    echo "Nenhuma opção selecionada.";
+    $empresas = array();
+    $cards = array();
+
+//WHILE QUE RODA OS DE CD_EMPRESA E VL_SERVICO DO SELECT E GUARDA NO ARRAY
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $valor_servico = $row['vl_servico'];
+        $cd_empresa = $row['cd_empresa'];
+
+        if (isset($empresas[$cd_empresa])) {
+            $empresas[$cd_empresa]['vl_total'] += $valor_servico;
+        } else {
+            $empresas[$cd_empresa] = array(
+                'cd_empresa' => $cd_empresa,
+                'vl_total' => $valor_servico
+            );
+        }
+
+//AQUI EU CRIO UM ARRAY PARA RECEBER TODAS AS INFORMAÇÕES RETORNADAS DO SELECT
+        $cards[] = array(
+            'url_imgcapa' => $row['url_imgcapa'],
+            'nm_servico' => $row['nm_servico'],
+            'url_fotoperfil' => $row['url_fotoperfil'],
+            'nm_fantasia' => $row['nm_fantasia'],
+            'nm_tiposervico' => $row['nm_tiposervico'],
+            'valor_servico' => $valor_servico
+        );
+    }
+
+    // ...
 }
+
 
 ?>
 
@@ -79,18 +106,14 @@ if (isset($_POST['opcao'])) {
         </form>
           </div>
           <div class="headerClientePerfil" >
-              <!-- <div class="iconCliente"> -->
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
                   <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
-                <!-- </div> -->
           <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
           </div>
           <section class="menuPerfil">
             <a href="perfil-c.php">Perfil</a>
-            <!-- <a href="">Postagens</a> -->
-            <!-- <a href="" style="margin-bottom: 20%">Histórico de Pedidos</a> -->
             <a href="">Configurações</a>
             <a href="">Sair</a>
         </section>
@@ -125,7 +148,7 @@ if (isset($_POST['opcao'])) {
                         <input type="time" placeholder="Hora" name="hrAgendamento">
                     </div>
                 </div>
-
+                <input type="hidden" name="empresas_serializadas" value="<?php echo htmlentities(serialize($empresas)); ?>">
                 <div class="botoesEndereco">
                     <button id="voltar"> Voltar</button>
                     <button type="submit" id="continuar">Continuar</button>
@@ -160,34 +183,23 @@ if (isset($_POST['opcao'])) {
             <h3>Carrinho</h3>
         </div>
                 <?php
-             if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $valorservico = $row['vl_servico'];
-                    $cdEmpresa = $row['cd_empresa'];
-
-                    // Verifica se a empresa já possui um valor total calculado e adiciona o valor do servico atual
-                    if (isset($valorTotalPorEmpresa[$cdEmpresa])) {
-                        $valorTotalPorEmpresa[$cdEmpresa] += $valorservico;
-                    } else {
-                        // Se a empresa ainda não possui um valor total, inicializa com o valor do servico atual
-                        $valorTotalPorEmpresa[$cdEmpresa] = $valorservico;
-                    }
-
-                    // Resto do código...
+//RODANDO UM LOOP PARA DEVOLVER AS INFORMAÇÕES QUE EU GUARDEI NO ARRAY LÁ EM CIMA
+             foreach ($cards as $card) {
+                    
                     echo '  
                         <div class="cardProduto">
                             <div class="cardInfo">
-                                <img src="'. $row['url_imgcapa'] .'" alt="">
+                                <img src="'. $card['url_imgcapa'] .'" alt="">
                                 <div class="infoEmpresa">
-                                    <h3>'. $row['nm_servico'] .'</h3>
+                                    <h3>'. $card['nm_servico'] .'</h3>
                                     <div class="perfilEmpresa">
-                                        <img src="'. $row['url_fotoperfil'] .'" alt="">
-                                        <h3>'. $row['nm_fantasia'] . '</h3>
-                                        <h6>'. $row['nm_tiposervico'] . '</h6>
+                                        <img src="'. $card['url_fotoperfil'] .'" alt="">
+                                        <h3>'. $card['nm_fantasia'] . '</h3>
+                                        <h6>'. $card['nm_tiposervico'] . '</h6>
                                     </div>
                                 </div>
                                 <div class="precoProduto">
-                                    <h3>R$ '.number_format($valorservico, 2, ',', '.') . '</h3>
+                                    <h3>R$ '.number_format($card['valor_servico'], 2, ',', '.') . '</h3>
                                 </div>
                                 <div class="iconDeletar">
                                     <span>&#x2716;</span>
@@ -195,21 +207,16 @@ if (isset($_POST['opcao'])) {
                             </div>
                         </div>';
                 }
-
-            // Exibe o valor total do pedido para cada empresa
-            foreach ($valorTotalPorEmpresa as $cdEmpresa => $valorTotal) {
-                echo 'Valor total do pedido para a empresa de ID '.$cdEmpresa.': R$ '.number_format($valorTotal, 2, ',', '.').'<br>';
-            }
-
-            // Calcula o valor total geral do pedido
-            $valorTotalGeral = array_sum($valorTotalPorEmpresa);
-
+//LOOP PARA RODAR O VALOR TOTAL DA COMPRA 
+                foreach ($empresas as $empresa) {
+                    $valor_total = $empresa['vl_total'];
+                    $soma_valores += $valor_total;
+                }
+                
             echo '<div class="precoTotal">
-                    <h3>Total: R$ '. number_format($valorTotalGeral, 2, ',', '.').'</h3>
+                    <h3>Total: R$ '.number_format($soma_valores, 2, ',', '.').'</h3>
                 </div>';
-        } else {
-            echo "Nenhum resultado encontrado.";
-        }
+    
 ?>
     </div>
   </div>

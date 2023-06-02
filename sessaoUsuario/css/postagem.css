@@ -208,7 +208,7 @@ button.menuIcon{
 
 .curtidasPostagem{
     position: absolute;
-    width: 139.4px;
+    width: 90px;
     height: 51px;
     background-color: white;
     border-radius: 7px;
@@ -221,7 +221,7 @@ button.menuIcon{
 
 .curtidasPostagem img{
     width: auto;
-    margin: 6% 15% 6% 5%;
+    margin: 6% 7% 6% 5%;
 }
 
 .curtidasPostagem h3{
@@ -237,7 +237,7 @@ button.menuIcon{
     background-color: white;
     border-radius: 7px;
     bottom: 0;
-    margin: 0 0 3% 23%;
+    margin: 0 0 3% 17%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -355,7 +355,7 @@ button.menuIcon{
 .fotoDestaquePacote{
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     width: 40vw;
     height: 30vw;
 }
