@@ -3,13 +3,6 @@
 session_start();
 include('../protect.php');
 
-if (isset($_POST['opcao'])) {
-
-// $cep = $_GET['cep'];
-// $logradouro = $_GET['logradouro'];
-// $bairro = $_GET['bairro'];
-// $cidade = $_GET['cidade'];
-// $estado = $_GET['estado'];
 
 if (isset($_POST['opcao'])) {
 
@@ -100,7 +93,7 @@ if (isset($_POST['opcao'])) {
   </div>
 
     <div class="inicioCarrinhoLocal">
-            <form action="" method="POST">
+            <form action="salvandoEndereco.php" method="POST">
                 <div class="formEndereco">
                     <h3>Onde será realizado meu evento?</h3>
                     <div class="formdiv1">
@@ -138,18 +131,13 @@ if (isset($_POST['opcao'])) {
 
         <script>
             $(document).ready(function() {
-                // Quando o campo do CEP perder o foco
                 $('#cep').on('blur', function() {
-                    // Obtém o valor do CEP fornecido pelo usuário
                     var cep = $(this).val();
-                    
-                    // Faz uma requisição AJAX para a API ViaCEP
                     $.ajax({
                     url: 'https://viacep.com.br/ws/' + cep + '/json/',
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {
-                        // Preenche os campos do formulário com os dados do endereço
                         $('#rua').val(response.logradouro);
                         $('#bairro').val(response.bairro);
                         $('#cidade').val(response.localidade);
