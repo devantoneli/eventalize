@@ -41,14 +41,15 @@
 
 .bioPerfil{
     display: grid;
-    grid-template-columns: repeat(6,1fr);
-    /* grid-template-rows: repeat(4, 1fr); */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 50px);
+    margin-left: 5%;
     /* background-color: cadetblue; */
 }
 
 .fotoPerfil{
     /* margin-top: 40%; */
-    grid-area: 1/3/2/3;
+    grid-area: 1/2/2/2;
     /* background-color: crimson; */
 }
 
@@ -60,7 +61,7 @@
 
 .infoEmpresa{
     /* margin-top: 40%; */
-    grid-area: 1/4/2/4;
+    grid-area: 1/3/6/3;
     /* background-color: blue; */
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -69,17 +70,17 @@
 }
 
 .info{
-    grid-area: 1/1/3/6;
+    grid-area: 1/1/2/6;
     display: grid;
-    margin: 5%;
+    margin: 5% 5% 0 5%;
     grid-auto-rows: 2.5vw;
     text-align: left;
     /* background-color: bisque; */
 }
 
-.info h3, h4{
+.info h3, h4, h5{
     line-height: 20px;
-    text-align: center;
+    text-align: left;
 }
 
 .info h3{
@@ -92,6 +93,12 @@
     color: #BA73B0;
     font-weight: 300;
     text-align: left;
+}
+
+.info h5{
+    font-size: 1em;
+    text-align: left;
+    font-weight: 300;
 }
 
 .loc{
@@ -118,18 +125,29 @@
     /* background-color: chartreuse; */
 }
 
+.botaoEditarPerfil{
+    grid-area: 3/4/3/4;
+    margin-left: 30%;
+}
+
+.botaoEditarPerfil a{
+    text-decoration: none;
+}
+
 button.editarPerfil{
     grid-area: 4/1/4/6;
-    width: 100%;
-    height: 50%;
-    border: 1.5px solid #BA73B0;
-    border-radius: 3px;
+    width: 12em;
+    height: 3em;
+    border: 1.5px solid #3ED1FF;
+    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #3ED1FF;
+    color: white;
     cursor: pointer;
     margin: 5%;
+    font-size: 1em;
 }
 
 button.editarPerfil img{
@@ -139,13 +157,20 @@ button.editarPerfil img{
 
 .inicioPostagens{
     grid-area: 3/1/3/13;
+    display: grid;
+    /* grid-template-columns: repeat(5, 1fr); */
+    grid-template-rows: repeat(4, 100px);
     margin: 3% 5% 0 5%;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
     /* background-color: darkolivegreen; */
     position: relative;
 }
 
 .inicioPostagens h2{
-    font-size: 2.5em;
+    font-size: 2em;
+    font-weight: 500;
 }
 
 *{
@@ -334,11 +359,21 @@ button.editarPerfil img{
 .inicioPacotes{
     grid-area: 6/1/6/13;
     /* background-color: #E94F91; */
-    margin: 8% 5% 0 5%;
+    margin: 3% 5% 0 5%;
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
 }
 
-.inicioPacotes h2{
+.servicos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.servicos h2{
     font-size: 2.5em;
+    font-weight: 500;
 }
 
 .gridPacotes{
@@ -363,17 +398,18 @@ button.editarPerfil img{
 }
 
 .cardPacotes{
-    width: 72%; /*ver a melhor unid de medida*/
-    height: auto;
+    width: 75%; /*ver a melhor unid de medida*/
+    height: 40em;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0px 0px 7px 0.5px rgb(116, 116, 116);
     margin: 2% 0 1% 0;
     padding: 0 0 3% 0;
+    position: relative;
 }
 
 .conteudoPacote h4{
-    color: rgb(75, 75, 75);
+    color: rgb(255, 255, 255);
     font-size: 1.5em;
     font-weight: 500;
     /* margin: 5% 0 5% 0; */
@@ -382,14 +418,15 @@ button.editarPerfil img{
 }
 
 .conteudoPacote h3{
-    color: black;
+    color: white;
     font-size: 2.5em;
     margin: 5%;
     text-align: left;
+    font-weight: 500;
 }
 
 .conteudoPacote h2{
-    color: #BA73B0;
+    color: white;
     font-size: 2em;
     /* margin: 0 0 0 5%; */
     margin: 5%;
@@ -424,19 +461,38 @@ button.editarPacote{
     justify-content: center;
     width: 120px;
     height: 50px;
-    color: white;
-    font-size: 1em;
-    border-radius: 5px;
+    color: black;
+    font-size: 1.2em;
+    border-radius: 30px;
     border: none;
-    background-color: #FF3E83;
-    margin: 8% 5% 0 0;
+    background-color: white;
+    margin: 8% 5% 5% 0;
     padding: 5%;
     cursor: pointer;
 }
 
-button.editarPacote img{
-    width: 50px;
+.editarPacote{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+button.editarPacote img{
+    width: 200px;
+    height: 50px;
+}
+
+.editarPacote:first-child {
+    right: 0;
+  }
+  
+.editarPacote:last-child {
+right: 50%; /* Ajuste a posição horizontal do segundo botão conforme necessário */
+}
+
+
 
 /* button.verPacote{
     display: flex;
@@ -465,18 +521,34 @@ button.deletarPacote{
     justify-content: center;
     width: 120px;
     height: 50px;
-    color: white;
-    font-size: 1em;
-    border-radius: 5px;
+    color: black;
+    font-size: 1.2em;
+    border-radius: 30px;
     border: none;
-    background-color: #FFA856;
-    margin: 8% 0 0 0;
+    background-color: white;
+    margin: 8% 0 5% 0;
     cursor: pointer;
 
 }
 
+.deletarPacote{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 button.deletarPacote img{
     width: 50px;
+}
+
+.deletarPacote:first-child {
+    right: 0;
+  }
+  
+.deletarPacote:last-child {
+right: 15%; /* Ajuste a posição horizontal do segundo botão conforme necessário */
 }
 
 .inicioServicos{
@@ -527,6 +599,64 @@ button.deletarPacote img{
     font-size: 1.2em;
     margin: 5% 0 0 5%;
     font-weight: 200;
+}
+
+.tituloServico{
+    grid-row: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloServico h2{
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.gridCardServico{
+    /* grid-area: 2/1/2/1; */
+    column-count: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    /* grid-row: 5/5;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 100px);
+    background-color: #25a5f5; */
+}
+
+.cardServico{
+    width: 20em;
+    height: 6em;
+    background-color: #c5b2ff;
+    border-radius: 30px;
+}
+
+.conteudoCardServico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudoCardServico h2{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.valorServico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -5%;
+}
+
+.valorServico h3{
+    font-size: 1.2em;
+    font-weight: 500;
 }
 
 @media (min-width: 1400px){
