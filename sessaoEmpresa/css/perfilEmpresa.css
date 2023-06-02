@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap');
+
+*{
+    
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.gridInicioPerfil{
+    display: grid;
+    grid-template-columns: 15% 20% 10%;
+    grid-template-rows: repeat(4, auto);
+    margin: 3%;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.fotoPerfil{
+    grid-area: 1/1/1/1;
+}
+
+.fotoPerfil img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    clip-path: circle();  
+}
+
+.infoPerfil h2{
+    font-size: 2em;
+    color: black;
+    /* margin-bottom: 3%; */
+}
+
+.infoPerfil h4{
+    font-size: 1em;
+    font-weight: 300;
+    color: black;
+}
+
+.infoPerfil h3{
+    font-size: 1.5em;
+    font-weight: 400;
+    color: black;
+}
+
+.infoPerfil h6{
+    font-size: 1.3em;
+    color: black;
+}
