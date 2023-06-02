@@ -59,28 +59,54 @@ $dbname = "db_eventalize";
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_cliente'];
     }
-    // $sql2 = 'SELECT e.nm_fantasia FROM tb_empresa as e JOIN tb_postagem as p ON e.cd_empresa = p.cd_empresa WHERE p.cd_postagem = 19';
-    // $empresa = $result2->fetch(PDO::FETCH_ASSOC);
     $sql3 = "SELECT * FROM vwcodigospostagem WHERE cd_postagem = $cd_postagem"; //(pra quando o da raiza estiver pronto)
-    // $sql3 = 'SELECT * FROM vwcodigospostagem WHERE cd_postagem = 45';
     $result3 = $conn->query($sql3);
-
-    // $sql4= "SELECT * FROM tb_pacote WHERE cd_pacote = ".$row3['cd_pacote'] ." ";
-    // $result4 = $coon->query($sql3);
-    // $row3 = $result3 -> fetch_assoc(); trecho pra dar inicio a logica dos detalhes do pacote
 
     
  
         if ($result -> num_rows > 0){
                 while ($row = $result -> fetch_assoc()){
+
+                    if($row["cd_avaliacao"]==''){
+                        $avaliacao = "Não informado";
+                    }else {
+                        $avaliacao = $row["cd_avaliacao"];
+                    }
+
                     $capa_img = getimagesize($row["url_imgcapa"]);
                     $info_imagem = getimagesize($row["url_img2"]. $row["url_img3"] );
                     $largura = 100; 
                     $altura = 100;
                     $largura_capa = 100;
                     $altura_capa = 100;
-                    
+                    setlocale(LC_TIME, 'pt_BR.utf8');
 
+                    //formatando data do banco
+                    $dt_postagem = $row['dt_postagem'];
+                    // Array com os nomes dos meses em português
+                    $meses = array(
+                        1 => 'janeiro',
+                        2 => 'fevereiro',
+                        3 => 'março',
+                        4 => 'abril',
+                        5 => 'maio',
+                        6 => 'junho',
+                        7 => 'julho',
+                        8 => 'agosto',
+                        9 => 'setembro',
+                        10 => 'outubro',
+                        11 => 'novembro',
+                        12 => 'dezembro'
+                    );
+
+                    // Extrai os valores da data e hora
+                    $dia = date('d', strtotime($dt_postagem));
+                    $mes_numero = date('n', strtotime($dt_postagem));
+                    $ano = date('Y', strtotime($dt_postagem));
+                    $hora = date('H\hi', strtotime($dt_postagem));
+
+                    // Obtém o nome do mês com base no número
+                    $mes = $meses[$mes_numero];
 
             echo '<div class="grid-container"> <!--DIV QUE CARREGA O LAYOUT GRID DA PÁGINA TODA-->
                    <!-- INICIO POSTAGENS -->
@@ -88,8 +114,8 @@ $dbname = "db_eventalize";
                   <div class="inicioPostagens">
                     <div class="fotoDestaque">
                         <div class="curtidasPostagem">
-                            <img src="../img/icones/icon-palmas-detalhes.png" alt="">
-                            <h3>1548</h3>
+                            <img src="../img/icones/estrel.png" alt="">
+                            <h3>'.$avaliacao.'</h3>
                         </div>
                         <div class="salvarPostagem">
                             <img src="../img/icones/icon-salvar-detalhes.png" alt="">
@@ -101,7 +127,7 @@ $dbname = "db_eventalize";
                     <img src="'.$row["url_img3"].'" style="width:'.$largura.'%;height:'.$altura.'%;">
                     </div>
                     <div class="dataPostagem">
-                        <h3>postado em 14 de fevereiro de 2023, às 11h20</h3>
+                        <h3>postado em '.$dia.' de '.$mes.' de '.$ano.', às '.$hora.'</h3>
                     </div>
             
                     <div class="tituloPostagem">
@@ -135,10 +161,8 @@ $dbname = "db_eventalize";
                 
                 if (mysqli_num_rows($result3) > 0){
                     while($row3 = $result3 -> fetch_assoc()){
-                        $pacote = $row3['cd_servico'];
-                        // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = $pacote";
-                        // $sql4 = "SELECT * FROM tb_servico WHERE cd_empresa = 342";
-                        $sql4 = "SELECT * FROM tb_servico WHERE cd_servico = 0";
+                        $servico = $row3['cd_servico'];
+                        $sql4 = "SELECT * FROM tb_servico WHERE cd_servico = 14";
                         $result4 = $conn->query($sql4);
                     }
                     if (mysqli_num_rows($result4) > 0){
@@ -205,10 +229,6 @@ $dbname = "db_eventalize";
                 <div class="maisSobre">
                     <h3>Mais sobre a empresa</h3>
                     <div class="gridMaisSobre">
-                        <div class="prestacaoMes">
-                            <h1>100</h1>
-                            <h3>Prestações de serviços no último mês</h3>
-                        </div>
                         <div class="classificacaoEmpresa">
                             <img src="../bancoImagens/empresas/balaoouro.png" alt="">
                             <h3>Esta é uma empresa</h3> <h2>balão ouro</h2>
