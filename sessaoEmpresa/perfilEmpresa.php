@@ -97,6 +97,7 @@ include('../protect.php');
                     <div class="infoEmpresa">
                         <div class="info">
                         <h3><?php echo $_SESSION['nm_usuarioempresa'];?></h3>
+                        <h5><?php echo $_SESSION['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $_SESSION['ds_biografia'];?></h4>
                         </div>
                         <div class="loc">
@@ -107,15 +108,112 @@ include('../protect.php');
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4>4,8</h4>
                             </div>
-                            <a href="editarPerfil-e.php"> <button class="editarPerfil"><img src="../bancoImagens/empresas/imagens-perfil-empresa/useredit.svg" alt="">Editar Perfil</button></a>
                            
+                    </div>
+                    <div class="botaoEditarPerfil">
+                            <a href="editarPerfil-e.php"><button class="editarPerfil"><img src="" alt=""style="margin-right: -12%"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+</svg>Editar Perfil</button></a>
                     </div>
                 </div>
             </div>
 
             <div class="inicioPostagens">
-                <h2>Meus Trabalhos</h2>
-                <div class="carrossel">
+              <div class="tituloServico">
+                <h2>Serviços Recentes</h2>
+              </div>
+                <div class="gridCardServico">
+                  <div class="cardServico">
+                    <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                    <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+
+                  <div class="cardServico">
+                  <div class="conteudoCardServico">
+                      <h2>Foto Alta Qualidade</h2>
+                    </div>
+                    <div class="valorServico">
+                      <h3>R$5,00 por foto</h3>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="carrossel">
                     <div class="seta-direita">&#8250;</div>
                     <div class="seta-esquerda">&#8249;</div>
 
@@ -188,9 +286,9 @@ include('../protect.php');
                     
                         <div class="conteudoCard">
                           <img src="../bancoImagens/empresas/imagens-perfil-empresa/Shows.jpg" />
-                          <div class="textoCard"><h1>Shows</h1></div>
-                        </div>
-                  </div>
+                          <div class="textoCard"><h1>Shows</h1></div> -->
+                        <!-- </div> -->
+                  <!-- </div> -->
             </div>
             
 <?php
@@ -217,51 +315,63 @@ $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . 
             
 // a função mysqli_num_rows serve para verificar se a consulta retornou algum resultado
 
-if(mysqli_num_rows($result_query) > 0){
-  echo'
-      <div class="inicioPacotes">
-      <h2>Serviços</h2>
-      <div class="gridPacotes">';
-    while($row = mysqli_fetch_assoc($result_query)){
 
-        //dentro desse while, preciso colocar a tela 'Perfil Empresa', que irá conter o card do servico, que assim que clicado levará à página de detalhes (CONSULTA). ainda nesse card, teremos um botão de editar (EDITAR) e um de excluir (EXCLUIR), que realizarão suas respectivas funções
+if (mysqli_num_rows($result_query) > 0) {
+    echo '
+    <div class="inicioPacotes">
+    <div class="servicos">
+    <h2>Serviços</h2>
+    </div>
+        <div class="gridPacotes">';
 
-        echo'
-                <div class="cardPacotes">
-                    <div class="conteudoPacote">
-                    <form action="../sessaoCliente/detalheServico.php">
-                    <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
+    // Lista de cores disponíveis para os cards
+    $cores = array('#3ED1FF', '#FFA856', '#B974B1');
+
+    // Corrente do índice de cores
+    $indiceCor = 0;
+
+    while ($row = mysqli_fetch_assoc($result_query)) {
+        // Obter a cor do índice atual
+        $corCard = $cores[$indiceCor];
+
+        // Incrementar o índice para a próxima cor
+        $indiceCor = ($indiceCor + 1) % count($cores);
+
+        echo '
+        <div class="cardPacotes" style="background-color: '.$corCard.';">
+            <div class="conteudoPacote">
+                <form action="../sessaoCliente/detalheServico.php">
+                    <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
                     <button type="submit" style="background: transparent; border: none; cursor: pointer;">
-                        <img src="'. $row["url_imgcapa"] .'" alt="">
-                        <h3>' . $row["nm_servico"] . '</h3>
-
-                        <h4>' . $row["ds_servico"] . '</h4>
-                        <h2>R$' .$row["vl_servico"] .'</h2>
-                        </button>
-                        <div class="botoesPacote">
-                        </form>
-
-                        <form action="edicaoServico-e.php">
-                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
-                        <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/edit.svg" alt="">Editar</button>
-                        </form>
-                            
-
-                        <form action="deletarServico-e.php">
-                        <input type="hidden" value= '.$row["cd_servico"] . ' name="cd_servico">
+                        <img src="'.$row["url_imgcapa"].'" alt="">
+                        <h3>'.$row["nm_servico"].'</h3>
+                        <h4>'.$row["ds_servico"].'</h4>
+                        <h2>R$'.$row["vl_servico"].'</h2>
+                    </button>
+                    <div class="botoesPacote">
+                    </form>
+                    <form action="edicaoServico-e.php">
+                        <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
+                        <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/editarIcon.svg" alt="">Editar</button>
+                    </form>
+                    <form action="deletarServico-e.php">
+                        <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
                         <button class="deletarPacote" type="submit"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
-                        </form>
-
-                    </div>
-                
+                    </form>
                 </div>
-      </div>';
-       }
-    } else{
-      echo "Nenhum registro encontrado";
-  }
-  
-  mysqli_close($conn);
+            </div>
+        </div>';
+    }
+
+    echo '
+        </div>
+    </div>';
+} else {
+    echo "Nenhum registro encontrado";
+}
+
+mysqli_close($conn);
+
   
   ?>
         </div>
