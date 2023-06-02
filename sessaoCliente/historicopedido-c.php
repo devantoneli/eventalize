@@ -134,7 +134,7 @@ if($conn->connect_error){
                 <li class="status">'.$row['nm_status'].'</li>';
                 $cd_pedido = $row['cd_pedido'];
                 if ($row['nm_status']=="Aguardando pagamento"){
-                    echo "<li><form action='pix/pix.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
+                    echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
                 }else{
                     echo'<li class="status">'.$row['nm_tipo_pagamento'].'</li>';
                 }

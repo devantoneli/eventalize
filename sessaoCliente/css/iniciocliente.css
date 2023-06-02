@@ -7,14 +7,21 @@
     font-family: 'League Spartan', sans-serif;
 }
 
+.grid-flexPix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    margin-top: 50px;
+  }
 
-
-
-
-
-/* .divInicio {
-    
-  } */
+.copiacola {
+    font-size: 1.2em;
+    border-radius: 0.3em;
+    border: 5px solid #30EBC9;
+    padding: 0.5% 0.7%;
+    width: 800px;
+}  
   
 .divInicio img {
     position: absolute;
