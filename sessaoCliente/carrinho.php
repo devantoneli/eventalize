@@ -5,17 +5,17 @@ if (!isset($_SESSION['carrinho'])) {
   $_SESSION['carrinho'] = array();
 }
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     // $cd_servico = $_POST['cd_servico'];
-//     // $_SESSION['carrinho'][] = $cd_servico;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cd_servico = $_POST['cd_servico'];
+    $_SESSION['carrinho'][] = $cd_servico;
 
-//     if (isset($_POST['opcao'])) {
-//       $opcoes = $_POST['opcao'];
-//       $_SESSION['opcoes'] = $opcoes;
-//       header('Location: carrinhoLocal.php');
-//       exit;
-//     } 
-// }
+    if (isset($_POST['opcao'])) {
+      $opcoes = $_POST['opcao'];
+      $_SESSION['opcoes'] = $opcoes;
+      header('Location: carrinhoLocal.php');
+      exit;
+    } 
+}
 
     $servername = "localhost";
     $username = "root";
@@ -92,92 +92,7 @@ if (!empty($_SESSION['carrinho'])) {
             <a href="">Sair</a>
         </section>
   </div>
-  </div>
-  
-
-  <!-- INICIO TEXTO CARRINHO -->
-  <!-- <div class="inicioCarrinho">
-  <div class="tituloCarrinho">
-    <h3>Meu Carrinho</h3>
-  </div>
-  <div class="textoSelecione">
-    <h3>Selecione seus pedidos para prosseguir com a compra.</h3>
-  </div>
-</div> -->
-
-  <!-- INICIO PEDIDOS NO CARRINHO -->
-
-  <!-- <div class="pedidoEmpresa">
-      <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
-      <h3>Smash Party</h3>
-  </div>
-
-  <div class="selecionaItem">
-  <div>
-    <input type="radio">
-  </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-     <div class="infoPedido"> 
-    <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-    <h3>R$ 850,00</h3>
-      </div>
-  </div>
-  </div>
-  <div class="selecionaItem">
-  <div>
-    <input type="radio">
-  </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-     <div class="infoPedido"> 
-    <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-    <h3>R$ 850,00</h3>
-      </div>
-  </div>
-  </div>
-  <div class="pedidoEmpresa">
-      <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
-      <h3>Smash Party</h3>
-  </div>
-
-  <div class="selecionaItem">
-  <div>
-    <input type="radio">
-  </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-     <div class="infoPedido"> 
-    <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-    <h3>R$ 850,00</h3>
-      </div>
-  </div>
-  </div>
-  <div class="selecionaItem">
-  <div>
-    <input type="radio">
-  </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-     <div class="infoPedido"> 
-    <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-    <h3>R$ 850,00</h3>
-      </div>
-  </div>
-  </div>
-
-  <div class="produtoSelecionado">
-    <h3>Carrinho</h3>
-    <div id="itensCarrinho"></div>
-  </div> -->
+</div>
 
   <div class="inicioCarrinho">
     <div class="tituloCarrinho">
@@ -192,7 +107,7 @@ if (!empty($_SESSION['carrinho'])) {
   <?php
    $cd_empresa_anterior=null;
   if ($result->num_rows > 0) {
-    echo '<form action="carrinhoLocal.php" method="post">';
+    echo '<form class="gridPrinc" action="carrinhoLocal.php" method="post">';
     while ($row = $result->fetch_assoc()) {
 
       //   echo '<div class="pedidoEmpresa">
@@ -224,10 +139,10 @@ if (!empty($_SESSION['carrinho'])) {
           // Iniciar uma nova div para a nova empresa
           if ($cd_empresa_anterior !== null) {
               // Fechar a div anterior, se não for a primeira empresa
-              echo '</div>';
+              echo '</div></div>';
           }
           // Abrir a div para a nova empresa
-          echo '<div class="pedidoEmpresa">
+          echo '<div><div class="pedidoEmpresa">
           <img src="'.$row['url_fotoperfil'].'" alt="">
           <h3>'.$row['nm_fantasia'].'</h3></div>
           <div class="selecionaItem">';
@@ -239,9 +154,15 @@ if (!empty($_SESSION['carrinho'])) {
       <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
       
       </div>
-      <div class="imgPedido">
-      <img src="'.$row['url_imgcapa'].'" alt=""> 
-      </div>
+      <div class="imgPedido">';
+
+      if ($row['url_imgcapa']=''){
+        echo'<img src="'.$row['url_imgcapa'].'" alt="">';
+      }else{
+        echo'<img src="'.$row['url_imgcapa'].'" alt="">';
+      }
+      
+      echo'</div>
       <div>
       <div class="infoPedido"> 
       <h1>'.$row['nm_servico'].'</h1>
@@ -264,65 +185,6 @@ if (!empty($_SESSION['carrinho'])) {
   }
   ?>
   
-  
-  <!-- <div class="selecionaItem">
-    <div>
-      <input type="radio" class="add-to-cart">
-    </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-      <div class="infoPedido"> 
-        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-        <h3>R$ 850,00</h3>
-      </div>
-    </div>
-  </div>
-  
-  <div class="pedidoEmpresa">
-    <img src="../bancoImagens/empresas/confeiteira.jpg" alt="">
-    <h3>Smash Party</h3>
-  </div>
-  
-  <div class="selecionaItem">
-    <div>
-      <input type="radio" class="add-to-cart">
-    </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-      <div class="infoPedido"> 
-        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-        <h3>R$ 850,00</h3>
-      </div>
-    </div>
-  </div>
-  
-  <div class="selecionaItem">
-    <div>
-      <input type="radio" class="add-to-cart">
-    </div>
-    <div class="imgPedido">
-      <img src="../bancoImagens/postagens/capa53.jpeg" alt=""> 
-    </div>
-    <div>
-      <div class="infoPedido"> 
-        <h1>Aluguel de casa noturna de 10 horas, no dia 30 de Junho.</h1>
-        <h3>R$ 850,00</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="botaoPosicao">
-    <button class="botaoSelecionar">Selecionar</button>
-  </div>
-  
-  <div class="produtoSelecionado">
-    <h1>Carrinho</h1>
-    <div id="itensCarrinho"></div>
-  </div> -->
   
   <script>
     function addCarrinho() {

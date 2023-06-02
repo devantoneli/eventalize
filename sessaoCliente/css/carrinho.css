@@ -45,6 +45,12 @@
     
 }
 
+.gridPrinc {
+    display: flex;
+    flex-direction: column;
+    row-gap: 11em;
+}
+
 .selecionaItem input{
     width: 20px;
     height: 20px;
