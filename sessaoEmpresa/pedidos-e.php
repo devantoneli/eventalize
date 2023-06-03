@@ -200,11 +200,10 @@ $result = $conn->query($sql);
 
 $query3 = "SELECT *
 FROM tb_pedido AS p
-JOIN tb_infopagamento AS ip ON ip.cd_infopagamento = p.cd_infopagamento
 JOIN tb_servicopedido as sp ON p.cd_pedido = sp.cd_pedido
 JOIN tb_servico as s on sp.cd_servico = s.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
-JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
+JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
 WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
 
 
@@ -248,11 +247,10 @@ if(mysqli_num_rows($result_query3) > 0){
 //SELECT DOS PEDIDOS EM ANDAMENTO
 $query = "SELECT *
 FROM tb_pedido AS p
-JOIN tb_infopagamento AS ip ON ip.cd_infopagamento = p.cd_infopagamento
 JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
 JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
-JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
+JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
 WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo') 
 AND p.cd_empresa = $cd_empresa 
 ORDER BY p.dt_pedido DESC";

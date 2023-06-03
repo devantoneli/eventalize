@@ -22,14 +22,13 @@ if($conn->connect_error){
 
 //LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E SERVICO DE PEDIDO
     $sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
-    s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, ip.nm_tipo_pagamento
+    s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
     FROM tb_pedido p
-    INNER JOIN tb_infopagamento ip ON p.cd_infopagamento = ip.cd_infopagamento
-    INNER JOIN tb_cliente c ON ip.cd_cliente = c.cd_cliente
+    INNER JOIN tb_cliente c ON p.cd_cliente = c.cd_cliente
     INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
     INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
     INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
-    WHERE ip.cd_cliente = '$cd_cliente'";
+    WHERE p.cd_cliente = $cd_cliente ORDER BY p.dt_pedido";
      $result=$conn->query($sql);
      $row=$result->fetch_assoc();
 
@@ -123,7 +122,7 @@ if($conn->connect_error){
                 
                 <li>Servico Personalizado</li>
                 <li>Status</li>
-                <li>Tipo de pagamento</li>
+                <li>Status Pagamento</li>
             </div>
 
             <div class="alinhaInfoPedido">
@@ -133,10 +132,10 @@ if($conn->connect_error){
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
                 <li class="status">'.$row['nm_status'].'</li>';
                 $cd_pedido = $row['cd_pedido'];
-                if ($row['nm_status']=="Aguardando pagamento"){
+                if ($row['cd_infopagamento']==0){
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
                 }else{
-                    echo'<li class="status">'.$row['nm_tipo_pagamento'].'</li>';
+                    echo'<li class="status">Pago</li>';
                 }
                 
                 echo'
