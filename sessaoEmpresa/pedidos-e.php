@@ -1,12 +1,63 @@
 <?php
-if(!isset($_SESSION)){
+// if(!isset($_SESSION)){
+//     session_start();
+// }
+
+// include('../protect.php');
+
+// $cd_empresa = $_SESSION["cd_empresa"];
+
+
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $db_name = "db_eventalize";
+
+// $conn = new mysqli($servername, $username, $password, $db_name);
+
+// if($conn->connect_error){
+//     die("Falha na conexão: " . $conn->connect_error);
+// }
+
+// $sql = "SELECT cd_cep, cd_pedido FROM tb_endereco as cep JOIN tb_pedido as p on cep.cd_endereco = p.cd_endereco";
+
+// $result = $conn->query($sql);
+
+
+// if($result->num_rows > 0){
+// while ($row = $result->fetch_assoc()){
+//     $cd_pedido = $row['cd_pedido'];
+//     $cd_cep = $row['cd_cep'];
+
+
+//     $url = "https://viacep.com.br/ws/{$cd_cep}/json/";
+//     $response = file_get_contents($url);
+//     $data = json_decode($response, true);
+    
+
+//     $logradouro = $data['logradouro'];
+//     $bairro = $data['bairro'];
+//     $cidade = $data['cidade'];
+//     $uf = $data['uf'];
+
+//     echo $logradouro;
+//     echo $cidade;
+//     echo $bairro;
+//     echo $uf;
+
+
+// }
+// } 
+
+
+
+if (!isset($_SESSION)) {
     session_start();
 }
 
 include('../protect.php');
 
 $cd_empresa = $_SESSION["cd_empresa"];
-
 
 $servername = "localhost";
 $username = "root";
@@ -15,9 +66,66 @@ $db_name = "db_eventalize";
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
-if($conn->connect_error){
+if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
+
+$sql = "SELECT cd_cep, cd_pedido FROM tb_endereco as cep JOIN tb_pedido as p on cep.cd_endereco = p.cd_endereco";
+$result = $conn->query($sql);
+
+// $ceps = array(); // Array para armazenar os CEPs
+// $pedidos = array(); // Array para armazenar os pedidos
+
+// if ($result->num_rows > 0) {
+//     while ($row = $result->fetch_assoc()) {
+//         $cd_pedido = $row['cd_pedido'];
+//         $cd_cep = $row['cd_cep'];
+
+//         $ceps[] = $cd_cep; // Adiciona o CEP ao array de CEPs
+//         $pedidos[] = $cd_pedido; // Adiciona o pedido ao array de pedidos
+//     }
+// }
+
+// $enderecos = array(); // Array para armazenar os endereços
+
+// foreach ($ceps as $cep) {
+//     $url = "https://viacep.com.br/ws/{$cep}/json/";
+//     $ch = curl_init();
+//     curl_setopt($ch, CURLOPT_URL, $url);
+//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//     $response = curl_exec($ch);
+//     curl_close($ch);
+
+//     $data = json_decode($response, true);
+
+//     if (isset($data['erro'])) {
+//         echo "CEP não encontrado para o CEP: " . $cep . "<br>";
+//         // Lidar com o CEP não encontrado adequadamente, se necessário
+//     } else {
+//         $logradouro = isset($data['logradouro']) ? $data['logradouro'] : "";
+//         $bairro = isset($data['bairro']) ? $data['bairro'] : "";
+//         $cidade = isset($data['localidade']) ? $data['localidade'] : "";
+//         $uf = isset($data['uf']) ? $data['uf'] : "";
+
+//         $endereco = array(
+//             'logradouro' => $logradouro,
+//             'bairro' => $bairro,
+//             'cidade' => $cidade,
+//             'uf' => $uf
+//         );
+
+//         $enderecos[$cep] = $endereco; // Armazena o endereço no array de endereços
+//     }
+// }
+// foreach ($enderecos as $cep => $endereco) {
+//     echo "CEP: " . $cep . "<br>";
+//     echo "Logradouro: " . $endereco['logradouro'] . "<br>";
+//     echo "Bairro: " . $endereco['bairro'] . "<br>";
+//     echo "Cidade: " . $endereco['cidade'] . "<br>";
+//     echo "UF: " . $endereco['uf'] . "<br>";
+//     echo "<br>";
+// }
+
 
 
 ?>
@@ -97,9 +205,6 @@ JOIN tb_servicopedido as sp ON p.cd_pedido = sp.cd_pedido
 JOIN tb_servico as s on sp.cd_servico = s.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
-JOIN tb_cep AS cep ON cep.cd_cep = e.cd_cep
-JOIN tb_bairro AS b on b.cd_bairro = cep.cd_bairro
-JOIN tb_cidade AS cid on cid.cd_cidade = b.cd_cidade
 WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
 
 
@@ -125,7 +230,7 @@ if(mysqli_num_rows($result_query3) > 0){
             echo'
                 <div class="cardNvPedidos">
                 <h3>'.$row3['cd_pedido'].'</h3>
-                <h3>'.$row3['nm_cliente'].' <br> '.$row3['nm_rua'].',  '.$row3['qt_numeroendereco'].' - '.$row3['nm_bairro'].' / '.$row3['nm_cidade'].' - '.$row3['sg_uf'].'</h3>
+                <h3>'.$row3['nm_cliente'].' <br> '.$logradouro.',  '.$row3['qt_numeroendereco'].'</h3>
                 <h3>'.$row3['nm_servico'].'</h3>
                 <h3>R$'. str_replace('.', ',', $row3['vl_pedido']) .'</h3>
                 <h3>15/02/2023 <br>'.date('H:i', strtotime($row3['hr_agendamento'])).'</h3>
@@ -148,9 +253,6 @@ JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
 JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = ip.cd_cliente
-JOIN tb_cep AS cep ON cep.cd_cep = e.cd_cep
-JOIN tb_bairro AS b on b.cd_bairro = cep.cd_bairro
-JOIN tb_cidade AS cid on cid.cd_cidade = b.cd_cidade
 WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo') 
 AND p.cd_empresa = $cd_empresa 
 ORDER BY p.dt_pedido DESC";
@@ -179,8 +281,8 @@ if(mysqli_num_rows($result_query) > 0){
                     <img src="'.$row['url_fotoperfil'].'" alt="">
                     <div class="infoPedido">
                         <h2>'.$row['nm_cliente'].'</h2>
-                        <h3>'.substr($row['nm_rua'], 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
-                        <h4>'.$row['nm_cidade'].' - '.$row['sg_uf'] .'</h4>
+                        <h3>'.substr($logradouro, 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
+                        <h4>'.$cidade.' - '.$uf .'</h4>
                     </div>
                     <div class="dataPedido">
                         <div id="iconCalendario">
