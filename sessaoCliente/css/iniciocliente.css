@@ -20,7 +20,8 @@
     border-radius: 0.3em;
     border: 5px solid #30EBC9;
     padding: 0.5% 0.7%;
-    width: 800px;
+    width: 500px;
+    text-align: center;
 }  
   
 .divInicio img {

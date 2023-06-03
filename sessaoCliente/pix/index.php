@@ -88,7 +88,7 @@ $sql=" SELECT * FROM tb_cliente WHERE cd_cliente = '$cd_cliente'";
 
 $nome = $row['nm_cliente']." ".$row['nm_sobrenome'];
 
-$sql2="SELECT p.cd_pedido, s.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico FROM tb_pedido as p JOIN tb_servicopedido as sp ON sp.cd_pedido = p.cd_pedido JOIN tb_servico  as s ON s.cd_servico = sp.cd_servico WHERE p.cd_pedido = 300011";
+$sql2="SELECT p.cd_pedido, s.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico FROM tb_pedido as p JOIN tb_servicopedido as sp ON sp.cd_pedido = p.cd_pedido JOIN tb_servico  as s ON s.cd_servico = sp.cd_servico WHERE p.cd_pedido = $cd_pedido";
 
 $result2 = $conn->query($sql2);
 $row2 = $result2->fetch_assoc();
