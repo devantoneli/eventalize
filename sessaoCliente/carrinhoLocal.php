@@ -156,6 +156,12 @@ if ($result->num_rows > 0) {
                         <input type="time" placeholder="Hora" name="hrAgendamento">
                     </div>
                 </div>
+                <?php
+                // Inclui os campos ocultos com os valores do array $ids
+                foreach ($ids as $id) {
+                    echo "<input type='hidden' name='ids_servico[]' value='$id'>";
+                }
+                ?>
                 <input type="hidden" name="empresas_serializadas" value="<?php echo htmlentities(serialize($empresas)); ?>">
                 <div class="botoesEndereco">
                     <button id="voltar"> Voltar</button>

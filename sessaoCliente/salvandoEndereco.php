@@ -53,11 +53,28 @@ include('../protect.php');
     }
     $sqlInsertPedido = rtrim($sqlInsertPedido, ",");
     if ($conn->query($sqlInsertPedido) === TRUE) {
-       
+        $cd_pedido = $conn->insert_id;
+        echo $cd_pedido;
         echo "Pedido inserido com sucesso!";
     } else {
         echo "Erro ao inserir pedido: " . $conn->error;
     }
+
+    if (isset($_POST['ids_servico'])) {
+        $ids = $_POST['ids_servico'];
+    
+        // Realize a inserção na tabela tb_servicopedido
+        foreach ($ids as $id) {
+            $sql = "INSERT INTO tb_servicopedido (cd_servico, cd_pedido) VALUES ('$id', '$cd_pedido')";
+            if ($conn->query($sql) === TRUE) {
+                echo "Inserção na tb_servicopedido realizada com sucesso!";
+            } else {
+                echo "Erro ao inserir na tb_servicopedido: " . $conn->error;
+            }
+        }
+    }
+    
+    
     $conn->close();
     
     header("Location: historicopedido-c.php");
