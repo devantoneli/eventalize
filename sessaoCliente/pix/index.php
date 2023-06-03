@@ -32,10 +32,10 @@ $token = '30B2F2984A8C45D6861126259693CA3C';
                 <a href="index-c.php"><img src="../../img/icones/logoBranca.svg" alt=""></a>
             </div>
             <div class="menu">
-                <a href="index-c.php">Início</a>
+                <a href="../index-c.php">Início</a>
                 <a href="../../sessaoUsuario/explore.php">Feed</a>
-                <a href="chatCliente.php">Mensagens</a>
-                <a href="historicopedido-c.php">Meus Pedidos</a>
+                <a href="../chatCliente.php">Mensagens</a>
+                <a href="../historicopedido-c.php">Meus Pedidos</a>
             </div>
 
             <div class="headerPesquisa">
@@ -56,7 +56,7 @@ $token = '30B2F2984A8C45D6861126259693CA3C';
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
             <section class="menuPerfil">
-                <a href="perfil-c.php">Perfil</a>
+                <a href="../perfil-c.php">Perfil</a>
                 <!-- <a href="">Postagens</a> -->
                 <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
                 <!-- <a href="historicopedido-c.php">Histórico de Pedidos</a> -->
@@ -88,10 +88,14 @@ $sql=" SELECT * FROM tb_cliente WHERE cd_cliente = '$cd_cliente'";
 
 $nome = $row['nm_cliente']." ".$row['nm_sobrenome'];
 
-$sql2="SELECT p.cd_pedido, s.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico FROM tb_pedido as p JOIN tb_servicopedido as sp ON sp.cd_pedido = p.cd_pedido JOIN tb_servico  as s ON s.cd_servico = sp.cd_servico WHERE p.cd_pedido = $cd_pedido";
+$sql2="SELECT p.cd_pedido, s.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico, p.cd_pix, p.url_pix, p.dt_pix, p.cd_infopagamento FROM tb_pedido as p JOIN tb_servicopedido as sp ON sp.cd_pedido = p.cd_pedido JOIN tb_servico  as s ON s.cd_servico = sp.cd_servico WHERE p.cd_pedido = $cd_pedido";
 
 $result2 = $conn->query($sql2);
 $row2 = $result2->fetch_assoc();
+
+
+//-----------------------------------------------
+if(!isset($row2['cd_pix'])){
 
 $valores = $row2['vl_servico'];
 $valor = $valores * 100;
@@ -175,32 +179,52 @@ if ($error) {
   die();
 }
 
-$data = json_decode($response, true);
+  $data = json_decode($response, true);
+  // Converter para objeto DateTime
+  $dateTime = new DateTime($expirationDate);
+  // Formatar a data no formato desejado
+  $formattedDate = $dateTime->format('d/m/Y \à\s H\hi');
+  // var_dump($data);
 
-// Converter para objeto DateTime
-$dateTime = new DateTime($expirationDate);
+  $href = $data['qr_codes'][0]['links'][0]['href'];
+  $qrcode = $data['qr_codes'][0]['id'];
+  $dtpix = $formattedDate;
 
-// Formatar a data no formato desejado
-$formattedDate = $dateTime->format('d/m/Y \à\s H\hi');
+  $sql3="UPDATE tb_pedido SET cd_pix = '$qrcode', url_pix = '$href', dt_pix = '$formattedDate' WHERE cd_pedido = $cd_pedido";
 
-// var_dump($data);
+  $result_query = mysqli_query($conn, $sql3) or die(' Erro na query:' . $sql3 . ' ' . mysqli_error($conn));
+
+  $sql2="SELECT p.cd_pedido, s.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico, p.url_pix, p.cd_pix, p.dt_pix, p.cd_infopagamento FROM tb_pedido as p JOIN tb_servicopedido as sp ON sp.cd_pedido = p.cd_pedido JOIN tb_servico  as s ON s.cd_servico = sp.cd_servico WHERE p.cd_pedido = $cd_pedido";
+
+  $result2 = $conn->query($sql2);
+  $row2 = $result2->fetch_assoc();
+}
+//-------------------------------------------------------------------------------
 ?>
 
 <div class="grid-flexPix">
-  <h1>Faça o pagamento através de Pix QR code!</h1>
-  <h2>O QR code expirará em <?php echo($formattedDate); ?></h2>
-  <h3 style="color: #BB4242;">Caso essa página seja fechada ou atualizada, será gerado um novo código.</h3>
-  <h3 style="color: #BB4242;">Ao realizar o pagamento, volte para a página anterior.</h3>
-  <?php if ($data) : ?>
-    <img src="<?php echo ($data['qr_codes'][0]['links'][0]['href']); ?>" alt="">
 
-    <p class="copiacola"><?php echo ($data['qr_codes'][0]['id']); ?></p>
+  <?php
+  if($row2['cd_infopagamento']==0){
+    echo'
+    <h1>Faça o pagamento através de Pix QR code!</h1>
+    <h2>O QR code expirará em '.$row2['dt_pix'].'</h2>
+    <h3 style="color: #BB4242;">Caso não seja pago até a data de expiração, seu pedido será cancelado.</h3>
+      <img src="'.$row2['url_pix'].'" alt="">
+  
+      <p class="copiacola">'.$row2['cd_pix'].'</p>';
+  }else {
+    echo'<h1>Muito bem! O pagamento foi recebido.</h1>
+    <h2>Acompanhe as próximas etapas do seu pedido em <a href="../historicopedido-c.php">meus pedidos</a>.</h2>
+    <img style="margin-top: 5%;" src="../../img/icones/pago.png" alt="">';
+  }
+  ?>
   
 </div>
 
-
-
-  <?php endif; ?>
+  <script src="../js/menu-c.js"></script>
+  <script src="../js/lupa.js"></script>
+  <script src="../js/carrinho.js"></script>
 </body>
 
 </html>
