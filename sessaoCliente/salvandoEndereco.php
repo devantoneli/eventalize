@@ -19,6 +19,7 @@ include('../protect.php');
     $hrAgendamento = $_POST['hrAgendamento'];
     date_default_timezone_set('America/Sao_Paulo');
     $data_atual = date('Y-m-d');
+    echo $data_atual;
     $empresas_serializadas = $_POST['empresas_serializadas'];
     $empresas = unserialize($empresas_serializadas);
 
@@ -41,14 +42,14 @@ include('../protect.php');
     
 
 //VARIAVEL RESPONSAVEL POR REALIZAR OS INSERTS DENTRO DO LOOP
-    $sqlInsertPedido = "INSERT INTO tb_pedido (nm_status, vl_pedido, dt_pedido, cd_endereco, cd_infopagamento, cd_empresa, dt_agendamento, hr_agendamento)
+    $sqlInsertPedido = "INSERT INTO tb_pedido (nm_status, vl_pedido, dt_pedido, cd_endereco, cd_infopagamento, cd_cliente, cd_empresa, dt_agendamento, hr_agendamento)
                     VALUES ";
 
 // LOOP PARA PERCORRER OS ARRAYS E ADICIONAR NA TABELA PEDIDO
     foreach ($empresas as $empresa) {
         $cd_empresa = $empresa['cd_empresa'];
         $vl_pedido = $empresa['vl_total'];
-        $sqlInsertPedido .= "('Aguardando a confirmação', $vl_pedido, $data_atual, $cd_endereco, '0' , $cd_empresa, '$dtAgendamento', '$hrAgendamento'),";
+        $sqlInsertPedido .= "('Aguardando a confirmação', $vl_pedido, '$data_atual', $cd_endereco, '0' , $cd_cliente, $cd_empresa, '$dtAgendamento', '$hrAgendamento'),";
     }
     $sqlInsertPedido = rtrim($sqlInsertPedido, ",");
     if ($conn->query($sqlInsertPedido) === TRUE) {
