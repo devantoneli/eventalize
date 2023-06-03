@@ -7,6 +7,8 @@ if(!isset($_SESSION)){
 
 include('../../protect.php');
 
+$endpoint = 'https://sandbox.api.pagseguro.com/orders';
+$token = '30B2F2984A8C45D6861126259693CA3C';
 ?>
 
 
@@ -84,8 +86,6 @@ $sql=" SELECT * FROM tb_cliente WHERE cd_cliente = '$cd_cliente'";
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
 
-
-
 $nome = $row['nm_cliente']." ".$row['nm_sobrenome'];
 
 $sql2="SELECT p.cd_pedido, s.cd_servico, s.nm_servico, s.ds_servico, s.vl_servico FROM tb_pedido as p JOIN tb_servicopedido as sp ON sp.cd_pedido = p.cd_pedido JOIN tb_servico  as s ON s.cd_servico = sp.cd_servico WHERE p.cd_pedido = 300011";
@@ -96,9 +96,14 @@ $row2 = $result2->fetch_assoc();
 $valores = $row2['vl_servico'];
 $valor = $valores * 100;
 
+// Obter a data atual
+$dataAtual = new DateTime();
 
-$endpoint = 'https://sandbox.api.pagseguro.com/orders';
-$token = '30B2F2984A8C45D6861126259693CA3C';
+// Adicionar um dia à data atual
+$dataFutura = $dataAtual->modify('+1 day');
+
+// Formatar a data no formato desejado
+$expirationDate = $dataFutura->format('Y-m-d\TH:i:sP');
 
 $body =
   [
@@ -128,7 +133,7 @@ $body =
         "amount" => [
           "value" => $valor
         ],
-        "expiration_date" => "2023-06-02T20:15:59-03:00",
+        "expiration_date" => $expirationDate,
       ]
     ],
     "shipping" => [
@@ -144,7 +149,7 @@ $body =
       ]
     ],
     "notification_urls" => [
-      "http://localhost/sistema/eventalize/sessaoCliente/index-c.php"
+      "https://eventalize-pagseguro.ultrahook.com"
     ]
   ];
 
@@ -172,17 +177,24 @@ if ($error) {
 
 $data = json_decode($response, true);
 
+// Converter para objeto DateTime
+$dateTime = new DateTime($expirationDate);
+
+// Formatar a data no formato desejado
+$formattedDate = $dateTime->format('d/m/Y \à\s H\hi');
+
 // var_dump($data);
 ?>
 
 <div class="grid-flexPix">
   <h1>Faça o pagamento através de Pix QR code!</h1>
-  <h2>O QR code expirará em 20/10/2023</h2>
-  <h3 style="color: #BB4242;">Caso essa página seja fechada ou atualizada, será gerado um novo código</h3>
+  <h2>O QR code expirará em <?php echo($formattedDate); ?></h2>
+  <h3 style="color: #BB4242;">Caso essa página seja fechada ou atualizada, será gerado um novo código.</h3>
+  <h3 style="color: #BB4242;">Ao realizar o pagamento, volte para a página anterior.</h3>
   <?php if ($data) : ?>
-    <img src="<?php echo $data['qr_codes'][0]['links'][0]['href'] ?>" alt="">
+    <img src="<?php echo ($data['qr_codes'][0]['links'][0]['href']); ?>" alt="">
 
-    <p class="copiacola"><?php echo $data['qr_codes'][0]['text'] ?></p>
+    <p class="copiacola"><?php echo ($data['qr_codes'][0]['id']); ?></p>
   
 </div>
 
