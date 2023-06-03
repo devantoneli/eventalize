@@ -4,14 +4,23 @@ session_start();
 include('../protect.php');
 
 
+$opcoes = isset($_POST['opcao']) ? $_POST['opcao'] : array();
+$ids = array();
 if (isset($_POST['opcao'])) {
-    $opcoes = $_POST['opcao'];
-    $ids = implode(",", $opcoes);
-        $id = str_replace("id=", "", $ids);
-    } else {
-        echo "Nenhuma opção selecionada.";
+    foreach ($opcoes as $opcao) {
+        $id = str_replace("id=", "", $opcao);
+        $ids[] = $id;
     }
+
+    $ids_string = implode(",", $ids);
+
+    // Restante do seu código...
+} else {
+    echo "Nenhuma opção selecionada.";
+}
+
     
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -29,8 +38,7 @@ if (isset($_POST['opcao'])) {
     FROM tb_servico AS s 
     JOIN tb_tiposervico ts ON s.cd_tiposervico = ts.cd_tiposervico
     JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa 
-    WHERE s.cd_servico IN ($id)";
-
+    WHERE s.cd_servico IN ($ids_string)";
     $result = $conn->query($sql);
 
     $empresas = array();
