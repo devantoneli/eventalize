@@ -234,11 +234,12 @@ a{
 }
 
 #cardPedido{
-    background-image: url("https://th.bing.com/th/id/OIP.Rv9lVuyM2wfoqw41ERDjdAHaHb?pid=ImgDet&rs=1");
+    /* background-image: url("https://th.bing.com/th/id/OIP.Rv9lVuyM2wfoqw41ERDjdAHaHb?pid=ImgDet&rs=1"); */
     width: 80%;
     border-radius: 9px;
     border: 5px solid #7696F2;
-    box-shadow: inset 0px 284px 187px #7696F2;
+    /* box-shadow: inset 0px 284px 187px #7696F2; */
+    background-color: #7696F2;
 }
 
 #cardPedido h2{
@@ -251,6 +252,7 @@ a{
     font-size: 1.3em;
     color: white;
     text-align: center;
+    font-weight: 500;
 }
 
 .gridStatusPedido{
