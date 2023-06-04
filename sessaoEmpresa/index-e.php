@@ -100,44 +100,24 @@ include('../protect.php');
 
             <div class="grid-LinhaTripla">
                 <h1>Olá, <?php echo $_SESSION['nm_fantasia'];?></h1>
-                <p>Aqui está o relatório da última semana: </p>
+                <p>O que deseja fazer? </p>
                 <div class="grid-RelatRapid">
                     <div class="relatRapid">
-                        <h2 style="color: white;">Segunda</h2>
-                        <p style="color: white;">03/04/23</p>
-
-                        <p><a>+5</a> Serviços</p>
-                        <p><a>+5</a> Clientes</p>
-                        <p><a>5</a> Serviço/cliente</p>
+                        
                     </div>
                     <div class="relatRapid">
                         <div class="relatRapid" style="background-color: #968EC7 !important;">
-                            <h2 style="color: white;">Terça</h2>
-                            <p style="color: white;">04/04/23</p>
-    
-                            <p><a>+10</a> Serviços</p>
-                            <p><a>+4</a> Clientes</p>
-                            <p><a>2,5</a> Serviço/cliente</p>
+                            
                         </div>
                     </div>
                     <div class="relatRapid">
                         <div class="relatRapid" style="background-color: #FF3E83 !important;">
-                            <h2 style="color: white;">Quarta</h2>
-                            <p style="color: white;">05/04/23</p>
-    
-                            <p><a>+24</a> Serviços</p>
-                            <p><a>+16</a> Clientes</p>
-                            <p><a>1,5</a> Serviço/cliente</p>
+                            
                         </div>
                     </div>
                     <div class="relatRapid">
                         <div class="relatRapid" style="background-color: #FFA856 !important;">
-                            <h2 style="color: white;">Quinta</h2>
-                            <p style="color: white;">06/04/23</p>
-    
-                            <p><a>+14</a> Serviços</p>
-                            <p><a>+6</a> Clientes</p>
-                            <p><a>2,3</a> Serviço/cliente</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -166,36 +146,6 @@ include('../protect.php');
                         echo "<h1 style='font-weight: 100;width: 150%;'>Nenhum pedido novo</h1>";
                     }    
                 ?>           
-                    </div>
-                </div>
-
-                <div class="card-solicsOrcament">
-                    <h2>Solicitações de orçamento <div id="icon-pedidsAndament"></div></h2>
-
-                    <div class="blocoAzul">
-                        <div class="card-orcamntSolic cidadMeio">
-                            <p>Santos, SP</p>
-                            
-                            <div class="font-descSolic">
-                            <li>• 200 fotos</li>
-                            <li>• Ensaio plus</li>
-                            <li>• 2 álbuns personalizados</li>
-                            </div>
-                            
-                            <a href=""><button class="btn-abrirSolic"><a class="font-abrirSolic">...</a></button></a>
-                        </div>
-
-                        <div class="card-orcamntSolic cidadMeio">
-                            <p>Santos, SP</p>
-                            
-                            <div class="font-descSolic">
-                            <li>• 200 fotos</li>
-                            <li>• Ensaio plus</li>
-                            <li>• 2 álbuns personalizados</li>
-                            </div>
-
-                            <a href=""><button class="btn-abrirSolic"><a class="font-abrirSolic">...</a></button></a>
-                        </div>
                     </div>
                 </div>
             </div>

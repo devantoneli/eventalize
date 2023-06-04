@@ -215,9 +215,7 @@ if($conn->connect_error){
                 </svg>
                     <p class="tamAvaliacao">'.$mediaAvaliacao .'</p>
                 </div>
-                <div class="botaoSeguir">
-                    <button>Seguir</button>
-                </div>
+
                 
         </div>';
         }
