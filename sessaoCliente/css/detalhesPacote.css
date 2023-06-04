@@ -242,6 +242,7 @@ body{
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
+    align-items: center;
 }
 
 #btn-compraDetalhe{
