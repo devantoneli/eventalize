@@ -13,6 +13,10 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db_name = "db_eventalize";
+// $dataAtual = date("d-m-Y");
+$dataAtual = date("Y-m-d");
+
+echo $dataAtual;
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
@@ -209,7 +213,7 @@ if(mysqli_num_rows($result_query3) > 0){
                 
     while($row3 = mysqli_fetch_assoc($result_query3)){
         foreach ($informacoes1 as $info) {
-            
+          
             // echo "CEP: " . $info->cep . "<br>";
             // echo "Logradouro: " . $info->logradouro . "<br>";
             // echo "Bairro: " . $info->bairro . "<br>";
@@ -274,13 +278,21 @@ if(mysqli_num_rows($result_query) > 0){
             <div class="gridPedidosAndamento">';
             
            
-            foreach ($informacoes2 as $info) {
+            
     while($row = mysqli_fetch_assoc($result_query)){
-        
-        echo '<div class="card-Andamento">
+        //VALIDANDO O STATUS DO PEDIDO, SE FOR A DATA ATUAL, ELE MUDARÁ O STATUS PARA 'EM CONSUMO' -- MIH
+            if($row['dt_agendamento'] == $dataAtual){
+                var_dump($row['dt_agendamento'], $dataAtual);
+                $sql = "UPDATE tb_pedido SET nm_status = 'Em consumo' WHERE nm_status = 'Elaboração do serviço em processo' AND dt_agendamento = '{$row['dt_agendamento']}'";
+                $result = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+            }
+
+        foreach ($informacoes2 as $info) {
+        echo '
+        <div class="card-Andamento">
             <div id="cardPedido">
                 <h2>'.$row['nm_servico'].'</h2>
-                    <h4>'.$row['ds_servico'].'</h4>
+                <h4>'.$row['ds_servico'].'</h4>
             </div>
             
             <div id="statusPedido">
@@ -289,7 +301,7 @@ if(mysqli_num_rows($result_query) > 0){
                     <img src="'.$row['url_fotoperfil'].'" alt="">
                     <div class="infoPedido">
                         <h2>'.$row['nm_cliente'].'</h2>
-                    <h3>'.substr($info->logradouro, 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
+                        <h3>'.substr($info->logradouro, 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
                         <h4>'.$info->localidade.' - '.$info->uf .'</h4>
                     </div>
                     <div class="dataPedido">
@@ -300,8 +312,8 @@ if(mysqli_num_rows($result_query) > 0){
                             </svg>
                         </div>
                         <div>
-                            <h1>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</h1>
-                            <h3>Domingo, '.$row['hr_agendamento'].'h</h3>
+                            <h1>'.date('d/m/Y', strtotime($row['dt_agendamento'])).'</h1>
+                            <h3>Domingo, '.date('H:i', strtotime($row['hr_agendamento'])).'h</h3>
                         </div>
                     </div>
                     <div class="gridIcons">
@@ -328,12 +340,13 @@ if(mysqli_num_rows($result_query) > 0){
                 </div></div></div>';
         }
     }
+}
     echo '
             </div>
         </div>
     </section>
     ';
-}
+
 
 //SELECT DOS FINALIZADOS E CANCELADOS
 $query2 = "SELECT *
