@@ -17,9 +17,12 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-    $sql = "SELECT * FROM tb_empresa WHERE cd_empresa = 44"; 
+    $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_pedido p
+    join tb_empresa e on e.cd_empresa = p.cd_empresa
+    join tb_cliente c on c.cd_cliente = p.cd_cliente
+    WHERE c.cd_cliente = 01 group by e.cd_empresa"; 
     $result = $conn->query($sql);
-    $row = $result -> fetch_assoc();
+    $result_query = mysqli_query($conn,  $sql) or die(' Erro na query:' .  $sql . ' ' . mysqli_error($conn));
 ?>
 
 <!DOCTYPE html>
@@ -82,30 +85,19 @@ if($conn->connect_error){
      <h2>Conversas</h2>
     <div class="conversasPerfil">
         <div class="scroll">
-            <div class="alinha">
-                <h3>Smash Party</h3>
-                <img src="<?php echo $row['url_fotoperfil'];?>"  alt="imagem">
-            </div>
-            <div class="alinha">
-                <h3>Smash Party</h3>
-                <img src="<?php echo $row['url_fotoperfil'];?>>"  alt="imagem">
-            </div>
-            <div class="alinha">
-                <h3>Smash Party</h3>
-                <img src="<?php echo $row['url_fotoperfil'];?>"  alt="imagem">
-            </div>
-            <div class="alinha">
-                <h3>Smash Party</h3>
-                <img src="<?php echo $row['url_fotoperfil'];?>"  alt="imagem">
-            </div>
-            <div class="alinha">
-                <h3>Smash Party</h3>
-                <img src="<?php echo $row['url_fotoperfil'];?>"  alt="imagem">
-            </div>
-            <div class="alinha">
-                <h3>Smash Party</h3>
-                <img src="<?php echo $row['url_fotoperfil'];?>"  alt="imagem">
-            </div>
+<?php
+if(mysqli_num_rows($result) > 0){
+
+    while($row = mysqli_fetch_assoc($result)){
+
+    echo'<div class="alinha">
+            <h3>'.$row['nm_fantasia'].'</h3><br>
+            <img class="imgEmpresa" src="'.$row['url_fotoperfil'].'" value="'.$row['cd_empresa'].'" alt="imagem">
+        </div>';
+
+    }
+}
+?>           
         </div>
     </div>
 
@@ -115,18 +107,25 @@ if($conn->connect_error){
     <div class="mensagensPerfil">
             <br>
             <div class="infoCliente">
-                <img src="<?php echo $row['url_fotoperfil'];?>"  alt="imagem">
-                <h2><?php echo $row['nm_fantasia'];?></h2>
+                <img id="fotoMeio" src="../img/icones/selecione.png"  alt="imagem" value="" empresa="">
+                <h2 id="nomeMeio">Selecione um chat</h2>
             </div>
+
+            <div class="chat">
+
+            </div>
+
             <div class="carregaChat">
-                <!--Aqui deve carregar a lógica de chat que ainda está sendo desenvolvida-->
+                <input type="text" name="ds_mensagem" id="mensagem">
+                <button id="enviar" onclick="enviar()">Enviar</button>
             </div>
         </div>
      </div>
      <!--FIM CONVERSAS CHAT -->
 
-
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../sessaoCliente/js/menu-c.js"></script>
+<script src="js/chat.js"></script>
 <script src="js/lupa.js"></script>
 <script src="js/carrinho.js"></script>
 </body>
