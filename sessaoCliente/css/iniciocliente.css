@@ -15,6 +15,11 @@
     margin-top: 50px;
   }
 
+.noEstilo {
+    background: none;
+    border-color: transparent;
+}
+
 .copiacola {
     font-size: 1.2em;
     border-radius: 0.3em;
@@ -115,6 +120,18 @@
     justify-content: center;
     margin: 5% 0 5% 0;
 
+}
+
+.iconesBusca {
+    display: flex;
+    justify-content: center;
+    gap: 0%;
+    margin: 0;
+}
+
+.iconesBusca img{
+    width: 60%;
+    cursor: pointer;
 }
 
 .iconsCategorias img{
