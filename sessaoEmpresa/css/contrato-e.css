@@ -1,0 +1,9 @@
+
+  .retangulo {
+    width: 350mm; /* Largura de uma folha A4 */
+    height: 297mm; /* Altura de uma folha A4 */
+    background-color: rgb(187, 57, 57);
+    border: 1px solid black;
+    margin: 0 auto; /* Alinhar no centro horizontalmente */
+    margin-bottom: 20px;
+  }

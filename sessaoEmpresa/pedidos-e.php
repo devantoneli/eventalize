@@ -1,54 +1,4 @@
 <?php
-// if(!isset($_SESSION)){
-//     session_start();
-// }
-
-// include('../protect.php');
-
-// $cd_empresa = $_SESSION["cd_empresa"];
-
-
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $db_name = "db_eventalize";
-
-// $conn = new mysqli($servername, $username, $password, $db_name);
-
-// if($conn->connect_error){
-//     die("Falha na conexão: " . $conn->connect_error);
-// }
-
-// $sql = "SELECT cd_cep, cd_pedido FROM tb_endereco as cep JOIN tb_pedido as p on cep.cd_endereco = p.cd_endereco";
-
-// $result = $conn->query($sql);
-
-
-// if($result->num_rows > 0){
-// while ($row = $result->fetch_assoc()){
-//     $cd_pedido = $row['cd_pedido'];
-//     $cd_cep = $row['cd_cep'];
-
-
-//     $url = "https://viacep.com.br/ws/{$cd_cep}/json/";
-//     $response = file_get_contents($url);
-//     $data = json_decode($response, true);
-    
-
-//     $logradouro = $data['logradouro'];
-//     $bairro = $data['bairro'];
-//     $cidade = $data['cidade'];
-//     $uf = $data['uf'];
-
-//     echo $logradouro;
-//     echo $cidade;
-//     echo $bairro;
-//     echo $uf;
-
-
-// }
-// } 
-
 
 
 if (!isset($_SESSION)) {
@@ -63,6 +13,10 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db_name = "db_eventalize";
+// $dataAtual = date("d-m-Y");
+$dataAtual = date("Y-m-d");
+
+echo $dataAtual;
 
 $conn = new mysqli($servername, $username, $password, $db_name);
 
@@ -73,58 +27,88 @@ if ($conn->connect_error) {
 $sql = "SELECT cd_cep, cd_pedido FROM tb_endereco as cep JOIN tb_pedido as p on cep.cd_endereco = p.cd_endereco";
 $result = $conn->query($sql);
 
-// $ceps = array(); // Array para armazenar os CEPs
-// $pedidos = array(); // Array para armazenar os pedidos
 
-// if ($result->num_rows > 0) {
-//     while ($row = $result->fetch_assoc()) {
-//         $cd_pedido = $row['cd_pedido'];
-//         $cd_cep = $row['cd_cep'];
 
-//         $ceps[] = $cd_cep; // Adiciona o CEP ao array de CEPs
-//         $pedidos[] = $cd_pedido; // Adiciona o pedido ao array de pedidos
-//     }
-// }
+// Consulta os CEPs dos pedidos com nm_status "Aguardando confirmação"
+$sql1 = "SELECT e.cd_cep
+         FROM tb_endereco e
+         INNER JOIN tb_pedido p ON e.cd_endereco = p.cd_endereco
+         WHERE p.cd_empresa = '$cd_empresa'
+         AND p.nm_status = 'Aguardando confirmação'";
 
-// $enderecos = array(); // Array para armazenar os endereços
+// Consulta os CEPs dos pedidos com nm_status específicos
+$sql2 = "SELECT e.cd_cep
+         FROM tb_endereco e
+         INNER JOIN tb_pedido p ON e.cd_endereco = p.cd_endereco
+         WHERE p.cd_empresa = '$cd_empresa'
+         AND (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo')";
 
-// foreach ($ceps as $cep) {
-//     $url = "https://viacep.com.br/ws/{$cep}/json/";
-//     $ch = curl_init();
-//     curl_setopt($ch, CURLOPT_URL, $url);
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//     $response = curl_exec($ch);
-//     curl_close($ch);
+// Executa as consultas SQL
+$result1 = $conn->query($sql1);
+$result2 = $conn->query($sql2);
 
-//     $data = json_decode($response, true);
+// Arrays para armazenar os CEPs
+$ceps1 = array();
+$ceps2 = array();
+// Verifica se a consulta 1 retornou resultados
+if ($result1->num_rows > 0) {
+    // Loop pelos resultados da consulta 1
+    while ($row = $result1->fetch_assoc()) {
+        $ceps1[] = $row['cd_cep'];
+    }
+}
 
-//     if (isset($data['erro'])) {
-//         echo "CEP não encontrado para o CEP: " . $cep . "<br>";
-//         // Lidar com o CEP não encontrado adequadamente, se necessário
-//     } else {
-//         $logradouro = isset($data['logradouro']) ? $data['logradouro'] : "";
-//         $bairro = isset($data['bairro']) ? $data['bairro'] : "";
-//         $cidade = isset($data['localidade']) ? $data['localidade'] : "";
-//         $uf = isset($data['uf']) ? $data['uf'] : "";
+// Verifica se a consulta 2 retornou resultados
+if ($result2->num_rows > 0) {
+    // Loop pelos resultados da consulta 2
+    while ($row = $result2->fetch_assoc()) {
+        $ceps2[] = $row['cd_cep'];
+    }
+}
 
-//         $endereco = array(
-//             'logradouro' => $logradouro,
-//             'bairro' => $bairro,
-//             'cidade' => $cidade,
-//             'uf' => $uf
-//         );
+// Função para consultar o CEP na API ViaCEP
+function consultarCEP($cep) {
+    $url = "https://viacep.com.br/ws/{$cep}/json/";
+    $response = file_get_contents($url);
 
-//         $enderecos[$cep] = $endereco; // Armazena o endereço no array de endereços
-//     }
-// }
-// foreach ($enderecos as $cep => $endereco) {
-//     echo "CEP: " . $cep . "<br>";
-//     echo "Logradouro: " . $endereco['logradouro'] . "<br>";
-//     echo "Bairro: " . $endereco['bairro'] . "<br>";
-//     echo "Cidade: " . $endereco['cidade'] . "<br>";
-//     echo "UF: " . $endereco['uf'] . "<br>";
-//     echo "<br>";
-// }
+    if ($response !== false) {
+        $data = json_decode($response);
+
+        if (!isset($data->erro)) {
+            return $data;
+        } else {
+            return null;
+        }
+    } else {
+        return null;
+    }
+}
+
+// Arrays para armazenar as informações da API ViaCEP
+$informacoes1 = array();
+$informacoes2 = array();
+
+// Consulta à API ViaCEP para os CEPs da consulta 1
+foreach ($ceps1 as $cep) {
+    $data = consultarCEP($cep);
+
+    if ($data !== null) {
+        $informacoes1[] = $data;
+    }
+}
+
+// Consulta à API ViaCEP para os CEPs da consulta 2
+foreach ($ceps2 as $cep) {
+    $data = consultarCEP($cep);
+
+    if ($data !== null) {
+        $informacoes2[] = $data;
+    }
+}
+
+// Exemplo de exibição das informações obtidas (você pode ajustar conforme necessário)
+
+
 
 
 
@@ -142,6 +126,7 @@ $result = $conn->query($sql);
     <link rel="icon" href="../img/index/logo.png">
     <title>Pedidos - Eventalize</title>
 </head>
+
     <!--INICIO MENU EMPRESA -->
     <div class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
@@ -225,17 +210,42 @@ if(mysqli_num_rows($result_query3) > 0){
                 <h3>Datado para</h3>
                 <h3>Requerido em</h3>
                 </div>';
+                
     while($row3 = mysqli_fetch_assoc($result_query3)){
+        foreach ($informacoes1 as $info) {
+          
+            // echo "CEP: " . $info->cep . "<br>";
+            // echo "Logradouro: " . $info->logradouro . "<br>";
+            // echo "Bairro: " . $info->bairro . "<br>";
+            // echo "Cidade: " . $info->localidade . "<br>";
+            // echo "UF: " . $info->uf . "<br>";
+            // echo "<br>";
+       
             echo'
                 <div class="cardNvPedidos">
                 <h3>'.$row3['cd_pedido'].'</h3>
-                <h3>'.$row3['nm_cliente'].' <br> '.$logradouro.',  '.$row3['qt_numeroendereco'].'</h3>
+                <h3>'.$row3['nm_cliente'].' <br> '. $info->logradouro.',  '.$row3['qt_numeroendereco'].'</h3>
                 <h3>'.$row3['nm_servico'].'</h3>
                 <h3>R$'. str_replace('.', ',', $row3['vl_pedido']) .'</h3>
                 <h3>15/02/2023 <br>'.date('H:i', strtotime($row3['hr_agendamento'])).'</h3>
                 <h3>'.date('d/m/Y', strtotime($row3['dt_pedido'])).'<br>13h24</h3>
+                
+                <form action="aceitarPedido.php" method="post">
+                <input type="hidden" name="cd_pedido" value="'.$row3['cd_pedido'].'">
+                <div class="aceitarPedido">
+                <button type="submit">Aceitar pedido</button>
+                </div>
+                </form>
+
+                <form action="recusarPedido.php" method="post">
+                <input type="hidden" name="cd_pedido" value="'.$row3['cd_pedido'].'">
+                <div class="recusarPedido">
+                <button type="submit">Recusar pedido</button>
+                </div>
+                </form>
                 </div>';
     }
+}
             echo '</div>
         </div>
     </section>';
@@ -251,7 +261,7 @@ JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
 JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
-WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo') 
+WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo' OR p.nm_status = 'Aguardando assinatura do contrato') 
 AND p.cd_empresa = $cd_empresa 
 ORDER BY p.dt_pedido DESC";
 
@@ -266,11 +276,23 @@ if(mysqli_num_rows($result_query) > 0){
         <div class="blocoPedidos">
             <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
             <div class="gridPedidosAndamento">';
+            
+           
+            
     while($row = mysqli_fetch_assoc($result_query)){
-        echo '<div class="card-Andamento">
+        //VALIDANDO O STATUS DO PEDIDO, SE FOR A DATA ATUAL, ELE MUDARÁ O STATUS PARA 'EM CONSUMO' -- MIH
+            if($row['dt_agendamento'] == $dataAtual){
+                var_dump($row['dt_agendamento'], $dataAtual);
+                $sql = "UPDATE tb_pedido SET nm_status = 'Em consumo' WHERE nm_status = 'Elaboração do serviço em processo' AND dt_agendamento = '{$row['dt_agendamento']}'";
+                $result = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+            }
+
+        foreach ($informacoes2 as $info) {
+        echo '
+        <div class="card-Andamento">
             <div id="cardPedido">
                 <h2>'.$row['nm_servico'].'</h2>
-                    <h4>'.$row['ds_servico'].'</h4>
+                <h4>'.$row['ds_servico'].'</h4>
             </div>
             
             <div id="statusPedido">
@@ -279,19 +301,19 @@ if(mysqli_num_rows($result_query) > 0){
                     <img src="'.$row['url_fotoperfil'].'" alt="">
                     <div class="infoPedido">
                         <h2>'.$row['nm_cliente'].'</h2>
-                        <h3>'.substr($logradouro, 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
-                        <h4>'.$cidade.' - '.$uf .'</h4>
+                        <h3>'.substr($info->logradouro, 0,25).'. nº '.$row['qt_numeroendereco'].'</h3>
+                        <h4>'.$info->localidade.' - '.$info->uf .'</h4>
                     </div>
                     <div class="dataPedido">
-                        <div id="iconCalendario">
+                        <div class="iconCalendario">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
                                 <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
                                 <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                             </svg>
                         </div>
                         <div>
-                            <h1>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</h1>
-                            <h3>Domingo, '.$row['hr_agendamento'].'h</h3>
+                            <h1>'.date('d/m/Y', strtotime($row['dt_agendamento'])).'</h1>
+                            <h3>Domingo, '.date('H:i', strtotime($row['hr_agendamento'])).'h</h3>
                         </div>
                     </div>
                     <div class="gridIcons">
@@ -316,20 +338,22 @@ if(mysqli_num_rows($result_query) > 0){
                         </div>
                     </div>
                 </div></div></div>';
+        }
     }
+}
     echo '
             </div>
         </div>
     </section>
     ';
-}
+
 
 //SELECT DOS FINALIZADOS E CANCELADOS
 $query2 = "SELECT *
 FROM tb_pedido AS p
 JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
 JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
-WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo') AND p.cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
+WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo' OR nm_status = 'Pedido recusado') AND p.cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
 $result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
 
 // echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query2);

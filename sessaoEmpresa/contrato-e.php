@@ -1,21 +1,38 @@
+<?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+include('../protect.php');
+
+$cd_empresa = $_SESSION["cd_empresa"];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-<!-- ESSA TELA TEM COMO FUNÇÕES, POR ENQUANTO, EXCLUIR, EDITAR E VISUALIZAR OS SERVIÇOS DE UMA EMPRESA -->
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="icon" href="imagens/logo.png"> -->
-    <!-- <link rel="stylesheet" href="css/perfil-empresa.css"/> -->
-    <link rel="stylesheet" href="css/perfilEmpresa.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/menu-e.css"/>
+    <link rel="stylesheet" href="css/pedido-e.css"/>
+    <link rel="stylesheet" href="css/contrato-e.css"/>
     <link rel="icon" href="../img/index/logo.png">
-    <title>Perfil - Eventalize</title>
+    <title>Contrato - Eventalize</title>
 </head>
-<body>
-    <div class="inicioPerfil">
     <!--INICIO MENU EMPRESA -->
     <div class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
@@ -50,9 +67,6 @@
 
                 <section id="menuPerfil">
                 <a href="perfilEmpresa.php"><h5>Perfil</h5></a>
-                <!-- <a href=""><h5>Pontuações</h5></a>
-                <a href=""><h5>Postagens</h5></a>
-                <a href=""><h5>Estatísticas de venda</h5></a> -->
                 <a href=""><h5>Configurações</h5></a>
                 <a href="../logout.php"><h5>Sair</h5></a>
             </section>
@@ -61,17 +75,6 @@
     </div>
 <!--FIM MENU EMPRESA -->
 
-<div class="gridInicioPerfil">
-    <div class="fotoPerfil">
-        <img src="../bancoImagens/clientes/logoEmpresa.jpg" alt="">
-    </div>
-    <div class="infoPerfil">
-        <h2>Felipe Ramos</h2>
-        <h4>@feliperamos_</h4>
-        <h3>Fotógrafo Social</h3>
-        <h6>Com 10 anos de carreira, me dedico a tirar fotos de momentos mais divertidos na vida das pessoas</h6>
-    </div>
-    <div class="botaoOrcamento">
-        <button>Criar Orçamento</button>
-    </div>
-</div>
+<body>
+<div class="retangulo"></div>
+</body>

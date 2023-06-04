@@ -19,6 +19,7 @@ include('../protect.php');
     $hrAgendamento = $_POST['hrAgendamento'];
     date_default_timezone_set('America/Sao_Paulo');
     $data_atual = date('Y-m-d');
+    echo $data_atual;
     $empresas_serializadas = $_POST['empresas_serializadas'];
     $empresas = unserialize($empresas_serializadas);
 
@@ -41,22 +42,39 @@ include('../protect.php');
     
 
 //VARIAVEL RESPONSAVEL POR REALIZAR OS INSERTS DENTRO DO LOOP
-    $sqlInsertPedido = "INSERT INTO tb_pedido (nm_status, vl_pedido, dt_pedido, cd_endereco, cd_infopagamento, cd_empresa, dt_agendamento, hr_agendamento)
+    $sqlInsertPedido = "INSERT INTO tb_pedido (nm_status, vl_pedido, dt_pedido, cd_endereco, cd_infopagamento, cd_cliente, cd_empresa, dt_agendamento, hr_agendamento)
                     VALUES ";
 
 // LOOP PARA PERCORRER OS ARRAYS E ADICIONAR NA TABELA PEDIDO
     foreach ($empresas as $empresa) {
         $cd_empresa = $empresa['cd_empresa'];
         $vl_pedido = $empresa['vl_total'];
-        $sqlInsertPedido .= "('Aguardando a confirmação', $vl_pedido, $data_atual, $cd_endereco, '0' , $cd_empresa, '$dtAgendamento', '$hrAgendamento'),";
+        $sqlInsertPedido .= "('Aguardando a confirmação', $vl_pedido, '$data_atual', $cd_endereco, '0' , $cd_cliente, $cd_empresa, '$dtAgendamento', '$hrAgendamento'),";
     }
     $sqlInsertPedido = rtrim($sqlInsertPedido, ",");
     if ($conn->query($sqlInsertPedido) === TRUE) {
-       
+        $cd_pedido = $conn->insert_id;
+        echo $cd_pedido;
         echo "Pedido inserido com sucesso!";
     } else {
         echo "Erro ao inserir pedido: " . $conn->error;
     }
+
+    if (isset($_POST['ids_servico'])) {
+        $ids = $_POST['ids_servico'];
+    
+        // Realize a inserção na tabela tb_servicopedido
+        foreach ($ids as $id) {
+            $sql = "INSERT INTO tb_servicopedido (cd_servico, cd_pedido) VALUES ('$id', '$cd_pedido')";
+            if ($conn->query($sql) === TRUE) {
+                echo "Inserção na tb_servicopedido realizada com sucesso!";
+            } else {
+                echo "Erro ao inserir na tb_servicopedido: " . $conn->error;
+            }
+        }
+    }
+    
+    
     $conn->close();
     
     header("Location: historicopedido-c.php");
