@@ -92,7 +92,7 @@ $row = mysqli_fetch_assoc($result_query);
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
-                        <h3><?php echo $row['nm_usuarioempresa'];?></h3>
+                        <h3><?php echo $row['nm_fantasia'];?></h3>
                         <h5><?php echo $row['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $row['ds_biografia'];?></h4>
                         </div>
