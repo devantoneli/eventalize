@@ -78,22 +78,25 @@ if(isset($_POST['url_img3']) && $_POST['url_img3'] != "mudara") {
 
 if ($semimg2 == false && $semimg3 == false){
     if($semcapa == false){
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz=$cd_personaliz, cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
     }else{
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
     }
     
 }else if ($semimg2 == true){
     if($semcapa == false){
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico=$cd_servico";}
-    else{
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_img3='$url_img3' WHERE cd_servico=$cd_servico";
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
+
+}else{
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
     }
-}else {
+
+}else{
     if($semcapa == false){
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico=$cd_servico";}
-    else{
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico=$vl_servico, cd_personaliz=$cd_personaliz, cd_orcament=$cd_orcament, cd_local=$cd_local, cd_tiposervico=$cd_tiposervico, url_img2='$url_img2' WHERE cd_servico=$cd_servico";
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico='$cd_servico'";
+
+}else{
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_img2='$url_img2' WHERE cd_servico='$cd_servico'";
     }
 }
 

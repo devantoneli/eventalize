@@ -41,7 +41,7 @@ $row = mysqli_fetch_assoc($result_query);
     <link rel="stylesheet" href="css/menu-e.css">
     <link rel="icon" href="../img/index/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
-    <title>Criar Serviço/Pacote</title>
+    <title>Editar Serviço - Eventalize</title>
 </head>
 <body>
 
