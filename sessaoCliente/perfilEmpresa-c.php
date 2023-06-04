@@ -20,7 +20,7 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$query = "SELECT * FROM tb_empresa WHERE cd_empresa = $cd_empresa";
+$query = "SELECT * FROM tb_empresa WHERE cd_empresa = '$cd_empresa'";
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
@@ -120,7 +120,7 @@ $row = mysqli_fetch_assoc($result_query);
 <?php
             
 // SELECIONANDO AS INFORMAÇÕES QUE QUERO EXIBIR NA TELA DETALHES
-$query2 = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico where cd_empresa = $cd_empresa";
+$query2 = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico WHERE cd_empresa = '$cd_empresa'";
             
 $result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
 
