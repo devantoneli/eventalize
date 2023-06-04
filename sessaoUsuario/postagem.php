@@ -49,11 +49,15 @@ $dbname = "db_eventalize";
     $rowS = $resultS -> fetch_assoc();
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA OU CLIENTE
     if ($rowS["cd_tipoautor"]==2){
-        $sql2 = "SELECT e.url_fotoperfil, e.nm_fantasia FROM tb_postagem as p JOIN tb_empresa as e ON e.cd_empresa = p.cd_empresa WHERE cd_postagem = $cd_postagem";
+        $sql2 = "SELECT e.url_fotoperfil, e.nm_fantasia, s.cd_servico, e.cd_empresa FROM tb_postagem as p JOIN tb_empresa as e ON e.cd_empresa = p.cd_empresa JOIN tb_servicopedido as pd on pd.cd_pedido = p.cd_pedido
+        JOIN tb_servico as s on s.cd_servico = pd.cd_servico WHERE cd_postagem = $cd_postagem";
         $result2 = $conn->query($sql2);
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_fantasia'];
         $img_autor = $row2['url_fotoperfil'];
+        $cd_empresa = $row2['cd_empresa'];
+        $cd_servico = $row2['cd_servico'];
+
     }else {
         $sql2 = "SELECT c.nm_cliente FROM tb_postagem as p JOIN tb_cliente as c ON c.cd_cliente = p.cd_cliente WHERE cd_postagem = $cd_postagem";
         $result2 = $conn->query($sql2);
@@ -148,7 +152,16 @@ $dbname = "db_eventalize";
                         <h2>'.$nm_autor.'</h2>
                         <div class="iconsCategorias">';
                         if($row["cd_tipoautor"] == 2){
-                            echo'Empresa';
+                            echo'Empresa
+                            <form action="../sessaoCliente/perfilEmpresa-c.php">
+                            <input type="hidden" value="'.$cd_empresa.'" name="cd_empresa">
+                            <button class="btnVerPerfil" type="submit">Ver perfil</button>
+                            </form>
+
+                            <form action="../sessaoCliente/detalheServico.php" method="get">
+                            <input type="hidden" value="'.$cd_servico.'" name="cd_servico">
+                            <button class="btnVerServico" type="submit">Ver serviço</button>
+                            </form>';
                         }else {
                             echo'<p style="font-size: 1.5em;">Cliente</p>';
                         }echo'
@@ -157,75 +170,78 @@ $dbname = "db_eventalize";
                     </div>
                     </div>
                 </div>';
-                
-                if (mysqli_num_rows($result3) > 0){
-                    while($row3 = $result3 -> fetch_assoc()){
-                        $servico = $row3['cd_servico'];
-                        $sql4 = "SELECT * FROM tb_servico WHERE cd_servico = 14";
-                        $result4 = $conn->query($sql4);
                     }
-                    if (mysqli_num_rows($result4) > 0){
-                        echo'
-                        <!-- INICIO EXIBIÇÕES DE PACOTES -->
-                        <div class="infoDescricao">
-                            <h3>Esta postagem contém o pacote</h3>
-                        </div>
-                        <div class="inicioInfoPostagem">
-                        <div class="quadroPacote">
+                }
+                
+                // if (mysqli_num_rows($result3) > 0){
+                //     while($row3 = $result3 -> fetch_assoc()){
+                //         $servico = $row3['cd_servico'];
+                //         $sql4 = "SELECT * FROM tb_servico WHERE cd_servico = 14";
+                //         $result4 = $conn->query($sql4);
+                //     }
+                //     if (mysqli_num_rows($result4) > 0){
+                //         echo'
+                    //     <!-- INICIO EXIBIÇÕES DE PACOTES -->
+                    //     <div class="infoDescricao">
+                    //         <h3>Esta postagem contém o pacote</h3>
+                    //     </div>
+                    //     <div class="inicioInfoPostagem">
+                    //     <div class="quadroPacote">
                             
-                    ';
+                    // ';
 
-                        while ($row4 = $result4 -> fetch_assoc()) {
-                            $capa_img_servico = getimagesize($row4["url_imgcapa"]);
-                            // $info_imagem_servico = getimagesize($row4["url_img2"]. $row4["url_img3"] );
-                            $largura_capa_servico = 90;
-                            $altura_capa_servico = 90;
-                            $largura_servico = 80; 
-                            $altura_servico = 80;
-                        // aqui vem o carrosel da pa 
-                        echo'
+                        // while ($row4 = $result4 -> fetch_assoc()) {
+                        //     $capa_img_servico = getimagesize($row4["url_imgcapa"]);
+                        //     // $info_imagem_servico = getimagesize($row4["url_img2"]. $row4["url_img3"] );
+                        //     $largura_capa_servico = 90;
+                        //     $altura_capa_servico = 90;
+                        //     $largura_servico = 80; 
+                        //     $altura_servico = 80;
+                        // // aqui vem o carrosel da pa 
+                        // echo'
                         
-                        <div class="slides-container">
-                            <!-- slides -->
-                            <div class="slide" data-slide>
-                    <div class="tituloInfoPacote" >
-                        <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
-                        <h3>'.$row4['nm_servico'].'</h3>
-                    </div>
-                    <div class="fotoDestaquePacote">
-                        <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_servico.'%;height:'.$altura_capa_servico.'%;">
-                    </div>
+//                         <div class="slides-container">
+//                             <!-- slides -->
+//                             <div class="slide" data-slide>
+//                     <div class="tituloInfoPacote" >
+//                         <img src="../img/icones/icon-decoracao-detalhes-pacote.png" alt="">
+//                         <h3>'.$row4['nm_servico'].'</h3>
+//                     </div>
+//                     <div class="fotoDestaquePacote">
+//                         <img src="'.$row4["url_imgcapa"].'" style="width:'.$largura_capa_servico.'%;height:'.$altura_capa_servico.'%;">
+//                     </div>
             
-                    <div class="fotoLateralPacote">
-                        <img src="'.$row4["url_img2"].'" style="width:'.$largura_servico.'%;height:'.$altura_servico.'%;">
-                        <img src="'.$row4["url_img3"].'" style="width:'.$largura_servico.'%;height:'.$altura_servico.'%;">
-                    </div>
+//                     <div class="fotoLateralPacote">
+//                         <img src="'.$row4["url_img2"].'" style="width:'.$largura_servico.'%;height:'.$altura_servico.'%;">
+//                         <img src="'.$row4["url_img3"].'" style="width:'.$largura_servico.'%;height:'.$altura_servico.'%;">
+//                     </div>
             
-                    <div class="descricaoInfoPacote">
-                        <h3>'.$row4['ds_servico'].'</h3>
-                    </div>                    
-                </div>
+//                     <div class="descricaoInfoPacote">
+//                         <h3>'.$row4['ds_servico'].'</h3>
+//                     </div>                    
+//                 </div>
                
-                 </div>   
-                <button class="seta-esquerda" data-button="previous">&#8249;</button>
-                <button class="seta-direita" data-button="next">&#8250;</button>
+//                  </div>   
+//                 <button class="seta-esquerda" data-button="previous">&#8249;</button>
+//                 <button class="seta-direita" data-button="next">&#8250;</button>
 
-                <button class="botaoDetalhes">Mais detalhes</button>
+//                 <button class="botaoDetalhes">Mais detalhes</button>
             
-                    <div class="identificaPersonalizacao">
-                        <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
-                    </div>
-            </div>
+//                     <div class="identificaPersonalizacao">
+//                         <h3><img src="../img/icones/icon-personaliza-detalhes.png" alt=""> Personalizado pelo Cliente</h3>
+//                     </div>
+//             </div>
             
-        </div>';
-                        }}}}}
+//         </div>';
+//                         }}}}}
+// 
 ?>
                    
             
                    
                 
                 <!-- MAIS SOBRE A EMPRESA -->
-                <div class="maisSobre">
+                <!-- <div class="maisSobre">
                     <h3>Mais sobre a empresa</h3>
                     <div class="gridMaisSobre">
                         <div class="classificacaoEmpresa">
@@ -238,10 +254,12 @@ $dbname = "db_eventalize";
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
             
             
-            </body>
-               <script src="/js/menu.js"></script>
-        <script src="../sessaoUsuario/js/carousel.js"></script>
+</body>
+</html>
+
+    <script src="/js/menu.js"></script>
+    <script src="../sessaoUsuario/js/carousel.js"></script>

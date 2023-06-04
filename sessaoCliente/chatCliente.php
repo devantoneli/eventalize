@@ -3,20 +3,8 @@
 if(!isset($_SESSION)){
     session_start();
 }
-
-if(isset($_GET['cd_empresa'])){
-    $cd_empresa = $_GET['cd_empresa'];
-    $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_pedido p
-    join tb_empresa e on e.cd_empresa = p.cd_empresa
-    join tb_cliente c on c.cd_cliente = p.cd_cliente
-    WHERE c.cd_cliente = 01 group by e.cd_empresa"; 
-
-}
-
-
-
 include('../protect.php');
-
+$cd_cliente = $_SESSION["cd_cliente"];
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -28,12 +16,26 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-    $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_pedido p
-    join tb_empresa e on e.cd_empresa = p.cd_empresa
-    join tb_cliente c on c.cd_cliente = p.cd_cliente
-    WHERE c.cd_cliente = 01 group by e.cd_empresa"; 
+    if(isset($_GET['cd_empresa'])){
+        $cd_empresa = $_GET['cd_empresa'];
+        $sql2 = "INSERT INTO tb_chat(cd_empresa, cd_cliente) VALUES ($cd_empresa, $cd_cliente)";
+        $result2 = $conn->query($sql2);
+        $result_query2 = mysqli_query($conn,  $sql2) or die(' Erro na query:' .  $sql2 . ' ' . mysqli_error($conn));
+    }
+
+    $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_chat ch
+    join tb_cliente c on c.cd_cliente = ch.cd_cliente
+    join tb_empresa e on e.cd_empresa = ch.cd_empresa
+    WHERE c.cd_cliente = $cd_cliente group by e.cd_empresa"; 
     $result = $conn->query($sql);
     $result_query = mysqli_query($conn,  $sql) or die(' Erro na query:' .  $sql . ' ' . mysqli_error($conn));
+
+    // $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_pedido p
+    // join tb_empresa e on e.cd_empresa = p.cd_empresa
+    // join tb_cliente c on c.cd_cliente = p.cd_cliente
+    // WHERE c.cd_cliente = 01 group by e.cd_empresa"; 
+    // $result = $conn->query($sql);
+    // $result_query = mysqli_query($conn,  $sql) or die(' Erro na query:' .  $sql . ' ' . mysqli_error($conn));
 ?>
 
 <!DOCTYPE html>
