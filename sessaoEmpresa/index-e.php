@@ -217,7 +217,7 @@ include('../protect.php');
                             echo 
                             '
                             <a>'.$row['nm_servico'].'</a>
-                            <p>'.$row['nm_titular_pagamento'].'</p>';
+                            <p>'.$row['nm_cliente'].'</p>';
                             if($row['url_fotoperfil']==''){
                             ?>
                             <div class="img-cliPedAndamnt" style="background-image: url('https://as1.ftcdn.net/v2/jpg/05/60/26/08/1000_F_560260880_O1V3Qm2cNO5HWjN66mBh2NrlPHNHOUxW.jpg');"></div>
