@@ -49,15 +49,17 @@ $dbname = "db_eventalize";
     $rowS = $resultS -> fetch_assoc();
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA OU CLIENTE
     if ($rowS["cd_tipoautor"]==2){
-        $sql2 = "SELECT e.nm_fantasia FROM tb_postagem as p JOIN tb_empresa as e ON e.cd_empresa = p.cd_empresa WHERE cd_postagem = $cd_postagem";
+        $sql2 = "SELECT e.url_fotoperfil, e.nm_fantasia FROM tb_postagem as p JOIN tb_empresa as e ON e.cd_empresa = p.cd_empresa WHERE cd_postagem = $cd_postagem";
         $result2 = $conn->query($sql2);
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_fantasia'];
+        $img_autor = $row2['url_fotoperfil'];
     }else {
         $sql2 = "SELECT c.nm_cliente FROM tb_postagem as p JOIN tb_cliente as c ON c.cd_cliente = p.cd_cliente WHERE cd_postagem = $cd_postagem";
         $result2 = $conn->query($sql2);
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_cliente'];
+        $img_autor = 'vazio';
     }
     $sql3 = "SELECT * FROM vwcodigospostagem WHERE cd_postagem = $cd_postagem"; //(pra quando o da raiza estiver pronto)
     $result3 = $conn->query($sql3);
@@ -68,7 +70,7 @@ $dbname = "db_eventalize";
                 while ($row = $result -> fetch_assoc()){
 
                     if($row["cd_avaliacao"]==''){
-                        $avaliacao = "Não informado";
+                        $avaliacao = "-";
                     }else {
                         $avaliacao = $row["cd_avaliacao"];
                     }
@@ -141,15 +143,12 @@ $dbname = "db_eventalize";
             
             
                     <div class="iconEmpresa">
-                        <img src="../bancoImagens/empresas/fotoempresa.jpg" alt="">
+                        <img src="'.$img_autor.'" alt="">
                         <div class="nomeEmpresa">
                         <h2>'.$nm_autor.'</h2>
                         <div class="iconsCategorias">';
                         if($row["cd_tipoautor"] == 2){
-                            echo'
-                            <img style="width: 30px; margin: 2%;" src="../img/icones/icon-decoracao-detalhes.png" alt="">
-                            <img src="../img/icones/icon-auxiliar-detalhes.png" alt="">
-                            <img src="../img/icones/icon-espaco-detalhes.png" alt="">';
+                            echo'Empresa';
                         }else {
                             echo'<p style="font-size: 1.5em;">Cliente</p>';
                         }echo'
