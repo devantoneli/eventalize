@@ -122,6 +122,7 @@ foreach ($ceps2 as $cep) {
     <link rel="icon" href="../img/index/logo.png">
     <title>Pedidos - Eventalize</title>
 </head>
+
     <!--INICIO MENU EMPRESA -->
     <div class="bg-gradPrincipal menuEmpresa">
         <header class="alinhaElementos">
@@ -223,6 +224,16 @@ if(mysqli_num_rows($result_query3) > 0){
                 <h3>R$'. str_replace('.', ',', $row3['vl_pedido']) .'</h3>
                 <h3>15/02/2023 <br>'.date('H:i', strtotime($row3['hr_agendamento'])).'</h3>
                 <h3>'.date('d/m/Y', strtotime($row3['dt_pedido'])).'<br>13h24</h3>
+                
+                <form action="aceitarPedido.php" method="post">
+                <input type="hidden" name="cd_pedido" value="'.$row3['cd_pedido'].'">
+                <button type="submit">Aceitar pedido</button>
+                </form>
+
+                <form action="recusarPedido.php" method="post">
+                <input type="hidden" name="cd_pedido" value="'.$row3['cd_pedido'].'">
+                <button type="submit">Recusar pedido</button>
+                </form>
                 </div>';
     }
 }
@@ -241,7 +252,7 @@ JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
 JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
-WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo') 
+WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo' OR p.nm_status = 'Aguardando assinatura do contrato') 
 AND p.cd_empresa = $cd_empresa 
 ORDER BY p.dt_pedido DESC";
 
@@ -324,7 +335,7 @@ $query2 = "SELECT *
 FROM tb_pedido AS p
 JOIN tb_servicopedido as pp ON p.cd_pedido = pp.cd_pedido
 JOIN tb_servico as pac on pp.cd_servico = pac.cd_servico
-WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo') AND p.cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
+WHERE (nm_status = 'Finalizado' OR nm_status = 'Cancelamento em processo' OR nm_status = 'Pedido recusado') AND p.cd_empresa = $cd_empresa ORDER BY dt_pedido DESC";
 $result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
 
 // echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query2);
