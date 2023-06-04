@@ -156,15 +156,55 @@ if($conn->connect_error){
     <h1>Navegue por categorias</h1>
 </div>
 
-<div class="iconsCategorias">
-    <img src="../img/index/auxiliar.svg" alt="auxiliar" title="Auxiliar">
-    <img src="../img/index/atracao.svg" alt="atracao" title="Atração">
-    <img src="../img/index/comida.svg" alt="comida" title="Comida">
-    <img src="../img/index/decoracao.svg" alt="decoracao" title="Decoração">
-    <img src="../img/index/equipamento.svg" alt="equipamento" title="Equipamento">
-    <img src="../img/index/espaco.svg" alt="espaco" title="Espaço">
-    <img src="../img/index/fotografia.svg" alt="fotografia" title="Fotografia">
-    <img src="../img/index/musica.svg" alt="musica" title="Música">
+<div class="iconesBusca">
+    <form action="buscaServico-c.php" method="POST" id="SearchA">
+    <input type="hidden" value="Auxiliar" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/auxiliar.svg" alt="auxiliar" title="Auxiliar">
+    </button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Atração" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/atracao.svg" alt="atracao" title="Atração">
+</button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Comida" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/comida.svg" alt="comida" title="Comida">
+</button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Decoração" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/decoracao.svg" alt="decoracao" title="Decoração">
+</button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Equipamento" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/equipamento.svg" alt="equipamento" title="Equipamento">
+</button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Espaço" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/espaco.svg" alt="espaco" title="Espaço">
+</button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Fotografia" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/fotografia.svg" alt="fotografia" title="Fotografia">
+</button>
+    </form>
+    <form class="" action="buscaServico-c.php" method="POST">
+            <input type="hidden" value="Música" name="nm_tiposervico">
+    <button type="submit" class="noEstilo">
+        <img src="../img/index/musica.svg" alt="musica" title="Música">
+</button>
+    </form>
 </div>
 
 <div class="categorias">
@@ -236,7 +276,7 @@ if($conn->connect_error){
             $valorServico = $row3['vl_servico'];
             $imgCapa = $row3['url_imgcapa'];
             
-            echo '<div class="cardPacotes">
+            echo '<form class="cardPacotes" action="detalheServico.php" method="GET">
                     <div class="imagemPacote">
                         <img src="'.$row3['url_imgcapa'].'" alt="">
                         <div class="sombra"></div>
@@ -251,8 +291,9 @@ if($conn->connect_error){
                     <div class="precoPacote">
                             <h5>R$'.$valorServico.'</h5>
                         </div>
-                        <button class="botaoPacote">Ver mais</button>
-                </div>';
+                        <input type="hidden" value="'.$row3['cd_servico'].'" name="cd_servico">
+                        <button type="submit" class="botaoPacote">Ver mais</button>
+                </form>';
         }
     } else {
         echo "Nenhum serviço encontrado.";
