@@ -101,7 +101,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
         </svg></button>
           <h2 id="palavraPacote" class="corLilas">Serviços</h2>
       </div>
-      <form action="detalheServico.php">
+      <div action="detalheServico.php">
     <div class="grid-detalhesPacote">
         <div class="grid-detalhePacCol1">
           <!-- Slideshow container -->
@@ -190,11 +190,15 @@ $row2 = mysqli_fetch_assoc($result_query2);
                   </svg>
                   <h5 class="nomeTipoPag">Pix</h5>
             </div>
-              <button class="btn-Rosa" id="btn-compraDetalhe">Adicionar ao carrinho</button>
+            <form action="carrinho.php" method="POST">
+                    <input type="hidden" name="cd_servico" value="<?php echo$row['cd_servico']; ?>">
+                    <input type="hidden" name="cd_empresa" value="<?php echo$row['cd_empresa']; ?>">
+                    <button type="submit" class="btn-Rosa" id="btn-compraDetalhe">Adicionar ao carrinho</button>
+            </form>
         </div>
     </div>
     </div>
-    </form>
+</div>
     <script src="js/menu-c.js"></script>
     <script src="js/lupa.js"></script>
     <script src="js/carrinho.js"></script>
