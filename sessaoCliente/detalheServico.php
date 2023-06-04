@@ -22,17 +22,19 @@ if($conn->connect_error){
 }
 
 // SELECIONANDO AS INFORMAÇÕES DA TB_SERVICO QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT * FROM tb_servico  WHERE cd_servico = $cd_servico";
+$query = "SELECT * FROM tb_servico AS s
+JOIN tb_empresa AS e ON e.cd_empresa = s.cd_empresa
+WHERE cd_servico = '$cd_servico'";
 //estou usando $cd_servico para selecionar um serviço específico da empresa, ou seja, o serviço em que o cliente vai clicar
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 $row = mysqli_fetch_assoc($result_query);
 
-$query2 = "SELECT * FROM tb_empresa WHERE cd_empresa = '" . $row['cd_empresa'] . "'";
+// $query2 = "SELECT * FROM tb_empresa WHERE cd_empresa = '" . $row['cd_empresa'] . "'";
 //$row['cd_empresa'] -> está buscando, através da FK cd_empresa presente na tb_servico, as informações da empresa de acordo com o serviço selecionado (nesse caso, só estamos usando o nome da empresa 'nm_fantasia')
 
-$result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
-$row2 = mysqli_fetch_assoc($result_query2);
+// $result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
+// $row2 = mysqli_fetch_assoc($result_query2);
 ?>
 
 <!DOCTYPE html>
@@ -147,22 +149,32 @@ $row2 = mysqli_fetch_assoc($result_query2);
             </div>
 
               <div class="grid-alinhaPerfil">
-                <img class="img-fotoPerfil" src="<?php echo $row2['url_fotoperfil'];?>" alt="">
+                <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
                 
-                <h6><?php echo($row2['nm_fantasia'])?></h6>
-
+                <h6><?php echo($row['nm_fantasia'])?></h6>
+                <!-- <div class="alinha-text-perfil">
+                      <img src="imagens/fotografia.svg" alt="">
+                    <h6>Fotógrafo</h6>
+                  </div> -->
                </div>
 
                   <div class="descPacote">
                     <h3><?php echo($row['ds_servico']) ?></h3>
                   </div>
-
+                  <!-- <div class="infoPacote">
+                      <ul class="listaStyle">
+                        <li id="infoDetalhePacote" class="corRosa">Informações:</li>
+                        <li>50 fotos;</li>
+                        <li>Tamanho: 21x21;</li>
+                        <li>Capa dura.</li>
+                      </ul>
+                  </div> -->
     
         </div>
         <div class="grid-detalhePacCol3">
             <div class="align-pagamento">
               <div class="grid-infoPag">
-                <h2 id="precoPacote" class="corLilas"><?php echo($row["vl_servico"]) ?></h2>
+                <h2 id="precoPacote" class="corLilas">R$<?php echo(str_replace('.', ',', $row["vl_servico"])) ?></h2>
               </div>
                 <div class="parcelas">
                 <h5>em até 3x sem juros</h5>

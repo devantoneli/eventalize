@@ -13,7 +13,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db_name = "db_eventalize";
-// $dataAtual = date("d-m-Y");
 $dataAtual = date("Y-m-d");
 
 $conn = new mysqli($servername, $username, $password, $db_name);

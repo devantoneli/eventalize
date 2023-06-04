@@ -175,8 +175,6 @@ button.menuIcon{
     height: 550px; */
     width: 50vw;
     height: 30.7vw;
-
-
 }
 
 .fotoDestaque img{
@@ -202,8 +200,6 @@ button.menuIcon{
     height: 100%; */
     object-fit: cover;
     margin-bottom: 5%;
-    
-      
 }
 
 .curtidasPostagem{
@@ -247,8 +243,7 @@ button.menuIcon{
 
 .dataPostagem{
     margin-top: 2%;
-    grid-area: 2/1/2/1;
-    
+    grid-area: 2/1/2/1; 
 }
 
 .dataPostagem h3{
@@ -289,7 +284,6 @@ button.menuIcon{
 .iconEmpresa img{
     width: 100%;
     grid-area: 1/1/1/1;
-
 }
 
 .iconsCategorias{
@@ -348,10 +342,8 @@ button.menuIcon{
     grid-template-rows: repeat(5,auto);
     position: absolute;
     transition: transform 300ms ease-out;
-    
 }
   
-
 .fotoDestaquePacote{
     display: flex;
     justify-content: center;
@@ -359,7 +351,6 @@ button.menuIcon{
     width: 40vw;
     height: 30vw;
 }
-
 
 .seta-direita {
     position: absolute;
@@ -405,9 +396,8 @@ button.menuIcon{
 
 .seta-esquerda, .seta-direita {
     font-size: 4.5em;
-  }
+}
   
-
 .fotoLateralPacote{
     display: flex;
     flex-direction: column;
@@ -421,7 +411,6 @@ button.menuIcon{
     border-radius: 15px;
     /* width: auto; */
     object-fit: cover;
-
 }
 
 .fotoLateralPacote img{
@@ -429,7 +418,6 @@ button.menuIcon{
     /* width: auto; */
     object-fit: cover;
     margin-bottom: 5%;
-
 }
 
 .tituloInfoPacote{
@@ -547,6 +535,26 @@ button.menuIcon{
 .classificacaoEmpresa img{
     width: 20%;
     margin-bottom: 2%;
+}
+
+.btnVerPerfil{
+    width: 150px;
+    height: 40px;
+    border-radius: 78px;
+    background-color: #E34C6D;
+    border: none;
+    color: white;
+    font-size: 18px;
+}
+
+.btnVerServico{
+    width: 150px;
+    height: 40px;
+    border-radius: 78px;
+    background-color: #FF9061;
+    border: none;
+    color: white;
+    font-size: 18px;
 }
 
 
