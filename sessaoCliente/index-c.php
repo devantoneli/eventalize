@@ -236,7 +236,7 @@ if($conn->connect_error){
             $valorServico = $row3['vl_servico'];
             $imgCapa = $row3['url_imgcapa'];
             
-            echo '<div class="cardPacotes">
+            echo '<form class="cardPacotes" action="detalheServico.php" method="GET">
                     <div class="imagemPacote">
                         <img src="'.$row3['url_imgcapa'].'" alt="">
                         <div class="sombra"></div>
@@ -251,8 +251,9 @@ if($conn->connect_error){
                     <div class="precoPacote">
                             <h5>R$'.$valorServico.'</h5>
                         </div>
-                        <button class="botaoPacote">Ver mais</button>
-                </div>';
+                        <input type="hidden" value="'.$row3['cd_servico'].'" name="cd_servico">
+                        <button type="submit" class="botaoPacote">Ver mais</button>
+                </form>';
         }
     } else {
         echo "Nenhum serviço encontrado.";
