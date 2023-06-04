@@ -22,7 +22,7 @@ if($conn->connect_error){
 }
 
 // SELECIONANDO AS INFORMAÇÕES DA TB_SERVICO QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT * FROM tb_servico  WHERE cd_servico = '$cd_servico'";
+$query = "SELECT * FROM tb_servico  WHERE cd_servico = $cd_servico";
 //estou usando $cd_servico para selecionar um serviço específico da empresa, ou seja, o serviço em que o cliente vai clicar
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));

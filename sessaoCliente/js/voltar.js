@@ -1,3 +1,3 @@
-function voltarbuscaServico(){
-    window.location.href = 'buscaServico-c.php'
-  }
+// function voltarbuscaServico(){
+//     window.location.href = 'buscaServico-c.php'
+//   }
