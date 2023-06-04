@@ -118,7 +118,7 @@ include('../protect.php');
                 </div>
             </div>
 
-            <div class="inicioPostagens">
+            <!-- <div class="inicioPostagens">
               <div class="tituloServico">
                 <h2>Serviços Recentes</h2>
               </div>
@@ -212,7 +212,7 @@ include('../protect.php');
                       <h3>R$5,00 por foto</h3>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- <div class="carrossel">
                     <div class="seta-direita">&#8250;</div>
                     <div class="seta-esquerda">&#8249;</div>
@@ -295,7 +295,6 @@ include('../protect.php');
 
 // ESSA PÁGINA IRÁ CONTER OS BOTÕES PARA QUE A EMPRESA POSSA, CONSULTAR, EDITAR E EXCLUIR SEU SERVIÇO 
           
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -312,8 +311,6 @@ $conn = new mysqli($servername, $username, $password, $db_name);
 $query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico where cd_empresa = $cd_empresa";
             
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
-            
-// a função mysqli_num_rows serve para verificar se a consulta retornou algum resultado
 
 
 if (mysqli_num_rows($result_query) > 0) {
@@ -340,7 +337,7 @@ if (mysqli_num_rows($result_query) > 0) {
         echo '
         <div class="cardPacotes" style="background-color: '.$corCard.';">
             <div class="conteudoPacote">
-                <form action="../sessaoCliente/detalheServico.php">
+                <form action="detalhesServico-e.php">
                     <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
                     <button type="submit" style="background: transparent; border: none; cursor: pointer;">
                         <img src="'.$row["url_imgcapa"].'" alt="">

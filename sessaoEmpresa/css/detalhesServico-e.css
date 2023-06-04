@@ -1,0 +1,1560 @@
+/*DETALHES DO PEDIDO (LADO DO CLIENTE)*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan';
+} 
+
+body{
+    font-family: 'League Spartan', sans-serif;
+    overflow-x: hidden;
+    
+}
+
+/*CARROSSEL*/
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 92%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: #E34C6D;
+}
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+.bordaPrincipal{
+    margin: 5%;
+    border: 10px solid;
+     border-image: linear-gradient(to right,#FFA856, #FF3E83 ,#3ED1FF) 1;
+}
+
+.grid-setaPacotes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 3%;
+}
+
+#svg-setaEsquerda{
+    width: 10%;
+    margin: 2% 0 0 3%;
+}
+
+/*CORES USADAS FREQUENTEMENTE*/
+.corRosa{
+    color: #E34C6D;
+}
+
+.corLilas{
+    color: #C46CAA;
+}
+
+#palavraPacote{
+    margin-bottom: 3%;
+    text-align: center;
+    font-size: 30px;
+}
+
+/*CLASS que está dividindo a pág em GRID (colunas e linhas) */
+.grid-detalhesPacote{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px 200px;
+    justify-content: center;
+    row-gap: 0;
+    overflow-x: hidden;
+}
+
+.grid-detalhePacCol1{
+    margin-left: 30px;
+    text-align: center;
+}
+
+.img-fotoPacote{
+    border-radius: 40px;
+    object-fit: cover;
+    width: 34em !important;
+    height: 25em;
+}
+
+#marginTop20{/*dando espaçamento dos < > da foto do pacote*/
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 20px 20px 20px 20px 20px;
+    justify-items: center;
+    justify-content: center;
+}
+
+.svg-setasFoto{
+    width: 30px;
+}
+
+.btn-Rosa{/*propriedades do botão rosa*/
+    width: 250px;
+    height: 40px;
+    border-radius: 78px;
+    background-color: #E34C6D;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+#btn-personalizaPacote{
+    margin-top: 30px;
+}
+
+.grid-detalhePacCol2{
+    margin-left: 35px;
+}
+
+.grid-alinhaAvalia{
+    /* display: grid;
+    grid-template-columns: 30px 30px;
+    gap: 2px; */
+    display: flex;
+    align-items: center;
+}
+
+#svg-Estrela{
+    width: 22px;
+    margin-right: 10px;
+}
+
+.grid-alinhaPerfil{
+    display: grid;
+    grid-template-columns: 60px 80px;
+    grid-template-rows: 15px;
+    margin: 10% 0 10% 0;
+    align-items: center;
+    row-gap: 5px !important;
+    font-size: 1.3em;
+}
+
+.img-fotoPerfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    /* display: grid;
+    align-items: center; */
+    display: flex;
+    align-items: center;
+}
+
+.descPacote h3{/*propriedades da descrição do pacote*/
+    margin-top: 8px;
+    font-size: 30px;
+}
+
+.infoPacote{/*propriedades das informações dos pacotes*/
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 125.5%;
+}
+
+.listaStyle{/*tira as bolinhas da lista (li)*/
+    list-style: none;
+    padding-left: 0%;
+}
+
+#infoDetalhePacote{/* deixando a palavra 'INFORMAÇÕES' bold*/
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.align-pagamento{
+    text-align: center;
+    margin-left: 35px;
+}
+
+#precoPacote{/*deixando a letra do preço do pacote bold e com tamanho de 45px*/
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.align-formasPag{
+    display: grid;
+    grid-template-columns: 35px 170px;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#btn-compraDetalhe{
+    margin-top: 80px;
+    margin-left: 100px;
+    background-color: #E34C6D;
+}
+
+#btn-compraDetalhe:hover{
+    background-color: #f06a87;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+/*deixar o icone e o nome do serviço lado a lado e embaixo do nome da empresa*/
+/* .testando2{
+  display: grid;
+  grid-template-columns: 30px;
+  grid-template-rows: 30px 30px;
+  grid-column: 2;
+}*/
+
+.alinha-text-perfil img{
+width: 15px;
+}
+
+/*.testando3{
+    display: grid;
+    grid-template-columns: 30px 30px;
+    grid-column: 2;
+    grid-row: 2;
+} */
+
+.alinha-text-perfil{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    grid-area: 2/2/2/3;
+    font-size: 1em;
+}
+
+/*COMEÇANDO A RESPONSIVIDADE ---------------------------------------------------*/
+
+@media (min-width:380px) and (max-width:580px) {
+
+    .headerPesquisa {
+        margin-left: 20px;
+        display: flex;
+      }
+      
+    .headerPesquisa input {
+        /* width: 120px; */
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        background-color: #f2f2f2;
+        margin-right: 10px;
+    }
+
+    .menuIcon2{
+        cursor: pointer;
+        /* display: none; */
+        display: none;
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+
+    .bordaPrincipal{
+        margin: 5%;
+        border: none;
+        border-image: none;
+    }
+
+    #svg-setaEsquerda{
+        width: 22%;
+        margin: 2% 0 0 3%;
+    }
+
+    #palavraPacote{
+        margin-bottom: 2%;
+        margin-top: 4%;
+        font-size: 40px;
+    }
+
+    .grid-detalhesPacote{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.8fr 1fr 1fr;
+        overflow-x: hidden;
+    }
+
+    .grid-detalhePacCol1{
+        margin-left: 0;
+        text-align: center;
+    }
+   
+    .img-fotoPacote{
+        width: 80%;
+        border-radius: 20px;
+        justify-content: center;
+    }
+    .svg-setasFoto{
+        width: 20px;
+    }
+
+    .btn-Rosa{
+        width: 230px;
+        height: 38px;
+        border-radius: 78px;
+        background-color: #E34C6D;
+        border: none;
+        color: white;
+        font-size: 20px;
+    }
+
+    .grid-detalhePacCol2{
+        text-align: center;
+    }
+
+    #nomePacote{
+        text-align: center;
+        font-size: 25px;
+        width: 90%;
+        margin-top: 8%;
+    }
+
+    .grid-alinhaAvalia{
+        display: grid;
+        grid-template-columns: 20px 30px;
+        grid-template-rows: auto;
+        gap: 10px;
+        justify-content:right;
+        margin-right: 8%;
+        
+    }
+
+    #svg-Estrela{
+        width: 25px;
+        /* grid-area: 5/1/7/3; */
+    }
+
+    #txtAvalia{
+        font-size: 18px;
+        /* width: 80%; */
+        /* grid-area: 3/2/3/3; */
+    }
+    .grid-alinhaPerfil{
+        display: grid;
+        grid-template-columns: 60px 100px;
+        grid-template-rows: 23px;
+        margin-top: 10px;
+        justify-content:left;
+    } 
+
+    .descPacote h3{
+        margin-top: 6%;
+        font-size: 20px;
+        width: 90%;
+        text-align: left;
+    }
+
+    .infoPacote{
+        margin-top: 5%;
+        font-size: 18px;
+        width: 90%;
+        font-weight: bold;
+        line-height: 125.5%;
+        text-align: left;
+    }
+
+    .grid-detalhePacCol3{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .align-pagamento{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .grid-infoPag{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;/*piettra - adicionar nos outros medias*/
+        justify-self: center;
+        margin-bottom: 3%;
+        gap: 10px;
+    }
+
+    .grid-infoPag h6{
+        text-align: left;
+    }
+  
+    #precoPacote{
+        font-size: 30px;
+        width: 100%;
+        font-weight: bolder;
+        grid-area: 1/2/1/3;/*piettra - adicionar nos outros medias*/
+    }
+
+    .parcelas{ /*piettra - adicionar nos outros medias*/
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    margin-bottom: 2%;
+    }
+
+    .align-formasPag{
+        display: grid;
+        grid-template-columns: 75px 75px 75px;
+        margin-top: 8%;
+        justify-items: center;
+        align-self: center;
+    }
+
+    .svg-pagamento{
+        width: 30px;
+    }
+
+    .svg-pagamentoCol1{
+        grid-column: 1;
+    }
+
+    .svg-pagamentoCol2{
+        grid-column: 2;
+        grid-row: 1;
+        width: 30px;
+    }
+
+    .svg-pagamentoCol3{
+        grid-column: 3;
+        grid-row: 1;
+    }
+    .nomeTipoPag{
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #btn-compraDetalhe{
+        margin-top: 20px;
+        margin-left: 0;
+    }
+}
+
+ @media (min-width:580px) and (max-width: 830px){
+    .headerPesquisa {
+        margin-left: 20px;
+        display: flex;
+      }
+      
+    .headerPesquisa input {
+        /* width: 230px; */
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        background-color: #f2f2f2;
+        margin-right: 10px;
+    }
+
+    .menuIcon2{
+        cursor: pointer;
+        /* display: none; */
+        display: none;
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+
+    .menuIcon{
+        cursor: pointer;
+        /* display: none; */
+        display: inline-block;
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+
+    .logo img{
+        width: 50px;
+    }
+
+    .iconCliente{
+        display: flex;
+        /* padding-right: 2%; */
+    }
+
+    /* .headerInicioCliente a{
+        color: white;
+        text-decoration: none;
+        font-size: 1.5em;
+        padding: 5px 10px;
+        text-decoration: none;
+        height: 0;
+        width: 30vw;
+    }
+
+    .headerClientePerfil{
+        display: flex;
+        justify-content: none;
+        margin-left: none;
+        align-items: none;
+        margin-right: none;
+    }
+
+    .headerInicioCliente {
+        position: absolute;
+        top: 10%;
+        right: -100%;
+        width: 20%;
+        height: 80%;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease; 
+    }
+
+    .headerInicioCliente {
+        display: block;
+        margin: 20px 0;
+        padding: 15px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerInicioCliente a{
+        display: block;
+        margin: 20px 0;
+        padding: 0px 10px;
+        transition: all .50s ease;
+    }
+
+    .headerInicioCliente a{
+        color: black;
+        padding: 8%;
+    }
+
+    .headerInicioCliente a:hover{
+        color:#E34C6D;
+        transform: translateY(5px);
+        background-color: whitesmoke;
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    } */
+
+    #svg-setaEsquerda{
+        width: 40px;
+        margin: 2% 0 0 3%;
+    }
+
+    #palavraPacote{
+        margin-bottom: 3%;
+        margin-top: 5%;
+        font-size: 40px;
+    }
+
+    .grid-detalhesPacote{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.8fr 1fr 1fr;
+        align-items: center;
+        overflow-x: hidden;
+    }
+    
+    .grid-detalhePacCol1{
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .img-fotoPacote{
+        width: 90%;
+        border-radius: 20px;
+        justify-content: center;
+    }
+
+    .svg-setasFoto{
+        width: 40px;
+    }
+
+    .btn-Rosa{/*talvez diminuir */
+        width: 350px;
+        height: 60px;
+        border-radius: 78px;
+        background-color: #E34C6D;
+        border: none;
+        color: white;
+        font-size: 30px;
+    }
+
+    .grid-detalhePacCol2{
+        text-align: center;
+        grid-area: 2/1/2/2;
+    }
+
+    #nomePacote{
+        text-align: center;
+        font-size: 40px;
+        width: 90%;
+        margin-top: 8%;
+        margin-right: 0;
+    }
+
+    .grid-alinhaAvalia{
+        display: grid;
+        grid-template-columns: 60px 30px;
+        justify-content:right;
+        margin-right: 8%;
+    }
+
+    #svg-Estrela{
+        width: 40px;
+    }
+
+    #txtAvalia{
+        font-size: 30px;
+        width: 80%;
+    }
+
+    .descPacote h3{
+        margin-top: 6%;
+        font-size: 35px;
+        width: 90%;
+        text-align: left;
+    }
+    
+    .infoPacote{
+        margin-top: 5%;
+        font-size: 25px;
+        width: 90%;
+        font-weight: bold;
+        line-height: 125.5%;
+        text-align: left;
+    }
+
+    #infoDetalhePacote{
+        font-weight: bold;
+        font-size: 25px;
+        width: 90%;
+    }
+
+    .grid-detalhePacCol3{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .grid-detalhePacCol3{
+        text-align: center;
+        justify-items: center;
+        grid-area: 3/1/3/3;
+    }
+
+    .align-pagamento{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .grid-infoPag{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-self: center;
+        margin-bottom: 3%;
+    }
+
+    .grid-infoPag h6{
+        font-size: 23px;
+        text-align: center;
+    }
+
+    #precoPacote{
+        font-size: 45px;
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .formasdePag h4{
+        font-size: 30px;
+    }
+
+    .formasdePag img{
+        width: 70%;
+    }
+
+    .align-formasPag{
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        margin-top: 8%;
+        justify-items: center;
+        align-self: center;
+    }
+
+    .svg-pagamento{
+        width: 50px;
+    }
+
+    .svg-pagamentoCol1{
+        grid-column: 1;
+    }
+    .svg-pagamentoCol2{
+        grid-column: 2;
+        grid-row: 1;
+        width: 50px;
+    }
+    .svg-pagamentoCol3{
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .nomeTipoPag{
+        font-size: 23px;
+        text-align: center;
+    }
+    #btn-compraDetalhe{
+        margin-top: 20px;
+        margin-left: 0;
+    }
+  
+    #btn-compraDetalhe{
+        margin-top: 20px;
+        margin-left: 0;
+        justify-items: center;
+    }
+} 
+
+@media (min-width: 830px) and (max-width: 900px){
+
+
+    #svg-setaEsquerda{
+        width: 40px;
+        margin: 2% 0 0 3%;
+    }
+
+    #palavraPacote{
+        margin-bottom: 3%;
+        margin-top: 4%;
+        font-size: 50px;
+    }
+
+    .grid-detalhesPacote{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.8fr 1fr;
+        align-items: center;
+        overflow-x: hidden;
+    }
+
+    .grid-detalhePacCol1{
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .img-fotoPacote{
+        width: 90%;
+        border-radius: 20px;
+        justify-content: center;
+    }
+
+    .svg-setasFoto{
+        width: 40px;
+    }
+
+    .btn-Rosa{
+        width: 420px;
+        height: 75px;
+        border-radius: 78px;
+        background-color: #E34C6D;
+        border: none;
+        color: white;
+        font-size: 38px;
+    }
+
+    #nomePacote{
+        text-align: center;
+        font-size: 50px;
+        width: 90%;
+    }
+
+    .grid-detalhePacCol2{
+        text-align: center;
+    }
+
+    .grid-alinhaAvalia{
+        display: grid;
+        grid-template-columns: 60px 30px;
+        justify-content:right;
+        align-items: center;
+        margin-right: 8%;
+        margin-top: 10%;
+    }
+
+    #svg-Estrela{
+        width: 45px;
+    }
+
+    #txtAvalia{
+        font-size: 40px;
+        width: 80%;
+    }
+
+    .descPacote h3{
+        margin-top: 6%;
+        font-size: 45px;
+        width: 90%;
+        text-align: left;
+    }
+    
+    .infoPacote{
+        margin-top: 5%;
+        font-size: 32px;
+        width: 90%;
+        font-weight: bold;
+        line-height: 125.5%;
+        text-align: left;
+    }
+
+    #infoDetalhePacote{
+        font-weight: bold;
+        font-size: 32px;
+        width: 90%;
+    }
+
+    .grid-detalhePacCol3{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .align-pagamento{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .grid-infoPag{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-self: center;
+        margin-bottom: 3%;
+        margin-top: 5%;
+    }
+
+    .grid-infoPag h6{
+        font-size: 30px;
+    }
+
+    #precoPacote{
+        font-size: 60px;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .formasdePag h4{
+        font-size: 40px;
+    }
+
+    .align-formasPag{
+        display: grid;
+        grid-template-columns: 150px 150px 150px;
+        margin-top: 8%;
+        justify-items: center;
+        align-self: center;
+    }
+
+    .svg-pagamento{
+        width: 60px;
+    }
+
+    .svg-pagamentoCol1{
+        grid-column: 1;
+    }
+
+    .svg-pagamentoCol2{
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .svg-pagamentoCol2{
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .nomeTipoPag{
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #btn-compraDetalhe{
+        margin: 8% 0 5% 0;
+    }
+}
+
+@media(min-width:900px) and (max-width:1200px){
+    
+    .headerMenuCliente a{
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+        padding: 5px 10px;
+        text-decoration: none;
+        height: 0;
+        width: 10vw;
+        font-weight: 300;
+    }
+    
+    .headerMenuCliente{
+        display: flex;
+        justify-content: none;
+        margin-left: none;
+        align-items: none;
+        margin-right: none;
+    }
+    
+    .headerMenuCliente {
+        /* position: absolute; */
+        position: fixed;
+        top: 10%;
+        right: -100%;
+        width: 200px;
+        height: 80%;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+    }
+    
+    .headerMenuCliente {
+        display: block;
+        margin: 20px 0;
+        padding: 15px 25px;
+        transition: all .50s ease;
+    }
+    
+    .headerMenuCliente a{
+        display: block;
+        margin: 20px 0;
+        padding: 0px 10px;
+        transition: all .50s ease;
+    }
+    
+    .headerMenuCliente a{
+        color: black;
+        padding: 8%;
+    }
+    
+    .headerMenuCliente a:hover{
+        color:#E34C6D;
+        transform: translateY(5px);
+        /* background-color: whitesmoke; */
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+    
+    
+    .logo img{
+        width: 4.3em;
+        height: 4.3em;
+    }
+    
+    .logo{
+        right: 0;
+        margin-left: 3%;
+        margin-top: 7px;
+        margin-bottom: 5px;
+    }
+    
+    .headerInicioCliente{
+        display: none;
+    }
+    
+    /* .headerInicioCliente a{
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        padding: 5px 20px;
+        text-decoration: none;
+        height: 0;
+        width: 15vw;
+    } */
+    
+    .headerClientePerfil{
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+        align-items: center;
+        margin-right: 3%;
+        /* background-color: rgb(255, 255, 255); */
+    }
+    
+    .iconCliente{
+        display: flex;
+        padding-right: 2%;
+    }
+    
+    .iconCliente img{
+        width: 60px;
+        padding: 20%;
+    
+    }
+    
+    .menuIcon{
+        cursor: pointer;
+        display: none;
+        /* display: inline-block; */
+        fill: #ffffff;
+    }
+    
+    .menuIcon2{
+        cursor: pointer;
+        display: none;
+        /* display: inline-block; */
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+
+    .menuIcon3{
+        cursor: pointer;
+        /* display: none; */
+        display: inline-block;
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+    
+    
+    button.menuIcon2 {
+        background-color: transparent;
+        border: none;
+    }
+    
+    
+    button.menuIcon {
+        background-color: transparent;
+        border: none;
+    }
+/* 
+    .headerInicioCliente a{
+        font-size: 1.3em;
+        color: white;
+        padding: none;
+    
+    }
+
+    .headerPesquisa {
+        margin-left: 50px;
+        display: flex;
+    }
+      
+    .headerPesquisa input {
+        width: 30vw;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        background-color: #f2f2f2;
+        margin-right: 10px;
+    } */
+
+    #palavraPacote{
+        margin-left: 5%;
+        margin-bottom: 3%;
+        margin-top: 3%;
+        font-size: 30px;
+    }
+
+    .grid-detalhesPacote{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        overflow-x: hidden;
+    }
+
+    .grid-detalhePacCol1{
+        margin-left: 5%;
+        text-align: center;
+    }
+
+    .img-fotoPacote{
+        width: 90%;
+        border-radius: 20px;
+        justify-content: center;
+    }
+
+    .svg-setasFoto{
+        width: 30px;
+    }
+
+    .btn-Rosa{
+        width: 230px;
+        height: 35px;
+        border-radius: 78px;
+        background-color: #E34C6D;
+        border: none;
+        color: white;
+        font-size: 18px;
+    }
+
+    #btn-personalizaPacote{
+        margin-top: 20%;
+    }
+
+    .grid-detalhePacCol2{
+        margin-left: 10%;
+    }
+
+    #svg-Estrela{
+        width: 25px;
+    }
+    
+    #txtAvalia{
+        font-size: 20px;
+        width: 80%;
+    }
+
+    .descPacote h3{
+        margin-top: 6%;
+        font-size: 20px;
+        width: 90%;
+        text-align: left;
+    }
+    
+    .infoPacote{
+        margin-top: 5%;
+        font-size: 16px;
+        width: 90%;
+        font-weight: bold;
+        line-height: 125.5%;
+        text-align: left;
+    }
+
+    #infoDetalhePacote{
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .align-pagamento{
+        text-align: center;
+        margin-left: 5%;
+    }
+
+    #precoPacote{
+        font-size: 35px;
+        font-weight: bold;
+    }
+    
+    .formasdePag img{
+        width: 70%;
+    }
+
+    .formasdePag h4{
+        font-size: 23px;
+    }
+ 
+    .align-formasPag{
+        display: grid;
+        grid-template-columns: 35px 50%;
+        gap: 0;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .svg-pagamento{
+        width: 25px;
+    }
+
+    .nomeTipoPagamento{
+        font-size: 16px;
+        text-align: left;
+    }
+
+    #btn-compraDetalhe{
+        margin-top: 13%;
+        margin-left: 0;
+        margin-bottom: 10%;
+    }    
+}
+
+@media(min-width:1200px){
+
+    .grid-setaPacotes{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr, 1fr, 1fr;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-left: 3%;
+    }
+
+       #palavraPacote{
+        margin-bottom: 1%;
+        margin-top: 1%;
+        text-align: center;
+        font-size: 50px;
+    }
+
+    .img-fotoPacote{
+        width: 100%;
+        border-radius: 40px;
+    }
+
+    .btn-Rosa{
+        width: 300px;
+        height: 50px;
+        border-radius: 78px;
+        background-color: #E34C6D;
+        border: none;
+        color: white;
+        font-size: 25px;
+    }
+
+    #btn-personalizaPacote{
+        margin-top: 12%;
+        margin-bottom: 2%;
+    }
+
+    #nomePacote{
+        font-size: 30px;
+    }
+
+    #txtAvalia{
+        font-size: 20px;
+    }
+
+    .grid-detalhePacCol3{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .nomeTipoPag{
+        font-size: 16px;
+        text-align: left;
+    }
+
+    #btn-compraDetalhe{
+        margin-top: 12%;
+        margin-bottom: 2%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1200px){
+    header{
+        padding: 3px 2%;
+        transition: .2s;
+    }
+    .headerInicioCliente a, .headerClientePerfil a{
+        padding: 5px 0;
+        margin: 0px 10px;
+    }
+}
+
+/*RESPONSIVIDADE HEADER medida celular*/
+
+@media (min-width:300px) and (max-width: 767px){
+    .headerMenuCliente a{
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+        padding: 5px 10px;
+        text-decoration: none;
+        height: 0;
+        width: 10vw;
+        font-weight: 300;
+    }
+    
+    .headerMenuCliente{
+        display: flex;
+        justify-content: none;
+        margin-left: none;
+        align-items: none;
+        margin-right: none;
+    }
+    
+    .headerMenuCliente {
+        /* position: absolute; */
+        position: fixed;
+        top: 10%;
+        right: -100%;
+        width: 200px;
+        height: 80%;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+    }
+    
+    .headerMenuCliente {
+        display: block;
+        margin: 20px 0;
+        padding: 15px 25px;
+        transition: all .50s ease;
+    }
+    
+    .headerMenuCliente a{
+        display: block;
+        margin: 20px 0;
+        padding: 0px 10px;
+        transition: all .50s ease;
+    }
+    
+    .headerMenuCliente a{
+        color: black;
+        padding: 8%;
+    }
+    
+    .headerMenuCliente a:hover{
+        color:#E34C6D;
+        transform: translateY(5px);
+        /* background-color: whitesmoke; */
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+    
+    
+    .logo img{
+        width: 4.3em;
+        height: 4.3em;
+    }
+    
+    .logo{
+        right: 0;
+        margin-left: 3%;
+        margin-top: 7px;
+        margin-bottom: 5px;
+    }
+    
+    .headerInicioCliente{
+        display: none;
+    }
+    
+    /* .headerInicioCliente a{
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        padding: 5px 20px;
+        text-decoration: none;
+        height: 0;
+        width: 15vw;
+    } */
+    
+    .headerClientePerfil{
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+        align-items: center;
+        margin-right: 3%;
+        /* background-color: rgb(255, 255, 255); */
+    }
+    
+    .iconCliente{
+        display: flex;
+        padding-right: 2%;
+    }
+    
+    .iconCliente img{
+        width: 60px;
+        padding: 20%;
+    
+    }
+    
+    .menuIcon{
+        cursor: pointer;
+        display: none;
+        /* display: inline-block; */
+        fill: #ffffff;
+    }
+    
+    .menuIcon2{
+        cursor: pointer;
+        display: none;
+        /* display: inline-block; */
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+
+    .menuIcon3{
+        cursor: pointer;
+        /* display: none; */
+        display: inline-block;
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+
+    .iconCliente{
+        display: flex;
+        padding-right: none;
+    }
+
+    .menuIcon{
+        cursor: pointer;
+        display: none;
+        /* display: inline-block; */
+        fill: #ffffff;
+        margin-right: 10%;
+    }
+    .logo img{
+        width: 50px;
+    }
+
+    .iconCliente{
+        display: flex;
+        /* padding-right: 2%; */
+    }
+
+    
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+
+    .headerPesquisa {
+        margin-left: 50px;
+        display: flex;
+      }
+      
+    .headerPesquisa input {
+        /* width: 300px; */
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        font-size: 16px;
+        background-color: #f2f2f2;
+        margin-right: 10px;
+    }
+
+    .logo img{
+        width: 50px;
+    }
+
+    .iconCliente{
+        display: flex;
+        /* padding-right: 2%; */
+    }
+
+    .headerInicioCliente a{
+        color: white;
+        text-decoration: none;
+        font-size: 22px;
+        padding: 5px 10px;
+        text-decoration: none;
+        height: 0;
+        width: 15vw;
+    }
+
+    .headerClientePerfil{
+        display: flex;
+        justify-content: none;
+        margin-left: none;
+        align-items: none;
+        margin-right: none;
+    }
+
+    .headerInicioCliente {
+        position: absolute;
+        top: 10%;
+        right: -100%;
+        width: 200px;
+        height: 80%;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+        
+    }
+    .headerInicioCliente {
+        display: block;
+        margin: 20px 0;
+        padding: 15px 25px;
+        transition: all .50s ease;
+    }
+
+    .headerInicioCliente a{
+        display: block;
+        margin: 20px 0;
+        padding: 0px 10px;
+        transition: all .50s ease;
+    }
+
+    .headerInicioCliente a{
+        color: black;
+        padding: 8%;
+    }
+
+    .headerInicioCliente a:hover{
+        color:#E34C6D;
+        transform: translateY(5px);
+        /* background-color: whitesmoke; */
+    }
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+}

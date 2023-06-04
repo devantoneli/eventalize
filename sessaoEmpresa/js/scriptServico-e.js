@@ -93,6 +93,6 @@ function mostrarAnimacao() {
     // }, 3000);
 
   }
-  console.log("youg");
+  // console.log("youg");
   
   
