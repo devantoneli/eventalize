@@ -346,7 +346,7 @@ if (mysqli_num_rows($result_query) > 0) {
                         <img src="'.$row["url_imgcapa"].'" alt="">
                         <h3>'.$row["nm_servico"].'</h3>
                         <h4>'.$row["ds_servico"].'</h4>
-                        <h2>R$'.$row["vl_servico"].'</h2>
+                        <h2>R$'. str_replace('.', ',', $row['vl_servico']) .'</h2>
                     </button>
                     <div class="botoesPacote">
                     </form>
