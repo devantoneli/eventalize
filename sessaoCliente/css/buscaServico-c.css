@@ -7,17 +7,7 @@
     font-family: 'League Spartan', sans-serif;
 }
 
-
-/* .gridBusca{
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    align-items: center;
-    justify-content: center;
-} */
-
 .tituloResultados{
-    /* grid-area: 2/2/2/4; */
     display: flex;
     align-items: center;
     margin: 5% 5%;
@@ -29,15 +19,26 @@
 }
 
 .gridCards{
-    /* grid-area: 4/2/4/10; */
     column-count: 4;
-    /* grid-row: 4/9; */
     display: flex;
     flex-wrap: wrap;
     column-gap: 8%;
     margin: 5%;
     row-gap: 8%;
     
+}
+
+.selecionar {
+    background: none;
+    border: none;
+    color: #ba2559;
+    font-size: 1.1em;
+    text-align: start;
+}
+
+.semEstilo {
+    background: none;
+    border: none;
 }
 
 .cardServico{
