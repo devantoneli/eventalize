@@ -335,6 +335,9 @@ if(mysqli_num_rows($result_query) > 0){
                             <h3>Contr.</h3>
                         </div>
                     </div>
+                    <div class="botaoFinalizar">
+                    <button type="submit">Finalizar Pedido</button>
+                    </div>
                 </div></div></div>';
         }
     }

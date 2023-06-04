@@ -284,6 +284,28 @@ a{
     color: #7696F2;
 }
 
+.botaoFinalizar{
+    grid-area: 4/3/4/3;
+    margin-left: 15%;
+}
+
+.botaoFinalizar button{
+    color: white;
+    background-color: #FF5F76;
+    border-radius: 30px;
+    padding: 3%;
+    font-size: 1em;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    height: 3em;
+}
+
+.botaoFinalizar:hover{
+    opacity: 80%;
+}
+
 .outros{
     background-color: #A6A9E5;
 }
