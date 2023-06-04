@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: 'League Spartan';
     src: url('/font/LeagueSpartan.ttf');
@@ -174,12 +172,16 @@ a{
 .gridPedidoInfo{
     display: grid;
     grid-template-columns: 0.1fr 0.6fr 0.6fr;
+    column-gap: 10px;
+    margin-top: 2%;
     /* grid-template-rows:  0.2fr 0.6fr 0.6fr ; */
     /* background-color: #C94FB8; */
 }
 
 .gridPedidoInfo img{
-  width: 160px;
+  width: 5em;
+  height: 5em;
+  object-fit: cover;
   clip-path: circle();
 }
 
@@ -263,10 +265,10 @@ a{
 
 .dataPedido{
     display: grid;
-    grid-template-columns: 0.2fr 0.5fr;
+    grid-template-columns: 0.05fr 0.5fr;
     color: #318839;
     font-size: 1.2em;
-    align-items: first baseline;
+    /* align-items: first baseline; */
     justify-content: center;
 }
 
@@ -344,4 +346,44 @@ a{
     grid-template-columns: repeat(6, 0.5fr);
 }
 
+.iconCalendario{
+    margin-top: 70%;
+}
 
+/* .aceitarPedido{
+    grid-column: 3/3;
+} */
+
+.aceitarPedido button{
+    background-color: #318839;
+    border: none;
+    padding: 8%;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 30px;
+    width: 150px;
+    cursor: pointer;
+    margin-bottom: 8%;
+}
+
+.aceitarPedido:hover{
+    opacity: 80%;
+}
+
+.recusarPedido button{
+    background-color:red;
+    border: none;
+    padding: 8%;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 30px;
+    width: 150px;
+    cursor: pointer;
+    margin-bottom: 8%;
+}
+
+.recusarPedido:hover{
+    opacity: 60%;
+}
