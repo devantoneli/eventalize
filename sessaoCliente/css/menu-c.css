@@ -49,6 +49,22 @@
 
 }
 
+.header2 {
+    width: 100vw;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: auto repeat(4, auto); /* adiciona mais uma coluna com largura igual à largura da logo */
+    /* background-color: aquamarine; */
+    column-gap: 20px;
+    align-items: center; /* centraliza os elementos verticalmente */
+    background: linear-gradient(to right, #3ED1FF, #FF3E83, #FFA856);
+
+}
+
+.imgUrl{
+    width: 80% !important;
+}
+
 .logo{
     grid-column: 1 / 1;
     padding: 3% 0 3% 30%;

@@ -4,6 +4,17 @@ if(!isset($_SESSION)){
     session_start();
 }
 
+if(isset($_GET['cd_empresa'])){
+    $cd_empresa = $_GET['cd_empresa'];
+    $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_pedido p
+    join tb_empresa e on e.cd_empresa = p.cd_empresa
+    join tb_cliente c on c.cd_cliente = p.cd_cliente
+    WHERE c.cd_cliente = 01 group by e.cd_empresa"; 
+
+}
+
+
+
 include('../protect.php');
 
 $servername = "localhost";
