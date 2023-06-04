@@ -15,14 +15,16 @@
 }
 
 .inicioTexto{
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5%;
     grid-area: 2/1/2/1;
-    width: 65%;
+    
 
 }
+
+#conteudo {
+    width: 100%; /* Define a largura do conteúdo como 100% */
+    max-width: 100%; /* Define a largura máxima do conteúdo como 100% */
+    padding: 3em; /* Adiciona algum espaçamento interno ao conteúdo */
+  }
 
 .titulo h3{
     font-size: 2em;
@@ -32,32 +34,38 @@
 }
 
 .textoContrato h4{
-    font-size: 1.8em;
+    font-size: 1.5em;
     color: black;
     font-weight: 400;
     text-align: justify;
+}
+
+.textoContrato{
+    margin-bottom: 5%;
 }
 
 .assinaturas{
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 50%;
+    column-gap: 30%;
     width: 65%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 
 }
 
-.assCliente{
+/* .assCliente{
     height: 40px;
 
-}
+} */
 
 .assCliente h3{
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: black;
     text-align: center;
+    margin-top: 15%;
 }
 
 .assCliente h6, .assEmpresa h6{
@@ -75,6 +83,7 @@
     border-radius: 10px;
     font-size: 1em;
     cursor: pointer;
+    font-weight: 600;
 }
 
 hr{

@@ -1,3 +1,14 @@
+<?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include('../protect.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,6 +18,7 @@
     <link rel="stylesheet" href="../sessaoCliente/css/menu-c.css">
     <link rel="stylesheet" href="css/contrato.css">
     <link rel="icon" href="../img/icones/logo.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
     <title>Contrato - Eventalize</title>
     </head>
 <body>
@@ -56,7 +68,7 @@
                 <img src="../img/icones/icon-info-contrato.svg" alt="">
             </div>
             </div>
-            <div class="inicioTexto">
+            <div class="inicioTexto" id="conteudo">
                 <div class="titulo">
                     <h3>Contrato de um Serviço</h3>
                 </div>
@@ -67,21 +79,31 @@
                     
                         Laoreet torquent mauris porta quisque adipiscing semper tristique primis, sit tristique pretium donec litora et aliquam ut, fames gravida euismod sagittis etiam urna amet. nibh est eros cras lobortis phasellus blandit amet enim venenatis urna est eget, nulla fusce quis sem habitasse eget elit ad etiam ad. quisque lacinia donec quisque lacinia posuere semper arcu nulla tristique erat suspendisse taciti id, potenti porta donec quisque aptent odio iaculis congue dictum posuere hac sed. quisque dolor commodo malesuada faucibus nisl felis sociosqu mi vestibulum, fringilla auctor curae maecenas tempor habitasse curabitur fames enim arcu, quam inceptos pulvinar posuere netus curabitur leo scelerisque. </h4>
                 </div>
+                <div class="assinaturas">
+                    <div class="assCliente">
+                        <h3>Ana Luiza Barros</h3>
+                        <hr>
+                        <h6>Assinatura do Cliente</h6>
+                    </div>
+                    <div class="assEmpresa">
+                        <button onclick="generatePDF()">Assinar Contrato</button>
+                        <hr>
+                        <h6>Assinatura da Empresa</h6>
+                    </div>
+                </div>
             </div>
 
-        <div class="assinaturas">
-            <div class="assCliente">
-                <h3>Ana Luiza Barros</h3>
-                <hr>
-                <h6>Assinatura do Cliente</h6>
-            </div>
-            <div class="assEmpresa">
-                <button>Assinar Contrato</button>
-                <hr>
-                <h6>Assinatura da Empresa</h6>
-            </div>
+        
         </div>
-        </div>
+
+        <script>
+            function generatePDF() {
+                const element = document.getElementById('conteudo');
+                html2pdf()
+                    .from(element)
+                    .save('contrato.pdf');
+            }
+        </script>
 
 
   <script src="../sessaoCliente/js/menu-c.js"></script>
