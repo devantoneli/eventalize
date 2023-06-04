@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../protect.php');
+
 if (!isset($_SESSION['carrinho'])) {
   $_SESSION['carrinho'] = array();
 }
@@ -89,7 +90,7 @@ if (!empty($_SESSION['carrinho'])) {
             <!-- <a href="">Postagens</a> -->
             <!-- <a href="" style="margin-bottom: 20%">Histórico de Pedidos</a> -->
             <a href="">Configurações</a>
-            <a href="">Sair</a>
+            <a href="../logout.php">Sair</a>
         </section>
   </div>
 </div>
@@ -99,7 +100,7 @@ if (!empty($_SESSION['carrinho'])) {
       <h3>Meu Carrinho</h3>
     </div>
     <div class="textoSelecione">
-      <h3>Selecione seus pedidos para prosseguir com a compra.</h3>
+      <h3>Selecione seus serviços para prosseguir com a compra.</h3>
     </div>
   </div>
   
