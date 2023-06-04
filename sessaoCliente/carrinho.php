@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 if (!empty($_SESSION['carrinho'])) {
-    
     $carrinho = implode(",", $_SESSION['carrinho']);
     $sql = "SELECT s.nm_servico,s.cd_servico, s.vl_servico,s.url_imgcapa, e.cd_empresa, e.nm_fantasia, e.url_fotoperfil
     FROM tb_servico as s
     JOIN tb_empresa e ON e.cd_empresa = s.cd_empresa
     WHERE s.cd_servico IN ($carrinho) ORDER BY s.cd_empresa";
-    // echo $carrinho;
     $result = $conn->query($sql);
+}else {
+  $result = NULL;
 }
     
 ?>
@@ -77,18 +77,14 @@ if (!empty($_SESSION['carrinho'])) {
                 </form>
           </div>
           <div class="headerClientePerfil" >
-              <!-- <div class="iconCliente"> -->
               <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
                   <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
-                <!-- </div> -->
           <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
           </div>
           <section class="menuPerfil">
             <a href="perfil-c.php">Perfil</a>
-            <!-- <a href="">Postagens</a> -->
-            <!-- <a href="" style="margin-bottom: 20%">Histórico de Pedidos</a> -->
             <a href="">Configurações</a>
             <a href="../logout.php">Sair</a>
         </section>
@@ -102,87 +98,75 @@ if (!empty($_SESSION['carrinho'])) {
     <div class="textoSelecione">
       <h3>Selecione seus serviços para prosseguir com a compra.</h3>
     </div>
-  </div>
+  
   
   <!-- INICIO PEDIDOS NO CARRINHO -->
   <?php
    $cd_empresa_anterior=null;
-  if ($result->num_rows > 0) {
-    echo '<form class="gridPrinc" action="carrinhoLocal.php" method="post">';
-    while ($row = $result->fetch_assoc()) {
-
-      //   echo '<div class="pedidoEmpresa">
-      //   <img src="'.$row['url_fotoperfil'].'" alt="">
-      //   <h3>'.$row['nm_fantasia'].'</h3>
-      // </div>
-      
-      // <div class="selecionaItem">
-      //   <div>
-      //     <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
-      //     '.$row['cd_servico'].'
-      //   </div>
-      //   <div class="imgPedido">
-      //     <img src="'.$row['url_imgcapa'].'" alt=""> 
-      //   </div>
-      //   <div>
-      //     <div class="infoPedido"> 
-      //       <h1>'.$row['nm_servico'].'</h1>
-      //       <h3>R$ '.$row['vl_servico'].'</h3>
-      //     </div>
-      //   </div>
-      // </div>';
-
-      $cd_empresa_atual = $row['cd_empresa'];
-      $cd_servico = $row['cd_servico'];
-     
-      
-      if ($cd_empresa_atual != $cd_empresa_anterior) {
-          // Iniciar uma nova div para a nova empresa
-          if ($cd_empresa_anterior !== null) {
-              // Fechar a div anterior, se não for a primeira empresa
-              echo '</div></div>';
-          }
-          // Abrir a div para a nova empresa
-          echo '<div><div class="pedidoEmpresa">
-          <img src="'.$row['url_fotoperfil'].'" alt="">
-          <h3>'.$row['nm_fantasia'].'</h3></div>
-          <div class="selecionaItem">';
-          echo '';
-      }
+   if($result != NULL){
+    echo '</div>';
+    if ($result->num_rows > 0) {
+      echo '<form class="gridPrinc" action="carrinhoLocal.php" method="post">';
+      while ($row = $result->fetch_assoc()) {
   
-      // Exibir o serviço dentro da div da empresa
-      echo '<div>
-      <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
-      
-      </div>
-      <div class="imgPedido">';
-
-      if ($row['url_imgcapa']=''){
-        echo'<img src="'.$row['url_imgcapa'].'" alt="">';
-      }else{
-        echo'<img src="'.$row['url_imgcapa'].'" alt="">';
-      }
-      
-      echo'</div>
-      <div>
-      <div class="infoPedido"> 
-      <h1>'.$row['nm_servico'].'</h1>
-      <h3>R$ '.$row['vl_servico'].'</h3>
-      </div>
-      </div>';
+        $cd_empresa_atual = $row['cd_empresa'];
+        $cd_servico = $row['cd_servico'];
+       
+        
+        if ($cd_empresa_atual != $cd_empresa_anterior) {
+            // Iniciar uma nova div para a nova empresa
+            if ($cd_empresa_anterior !== null) {
+                // Fechar a div anterior, se não for a primeira empresa
+                echo '</div></div>';
+            }
+            // Abrir a div para a nova empresa
+            echo '<div><div class="pedidoEmpresa">';
+            if ($row['url_fotoperfil']==''){
+              echo'<img src="https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" alt="">';
+            }else{
+              echo'<img src="'.$row['url_fotoperfil'].'" alt="">';
+            }
+            
+            echo'<h3>'.$row['nm_fantasia'].'</h3></div>
+            <div class="selecionaItem">';
+            echo '';
+        }
+    
+        // Exibir o serviço dentro da div da empresa
+        echo '<div>
+        <input type="checkbox" class="add-to-cart" name="opcao[]" value="'.$row['cd_servico'].' id="'.$row['cd_servico'].'">
+        
+        </div>
+        <div class="imgPedido">';
   
-      $cd_empresa_anterior = $cd_empresa_atual;
+        if ($row['url_imgcapa']==''){
+          echo'<img src="https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" alt="">';
+        }else{
+          echo'<img src="'.$row['url_imgcapa'].'" alt="">';
+        }
+        
+        echo'</div>
+        <div>
+        <div class="infoPedido"> 
+        <h1>'.$row['nm_servico'].'</h1>
+        <h3>R$ '.$row['vl_servico'].'</h3>
+        </div>
+        </div>';
+    
+        $cd_empresa_anterior = $cd_empresa_atual;
+        }
+        
+        // Fechar a última div
+        if ($cd_empresa_anterior !== null) {
+            echo '</div>';
+  
       }
-      
-      // Fechar a última div
-      if ($cd_empresa_anterior !== null) {
-          echo '</div>';
-
-    }
-    echo '<input type="submit" class="continuar" value="Continuar">
-    </form>';
-} else {
-  echo "Nenhum servico selecionado no carrinho.";
+      echo '<input type="submit" class="continuar" value="Continuar">
+      </form>';
+  }
+   }
+ else {
+  echo "<br><h1>Nenhum servico adicionado ao carrinho.</h1></div>";
   }
   ?>
   

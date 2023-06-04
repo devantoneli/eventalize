@@ -91,9 +91,14 @@ if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
 
     echo'<div class="alinha">
-            <h3>'.$row['nm_fantasia'].'</h3><br>
-            <img class="imgEmpresa" src="'.$row['url_fotoperfil'].'" value="'.$row['cd_empresa'].'" alt="imagem">
-        </div>';
+            <h3>'.$row['nm_fantasia'].'</h3><br>';
+            if($row['url_fotoperfil']==''){
+                echo'<img class="imgEmpresa" src="https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" value="'.$row['cd_empresa'].'" alt="imagem">';
+            }else{
+                echo'<img class="imgEmpresa" src="'.$row['url_fotoperfil'].'" value="'.$row['cd_empresa'].'" alt="imagem">';
+            }
+            
+        echo'</div>';
 
     }
 }

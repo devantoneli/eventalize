@@ -106,9 +106,13 @@ if(mysqli_num_rows($result_query3) > 0){
     <div class="gridCards">';
     while($row = mysqli_fetch_assoc($result_query3)){
         echo'    
-            <div class="cardServico" onclick="submitCard()">
-                <img src="'.$row['url_imgcapa'].'" alt="">
-                <div class="textoServico">
+            <div class="cardServico" onclick="submitCard()">';
+                if ($row['url_imgcapa']==''){
+                    echo'<img src="https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" alt="">';
+                  }else{
+                    echo'<img src="'.$row['url_imgcapa'].'" alt="">';
+                  }
+               echo '<div class="textoServico">
                 <form action="detalheServico.php" method="get">
                 <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
                 <button class="selecionar" type="submit">
