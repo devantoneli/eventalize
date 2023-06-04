@@ -209,6 +209,7 @@ if(mysqli_num_rows($result_query3) > 0){
                 
     while($row3 = mysqli_fetch_assoc($result_query3)){
         foreach ($informacoes1 as $info) {
+            
             // echo "CEP: " . $info->cep . "<br>";
             // echo "Logradouro: " . $info->logradouro . "<br>";
             // echo "Bairro: " . $info->bairro . "<br>";
