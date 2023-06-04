@@ -49,13 +49,13 @@ $dbname = "db_eventalize";
     $rowS = $resultS -> fetch_assoc();
     //SELECT PARA PEGAR AS INFORMAÇÕES DE EMPRESA OU CLIENTE
     if ($rowS["cd_tipoautor"]==2){
-        $sql2 = "SELECT e.url_fotoperfil, e.nm_fantasia, s.cd_servico FROM tb_postagem as p JOIN tb_empresa as e ON e.cd_empresa = p.cd_empresa JOIN tb_servicopedido as pd on pd.cd_pedido = p.cd_pedido
+        $sql2 = "SELECT e.url_fotoperfil, e.nm_fantasia, s.cd_servico, e.cd_empresa FROM tb_postagem as p JOIN tb_empresa as e ON e.cd_empresa = p.cd_empresa JOIN tb_servicopedido as pd on pd.cd_pedido = p.cd_pedido
         JOIN tb_servico as s on s.cd_servico = pd.cd_servico WHERE cd_postagem = $cd_postagem";
         $result2 = $conn->query($sql2);
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_fantasia'];
         $img_autor = $row2['url_fotoperfil'];
-        // $cd_empresa = $row2['cd_empresa'];
+        $cd_empresa = $row2['cd_empresa'];
         $cd_servico = $row2['cd_servico'];
 
     }else {
@@ -153,7 +153,8 @@ $dbname = "db_eventalize";
                         <div class="iconsCategorias">';
                         if($row["cd_tipoautor"] == 2){
                             echo'Empresa
-                            <form action="../sessaoEmpresa/perfilEmpresa.php">
+                            <form action="../sessaoCliente/perfilEmpresa-c.php">
+                            <input type="hidden" value="'.$cd_empresa.'" name="cd_empresa">
                             <button class="btnVerPerfil" type="submit">Ver perfil</button>
                             </form>
 
