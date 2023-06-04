@@ -91,7 +91,7 @@ $row = mysqli_fetch_assoc($result_query);
         </header>
     </div>
     <!--FIM MENU EMPRESA -->
-    <h1 style="margin-left: 24%;padding-top: 2vw;position: absolute;">Novo serviço</h1>
+    <h1 style="margin-left: 24%;padding-top: 2vw;position: absolute;">Alterar serviço</h1>
 <div class="centralizaSections">
 
 <!-- SESSAO SERVICO -->  
@@ -154,7 +154,7 @@ $row = mysqli_fetch_assoc($result_query);
 <!-- INPUT PARA IMAGENS -->
             <div class="imagens">
                 <h1 class="">Imagem de capa</h1>
-                <label class="cardCarregarG" for="img-inputCapa" id="img2">
+                <label class="cardCarregarG uploadImgPedido" for="img-inputCapa" id="img2">
                     <input hidden class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
                     <input id="linkimgCapa" value="mudara" type="hidden" name="url_imgcapa">
                     <img id="preview-capa" style="opacity: 1;" src="<?php echo($row['url_imgcapa']) ?>" width="100%">
@@ -163,14 +163,14 @@ $row = mysqli_fetch_assoc($result_query);
                 <h1>Outras imagens</h1>
                 <div class="grid-imagens">
                         <div>
-                        <label class="img2" for="img-input2">
+                        <label class="img2 uploadImg" for="img-input2">
                         <input class="link2" id="img-input2" value="" hidden type="file" name="img2">
                             <input id="linkimg2" value="mudara" type="hidden" name="url_img2">
                             <img style="opacity: 1;" id="preview-2" src="<?php echo($row['url_img2']) ?>" width="100%">
                         </label>
                     </div>
                     <div>
-                        <label class="img3" for="img-input3">
+                        <label class="img3 uploadImg2" for="img-input3">
                         <input hidden class="link3" id="img-input3" value="" type="file" name="img3">
                             <input id="linkimg3" value="mudara" type="hidden" name="url_img3">
                             <img style="opacity: 1;" id="preview-3" src="<?php echo($row['url_img3']) ?>" width="100%">

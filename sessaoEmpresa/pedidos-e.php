@@ -16,8 +16,6 @@ $db_name = "db_eventalize";
 // $dataAtual = date("d-m-Y");
 $dataAtual = date("Y-m-d");
 
-echo $dataAtual;
-
 $conn = new mysqli($servername, $username, $password, $db_name);
 
 if ($conn->connect_error) {
@@ -368,7 +366,7 @@ if(mysqli_num_rows($result_query2) > 0){
                 <h3>Cod.</h3>
                 <h3>Pedido</h3>
                 <h3>Valor</h3>
-                <h3>Status final</h3>
+                <h3>Status</h3>
                 </div>';
     while($row2 = mysqli_fetch_assoc($result_query2)){
         echo'
