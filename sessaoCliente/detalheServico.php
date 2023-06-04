@@ -42,7 +42,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/detalhesPacote.css">
-    <link rel="stylesheet" href="../sessaoEmpresa/css/menu-e.css">
+    <link rel="stylesheet" href="css/menu-c.css">
     <link rel="icon" href="../img/index/logo.png">
     <title>Detalhes do Serviço - Eventalize</title>
     <!-- <link rel="icon" href="imgCriandoServico/logo.png"> -->
@@ -52,51 +52,47 @@ $row2 = mysqli_fetch_assoc($result_query2);
 
 <body>
   <script src="js/voltar.js"></script>
-  <!--INICIO MENU EMPRESA -->
-  <div id="topo" class="bg-gradPrincipal menuEmpresa">
-        <header class="alinhaElementos">
-        <a href="../sessaoEmpresa/index-e.php"><div id="logoImagem"></div></a>
-            
-            <ul class="opcoesMenu">
-                <li class=""><a href="../sessaoEmpresa/index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
-                <li class="nav-item"><a href="#" class="opcaoMenu">Mensagens</a></li>
-            </ul>
-        
-            <div class="alinhaLogo">
-                <button class="botaoSeta" id="iconSeta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="white" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                </svg>
-                </button>
-    
-                <section id="menu">
-                    <!-- <a href=""><h5>Pedidos</h5></a> -->
-                    <a href="../sessaoEmpresa/criacaoServico-e.php"><h5>Criar Serviço ou Pacote</h5></a>
-                    <a href="../sessaoEmpresa/selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
-                </section>
-    
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16" style="cursor:pointer;">
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                </svg>
-    
-                <div id="inserirPerfil">
-                  <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
-                </div>
-    
-                <section id="menuPerfil">
-                    <a href="../sessaoEmpresa/perfilEmpresa.php"><h5>Perfil</h5></a>
-                    <a href=""><h5>Pontuações</h5></a>
-                    <a href=""><h5>Postagens</h5></a>
-                    <a href=""><h5>Estatísticas de venda</h5></a>
-                    <a href=""><h5>Configurações</h5></a>
-                    <a href="../logout.php"><h5>Sair</h5></a>
-                </section>
+  <!-- INICIO MENU -->
+  <div class="grid-container">
+        <div class="header">
+            <div class="logo">
+            <a href="index-c.php"><img src="../img/icones/logoBranca.svg" alt=""></a>
             </div>
-        </header>
+            <div class="menu">
+                <a href="index-c.php">Início</a>
+                <a href="../sessaoUsuario/explore.php">Feed</a>
+                <a href="chatCliente.php">Mensagens</a>
+                <a href="historicopedido-c.php">Meus Pedidos</a>
+            </div>
+
+            <div class="headerPesquisa">
+                <form action="buscaServico-c.php" method="post" id="searchForm">
+                    <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
+                    <div class="imgLupa">
+                    <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm()">
+                    </div>
+                </form>
+            </div>
+            <div class="headerClientePerfil" >
+                <!-- <div class="iconCliente"> -->
+                <form action="carrinho.php" id="botaoCarrinho">
+                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
+                </form>
+                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                <!-- </div> -->
+                <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
+            </div>
+            <section class="menuPerfil">
+                <a href="perfil-c.php">Perfil</a>
+                <!-- <a href="">Postagens</a> -->
+                <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
+                <!-- <a href="historicopedido-c.php">Histórico de Pedidos</a> -->
+                <a href="">Configurações</a>
+                <a href="../logout.php">Sair</a>
+            </section>
+        </div>
     </div>
-    <!--FIM MENU EMPRESA -->
+<!-- FIM MENU -->
 
     <div class="bordaPrincipal">
       <div class="grid-setaPacotes">
@@ -213,9 +209,10 @@ $row2 = mysqli_fetch_assoc($result_query2);
     </div>
     </div>
     </form>
-    <script src="js/menucliente.js"></script>
+    <script src="js/menu-c.js"></script>
+    <script src="js/lupa.js"></script>
+    <script src="js/carrinho.js"></script>
     <script src="js/detalhesPacote.js"></script>
-    <script src="../sessaoEmpresa/js/menu-e.js"></script>
 
 </body>
 </html>

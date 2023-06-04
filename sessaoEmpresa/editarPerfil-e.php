@@ -59,7 +59,7 @@ if($conn->connect_error){
                 </button>
 
                 <section id="menu">
-                <a href="criacaoServico-e.php"><h5>Criar Serviço ou Pacote</h5></a>
+                <a href="criacaoServico-e.php"><h5>Criar Serviço</h5></a>
                 <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
 
