@@ -108,7 +108,7 @@ $row = mysqli_fetch_assoc($result_query);
                     </div>
                     <div class="botaoEditarPerfil">
                         <form action="chatCliente.php" method="GET">
-                            <input type="hidden" value="cd_empresa" name="cd_empresa">
+                            <input type="hidden" value="<?php echo$cd_empresa; ?>" name="cd_empresa">
                             <a href="editarPerfil-e.php"><button class="editarPerfil" type="submit"><img src="" alt=""style="margin-right: -12%"><img src="../img/icones/chat.png" alt="">
                             </svg>Enviar mensagem</button></a>
                         </form>
