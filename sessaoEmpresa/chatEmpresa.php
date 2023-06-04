@@ -18,9 +18,9 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-    $sql = "SELECT c.cd_cliente, c.nm_cliente, c.url_fotoperfil FROM tb_pedido p
-    join tb_cliente c on c.cd_cliente = p.cd_cliente
-    WHERE p.cd_empresa=$cd_empresa group by c.cd_cliente"; 
+    $sql = "SELECT c.cd_cliente, c.nm_cliente, c.url_fotoperfil FROM tb_chat ch
+    join tb_cliente c on c.cd_cliente = ch.cd_cliente
+    WHERE ch.cd_empresa=$cd_empresa group by ch.cd_cliente"; 
     $result = $conn->query($sql);
     $result_query = mysqli_query($conn,  $sql) or die(' Erro na query:' .  $sql . ' ' . mysqli_error($conn));
 ?>
@@ -111,7 +111,7 @@ if(mysqli_num_rows($result) > 0){
     <div class="mensagensPerfil">
             <br>
             <div class="infoCliente">
-                <img id="fotoMeio" src="../img/icones/selecione.png"  alt="imagem" value="" empresa="">
+                <img id="fotoMeio" src="../img/icones/selecione.png"  alt="imagem" value="" empresa="1">
                 <h2 id="nomeMeio">Selecione um chat</h2>
             </div>
 
