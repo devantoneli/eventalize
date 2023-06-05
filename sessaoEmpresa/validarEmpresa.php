@@ -24,11 +24,14 @@ if($conn->connect_error){
 
 $sql = 'INSERT INTO tb_empresa (nm_fantasia,cd_cnpj, nm_usuarioempresa, nm_emailempresa, nm_senhaempresa) VALUES (' . "'" . $nm_fantasia ."'" . ', ' . "'" . $cd_cnpj . "'" . ',' . "'" . $nm_usuarioempresa . "'" . ', ' . "'" . $nm_emailempresa . "'" . ', ' . "'" . $nm_senhaempresa . "'" . ')';
 
+if(!isset($_GET['nm_fantasia']) || !isset($_GET['nm_razaosocial']) ||!isset($_GET['cd_cnpj']) ||!isset($_GET['nm_usuarioempresa']) ||!isset($_GET['nm_emailempresa']) ||!isset($_GET['nm_senhaempresa'])){
 
+}else{
+    if($conn->query($sql)=== TRUE){
+        header('Location: ../entrar.php');
+    }
+    else{
+        echo "Erro: " . $sql . "<br>" . $conn->error;
+    }
+}
 
-if($conn->query($sql)=== TRUE){
-    header('Location: ../entrar.html');
-}
-else{
-    echo "Erro: " . $sql . "<br>" . $conn->error;
-}

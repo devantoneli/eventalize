@@ -66,9 +66,6 @@ include('../protect.php');
                 <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                </svg>
 
                 <div id="inserirPerfil">
                     <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
@@ -96,14 +93,14 @@ include('../protect.php');
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
-                        <h3><?php echo $_SESSION['nm_usuarioempresa'];?></h3>
+                        <h3 style="width: 250px !important;"><?php echo $_SESSION['nm_fantasia'];?></h3>
                         <h5><?php echo $_SESSION['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $_SESSION['ds_biografia'];?></h4>
                         </div>
-                        <div class="loc">
+                        <!-- <div class="loc">
                             <img src="../bancoImagens/empresas/imagens-perfil-empresa/loc.svg" alt="">
                             <h4>Santos - SP</h4>
-                        </div>
+                        </div> -->
                             <div class="avaliacaoPerfil">
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4>4,8</h4>
@@ -117,178 +114,6 @@ include('../protect.php');
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="inicioPostagens">
-              <div class="tituloServico">
-                <h2>Serviços Recentes</h2>
-              </div>
-                <div class="gridCardServico">
-                  <div class="cardServico">
-                    <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                    <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-
-                  <div class="cardServico">
-                  <div class="conteudoCardServico">
-                      <h2>Foto Alta Qualidade</h2>
-                    </div>
-                    <div class="valorServico">
-                      <h3>R$5,00 por foto</h3>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- <div class="carrossel">
-                    <div class="seta-direita">&#8250;</div>
-                    <div class="seta-esquerda">&#8249;</div>
-
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/festa1.png"/>
-                          <div class="textoCard"><h1>Festa de Aniversário</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/festa2.png" />
-                          <div class="textoCard"><h1>Casamento</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/festa3.png" />
-                          <div class="textoCard"><h1>Pool Party</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/festa.jpg"/>
-                          <div class="textoCard"><h1>Festa</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/halloween.jpg" />
-                          <div class="textoCard"><h1>Halloween</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/ensaio1.jpg" />
-                          <div class="textoCard"><h1>Ensaio Fotográfico</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/festasurpresa.jpg" />
-                          <div class="textoCard"><h1>Festa Surpresa</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/ensaioinfantil.jpg" />
-                          <div class="textoCard"><h1>Ensaio Infantil</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/anonovo.jpg" />
-                          <div class="textoCard"><h1>Ano Novo</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/pacote2.png" />
-                          <div class="textoCard"><h1>Festa do Pijama</h1></div>
-                        </div>
-                      
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/casafesta.jpg" />
-                          <div class="textoCard"><h1>Casa de Festa</h1></div>
-                        </div>
-                     
-                    
-                        <div class="conteudoCard">
-                          <img src="../bancoImagens/empresas/imagens-perfil-empresa/Shows.jpg" />
-                          <div class="textoCard"><h1>Shows</h1></div> -->
-                        <!-- </div> -->
-                  <!-- </div> -->
             </div>
             
 <?php
@@ -353,7 +178,7 @@ if (mysqli_num_rows($result_query) > 0) {
                     </form>
                     <form action="deletarServico-e.php">
                         <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
-                        <button class="deletarPacote" type="submit"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
+                        <button class="deletarPacote" id="openModal" type="submit"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
                     </form>
                 </div>
             </div>

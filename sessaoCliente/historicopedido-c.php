@@ -74,7 +74,7 @@ if($conn->connect_error){
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
@@ -132,11 +132,18 @@ if($conn->connect_error){
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
                 <li class="status">'.$row['nm_status'].'</li>';
                 $cd_pedido = $row['cd_pedido'];
-                if ($row['cd_infopagamento']==0){
+                if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
-                }else{
-                    echo'<li class="status">Pago</li>';
+                }else {
+                    if ($row['nm_status']=="Aguardando confirmação" || $row['nm_status']=="Aguardando a confirmação"){
+                        echo'<li class="status">Aguardando confirmação</li>';
+                    }if ($row['nm_status']=="Pedido recusado"){
+                        echo'<li class="status" style="color: red;">Pedido recusado</li>';
+                    }else{
+                        echo'<li class="status">Pago</li>';
+                    }
                 }
+                
                 
                 echo'
             </div>

@@ -1,9 +1,9 @@
 <?php
 // validar as entradas do usuário
-if(empty($_POST['nm_email']) || empty($_POST['nm_senha'])) {
-  echo "Por favor, preencha todos os campos.";
-  exit();
-}
+// if(empty($_POST['nm_email']) || empty($_POST['nm_senha'])) {
+//   // echo '<script>alert("Por favor, preencha todos os campos!");</script>';
+//   exit();
+// }
 
 // conectar ao banco de dados
 $servername = "localhost";
@@ -68,7 +68,9 @@ if ($result->num_rows == 1 ) {
   header("Location: sessaoCliente/index-c.php ");
 }else {
   // informações de login inválidas, exibir mensagem de erro
-  echo "Nome de usuário ou senha inválido(s).";
+  $mensagemErro = "Nome de usuário ou senha inválido(s).";
+  header("Location: entrar.php?erro=" . urlencode($mensagemErro));
+  
   exit();
 }
 

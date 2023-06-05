@@ -3,8 +3,7 @@ $nm_servico = $_POST['nm_servico'];
 $ds_servico = $_POST['ds_servico'];
 $vl_servico = $_POST['vl_servico'];
 $cd_personaliz = $_POST['cd_personaliz'];
-$cd_orcament = $_POST['cd_orcament'];
-$cd_local = $_POST['cd_local'];
+
 $cd_servico = $_POST['cd_servico'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
@@ -78,32 +77,37 @@ if(isset($_POST['url_img3']) && $_POST['url_img3'] != "mudara") {
 
 if ($semimg2 == false && $semimg3 == false){
     if($semcapa == false){
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz=$cd_personaliz, cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz=$cd_personaliz, cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
     }else{
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_tiposervico='$cd_tiposervico', url_img2='$url_img2', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
     }
     
 }else if ($semimg2 == true){
     if($semcapa == false){
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
 
 }else{
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_tiposervico='$cd_tiposervico', url_img3='$url_img3' WHERE cd_servico='$cd_servico'";
     }
 
 }else{
     if($semcapa == false){
-    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico='$cd_servico'";
+    $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_tiposervico='$cd_tiposervico', url_imgcapa='$url_imgcapa', url_img2='$url_img2' WHERE cd_servico='$cd_servico'";
 
 }else{
-        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_orcament='$cd_orcament', cd_local='$cd_local', cd_tiposervico='$cd_tiposervico', url_img2='$url_img2' WHERE cd_servico='$cd_servico'";
+        $sql = "UPDATE tb_servico SET nm_servico='$nm_servico',ds_servico='$ds_servico', vl_servico='$vl_servico', cd_personaliz='$cd_personaliz', cd_tiposervico='$cd_tiposervico', url_img2='$url_img2' WHERE cd_servico='$cd_servico'";
     }
 }
 
 
-if ($conn->query($sql)=== TRUE){
-    header('Location: perfilEmpresa.php');
-} else{
+session_start();
+
+// Seu código de atualização do banco de dados aqui...
+
+if ($conn->query($sql) === TRUE) {
+    $_SESSION['displayModal'] = true;
+    header('Location: modal.php');
+} else {
     echo "Error updating record: " . $conn->error;
 }
 

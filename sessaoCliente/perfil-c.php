@@ -65,7 +65,7 @@ $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' '
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
@@ -107,9 +107,15 @@ if(mysqli_num_rows($result_query3) > 0){
             <div class="tituloPostagem">';
     while($row = mysqli_fetch_assoc($result_query3)){
             echo'
-                <h2>'.$row['nm_postagem'].'</h2><br>
-                <h3>Colaboradores: @decorazoes @candybolo @lembrancinhas @coxinha_doce</h3>
-            </div>
+                <h2>'.$row['nm_postagem'].'</h2><br>';?>
+                <form action="perfilEmpresa-c.php" method="GET">
+                <button class="grid-alinhaPerfil noestil">
+                <input type="hidden" value="<?php echo($row['cd_empresa']) ?>" name="cd_empresa">
+                <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
+                <h6><?php echo($row['nm_fantasia'])?></h6>
+                </button>
+              </form>
+            <?php echo'</div>
 
             <div class="postsPerfilCliente">
                 <div class="imgPosts1">

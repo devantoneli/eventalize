@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 if(!isset($_SESSION['cd_empresa']) && !isset($_SESSION['cd_cliente'])){
-    die(header("Location: /sistema/eventalize/index.html"));
+    die(header("Location: /sistema/eventalize/entrar.php"));
 }
 
 ?>

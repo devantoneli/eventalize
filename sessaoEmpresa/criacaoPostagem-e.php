@@ -1,7 +1,13 @@
 <?php
 
 //INSERT DE POSTAGEM EMPRESA (CRIAÇÃO DE POSTAGEM)
+if(!isset($_SESSION)){
+    session_start();
+}
 
+include('../protect.php');
+
+$cd_empresa = $_SESSION["cd_empresa"];
 // $cd_postagem = $_POST['cd_postagem'];
 $nm_postagem = $_POST['nm_postagem'];
 $ds_postagem = $_POST['ds_postagem'];
@@ -86,16 +92,16 @@ if(isset($_POST['url_img3'])) {
 }
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_postagem(nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3) VALUES ('$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2', '$url_img3')";
+    $sql = "INSERT INTO tb_postagem(cd_empresa, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2', '$url_img3')";
 }else if ($semimg2 == true){
-      $sql = "INSERT INTO tb_postagem(nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3) VALUES ('$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img3')";
+      $sql = "INSERT INTO tb_postagem(cd_empresa, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img3')";
 }else {
-    $sql = "INSERT INTO tb_postagem(nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3) VALUES ('$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2')";
+    $sql = "INSERT INTO tb_postagem(cd_empresa, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2')";
 }
 
 
 if ($conn->query($sql)=== TRUE){
-    echo '<h1>Informações inseridas</h1>';
+    header('Location: perfilEmpresa.php');
 } else{
     echo "Error: " . $sql . "<br>" .  $conn->error;
 }

@@ -80,7 +80,7 @@ $row = mysqli_fetch_assoc($result_query);
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+               
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
@@ -148,9 +148,12 @@ $row = mysqli_fetch_assoc($result_query);
                   <h5 id="txtAvalia">4,5</h5>
             </div>
 
-              <form class="grid-alinhaPerfil">
+              <form action="perfilEmpresa-c.php" method="GET">
+                <button class="grid-alinhaPerfil noestil">
+                <input type="hidden" value="<?php echo($row['cd_empresa']) ?>" name="cd_empresa">
                 <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
                 <h6><?php echo($row['nm_fantasia'])?></h6>
+                </button>
               </form>
 
                   <div class="descPacote">
@@ -164,30 +167,30 @@ $row = mysqli_fetch_assoc($result_query);
                 <h2 id="precoPacote" class="corLilas">R$<?php echo(str_replace('.', ',', $row["vl_servico"])) ?></h2>
               </div>
                 <div class="parcelas">
-                <h5>em até 3x sem juros</h5>
+    
               </div>
               
               <div class="FormasdePag">
-                <h4>Formas de pagamento</h4>
+    
                 <img src="imgDetalheServico/formasPagamento.png" alt="">
               </div>
                 
             </div>
             <div class="align-formasPag">
-                <svg class="svg-pagamento svg-pagamentoCol1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                <svg class="svg-pagamento svg-pagamentoCol1" alt="icone cartão" title="Em breve" xmlns="http://www.w3.org/2000/svg" fill="gray" class="bi bi-credit-card" viewBox="0 0 16 16">
                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
                     <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
                   </svg> 
-                  <h5 class="nomeTipoPag">Cartão de crédito</h5>
-                  <svg class="svg-Pagamento svg-pagamentoCol2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
+                  <h5 class="nomeTipoPag" style="color: gray;" title="Em breve">Cartão de crédito</h5>
+                  <svg class="svg-Pagamento svg-pagamentoCol2"  alt="icone cartão" xmlns="http://www.w3.org/2000/svg" fill="gray" class="bi bi-credit-card-2-front" viewBox="0 0 16 16" title="Em breve">
                     <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
                     <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                   </svg>
-                  <h5 class="nomeTipoPag">Cartão de débito</h5>
-                  <svg class="svg-pagamento svg-pagamentoCol3" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                  <h5 class="nomeTipoPag" style="color: gray;" title="Em breve">Cartão de débito</h5>
+                  <svg class="svg-pagamento svg-pagamentoCol3" xmlns="http://www.w3.org/2000/svg" fill="#03E6AF" class="bi bi-wallet2" viewBox="0 0 16 16">
                     <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
                   </svg>
-                  <h5 class="nomeTipoPag">Pix</h5>
+                  <h5 class="nomeTipoPag" style="color: #0EB68D;">Pix</h5>
             </div>
             <form action="carrinho.php" method="POST">
                     <input type="hidden" name="cd_servico" value="<?php echo$row['cd_servico']; ?>">

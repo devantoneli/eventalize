@@ -31,8 +31,8 @@ if(isset($_POST['url_fotoperfil']) && $_POST['url_fotoperfil'] != "mudara") {
     // construir o caminho completo para a imagem a partir do diretório raiz do projeto
     // $url_imgperfil = '../bancoImagens/servicos/' .$nm_imgperfil;
     $url_imgperfil = '../bancoImagens/servicos/' . $nm_imgperfil . '?t=' . time();
-
-    echo "se AESFFAm";
+    $_SESSION["url_fotoperfil"] = $url_imgperfil;
+  
     $semfoto = false;
     }else {
         $semfoto = true;
@@ -45,8 +45,7 @@ if($conn->connect_error){
 $sql = "UPDATE tb_empresa SET nm_fantasia='$nm_fantasia',ds_biografia='$ds_biografia', nm_usuarioempresa='$nm_usuarioempresa', url_fotoperfil='$url_imgperfil' WHERE cd_empresa='$cd_empresa'";
 
 if ($conn->query($sql)=== TRUE){
-    // header('Location: perfilEmpresa.php');
-    echo "mudou";
+    header('Location: perfilEmpresa.php');
 } else{
     echo "Error updating record: " . $conn->error;
 }

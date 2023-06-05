@@ -126,30 +126,10 @@ $row = mysqli_fetch_assoc($result_query);
                         <a>Não</a></label>
                     </div>
                     <hr>
-                    <h1>Solicitação de orçamento</h1>
-                    <div class="personalizacao">
-                        <label class="sim" for="sim">
-                        <input type="radio" name="cd_orcament" value="1" id="" <?php if($row['cd_orcament']==1)echo("checked"); ?>>
-                        Sim</label>
-                        
-                        <label class="nao" for="nao">
-                        <input type="radio" name="cd_orcament" value="0" id="" <?php if($row['cd_orcament']==0)echo("checked"); ?>>
-                        <a>Não</a></label>
-                    </div>
-                    <hr>
-                    <h1>Livre localização</h1>
-                    <div class="personalizacao">
-                        <label class="sim" for="sim">
-                        <input type="radio" name="cd_local" value="1" id="" <?php if($row['cd_local']==1)echo("checked"); ?>>
-                        Sim</label>
-                        
-                        <label class="nao" for="nao">
-                        <input type="radio" name="cd_local" value="0" id="" <?php if($row['cd_local']==0)echo("checked"); ?>>
-                        <a>Não</a></label>
-                    </div>
+
                 </div>
 <!-- BOTAO DO FORM -->         
-                <button class="criar" type="submit">Editar Serviço</button>
+                <button class="criar" id="openModal" type="submit">Editar Serviço</button>
             </div>
 <!-- INPUT PARA IMAGENS -->
             <div class="imagens">

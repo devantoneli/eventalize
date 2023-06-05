@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,25 +36,44 @@
             <section id="loginCircEntrar">
                 <h1 class="fontCirc">Entrar</h1>
                 
-                <form class="grid-loginCirc" action="login.php" method="post">
+                <form class="grid-loginCirc" action="login.php" method="post" onsubmit="return validarFormulario()">
 
                     <input class="inputCirc" id="usuario" name="nm_email" placeholder="Digite seu e-mail" type="email">
                     <input class="inputCirc" id="senha" name="nm_senha" placeholder="Digite sua senha" type="password">
-                    <h5>Esqueceu a senha?</h5>
+                    
                     <p>Não tem login? <a href="sessaoEmpresa/perfil/cadastrandoEmpresa.html">Cadastre-se agora!</a></p>
                     <button class="btnCirc" type="sub
                     "><a>Entrar</a></button>
                     <br>
-                    <a class="voltar" href="index.html">&lt;</a>
+                    <!-- <a class="voltar" href="index.html">&lt;</a> -->
                     
                 </form>
             </section>
         </div>
-
         
 
+        <script>
+            function validarFormulario() {
+                // Obtém os valores dos campos
+                var usuario = document.getElementById("usuario").value;
+                var senha = document.getElementById("senha").value;
+                
+                // Verifica se os campos estão vazios
+                if (senha === "" || usuario === "") {
+                    alert("Por favor, preencha todos os campos.");
+                    return false; // Impede o envio do formulário
+                }
+                
+                // Se todos os campos estiverem preenchidos, o formulário pode ser enviado
+                return true;
+            }
+        </script>
 
-    
+<?php if (isset($_GET['erro'])) {
+    $mensagemErro = $_GET['erro'];
+    echo "<script>alert('$mensagemErro');</script>";
+  }
+    ?>
    
 
 <!-- <script src="js/menu.js"></script> -->

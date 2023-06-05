@@ -26,7 +26,7 @@ if($conn->connect_error){
     $sql = "SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil FROM tb_chat ch
     join tb_cliente c on c.cd_cliente = ch.cd_cliente
     join tb_empresa e on e.cd_empresa = ch.cd_empresa
-    WHERE c.cd_cliente = $cd_cliente group by e.cd_empresa"; 
+    WHERE c.cd_cliente = $cd_cliente group by e.cd_empresa order by e.nm_fantasia"; 
     $result = $conn->query($sql);
     $result_query = mysqli_query($conn,  $sql) or die(' Erro na query:' .  $sql . ' ' . mysqli_error($conn));
 
@@ -78,7 +78,7 @@ if($conn->connect_error){
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>

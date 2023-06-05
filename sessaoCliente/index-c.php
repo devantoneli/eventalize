@@ -51,7 +51,7 @@ if($conn->connect_error){
     $row3=$result3->fetch_assoc();
 
     //LÓGICA PARA CARROSEL
-    $sql4 = 'SELECT e.nm_fantasia, e.url_fotoperfil, e.ds_biografia, e.nm_usuarioempresa,s.url_imgcapa, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
+    $sql4 = 'SELECT e.cd_empresa, e.nm_fantasia, e.url_fotoperfil, e.ds_biografia, e.nm_usuarioempresa,s.url_imgcapa, ROUND(AVG(po.cd_avaliacao), 1) AS media_avaliacao
     FROM tb_postagem po
     JOIN tb_servicopedido sp ON sp.cd_pedido = po.cd_pedido
     JOIN tb_pedido pe ON pe.cd_pedido = sp.cd_pedido
@@ -103,7 +103,7 @@ if($conn->connect_error){
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
@@ -130,9 +130,10 @@ if($conn->connect_error){
             $nm_usuarioempresa = $row4['nm_usuarioempresa'];
             $url_fotoperfil = $row4['url_fotoperfil'];
             $url_imgcapa = $row4['url_imgcapa'];
+            $cd_empresa = $row4['cd_empresa'];
             
           echo ' <div class="slide">
-          <div class="divInicio">
+          <form action="perfilEmpresa-c.php" method="GET" class="divInicio">
                 <div class="divInicioSombra" style="background-image:linear-gradient(30deg, #000000 5%, transparent 70%), url('.$url_imgcapa.');"></div>
               <div class="textoInicio">
                   <h1>'. $nm_fantasia.'</h1>
@@ -141,8 +142,11 @@ if($conn->connect_error){
                   <h4>'. $ds_biografia.'</h4>
               </div>
               <img src="'.$url_fotoperfil.'" alt="">
-              <button>Visitar Perfil</button>
-          </div>
+              
+              <input type="hidden" value="'.$cd_empresa.'" name="cd_empresa">
+              <button type="submit">Visitar Perfil</button>
+             
+          </form>
       </div>';
           
         }

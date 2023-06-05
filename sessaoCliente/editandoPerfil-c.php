@@ -34,10 +34,11 @@ if(isset($_POST['url_fotoperfil']) && $_POST['url_fotoperfil'] != "mudara") {
 
     echo "se AESFFAm";
     $semfoto = false;
+    $_SESSION["url_fotoperfil"] = $url_imgperfil;
     }else {
         $semfoto = true;
     }
-
+    
 if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
@@ -45,9 +46,7 @@ if($conn->connect_error){
 $sql = "UPDATE tb_cliente SET nm_cliente='$nm_cliente',nm_sobrenome='$nm_sobrenome', nm_usuariocliente='$nm_usuariocliente', url_fotoperfil='$url_imgperfil' WHERE cd_cliente='$cd_cliente'";
 
 if ($conn->query($sql)=== TRUE){
-    // header('Location: perfil-c.php');
-    echo "mudou";
-
+    header('Location: perfil-c.php');
 
 } else{
     echo "Error updating record: " . $conn->error;

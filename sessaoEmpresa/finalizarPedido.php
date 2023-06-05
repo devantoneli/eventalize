@@ -20,10 +20,10 @@ if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql = "UPDATE tb_pedido SET nm_status = 'Aguardando assinatura do contrato' WHERE cd_pedido = '$cd_pedido'";
+$sql = "UPDATE tb_pedido SET nm_status = 'Finalizado' WHERE cd_pedido = '$cd_pedido'";
 
 if ($conn->query($sql) === TRUE) {
-    header('Location: pedidos-e.php');
+    echo "Status do pedido atualizado com sucesso.";
 } else {
     echo "Erro ao atualizar o status do pedido: " . $conn->error;
 }

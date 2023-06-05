@@ -115,7 +115,7 @@ if ($result->num_rows > 0) {
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                  <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                  
           <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
           </div>
           <section class="menuPerfil">
@@ -162,7 +162,7 @@ if ($result->num_rows > 0) {
                 ?>
                 <input type="hidden" name="empresas_serializadas" value="<?php echo htmlentities(serialize($empresas)); ?>">
                 <div class="botoesEndereco">
-                    <button id="voltar"> Voltar</button>
+                    <button id=""> <a href="carrinho.php" style="text-decoration: none;">Voltar</a></button>
                     <button type="submit" id="continuar">Continuar</button>
                 </div>
             </form>
@@ -214,7 +214,7 @@ if ($result->num_rows > 0) {
                                     <h3>R$ '.number_format($card['valor_servico'], 2, ',', '.') . '</h3>
                                 </div>
                                 <div class="iconDeletar">
-                                    <span>&#x2716;</span>
+                                  
                                 </div>
                             </div>
                         </div>';
