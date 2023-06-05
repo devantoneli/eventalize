@@ -331,10 +331,17 @@ if(mysqli_num_rows($result_query) > 0){
                             
                             <h3>Contr.</h3>
                         </div>
-                    </div>
-                    <div class="botaoFinalizar">
-                    <button type="submit">Finalizar Pedido</button>
-                    </div>
+                    </div>';
+                    if($row['nm_status'] == 'Em consumo'){
+                        echo'
+                        <div class="botaoFinalizar">
+                        <form action="finalizarPedido.php" method="post">
+                        <input type="hidden" name="cd_pedido" value="'.$row['cd_pedido'].'">
+                        <button type="submit">Finalizar Pedido</button>
+                        </form>
+                        </div>';
+                    }
+                    echo'
                 </div></div></div>';
         }
     }

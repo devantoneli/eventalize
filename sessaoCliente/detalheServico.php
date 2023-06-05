@@ -148,27 +148,14 @@ $row = mysqli_fetch_assoc($result_query);
                   <h5 id="txtAvalia">4,5</h5>
             </div>
 
-              <div class="grid-alinhaPerfil">
+              <form class="grid-alinhaPerfil">
                 <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
-                
                 <h6><?php echo($row['nm_fantasia'])?></h6>
-                <!-- <div class="alinha-text-perfil">
-                      <img src="imagens/fotografia.svg" alt="">
-                    <h6>Fotógrafo</h6>
-                  </div> -->
-               </div>
+              </form>
 
                   <div class="descPacote">
                     <h3><?php echo($row['ds_servico']) ?></h3>
                   </div>
-                  <!-- <div class="infoPacote">
-                      <ul class="listaStyle">
-                        <li id="infoDetalhePacote" class="corRosa">Informações:</li>
-                        <li>50 fotos;</li>
-                        <li>Tamanho: 21x21;</li>
-                        <li>Capa dura.</li>
-                      </ul>
-                  </div> -->
     
         </div>
         <div class="grid-detalhePacCol3">
