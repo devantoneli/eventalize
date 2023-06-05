@@ -20,13 +20,28 @@ include('../protect.php');
     }
 
 
-    $sql = "SELECT * FROM vwpedidos WHERE cd_empresa = $cd_empresa AND nm_status<>'finalizado'";
+    $sql = "SELECT * FROM vwpedidos WHERE cd_empresa = $cd_empresa AND nm_status<>'finalizado' AND nm_status<>'Aguardando confirmação'";
     $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
     $row = mysqli_fetch_assoc($result_query);
 
-    
-    $result_query2 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
+    $sql2 = "SELECT *
+    FROM tb_pedido AS p
+    JOIN tb_servicopedido as sp ON p.cd_pedido = sp.cd_pedido
+    JOIN tb_servico as s on sp.cd_servico = s.cd_servico
+    JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
+    JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
+    WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
+
+    $sql3 = "SELECT * FROM vwpedidos WHERE nm_status='Aguardando confirmação' AND cd_empresa=$cd_empresa";
+
+    $result_query2 = mysqli_query($conn, $sql3) or die(' Erro na query:' . $sql3 . ' ' . mysqli_error($conn));
     $row2 = mysqli_fetch_assoc($result_query2);
+
+    $result_query3 = mysqli_query($conn, $sql3) or die(' Erro na query:' . $sql3 . ' ' . mysqli_error($conn));
+    // $row3 = mysqli_fetch_assoc($result_query3);
+
+
+
 
 ?>
 
@@ -69,9 +84,9 @@ include('../protect.php');
                 <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                </svg>
+                </svg> -->
 
                 <div id="inserirPerfil">
                     <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
@@ -131,12 +146,12 @@ include('../protect.php');
 
                     <div class="blocoRoxo">
                 <?php
-                    if(mysqli_num_rows($result_query2) > 0){
-                        while($row2 = mysqli_fetch_assoc($result_query2)){
-                
+                    if(mysqli_num_rows($result_query3) > 0){
+                        while($row3 = mysqli_fetch_assoc($result_query3)){
+
                             ?>
                         <div class="novoPedido">
-                            <div class="imgServico" style="<?php if($row['url_imgcapa']="NULL"){echo("background: blue;");} else{?>background-image: url('<?php echo($row["url_imgcapa"]);} ?>'); <?php ?>"></div>
+                            <div class="imgServico" style="<?php if($row3['url_fotoperfil']="NULL"){echo("background-image: url('https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais');");} else{?>background-image: url('<?php echo($row3["url_fotoperfil"]);} ?>'); <?php ?>"></div>
                             <!-- echo($row['url_fotoperfil']) -->
                             <div class="imgCliente" style="background-image: url('')"></div>
                         </div>
@@ -164,6 +179,7 @@ include('../protect.php');
                             <div class="pedidAndament" style="background-image: url('<?php echo($row['url_imgcapa']); ?>')">
 
                         <?php
+                        
                             echo 
                             '
                             <a>'.$row['nm_servico'].'</a>
@@ -184,6 +200,13 @@ include('../protect.php');
                                 <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
                                 </svg>
                                 <?php
+                                
+                            }else if($row['nm_status'] == 'AGUARDANDO DATA AGENDADA' || $row['nm_status'] == 'DENÚNCIA EM PROCESSO' || $row['nm_status'] == 'CONSUMO EM PROCESSO'){
+                                ?>
+                                <svg style="transform: translate(-0.5em, -9em);" class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
+                                <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
+                                </svg>
+                                <?php
                             }else{
                                 ?>
                                 <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
@@ -197,7 +220,7 @@ include('../protect.php');
     
                             echo'<div class="font-acaoPendent"><a>'.$row['nm_status'].'</a></div>
     
-                            <div class="andamento"><div class="barraProgresso"></div>
+                            <div class="andamento">
                             </div>
                         </div>';
                     
