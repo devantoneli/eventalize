@@ -19,7 +19,12 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM tb_postagem WHERE cd_cliente = '$cd_cliente'";
+$sql = "SELECT e.nm_fantasia, p.url_imgcapa, p.nm_postagem, p.url_imgcapa, p.url_img2, p.url_img3, e.cd_empresa FROM tb_postagem p
+Join tb_pedido pe on pe.cd_pedido = p.cd_pedido 
+join tb_servicopedido sp on sp.cd_pedido = pe.cd_pedido
+join tb_servico s on s.cd_servico = sp.cd_servico
+join tb_empresa e on e.cd_empresa = s.cd_empresa
+WHERE p.cd_cliente = '$cd_cliente'";
 
 
 $result_query3 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
@@ -111,8 +116,8 @@ if(mysqli_num_rows($result_query3) > 0){
                 <form action="perfilEmpresa-c.php" method="GET">
                 <button class="grid-alinhaPerfil noestil">
                 <input type="hidden" value="<?php echo($row['cd_empresa']) ?>" name="cd_empresa">
-                <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
-                <h6><?php echo($row['nm_fantasia'])?></h6>
+                
+                <h3>Empresa: <?php echo($row['nm_fantasia'])?></h3>
                 </button>
               </form>
             <?php echo'</div>
@@ -133,23 +138,6 @@ if(mysqli_num_rows($result_query3) > 0){
     </div>';
 }
 ?>
-
-<!-- <div class="linhaDivisao"></div>
-
-            <div class="tituloPostagem2">
-                <h2>Festa de 10 anos do meu sobrinho!!</h2><br>
-                <h3>Colaboradores: @decorazoes @candybolo @lembrancinhas @coxinha_doce</h3>
-            </div>
-
-            <div class="postsPerfilCliente2">
-                <div class="imgPosts-1">
-                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
-                </div>
-                <div class="imgPosts-2">
-                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
-                    <img src="../bancoImagens/postagens/festaInfantil.jpg" alt="">
-                </div>
-            </div>' -->
 <script src="js/menu-c.js"></script>
 <script src="js/lupa.js"></script>
 <script src="js/carrinho.js"></script>

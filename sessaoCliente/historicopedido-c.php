@@ -122,7 +122,7 @@ if($conn->connect_error){
                 
                 <li>Servico Personalizado</li>
                 <li>Status</li>
-                <li>Status Pagamento</li>
+                <li>Ação</li>
             </div>
 
             <div class="alinhaInfoPedido">
@@ -133,14 +133,16 @@ if($conn->connect_error){
                 <li class="status">'.$row['nm_status'].'</li>';
                 $cd_pedido = $row['cd_pedido'];
                 if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
-                    echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
+                    echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Pagar' class='btn-Pagar'></form></li>";
                 }else {
                     if ($row['nm_status']=="Aguardando confirmação" || $row['nm_status']=="Aguardando a confirmação"){
                         echo'<li class="status">Aguardando confirmação</li>';
                     }if ($row['nm_status']=="Pedido recusado"){
                         echo'<li class="status" style="color: red;">Pedido recusado</li>';
-                    }else{
+                    }else if($row['nm_status']!="Finalizado"){
                         echo'<li class="status">Pago</li>';
+                    }else {
+                        echo "<li><form action='criarPostagem-c.php' method='GET'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Postar' class='btn-Post'></form></li>";
                     }
                 }
                 
