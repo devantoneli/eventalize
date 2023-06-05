@@ -100,10 +100,10 @@ include('../protect.php');
                         <h5><?php echo $_SESSION['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $_SESSION['ds_biografia'];?></h4>
                         </div>
-                        <div class="loc">
+                        <!-- <div class="loc">
                             <img src="../bancoImagens/empresas/imagens-perfil-empresa/loc.svg" alt="">
                             <h4>Santos - SP</h4>
-                        </div>
+                        </div> -->
                             <div class="avaliacaoPerfil">
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4>4,8</h4>

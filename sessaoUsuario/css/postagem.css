@@ -538,23 +538,41 @@ button.menuIcon{
 }
 
 .btnVerPerfil{
-    width: 150px;
+    width: 120px;
     height: 40px;
     border-radius: 78px;
     background-color: #E34C6D;
     border: none;
     color: white;
     font-size: 18px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.btnVerPerfil:hover{
+    opacity: 80%;
 }
 
 .btnVerServico{
-    width: 150px;
+    width: 120px;
     height: 40px;
     border-radius: 78px;
     background-color: #FF9061;
     border: none;
     color: white;
     font-size: 18px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.btnVerServico:hover{
+    opacity: 80%;
+}
+
+.botoesPostagem{
+    display: flex;
+    gap: 20px;
+    margin: 5% 0;
 }
 
 
