@@ -1,9 +1,9 @@
 <?php
 // validar as entradas do usuário
-if(empty($_POST['nm_email']) || empty($_POST['nm_senha'])) {
-  echo "Por favor, preencha todos os campos.";
-  exit();
-}
+// if(empty($_POST['nm_email']) || empty($_POST['nm_senha'])) {
+//   // echo '<script>alert("Por favor, preencha todos os campos!");</script>';
+//   exit();
+// }
 
 // conectar ao banco de dados
 $servername = "localhost";
