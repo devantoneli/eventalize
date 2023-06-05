@@ -105,6 +105,7 @@ setInterval(function() {
     xhr.send();
 
     carregarMensagens();
+    rolarFinal();
   }, 500);
 
 

@@ -61,22 +61,25 @@ function carregarMensagens() {
             var mensagem = mensagens[i];
             var classe = (mensagem.tp_destinatario === '1') ? 'recebido' : 'enviado';
             chat.innerHTML += '<div class="' + classe + '"><p>' + mensagem.ds_mensagem + '</p></div>';
+            rolarFinal()
         }
+
+        rolarFinal()
       
 }
 
 function rolarFinal(){
     var divChat = $('.chat');
-    // Rola a div para o final
     divChat.scrollTop(divChat[0].scrollHeight);
 }
 
 carregarMensagens();
-
+rolarFinal();
 setInterval(function() {
     pegarCod()
     codigoEmpresa = fotoMeio.getAttribute("empresa"); // Obtenha o código da empresa da foto clicada
     console.log(codigoEmpresa);
+    rolarFinal()
     // Faça uma requisição AJAX para obter as informações da foto e nome da empresa correspondente ao código da empresa
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -104,6 +107,7 @@ setInterval(function() {
     xhr.open('GET', 'js/obter_empresa.php?cd_empresa=' + codigoEmpresa);
     xhr.send();
     carregarMensagens();
+    rolarFinal();
   }, 500);
 
 
