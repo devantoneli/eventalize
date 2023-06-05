@@ -96,10 +96,10 @@ $row = mysqli_fetch_assoc($result_query);
                         <h5><?php echo $row['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $row['ds_biografia'];?></h4>
                         </div>
-                        <div class="loc">
+                        <!-- <div class="loc">
                             <img src="../bancoImagens/empresas/imagens-perfil-empresa/loc.svg" alt="">
                             <h4>Santos - SP</h4>
-                        </div>
+                        </div> -->
                             <div class="avaliacaoPerfil">
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4>4,8</h4>
@@ -190,6 +190,8 @@ mysqli_close($conn);
     </div>
   </div>
     <script src="js/carouseul.js"></script>
-    <script src="js/menu-e.js"></script>
+    <script src="js/menu-c.js"></script>
+    <script src="js/lupa.js"></script>
+    <script src="js/carrinho.js"></script>
 </body>
 </html>
