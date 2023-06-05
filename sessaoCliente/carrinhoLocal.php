@@ -162,7 +162,7 @@ if ($result->num_rows > 0) {
                 ?>
                 <input type="hidden" name="empresas_serializadas" value="<?php echo htmlentities(serialize($empresas)); ?>">
                 <div class="botoesEndereco">
-                    <button id="voltar"> Voltar</button>
+                    <button id=""> <a href="carrinho.php" style="text-decoration: none;">Voltar</a></button>
                     <button type="submit" id="continuar">Continuar</button>
                 </div>
             </form>

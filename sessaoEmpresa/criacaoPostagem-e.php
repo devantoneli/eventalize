@@ -101,7 +101,7 @@ if ($semimg2 == false && $semimg3 == false){
 
 
 if ($conn->query($sql)=== TRUE){
-    echo '<h1>Informações inseridas</h1>';
+    header('Location: perfilEmpresa.php');
 } else{
     echo "Error: " . $sql . "<br>" .  $conn->error;
 }

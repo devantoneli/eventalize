@@ -109,7 +109,7 @@ if(mysqli_num_rows($result) > 0){
     <div class="mensagensPerfil">
             <br>
             <div class="infoCliente">
-                <img id="fotoMeio" src="../img/icones/selecione.png"  alt="imagem" value="" empresa="1">
+                <img id="fotoMeio" src="../img/icones/selecione.png"  alt="imagem" value="" empresa="">
                 <h2 id="nomeMeio">Selecione um chat</h2>
             </div>
 

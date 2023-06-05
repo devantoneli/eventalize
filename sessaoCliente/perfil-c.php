@@ -107,9 +107,15 @@ if(mysqli_num_rows($result_query3) > 0){
             <div class="tituloPostagem">';
     while($row = mysqli_fetch_assoc($result_query3)){
             echo'
-                <h2>'.$row['nm_postagem'].'</h2><br>
-                <h3>Colaboradores: @decorazoes @candybolo @lembrancinhas @coxinha_doce</h3>
-            </div>
+                <h2>'.$row['nm_postagem'].'</h2><br>';?>
+                <form action="perfilEmpresa-c.php" method="GET">
+                <button class="grid-alinhaPerfil noestil">
+                <input type="hidden" value="<?php echo($row['cd_empresa']) ?>" name="cd_empresa">
+                <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
+                <h6><?php echo($row['nm_fantasia'])?></h6>
+                </button>
+              </form>
+            <?php echo'</div>
 
             <div class="postsPerfilCliente">
                 <div class="imgPosts1">

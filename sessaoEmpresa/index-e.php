@@ -194,7 +194,7 @@ include('../protect.php');
                             <?php 
                             }
 
-                            if($row['nm_status'] == 'Elaboração do serviço em processo' || $row['nm_status'] == 'Execução do serviço em processo' || $row['nm_status'] == 'Aguardando data agendada'){
+                            if($row['nm_status'] == 'Elaboração do serviço em processo' || $row['nm_status'] == 'Execução do serviço em processo' || $row['nm_status'] == 'Aguardando data agendada' || $row['nm_status'] == 'Aguardando assinatura do contrato'){
                                 ?>
                                 <svg style="transform: translate(-0.5em, -9.2em);" class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
                                 <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>

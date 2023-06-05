@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 $sql = "UPDATE tb_pedido SET nm_status = 'Aguardando assinatura do contrato' WHERE cd_pedido = '$cd_pedido'";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Status do pedido atualizado com sucesso.";
+    header('Location: pedidos-e.php');
 } else {
     echo "Erro ao atualizar o status do pedido: " . $conn->error;
 }
