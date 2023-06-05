@@ -300,6 +300,13 @@ div {
     text-align: center;
 }
 
+.relatRapid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 .relatRapid a{
     font-weight: 600;
     font-size: 1.7vw;
