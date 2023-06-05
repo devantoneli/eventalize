@@ -103,21 +103,22 @@ include('../protect.php');
                 <p>O que deseja fazer? </p>
                 <div class="grid-RelatRapid">
                     <div class="relatRapid">
-                        
+                        <a href="pedidos-e.php"><img src="../img/icones/icon-pedidos.svg" alt="" title="meus pedidos"></a>
                     </div>
                     <div class="relatRapid">
                         <div class="relatRapid" style="background-color: #968EC7 !important;">
-                            
+                        <a href="perfilEmpresa.php"><img src="../img/icones/icon-perfil.svg" alt="" title="perfil"></a>
                         </div>
                     </div>
                     <div class="relatRapid">
                         <div class="relatRapid" style="background-color: #FF3E83 !important;">
+                        <a href="chatEmpresa.php"><img src="../img/icones/icon-chat.svg" alt="" title="chat"></a>
                             
                         </div>
                     </div>
                     <div class="relatRapid">
                         <div class="relatRapid" style="background-color: #FFA856 !important;">
-                            
+                        <a href="criacaoServico-e.php"><img src="../img/icones/icon-mais.svg" alt="" title="criar serviço"></a>
                         </div>
                     </div>
                 </div>
