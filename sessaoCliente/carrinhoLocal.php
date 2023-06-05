@@ -14,13 +14,9 @@ if (isset($_POST['opcao'])) {
 
     $ids_string = implode(",", $ids);
 
-    // Restante do seu código...
 } else {
     echo "Nenhuma opção selecionada.";
 }
-
-    
-
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -69,8 +65,6 @@ if ($result->num_rows > 0) {
             'valor_servico' => $valor_servico
         );
     }
-
-    // ...
 }
 ?>
 
@@ -87,9 +81,29 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="css/carrinhoLocal.css">
     <link rel="icon" href="../img/icones/logo.png">
     <title>Finalizando Compra</title>
+    <script>
+        //VALIDAÇÃO FORMULÁRIO
+                function validarFormulario() {
+                    var rua = document.getElementById("rua").value;
+                    var cep = document.getElementById("cep").value;
+                    var cidade = document.getElementById("cidade").value;
+                    var bairro = document.getElementById("bairro").value;
+                    var uf = document.getElementById("uf").value;
+                    var complemento = document.getElementById("complemento").value;
+                    var referencia = document.getElementById("referencia").value;
+                    var numero = document.getElementById("numero").value;
+                    var data = document.getElementById("data").value;
+                    var hora = document.getElementById("hora").value;
+
+                    if (rua === "" || cep === "" || cidade === "" || bairro === "" || uf === "" || complemento === "" || referencia === "" || numero === "" || data === "" || hora === "") {
+                    alert("Por favor, preencha todos os campos.");
+                    return false; 
+                    }
+                    return true;
+                }
+    </script>
     </head>
 <body>
-
     <!-- INICIO MENU CLIENTE -->
 <div class="grid-container">
     <div class="header">
@@ -127,12 +141,12 @@ if ($result->num_rows > 0) {
   </div>
 
     <div class="inicioCarrinhoLocal">
-            <form action="salvandoEndereco.php" method="POST">
+            <form action="salvandoEndereco.php" method="POST" onsubmit="return validarFormulario()" id="formEndereco">
                 <div class="formEndereco">
                     <h3>Onde será realizado meu evento?</h3>
                     <div class="formdiv1">
                     <input type="text" placeholder="Rua" name="rua" id="rua">
-                    <input type="number" placeholder="Nº" style="padding-left: 8%;" name="numero">
+                    <input type="number" placeholder="Nº" style="padding-left: 8%;" name="numero" id="numero">
                 </div>
                 <div class="formdiv2">
                     <input type="text" placeholder="CEP" name="cep" id="cep" >
@@ -143,17 +157,18 @@ if ($result->num_rows > 0) {
                     <input type="text" placeholder="Estado" name="uf" id="uf">
                 </div>
                 <div class="formdiv4">
-                    <input type="text" placeholder="Complemento" name="complemento">
-                    <input type="text" placeholder="Referência" name="referencia">
+                    <input type="text" placeholder="Complemento" name="complemento" id="complemento">
+                    <input type="text" placeholder="Referência" name="referencia" id="referencia">
                 </div>
 
                 <div class='formData'>
                     <h3>Qual a data e horário?</h3>
                     <div class="formdiv2">
-                        <input type="date" placeholder="Data" name="dtAgendamento">
-                        <input type="time" placeholder="Hora" name="hrAgendamento">
+                        <input type="date" placeholder="Data" name="dtAgendamento" id="data">
+                        <input type="time" placeholder="Hora" name="hrAgendamento" id="hora">
                     </div>
                 </div>
+                
                 <?php
                 // Inclui os campos ocultos com os valores do array $ids
                 foreach ($ids as $id) {
