@@ -94,5 +94,3 @@ function mostrarAnimacao() {
 
   }
   // console.log("youg");
-  
-  

@@ -24,14 +24,12 @@ if ($conn->connect_error) {
 $sql = "SELECT cd_cep, cd_pedido FROM tb_endereco as cep JOIN tb_pedido as p on cep.cd_endereco = p.cd_endereco";
 $result = $conn->query($sql);
 
-
-
 // Consulta os CEPs dos pedidos com nm_status "Aguardando confirmação"
 $sql1 = "SELECT e.cd_cep
          FROM tb_endereco e
          INNER JOIN tb_pedido p ON e.cd_endereco = p.cd_endereco
-         WHERE p.cd_empresa = '$cd_empresa'
-         AND p.nm_status = 'Aguardando confirmação'";
+         WHERE (p.nm_status = 'Aguardando confirmação' OR p.nm_status = 'Aguardando a confirmação')
+         AND p.cd_empresa = '$cd_empresa'";
 
 // Consulta os CEPs dos pedidos com nm_status específicos
 $sql2 = "SELECT e.cd_cep
@@ -148,9 +146,7 @@ foreach ($ceps2 as $cep) {
                 <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
-                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                </svg>
+         
 
                 <div id="inserirPerfil">
                     <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
@@ -186,7 +182,7 @@ JOIN tb_servicopedido as sp ON p.cd_pedido = sp.cd_pedido
 JOIN tb_servico as s on sp.cd_servico = s.cd_servico
 JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
-WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
+WHERE (nm_status = 'Aguardando confirmação' OR nm_status = 'Aguardando a confirmação') AND p.cd_empresa = '$cd_empresa'";
 
 
 
@@ -383,9 +379,7 @@ if(mysqli_num_rows($result_query2) > 0){
         <h3>'.$row2['nm_servico'].'</h3>
         <h3>R$'. str_replace('.', ',', $row2['vl_pedido']) .'</h3>
         <h3 id="txtArquivado">'.$row2['nm_status'].'</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-        </svg>
+        
         </div>';
     }
     echo'

@@ -157,6 +157,7 @@
     padding: 10px 27px;
     border-radius: 6px;
     margin-top: 3px;
+    max-width: 40%;
     text-align: end;
 }
 
@@ -166,5 +167,6 @@
     border-radius: 6px;
     margin-top: 3px;
     text-align: start;
+    max-width: 40%;
     padding: 10px 27px;
 }

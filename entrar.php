@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -37,7 +40,7 @@
 
                     <input class="inputCirc" id="usuario" name="nm_email" placeholder="Digite seu e-mail" type="email">
                     <input class="inputCirc" id="senha" name="nm_senha" placeholder="Digite sua senha" type="password">
-                    <h5>Esqueceu a senha?</h5>
+                    
                     <p>Não tem login? <a href="sessaoEmpresa/perfil/cadastrandoEmpresa.html">Cadastre-se agora!</a></p>
                     <button class="btnCirc" type="sub
                     "><a>Entrar</a></button>
@@ -66,8 +69,11 @@
             }
         </script>
 
-
-    
+<?php if (isset($_GET['erro'])) {
+    $mensagemErro = $_GET['erro'];
+    echo "<script>alert('$mensagemErro');</script>";
+  }
+    ?>
    
 
 <!-- <script src="js/menu.js"></script> -->

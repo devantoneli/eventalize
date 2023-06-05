@@ -12,6 +12,11 @@ body{
     
 }
 
+.noestil {
+    background: none;
+    border: none;
+}
+
 /*CARROSSEL*/
 * {box-sizing:border-box}
 

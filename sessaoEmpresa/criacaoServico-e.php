@@ -83,7 +83,7 @@ include('../protect.php');
                     <option value="7">Equipamento</option>
                     <option value="8">Auxiliar</option>
                 </select>
-                <input class="input-Digita" type="number" name="vl_servico" id="" placeholder="Valor">
+                <input class="input-Digita" pattern="[0-9]+([,\.][0-9]+)?" title="Digite um número válido" name="vl_servico" id="" placeholder="Valor (ex: 10,50)">
 <!-- RADIOS COMUNS -->
                 <div class="radios">
                     <h1>Personalização</h1>
@@ -97,28 +97,6 @@ include('../protect.php');
                         <a>Não</a></label>
                     </div>
                     <hr>
-                    <h1>Solicitação de orçamento</h1>
-                    <div class="personalizacao">
-                        <label class="sim" for="1">
-                        <input type="radio" name="cd_orcament" value="1" id="">
-                        Sim</label>
-                        
-                        <label class="nao" for="0">
-                        <input type="radio" name="cd_orcament" value="0" id="">
-                        <a>Não</a></label>
-                    </div>
-                    <hr>
-                    <h1>Livre localização</h1>
-                    <div class="personalizacao">
-                        <label class="sim" for="1">
-                        <input type="radio" name="cd_local" value="1" id="">
-                        Sim</label>
-                        
-                        <label class="nao" for="0">
-                        <input type="radio" name="cd_local" value="0" id="">
-                        <a>Não</a></label>
-                    </div>
-                </div>
 
 <!-- BOTAO DO FORM -->         
                 <button class="criar" type="submit" id="openModal">Criar Serviço</button>
@@ -287,6 +265,8 @@ $cd_local = $_POST["cd_local"];
 $cd_empresa = $_SESSION['cd_empresa'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
+$vl_servico = str_replace(',', '.', $vl_servico);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -352,11 +332,11 @@ if(isset($_POST['url_img3'])) {
 }
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
 }else if ($semimg2 == true){
-    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img3) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img3) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
 }else {
-    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_orcament, cd_local, cd_tiposervico, url_imgcapa, url_img2) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_orcament, $cd_local, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
+    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img2) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
 }
 
 

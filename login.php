@@ -68,7 +68,9 @@ if ($result->num_rows == 1 ) {
   header("Location: sessaoCliente/index-c.php ");
 }else {
   // informações de login inválidas, exibir mensagem de erro
-  echo "Nome de usuário ou senha inválido(s).";
+  $mensagemErro = "Nome de usuário ou senha inválido(s).";
+  header("Location: entrar.php?erro=" . urlencode($mensagemErro));
+  
   exit();
 }
 

@@ -214,7 +214,7 @@ if ($result->num_rows > 0) {
                                     <h3>R$ '.number_format($card['valor_servico'], 2, ',', '.') . '</h3>
                                 </div>
                                 <div class="iconDeletar">
-                                    <span>&#x2716;</span>
+                                  
                                 </div>
                             </div>
                         </div>';

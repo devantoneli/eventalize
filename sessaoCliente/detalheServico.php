@@ -148,9 +148,12 @@ $row = mysqli_fetch_assoc($result_query);
                   <h5 id="txtAvalia">4,5</h5>
             </div>
 
-              <form class="grid-alinhaPerfil">
+              <form action="perfilEmpresa-c.php" method="GET">
+                <button class="grid-alinhaPerfil noestil">
+                <input type="hidden" value="<?php echo($row['cd_empresa']) ?>" name="cd_empresa">
                 <img class="img-fotoPerfil" src="<?php echo $row['url_fotoperfil'];?>" alt="">
                 <h6><?php echo($row['nm_fantasia'])?></h6>
+                </button>
               </form>
 
                   <div class="descPacote">

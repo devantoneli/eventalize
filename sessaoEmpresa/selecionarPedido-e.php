@@ -16,7 +16,7 @@ if($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM vwpedidocliente WHERE  nm_cliente LIKE '%$nm_cliente%'";
+$sql = "SELECT * FROM vwpedidocliente WHERE  nm_cliente LIKE '%$nm_cliente%' AND nm_status='Finalizado'";
 // $sql = "SELECT * FROM vwpedidocliente WHERE cd_empresa = $cd_empresa AND nm_cliente = %$nm_cliente%";
 
 $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));

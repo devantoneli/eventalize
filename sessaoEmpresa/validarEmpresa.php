@@ -28,7 +28,7 @@ if(!isset($_GET['nm_fantasia']) || !isset($_GET['nm_razaosocial']) ||!isset($_GE
 
 }else{
     if($conn->query($sql)=== TRUE){
-        header('Location: ../entrar.html');
+        header('Location: ../entrar.php');
     }
     else{
         echo "Erro: " . $sql . "<br>" . $conn->error;

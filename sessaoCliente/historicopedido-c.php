@@ -132,11 +132,18 @@ if($conn->connect_error){
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
                 <li class="status">'.$row['nm_status'].'</li>';
                 $cd_pedido = $row['cd_pedido'];
-                if ($row['cd_infopagamento']==0){
+                if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='pagar' class='btn-Pagar'></form></li>";
-                }else{
-                    echo'<li class="status">Pago</li>';
+                }else {
+                    if ($row['nm_status']=="Aguardando confirmação" || $row['nm_status']=="Aguardando a confirmação"){
+                        echo'<li class="status">Aguardando confirmação</li>';
+                    }if ($row['nm_status']=="Pedido recusado"){
+                        echo'<li class="status" style="color: red;">Pedido recusado</li>';
+                    }else{
+                        echo'<li class="status">Pago</li>';
+                    }
                 }
+                
                 
                 echo'
             </div>
