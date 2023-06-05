@@ -16,9 +16,9 @@
         <div class="bigBoxEmpresa">
             <br>
          <div class="box">
-                <h2 class="estiloFonte">EVENTALIZE</h2>
-                <h3>Cadastre-se como Empresa ou Profissional</h3>
-                <form action="validarEmpresa.php">                      
+                <h2 class="estiloFonte">EVENTALIZE</h2><br>
+                <h3>Cadastre-se como Empresa ou Profissional</h3><br>
+                <form action="validarEmpresa.php" id="cadastrarEmp">                      
                              <div class="gridSegCadastro">
                                         <input type="text" class="retangulo" placeholder="Nome Fantasia" name="nm_fantasia">
                                     </div>
@@ -28,7 +28,7 @@
                                     </div>
                                     <br>
                                 <div class="gridUmCadastro">
-                                    <input type="text" class="retangulo" placeholder="Natureza Juridica">
+                                    <input type="text" name="juridica" class="retangulo" placeholder="Natureza Juridica">
                                     <div></div>
                                     <input type="text" class="retangulo" placeholder="CNPJ" name="cd_cnpj">
                                 </div>
@@ -58,16 +58,17 @@
                                     <div></div>
                                     <input type="text" class="retangulo" placeholder="Cidade">
                                 </div>
-                            
+                            <br>
                                 <div class="termos">
                                     <input type="checkbox">
                                     <h4>Eu li e concordo com os 
                                         <h4 class="rosaEstilo">termos de uso</h4>
                                     </h4>
-                                </div> 
+                                </div> <br>
                                 <center>   
-                                    <button onclick="cadastro()" id="buttonCadastro" type="submit">Cadastrar</button>
+                                    <button onclick="" id="buttonCadastro">Cadastrar</button>
                                 </center>
+                                <br>
                             <div class="h4Grid">
                                 <h4>Já possui uma conta? <h4> <a class="rosaEstilo" href="../index.html">Entrar </a></h4></h4>
                             </div>
@@ -81,5 +82,6 @@
                  </div>
              </div>    
        </div>
+       <script src="js/cadastro.js"></script>
 </body>
 </html>
