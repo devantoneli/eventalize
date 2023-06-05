@@ -151,7 +151,7 @@ include('../protect.php');
 
                             ?>
                         <div class="novoPedido">
-                            <div class="imgServico" style="<?php if($row3['url_fotoperfil']="NULL"){echo("background: blue;");} else{?>background-image: url('<?php echo($row3["url_fotoperfil"]);} ?>'); <?php ?>"></div>
+                            <div class="imgServico" style="<?php if($row3['url_fotoperfil']="NULL"){echo("background-image: url('https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais');");} else{?>background-image: url('<?php echo($row3["url_fotoperfil"]);} ?>'); <?php ?>"></div>
                             <!-- echo($row['url_fotoperfil']) -->
                             <div class="imgCliente" style="background-image: url('')"></div>
                         </div>
