@@ -149,7 +149,7 @@ $row = mysqli_fetch_assoc($result_query);
                     </div>
                 </div>
 <!-- BOTAO DO FORM -->         
-                <button class="criar" type="submit">Editar Serviço</button>
+                <button class="criar" id="openModal" type="submit">Editar Serviço</button>
             </div>
 <!-- INPUT PARA IMAGENS -->
             <div class="imagens">

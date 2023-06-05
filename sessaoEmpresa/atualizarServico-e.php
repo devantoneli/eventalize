@@ -101,9 +101,14 @@ if ($semimg2 == false && $semimg3 == false){
 }
 
 
-if ($conn->query($sql)=== TRUE){
-    header('Location: perfilEmpresa.php');
-} else{
+session_start();
+
+// Seu código de atualização do banco de dados aqui...
+
+if ($conn->query($sql) === TRUE) {
+    $_SESSION['displayModal'] = true;
+    header('Location: modal.php');
+} else {
     echo "Error updating record: " . $conn->error;
 }
 
