@@ -23,10 +23,23 @@ include('../protect.php');
     $sql = "SELECT * FROM vwpedidos WHERE cd_empresa = $cd_empresa AND nm_status<>'finalizado'";
     $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
     $row = mysqli_fetch_assoc($result_query);
-
     
     $result_query2 = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
     $row2 = mysqli_fetch_assoc($result_query2);
+
+    $sql2 = "SELECT *
+    FROM tb_pedido AS p
+    JOIN tb_servicopedido as sp ON p.cd_pedido = sp.cd_pedido
+    JOIN tb_servico as s on sp.cd_servico = s.cd_servico
+    JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
+    JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
+    WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
+
+    $result_query3 = mysqli_query($conn, $sql2) or die(' Erro na query:' . $sql2 . ' ' . mysqli_error($conn));
+    $row3 = mysqli_fetch_assoc($result_query3);
+
+
+
 
 ?>
 
@@ -69,9 +82,9 @@ include('../protect.php');
                 <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                </svg>
+                </svg> -->
 
                 <div id="inserirPerfil">
                     <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
@@ -131,12 +144,12 @@ include('../protect.php');
 
                     <div class="blocoRoxo">
                 <?php
-                    if(mysqli_num_rows($result_query2) > 0){
-                        while($row2 = mysqli_fetch_assoc($result_query2)){
+                    if(mysqli_num_rows($result_query3) > 0){
+                        while($row3 = mysqli_fetch_assoc($result_query2)){
                 
                             ?>
                         <div class="novoPedido">
-                            <div class="imgServico" style="<?php if($row['url_imgcapa']="NULL"){echo("background: blue;");} else{?>background-image: url('<?php echo($row["url_imgcapa"]);} ?>'); <?php ?>"></div>
+                            <div class="imgServico" style="<?php if($row3['url_fotoperfil']="NULL"){echo("background: blue;");} else{?>background-image: url('<?php echo($row3["url_fotoperfil"]);} ?>'); <?php ?>"></div>
                             <!-- echo($row['url_fotoperfil']) -->
                             <div class="imgCliente" style="background-image: url('')"></div>
                         </div>
