@@ -264,6 +264,7 @@ ORDER BY p.dt_pedido DESC";
 
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
+// $row = mysqli_fetch_assoc($result_query);
 
 // echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query);
 

@@ -64,20 +64,27 @@ JOIN tb_servicopedido AS sp ON sp.cd_pedido = p.cd_pedido
 JOIN tb_servico AS s ON s.cd_servico = sp.cd_servico 
 WHERE sp.cd_servico = $cd_servico AND p.nm_status NOT IN ('Finalizado', 'Cancelado', 'Pedido recusado')";
 
+session_start();
+
+
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $totalPedidosAtivos = $row['total'];
 
+
 if ($totalPedidosAtivos > 0) {
     // Existem pedidos ativos com o serviço, atualize o atributo 'delete' para 1
-    $sql = "UPDATE tb_servico SET deletado = 1 WHERE cd_servico = $cd_servico";
-    $conn->query($sql);
-    echo "O serviço não pode ser excluído, mas seu atributo 'delete' foi atualizado.";
+    $sql_update = "UPDATE tb_servico SET deletado = 1 WHERE cd_servico = $cd_servico";
+    echo "O serviço não pode ser excluído, mas seu atributo 'delete' foi atualizado " . $conn->error;
 } else {
     // Não há pedidos ativos com o serviço, exclua-o
-    $sql = "DELETE FROM tb_servico WHERE cd_servico = $cd_servico";
-    $conn->query($sql);
-    echo "O serviço foi excluído com sucesso.";
+    $sql_delete = "DELETE FROM tb_servico WHERE cd_servico = $cd_servico";
+    if ($conn->query($sql_delete) === TRUE) {
+        $_SESSION['displayModalDeletar'] = true;
+        header('Location: modalDeletar.php');
+    } else {
+        echo "Erro ao excluir o serviço: " . $conn->error;
+    }
 }
 
     

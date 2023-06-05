@@ -353,7 +353,7 @@ if (mysqli_num_rows($result_query) > 0) {
                     </form>
                     <form action="deletarServico-e.php">
                         <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
-                        <button class="deletarPacote" type="submit"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
+                        <button class="deletarPacote" id="openModal" type="submit"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
                     </form>
                 </div>
             </div>
