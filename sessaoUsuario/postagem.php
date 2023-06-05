@@ -155,12 +155,14 @@ $dbname = "db_eventalize";
                             echo'Empresa
                             <form action="../sessaoCliente/perfilEmpresa-c.php">
                             <input type="hidden" value="'.$cd_empresa.'" name="cd_empresa">
+                            <div class="botoesPostagem">
                             <button class="btnVerPerfil" type="submit">Ver perfil</button>
                             </form>
 
                             <form action="../sessaoCliente/detalheServico.php" method="get">
                             <input type="hidden" value="'.$cd_servico.'" name="cd_servico">
                             <button class="btnVerServico" type="submit">Ver serviço</button>
+                            </div>
                             </form>';
                         }else {
                             echo'<p style="font-size: 1.5em;">Cliente</p>';
