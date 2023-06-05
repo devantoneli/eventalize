@@ -47,9 +47,9 @@ if ($result->num_rows > 0) {
                 
                 <ul class="opcoesMenu">
                     <li class=""><a href="../sessaoEmpresa/index-e.php" class="opcaoMenu" aria-current="page">Início</a></li>
-                    <li class="nav-item"><a href="#" class="opcaoMenu">Pedidos</a></li>
-                    <li class="nav-item"><a href="#" class="opcaoMenu">Suas postagens</a></li>
-                    <li class="nav-item"><a href="chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
+                    <li class="nav-item"><a href="../sessaoEmpresa/pedidos-e.php" class="opcaoMenu">Pedidos</a></li>
+                    <li class="nav-item"><a href="../sessaoEmpresa/perfilEmpresa.php" class="opcaoMenu">Suas postagens</a></li>
+                    <li class="nav-item"><a href="../sessaoEmpresa/chatEmpresa.php" class="opcaoMenu">Mensagens</a></li>
                 </ul>
             
                 <div class="alinhaLogo">
@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
                     </button>
     
                     <section id="menu">
-                    <a href="criacaoServico-e.php"><h5>Criar Serviço ou Pacote</h5></a>
+                    <a href="criacaoServico-e.php"><h5>Criar Serviço</h5></a>
                     <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                     </section>
     
@@ -98,7 +98,7 @@ if ($result->num_rows > 0) {
                     <a href="../sessaoCliente/index-c.php">Início</a>
                     <a href="../sessaoUsuario/explore.php">Feed</a>
                     <a href="../sessaoCliente/chatCliente.php">Mensagens</a>
-                    <a href="historicopedido-c.php">Meus Pedidos</a>
+                    <a href="../sessaoCliente/historicopedido-c.php">Meus Pedidos</a>
                 </div>
     
                 <div class="headerPesquisa">
@@ -112,7 +112,7 @@ if ($result->num_rows > 0) {
                 <div class="headerClientePerfil" >
                     <!-- <div class="iconCliente"> -->
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
-                    <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                   
                     <!-- </div> -->
                     
                     <button class="menuIcon2" onclick="menuOpen()"><img src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>

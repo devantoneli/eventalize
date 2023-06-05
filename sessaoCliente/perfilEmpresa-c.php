@@ -70,7 +70,7 @@ $row = mysqli_fetch_assoc($result_query);
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+               
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
@@ -92,7 +92,7 @@ $row = mysqli_fetch_assoc($result_query);
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
-                        <h3><?php echo $row['nm_fantasia'];?></h3>
+                        <h3 style="width: 250px !important;"><?php echo $row['nm_fantasia'];?></h3>
                         <h5><?php echo $row['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $row['ds_biografia'];?></h4>
                         </div>
