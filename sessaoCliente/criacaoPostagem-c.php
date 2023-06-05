@@ -13,7 +13,12 @@ $cd_cliente = $_SESSION["cd_cliente"];
 // $cd_postagem = $_POST['cd_postagem'];
 $nm_postagem = $_POST['nm_postagem'];
 $ds_postagem = $_POST['ds_postagem'];
+if (!isset($_POST['cd_pedido'])){
+    echo "nada nao";
+    }
 $cd_pedido = $_POST['cd_pedido'];
+
+
 $cd_avaliacao = $_POST['cd_avaliacao'];
 
 $servername = "localhost";
@@ -94,13 +99,12 @@ if(isset($_POST['url_img3'])) {
 }
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_postagem(cd_cliente, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3, cd_avaliacao, cd_pedido) VALUES ($cd_cliente, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2', '$url_img3', $cd_avaliacao, $cd_pedido)";
+    $sql = "INSERT INTO tb_postagem(cd_cliente, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3, cd_avaliacao, cd_pedido, dt_postagem, cd_tipoautor) VALUES ($cd_cliente, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2', '$url_img3', $cd_avaliacao, $cd_pedido, '$dataAtual', 1)";
 }else if ($semimg2 == true){
-      $sql = "INSERT INTO tb_postagem(cd_cliente, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3, cd_avaliacao, cd_pedido) VALUES ($cd_cliente, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img3', $cd_avaliacao, $cd_pedido)";
+      $sql = "INSERT INTO tb_postagem(cd_cliente, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3, cd_avaliacao, cd_pedido, dt_postagem, cd_tipoautor) VALUES ($cd_cliente, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img3', $cd_avaliacao, $cd_pedido, '$dataAtual', 1)";
 }else {
-    $sql = "INSERT INTO tb_postagem(cd_cliente, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3, cd_avaliacao, cd_pedido) VALUES ($cd_cliente, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2', $cd_avaliacao, $cd_pedido)";
+    $sql = "INSERT INTO tb_postagem(cd_cliente, nm_postagem, ds_postagem, url_imgcapa, url_img2, url_img3, cd_avaliacao, cd_pedido, dt_postagem, cd_tipoautor) VALUES ($cd_cliente, '$nm_postagem', '$ds_postagem', '$url_imgcapa', '$url_img2', $cd_avaliacao, $cd_pedido, '$dataAtual', 1)";
 }
-
 
 if ($conn->query($sql)=== TRUE){
     header('Location: perfil-c.php');

@@ -112,7 +112,18 @@ if($conn->connect_error){
         }
         
         while($row = mysqli_fetch_assoc($result)){
-          
+            $cd_pedido = $row['cd_pedido'];
+            $sql2 = "SELECT * FROM tb_postagem WHERE cd_pedido = $cd_pedido";
+            $result2 = $conn->query($sql2);
+            
+            if ($result2->num_rows > 0) {
+              // Já existe uma postagem relacionada ao pedido
+              $postado = TRUE;
+            } else {
+              // Não existe uma postagem relacionada ao pedido
+              $postado = FALSE;
+            }
+
             echo'
             <div class="gridHistorico">
             <div class="infoPedido">
@@ -131,7 +142,7 @@ if($conn->connect_error){
                 
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
                 <li class="status">'.$row['nm_status'].'</li>';
-                $cd_pedido = $row['cd_pedido'];
+                
                 if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Pagar' class='btn-Pagar'></form></li>";
                 }else {
@@ -141,6 +152,8 @@ if($conn->connect_error){
                         echo'<li class="status" style="color: red;">Pedido recusado</li>';
                     }else if($row['nm_status']!="Finalizado"){
                         echo'<li class="status">Pago</li>';
+                    }else if($postado){
+                        echo'<li class="status">Postado</li>';
                     }else {
                         echo "<li><form action='criarPostagem-c.php' method='GET'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Postar' class='btn-Post'></form></li>";
                     }
@@ -149,12 +162,15 @@ if($conn->connect_error){
                 
                 echo'
             </div>
-        </div>
-        
-        <div class="imgHistoricoPedido">
-        <img src="'.$row['url_imgcapa'].'" alt="">
-    </div>
+        </div><div class="imgHistoricoPedido">';
 
+        if(!$row['url_imgcapa']){
+            echo'fotinha';
+        }else{
+        echo'
+        <img src="'.$row['url_imgcapa'].'" alt="">';
+    
+} echo'</div>
     <div class="textoHistorico">
             <h2 class="estiloEmpresa">'.$row['nm_fantasia'].'</h2><br>
             <h3>'.$row['ds_servico'].'</h3>
@@ -166,7 +182,7 @@ if($conn->connect_error){
     </div>
 
     <hr>
-</div>';   
+</div>';  
         }
     }
 

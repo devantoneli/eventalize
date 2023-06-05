@@ -133,7 +133,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 <form action="criarPostagem.php" method="post">
                 <div class="linhasInput">
-                    <input type="text" placeholder="Pedido" name="cd_pedido" disabled value=<?php echo($row["cd_pedido"]) ?>>
+                    <input type="text" placeholder="Pedido" name="cd_pedido" value=<?php echo($cd_pedido); ?>>
                     <input type="text" placeholder="Título" name="nm_postagem">
                     <div>
                     <img style="margin-bottom: -7px;" src="../img/icones/estrel.png" alt="">

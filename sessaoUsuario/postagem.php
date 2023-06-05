@@ -162,7 +162,7 @@ $dbname = "db_eventalize";
         $result2 = $conn->query($sql2);
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_cliente'];
-        $img_autor = 'vazio';
+        $img_autor = 'https://img.freepik.com/vetores-premium/icone-de-linha-de-vetor-minimo-do-cliente-no-botao-3d-isolado-em-fundo-preto-vetor-premium_570929-438.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais';
     }
     $sql3 = "SELECT * FROM vwcodigospostagem WHERE cd_postagem = $cd_postagem"; //(pra quando o da raiza estiver pronto)
     $result3 = $conn->query($sql3);
@@ -179,7 +179,7 @@ $dbname = "db_eventalize";
                     }
 
                     $capa_img = getimagesize($row["url_imgcapa"]);
-                    $info_imagem = getimagesize($row["url_img2"]. $row["url_img3"] );
+                    
                     $largura = 100; 
                     $altura = 100;
                     $largura_capa = 100;
@@ -264,7 +264,7 @@ $dbname = "db_eventalize";
                             </div>
                             </form>';
                         }else {
-                            echo'<p style="font-size: 1.5em;">Cliente</p>';
+                            echo'<p style="font-size: 1.5em; margin-left: -11vw;">Cliente</p>';
                         }echo'
                         </div>
 
