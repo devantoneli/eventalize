@@ -4,6 +4,30 @@ if(!isset($_SESSION)){
     session_start();
 }
 
+$cd_cliente = $_SESSION['cd_cliente'];
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+
+$conn = new mysqli($servername, $username, $password, $db_name);
+
+if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+
+$sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
+s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
+FROM tb_pedido p
+INNER JOIN tb_cliente c ON p.cd_cliente = c.cd_cliente
+INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
+INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
+INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
+WHERE p.cd_cliente = $cd_cliente ORDER BY p.dt_pedido";
+ $result=$conn->query($sql);
+ $row=$result->fetch_assoc();
+
 include('../protect.php');
 
 ?>
@@ -74,11 +98,40 @@ include('../protect.php');
                     <h3>Contrato de um Serviço</h3>
                 </div>
                 <div class="textoContrato">
-                    <h4>	Lorem ipsum cras risus fermentum ornare suspendisse est volutpat viverra, himenaeos morbi sapien tristique vitae leo eros. curabitur convallis nullam vestibulum leo eleifend elementum donec enim iaculis, proin ipsum aenean litora suspendisse quisque porta elit donec porttitor, ac iaculis feugiat sit luctus vestibulum scelerisque semper. sociosqu nostra pulvinar mauris varius facilisis egestas litora iaculis dolor, ornare in molestie laoreet aenean sed fringilla lacinia velit sollicitudin, adipiscing egestas orci ut class a curabitur sed. phasellus mauris augue rutrum bibendum odio molestie euismod enim lorem, proin augue nulla arcu fermentum duis tempor dictumst, commodo euismod felis dui purus scelerisque nisl magna. 
+                    <h4>	Este Contrato de Prestação de Serviços para Eventos ("Contrato") é celebrado entre a Empresa <?php echo $row['nm_fantasia']?>, doravante denominada "Prestadora de Serviços", e o Cliente <?php echo($_SESSION['nm_cliente'])?>, doravante denominado "Cliente", em conjunto referidos como "Partes".
 
-                        Consequat ut porttitor fermentum metus a dapibus mollis, ultrices sociosqu bibendum sapien pretium quisque, tortor vitae fringilla integer orci rutrum. urna malesuada gravida enim fermentum curae integer odio, porttitor libero ut purus venenatis ornare quis, ad sed praesent a inceptos purus. senectus sed sociosqu maecenas rhoncus netus sodales maecenas nec viverra purus, quisque facilisis aliquam praesent ipsum diam taciti luctus laoreet dolor, himenaeos integer proin mi aliquam lacinia potenti sollicitudin aptent. gravida tempor at consectetur sit fringilla lacinia ac justo ad mattis, congue eleifend donec faucibus ut curae malesuada nisl viverra, nunc metus curabitur condimentum viverra curae interdum nec aliquam. 
-                    
-                        Laoreet torquent mauris porta quisque adipiscing semper tristique primis, sit tristique pretium donec litora et aliquam ut, fames gravida euismod sagittis etiam urna amet. nibh est eros cras lobortis phasellus blandit amet enim venenatis urna est eget, nulla fusce quis sem habitasse eget elit ad etiam ad. quisque lacinia donec quisque lacinia posuere semper arcu nulla tristique erat suspendisse taciti id, potenti porta donec quisque aptent odio iaculis congue dictum posuere hac sed. quisque dolor commodo malesuada faucibus nisl felis sociosqu mi vestibulum, fringilla auctor curae maecenas tempor habitasse curabitur fames enim arcu, quam inceptos pulvinar posuere netus curabitur leo scelerisque. </h4>
+                    Objeto do Contrato
+                    1.1 A Prestadora de Serviços compromete-se a fornecer os serviços relacionados à organização e execução do evento, a ser realizado na data do Evento, no local previsto.
+                    1.2 Os serviços incluem, mas não se limitam a: <?php echo $row['ds_servico']?>
+
+                    Pagamento
+                    2.1 O Cliente concorda em efetuar o pagamento à Prestadora de Serviços de acordo com as seguintes condições:
+                    a- <?php echo $row['vl_servico']?> deverá ser pago totalmente.
+                    b- O pagamento será efetuado através de pix.
+                    c- Em caso de não pagamento, no todo ou em parte, pela Prestadora de Serviços, o valor total será reembolsado ao Cliente.
+                    d- Em caso de não pagamento, no todo ou em parte, pelo Cliente, a Prestadora de Serviços terá o direito de reaver o valor devido ou reter os equipamentos fornecidos até o pagamento integral.
+
+                    Alterações no Escopo do Evento
+                    3.1 Qualquer alteração no escopo do evento deverá ser acordada por escrito entre as Partes, estabelecendo as condições adicionais, se necessário, e qualquer impacto no valor total do contrato.
+
+                    Cancelamento
+                    4.1 Em caso de cancelamento do evento por qualquer motivo, o Cliente deverá notificar a Prestadora de Serviços por escrito com antecedência mínima de [Número de dias] dias.
+                    4.2 O Cliente será responsável pelo pagamento de eventuais despesas já incorridas pela Prestadora de Serviços até a data de cancelamento.
+
+                    Responsabilidade
+                    5.1 A Prestadora de Serviços se compromete a executar os serviços com o máximo de profissionalismo e qualidade.
+                    5.2 A Prestadora de Serviços não será responsável por quaisquer danos ou prejuízos causados por terceiros, casos fortuitos ou de força maior que possam afetar o evento.
+
+                    Vigência
+                    6.1 Este Contrato terá vigência a partir da data de assinatura pelas Partes e permanecerá em vigor até a conclusão dos serviços prestados.
+
+                    Lei Aplicável e Foro
+                    7.1 Este Contrato será regido e interpretado de acordo com as leis do [País].
+                    7.2 Quaisquer controvérsias decorrentes deste Contrato serão submetidas à jurisdição exclusiva dos tribunais competentes do [Local do Foro].
+
+                    As Partes declaram ter lido, compreendido e concordado com todos os termos e condições deste Contrato, através da assinatura abaixo.
+
+                   </h4>
                 </div>
                 <div class="assinaturas">
                     <div class="assCliente">
@@ -87,11 +140,15 @@ include('../protect.php');
                         <h6>Assinatura do Cliente</h6>
                     </div>
                     <div class="assEmpresa">
-                        <button onclick="generatePDF()">Assinar Contrato</button>
+                    <h3><?php echo $row['nm_fantasia']?></h3>
                         <hr>
                         <h6>Assinatura da Empresa</h6>
                     </div>
+                    <div class="assEmpresa">
+                        <button onclick="generatePDF()">Assinar Contrato</button>
+                    </div>
                 </div>
+                
             </div>
 
         
