@@ -105,13 +105,13 @@ if ($result->num_rows > 0) {
                     <form action="buscaServico-c.php" method="post" id="searchForm">
                         <input type="text" style="padding: 2.5%;" placeholder="Procure Serviços" name="nm_tiposervico">
                         <div class="imgLupa">
-                        <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm()">
+                        <img src="../img/icones/icon-lupa.svg" alt="" width="30px" onclick="submitForm(si)">
                         </div>
                     </form>
                 </div>
                 <div class="headerClientePerfil" >
                     <!-- <div class="iconCliente"> -->
-                    <a href="../sessaoCliente/carrinho.php" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                    <a href="../sessaoCliente/carrinho.php" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                    
                     <!-- </div> -->
                     
@@ -127,6 +127,8 @@ if ($result->num_rows > 0) {
             </div>
         </div>
         <script src="../sessaoCliente/js/menu-c.js"></script>
+        <script src="../sessaoCliente/js/carrinho.js"></script>
+        <script src="../sessaoCliente/js/lupa.js"></script>
         <?php
         }else {
             ?>

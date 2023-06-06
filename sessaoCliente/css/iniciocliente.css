@@ -126,7 +126,7 @@
     display: flex;
     justify-content: center;
     gap: 0%;
-    margin: 0;
+    margin: 5%;
 }
 
 .iconesBusca img{
@@ -257,9 +257,9 @@
 
 .gridPostagens{
     column-count: 3;
-    column-gap: 20px;
+    column-gap: 50px;
     
-    margin: 0 15% 0 15%;
+    margin: 0 5% 0 5%;
     /* row-gap: 50px; */
   /* column-fill: auto; */
     /* grid-column: 2/3; */

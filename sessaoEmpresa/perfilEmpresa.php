@@ -81,7 +81,7 @@ include('../protect.php');
                 <!-- <a href=""><h5>Pontuações</h5></a>
                 <a href=""><h5>Postagens</h5></a>
                 <a href=""><h5>Estatísticas de venda</h5></a> -->
-                <a href=""><h5>Configurações</h5></a>
+                <a href="editarPerfil-e.php"><h5>Configurações</h5></a>
                 <a href="../logout.php"><h5>Sair</h5></a>
             </section>
             </div>
@@ -178,11 +178,11 @@ if (mysqli_num_rows($result_query) > 0) {
                     </form>
                     <form action="edicaoServico-e.php">
                         <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
-                        <button type="submit" class="editarPacote"><img src="../bancoImagens/empresas/imagens-perfil-empresa/editarIcon.svg" alt="">Editar</button>
+                        <button type="submit" class="editarPacote"><img src="../img/icones/icon-edita-card.svg" alt="">Editar</button>
                     </form>
                     <form action="deletarServico-e.php">
                         <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
-                        <button class="deletarPacote" id="openModal" type="submit"><img src="../bancoImagens/empresas/imagens-perfil-empresa/deletar.svg" alt="">Deletar</button>
+                        <button class="deletarPacote" id="openModal" type="submit"><img src="../img/icones/icon-lixo.svg" alt="">Deletar</button>
                     </form>
                 </div>
             </div>

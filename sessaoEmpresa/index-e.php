@@ -97,7 +97,7 @@ include('../protect.php');
                 <!-- <a href=""><h5>Pontuações</h5></a>
                 <a href=""><h5>Postagens</h5></a>
                 <a href=""><h5>Estatísticas de venda</h5></a> -->
-                <a href=""><h5>Configurações</h5></a>
+                <a href="editarPerfil-e.php"><h5>Configurações</h5></a>
                 <a href="../logout.php"><h5>Sair</h5></a>
             </section>
             </div>

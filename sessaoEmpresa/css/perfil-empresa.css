@@ -16,6 +16,7 @@
     padding: 0;
     margin: 0;
     font-family: 'League Spartan';
+    overflow-x: hidden;
 }
 
 
@@ -94,7 +95,7 @@
     color: #BA73B0;
     font-weight: 300;
     text-align: left;
-    margin-top: 2%;
+    margin-top: 5%;
     width: 70%;
 }
 
@@ -173,7 +174,7 @@ button.editarPerfil img{
     font-size: 2em;
     font-weight: 500;
 }
-
+/* 
 *{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -184,7 +185,7 @@ button.editarPerfil img{
     grid-auto-flow: column;
     scroll-behavior: auto;
     gap: 3.2rem;
-    overflow-y: hidden; /*antes tava auto*/
+    overflow-y: hidden; 
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -194,7 +195,7 @@ button.editarPerfil img{
   
   .carrossel::-webkit-scrollbar {
     display: none;
-  }
+  } */
   
   /* .card{
     scroll-snap-align: start;
@@ -301,42 +302,7 @@ button.editarPerfil img{
     position: absolute;
   } */
 
-  .seta-direita {
-    position: absolute;
-    top: 60%;
-    right: -25px;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1;
-    background-color: white;
-    border-radius: 50%;
-    border: 1px black solid;
 
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.seta-esquerda {
-    position: absolute;
-    top: 60%;
-    left: -25px;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1;
-    background-color: white;
-    border-radius: 50%;
-    border: 1px black solid;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 .iconEditarEmpresa{
@@ -400,7 +366,7 @@ button.editarPerfil img{
 
 .cardPacotes{
     width: 75%; /*ver a melhor unid de medida*/
-    height: 40em;
+    height: 35em;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0px 0px 7px 0.5px rgb(116, 116, 116);
@@ -444,8 +410,8 @@ button.editarPerfil img{
 }
 
 .conteudoPacote img {
-    width: 100%;
-    height: 100%;
+    width: 25em;
+    height: 250px;
     padding: 0.5rem;
 }
 
@@ -481,7 +447,7 @@ button.editarPacote{
 }
 
 button.editarPacote img{
-    width: 200px;
+    width: 46%;
     height: 50px;
 }
 
@@ -541,7 +507,8 @@ button.deletarPacote{
 }
 
 button.deletarPacote img{
-    width: 50px;
+    width: 33%;
+    height: 50px;
 }
 
 .deletarPacote:first-child {

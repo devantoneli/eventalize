@@ -62,7 +62,7 @@
 }
 
 .imgUrl{
-    width: 80% !important;
+    width: 100% !important;
 }
 
 .logo{
@@ -125,7 +125,7 @@
 .headerClientePerfil{
     grid-column: 5 / 5;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(1,1fr);
     justify-items: center;
     align-items: center;
     padding: 3% 20% 0 0;

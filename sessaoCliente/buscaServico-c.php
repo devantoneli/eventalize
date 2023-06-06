@@ -117,7 +117,7 @@ if(mysqli_num_rows($result_query3) > 0){
                 <input type="hidden" value="'.$row["cd_servico"].'" name="cd_servico">
                 <button class="selecionar" type="submit">
                     <h2>'.substr($row['nm_servico'], 0,50).'...</h2><br>
-                    <h3>'.substr($row['ds_servico'], 0,60).'...</h3>
+                    <h3>'.substr($row['ds_servico'], 0,40).'...</h3>
                     <div class="precoServico">
                     <h4>R$'. str_replace('.', ',', $row['vl_servico']) .'</h4>
                     </div>
