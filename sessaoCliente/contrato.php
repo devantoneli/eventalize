@@ -60,10 +60,17 @@ include('../protect.php');
   </div>
         
         <div class="inicioContrato">
-            
+            <div>
+            <div class="iconContrato">
+                <img src="../img/icones/icon-contrato.svg" alt="">
+            </div>
+            <div class="iconContrato2">
+                <img src="../img/icones/icon-info-contrato.svg" alt="">
+            </div>
+            </div>
             <div class="inicioTexto" id="conteudo">
                 <div class="titulo">
-                    <h3>Termos de consumo</h3>
+                    <h3>Contrato de um Serviço</h3>
                 </div>
                 <div class="textoContrato">
                     <h4>	Lorem ipsum cras risus fermentum ornare suspendisse est volutpat viverra, himenaeos morbi sapien tristique vitae leo eros. curabitur convallis nullam vestibulum leo eleifend elementum donec enim iaculis, proin ipsum aenean litora suspendisse quisque porta elit donec porttitor, ac iaculis feugiat sit luctus vestibulum scelerisque semper. sociosqu nostra pulvinar mauris varius facilisis egestas litora iaculis dolor, ornare in molestie laoreet aenean sed fringilla lacinia velit sollicitudin, adipiscing egestas orci ut class a curabitur sed. phasellus mauris augue rutrum bibendum odio molestie euismod enim lorem, proin augue nulla arcu fermentum duis tempor dictumst, commodo euismod felis dui purus scelerisque nisl magna. 
@@ -73,7 +80,11 @@ include('../protect.php');
                         Laoreet torquent mauris porta quisque adipiscing semper tristique primis, sit tristique pretium donec litora et aliquam ut, fames gravida euismod sagittis etiam urna amet. nibh est eros cras lobortis phasellus blandit amet enim venenatis urna est eget, nulla fusce quis sem habitasse eget elit ad etiam ad. quisque lacinia donec quisque lacinia posuere semper arcu nulla tristique erat suspendisse taciti id, potenti porta donec quisque aptent odio iaculis congue dictum posuere hac sed. quisque dolor commodo malesuada faucibus nisl felis sociosqu mi vestibulum, fringilla auctor curae maecenas tempor habitasse curabitur fames enim arcu, quam inceptos pulvinar posuere netus curabitur leo scelerisque. </h4>
                 </div>
                 <div class="assinaturas">
-  
+                    <div class="assCliente">
+                        <h3>Ana Luiza Barros</h3>
+                        <hr>
+                        <h6>Assinatura do Cliente</h6>
+                    </div>
                     <div class="assEmpresa">
                         <button onclick="generatePDF()">Assinar Contrato</button>
                         <hr>
@@ -84,6 +95,15 @@ include('../protect.php');
 
         
         </div>
+
+        <script>
+            function generatePDF() {
+                const element = document.getElementById('conteudo');
+                html2pdf()
+                    .from(element)
+                    .save('contrato.pdf');
+            }
+        </script>
 
 
   <script src="../sessaoCliente/js/menu-c.js"></script>
