@@ -73,7 +73,7 @@ $row2 = mysqli_fetch_assoc($result_query2);
 
                 <section id="menu">
                 <a href="criacaoServico-e.php"><h5>Criar Serviço</h5></a>
-                <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
+                <!-- <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a> -->
                 </section>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16">

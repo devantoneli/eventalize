@@ -68,7 +68,7 @@ include('../protect.php');
 
                 <section id="menu">
                 <a href="criacaoServico-e.php"><h5>Criar Serviço</h5></a>
-                <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
+                <!-- <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a> -->
                 </section>
 
 
@@ -114,7 +114,7 @@ if (mysqli_num_rows($result_query2) > 0) {
                     </div>
                     <div class="infoEmpresa">
                         <div class="info">
-                        <h3 style="width: 250px !important;"><?php echo $_SESSION['nm_fantasia'];?></h3>
+                        <h3 style="width: 450px !important;"><?php echo $_SESSION['nm_fantasia'];?></h3>
                         <h5><?php echo $_SESSION['nm_usuarioempresa'];?></h5>
                         <h4><?php echo $_SESSION['ds_biografia'];?></h4>
                         </div>
