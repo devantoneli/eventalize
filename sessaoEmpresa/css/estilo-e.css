@@ -307,9 +307,14 @@ div {
     cursor: pointer;
 }
 
-.relatRapid a{
+/* .relatRapid a{
     font-weight: 600;
     font-size: 1.7vw;
+} */
+
+.relatRapid img{
+    width: 6vw;
+    object-fit: contain;
 }
 
 
