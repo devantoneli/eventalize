@@ -3,7 +3,7 @@
 if(!isset($_SESSION)){
     session_start();
 }
-
+include('../protect.php');
 // $sql = "SELECT * FROM tb_empresa";
 // $result = $conn->query($sql);
 

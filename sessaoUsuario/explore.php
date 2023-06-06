@@ -111,7 +111,7 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="headerClientePerfil" >
                     <!-- <div class="iconCliente"> -->
-                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                    <a href="../sessaoCliente/carrinho.php" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
                    
                     <!-- </div> -->
                     
@@ -186,7 +186,7 @@ if ($result->num_rows > 0) {
                 $row3 = $result3->fetch_assoc();
                 $nome = $row3['nm_cliente'];
                 $biografia = 'Cliente';
-                $perfil = "https://img.freepik.com/vetores-gratis/vetores-de-design-de-baloes-festivos-coloridos_53876-61834.jpg?w=826&t=st=1683333233~exp=1683333833~hmac=225c06ffa7e5e25f43e96dbbccf8e2efcaaf88ff3e34aebc8dd473be069fdaf6";
+                $perfil = "https://cdn-icons-png.flaticon.com/512/1104/1104294.png?w=826&t=st=1685996049~exp=1685996649~hmac=e7b71ec13f9c7a9f78d6a72b0b06fc17163bc1778742debe2c8cedfb40b5d34c";
             }
            
             

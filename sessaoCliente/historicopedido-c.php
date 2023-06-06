@@ -21,7 +21,7 @@ if($conn->connect_error){
 }
 
 //LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E SERVICO DE PEDIDO
-    $sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
+    $sql="SELECT DISTINCT p.dt_agendamento, p.hr_agendamento, p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
     s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
     FROM tb_pedido p
     INNER JOIN tb_cliente c ON p.cd_cliente = c.cd_cliente
@@ -123,14 +123,14 @@ if($conn->connect_error){
               // Não existe uma postagem relacionada ao pedido
               $postado = FALSE;
             }
-
+            $hora_formatada = date('H\hi', strtotime($row['hr_agendamento']));
             echo'
             <div class="gridHistorico">
             <div class="infoPedido">
             <div class="alinhaPedido">
                 <li>Pedido nº</li>
                 <li>Pedido realizado em</li>
-                
+                <li>Agendado para</li>
                 <li>Servico Personalizado</li>
                 <li>Status</li>
                 <li>Ação</li>
@@ -139,24 +139,29 @@ if($conn->connect_error){
             <div class="alinhaInfoPedido">
                 <li>'.$row['cd_pedido'].'</li>
                 <li>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</li>
+                <li>'.date('d/m/Y', strtotime($row['dt_agendamento'])).' às '.$hora_formatada.'</li>
+                <li id="pacotePersonalizado">'.$personaliza.'</li>';
+              
+                echo'<li class="status">'.$row['nm_status'].'</li>';
                 
-                <li id="pacotePersonalizado">'.$personaliza.'</li>
-                <li class="status">'.$row['nm_status'].'</li>';
-                
-                if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
+                if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação" && $row['nm_status']!="Aguardando assinatura do contrato"){
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Pagar' class='btn-Pagar'></form></li>";
                 }else {
                     if ($row['nm_status']=="Aguardando confirmação" || $row['nm_status']=="Aguardando a confirmação"){
                         echo'<li class="status">Aguardando confirmação</li>';
-                    }if ($row['nm_status']=="Pedido recusado"){
+                    }else if ($row['nm_status']=="Pedido recusado"){
                         echo'<li class="status" style="color: red;">Pedido recusado</li>';
-                    }else if($row['nm_status']!="Finalizado"){
+                    }else if($row['nm_status']!="Finalizado" && $row['nm_status']!="Aguardando assinatura do contrato"){
                         echo'<li class="status">Pago</li>';
-                    }else if($postado){
+                    }else if($row['nm_status']=="Aguardando assinatura do contrato"){
+                        echo"<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Assinar' class='btn-Pagar'></form></li>";
+                    }
+                    else if($postado){
                         echo'<li class="status">Postado</li>';
-                    }else {
+                    }else if(!$postado){
                         echo "<li><form action='criarPostagem-c.php' method='GET'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Postar' class='btn-Post'></form></li>";
                     }
+                    
                 }
                 
                 
@@ -165,7 +170,7 @@ if($conn->connect_error){
         </div><div class="imgHistoricoPedido">';
 
         if(!$row['url_imgcapa']){
-            echo'fotinha';
+            echo'<img src="https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" alt="">';
         }else{
         echo'
         <img src="'.$row['url_imgcapa'].'" alt="">';

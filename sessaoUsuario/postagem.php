@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include('../protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +76,7 @@
                     <a href="../sessaoCliente/index-c.php">Início</a>
                     <a href="../sessaoUsuario/explore.php">Feed</a>
                     <a href="../sessaoCliente/chatCliente.php">Mensagens</a>
-                    <a href="historicopedido-c.php">Meus Pedidos</a>
+                    <a href="../sessaoCliente/historicopedido-c.php">Meus Pedidos</a>
                 </div>
     
                 <div class="headerPesquisa">
@@ -88,8 +89,8 @@
                 </div>
                 <div class="headerClientePerfil" >
                     <!-- <div class="iconCliente"> -->
-                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
-                    <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
+                    <a href="../sessaoCliente/carrinho.php" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                   
                     <!-- </div> -->
                     
                     <button class="menuIcon2" onclick="menuOpen()"><img src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
@@ -158,11 +159,16 @@ $dbname = "db_eventalize";
         $cd_servico = $row2['cd_servico'];
 
     }else {
-        $sql2 = "SELECT c.nm_cliente FROM tb_postagem as p JOIN tb_cliente as c ON c.cd_cliente = p.cd_cliente WHERE cd_postagem = $cd_postagem";
+        $sql2 = "SELECT s.cd_servico, c.nm_cliente FROM tb_postagem as p
+        JOIN tb_cliente as c ON c.cd_cliente = p.cd_cliente 
+        join tb_pedido as pe on pe.cd_pedido = p.cd_pedido
+        join tb_servicopedido as sp on sp.cd_pedido = pe.cd_pedido
+        join tb_servico as s on s.cd_servico = sp.cd_servico
+        WHERE p.cd_postagem = $cd_postagem";
         $result2 = $conn->query($sql2);
         $row2 = $result2 -> fetch_assoc();
         $nm_autor = $row2['nm_cliente'];
-        $img_autor = 'https://img.freepik.com/vetores-premium/icone-de-linha-de-vetor-minimo-do-cliente-no-botao-3d-isolado-em-fundo-preto-vetor-premium_570929-438.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais';
+        $img_autor = 'https://cdn-icons-png.flaticon.com/512/1104/1104294.png?w=826&t=st=1685996049~exp=1685996649~hmac=e7b71ec13f9c7a9f78d6a72b0b06fc17163bc1778742debe2c8cedfb40b5d34c';
     }
     $sql3 = "SELECT * FROM vwcodigospostagem WHERE cd_postagem = $cd_postagem"; //(pra quando o da raiza estiver pronto)
     $result3 = $conn->query($sql3);
@@ -212,10 +218,10 @@ $dbname = "db_eventalize";
 
                     // Obtém o nome do mês com base no número
                     $mes = $meses[$mes_numero];
-
+                    $cd_servico = $row2["cd_servico"];
             echo '<div class="grid-container"> <!--DIV QUE CARREGA O LAYOUT GRID DA PÁGINA TODA-->
                    <!-- INICIO POSTAGENS -->
-                 
+                   
                   <div class="inicioPostagens">
                     <div class="fotoDestaque">
                         <div class="curtidasPostagem">
@@ -223,7 +229,10 @@ $dbname = "db_eventalize";
                             <h3>'.$avaliacao.'</h3>
                         </div>
                         <div class="salvarPostagem">
-                            <img src="../img/icones/icon-salvar-detalhes.png" alt="">
+                            <form action="../sessaoCliente/detalheServico.php" method="GET">
+                            <input type="hidden" value="'.$cd_servico.'" name="cd_servico">
+                                <button type="submit" class="mais">...</button>
+                            </form>
                         </div>
                         <img src='.$row["url_imgcapa"].' " style="width:'.$largura_capa.'%;height:'.$altura_capa.'%;">
                     </div>
