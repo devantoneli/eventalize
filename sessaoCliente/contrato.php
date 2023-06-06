@@ -9,6 +9,7 @@ include('../protect.php');
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -54,7 +55,7 @@ include('../protect.php');
           <section class="menuPerfil">
             <a href="perfil-c.php">Perfil</a>
             <a href="">Configurações</a>
-            <a href="">Sair</a>
+            <a href="../logout.php">Sair</a>
         </section>
   </div>
   </div>
@@ -81,7 +82,7 @@ include('../protect.php');
                 </div>
                 <div class="assinaturas">
                     <div class="assCliente">
-                        <h3>Ana Luiza Barros</h3>
+                        <h3><?php echo($_SESSION['nm_cliente'])?></h3>
                         <hr>
                         <h6>Assinatura do Cliente</h6>
                     </div>
