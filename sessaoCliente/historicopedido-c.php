@@ -141,6 +141,11 @@ if($conn->connect_error){
                 <li>'.date('d/m/Y', strtotime($row['dt_pedido'])).'</li>
                 
                 <li id="pacotePersonalizado">'.$personaliza.'</li>
+                ';if($row['nm_status'] == 'Aguardando assinatura do contrato'){
+                    echo '<form action="contrato.php"> 
+                    <button type="submit">Contrato</button>
+                    </form>';
+                }'
                 <li class="status">'.$row['nm_status'].'</li>';
                 
                 if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
