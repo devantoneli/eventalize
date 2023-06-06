@@ -39,6 +39,11 @@
 .semEstilo {
     background: none;
     border: none;
+    cursor: pointer;
+}
+
+.semEstilo button{
+    bottom: 0;
 }
 
 .cardServico{

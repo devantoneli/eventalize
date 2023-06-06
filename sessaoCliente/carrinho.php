@@ -166,7 +166,7 @@ if (!empty($_SESSION['carrinho'])) {
   }
    }
  else {
-  echo "<br><h1>Nenhum servico adicionado ao carrinho.</h1></div>";
+  echo "<br><h1>Nenhum serviço adicionado ao carrinho.</h1></div>";
   }
   ?>
   
