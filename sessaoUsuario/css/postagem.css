@@ -7,6 +7,12 @@
     font-family: 'League Spartan', sans-serif;
 }
 
+.mais{
+    background: none;
+    border: none;
+    font-size: 1.2em;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

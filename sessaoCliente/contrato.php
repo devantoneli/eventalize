@@ -17,17 +17,19 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-$sql=" SELECT DISTINCT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
-s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
+$sql=" SELECT p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz, s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
 FROM tb_pedido p
 INNER JOIN tb_cliente c ON p.cd_cliente = c.cd_cliente
 INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
 INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
 INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
-WHERE p.cd_cliente = $cd_cliente ORDER BY p.dt_pedido";
+WHERE p.cd_cliente = $cd_cliente
+ORDER BY p.dt_pedido DESC
+LIMIT 1";
  $result=$conn->query($sql);
  $row=$result->fetch_assoc();
 
+ $cd_pedido = $row['cd_pedido'];
 include('../protect.php');
 
 ?>
@@ -73,7 +75,7 @@ include('../protect.php');
                 <form action="carrinho.php" id="botaoCarrinho">
                     <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho" onclick="submitButton()"></a>
                 </form>
-                  
+                  <a href="#" class ="notificacao"><img src="../img/icones/icon-notificacao.svg" alt="Notificações"></a>
           <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
           </div>
           <section class="menuPerfil">
@@ -145,7 +147,10 @@ include('../protect.php');
                         <h6>Assinatura da Empresa</h6>
                     </div>
                     <div class="assEmpresa">
-                        <button onclick="generatePDF()">Assinar Contrato</button>
+                        <form action="assinarcontrato.php" method="post">
+                        <input type="hidden" name="cd_pedido" value="<?php echo $cd_pedido; ?>">
+                        <button type="submit" onclick="generatePDF()">Assinar Contrato</button>
+                        </form>
                     </div>
                 </div>
                 
