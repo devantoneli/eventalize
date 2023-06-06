@@ -264,8 +264,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $ds_servico = $_POST['ds_servico'];
 $vl_servico = $_POST["vl_servico"];
 $cd_personaliz = $_POST["cd_personaliz"];
-$cd_orcament = $_POST["cd_orcament"];
-$cd_local = $_POST["cd_local"];
 $cd_empresa = $_SESSION['cd_empresa'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 

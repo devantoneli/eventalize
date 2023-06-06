@@ -32,7 +32,7 @@ if($conn->connect_error){
 $sql = "SELECT * FROM tb_servico as s
 JOIN tb_tiposervico as tp ON tp.cd_tiposervico = s.cd_tiposervico
 JOIN tb_empresa as e on e.cd_empresa = s.cd_empresa
-WHERE tp.nm_tiposervico LIKE '%$nm_tiposervico%' OR nm_servico LIKE '%$nm_tiposervico%' OR nm_fantasia LIKE '%$nm_tiposervico%'";
+WHERE (tp.nm_tiposervico LIKE '%$nm_tiposervico%' OR nm_servico LIKE '%$nm_tiposervico%' OR nm_fantasia LIKE '%$nm_tiposervico%')";
 
 $result_query3 = mysqli_query($conn, $sql);
 // or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));

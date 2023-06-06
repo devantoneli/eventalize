@@ -4,6 +4,7 @@
 
 $nm_cliente = $_GET['nm_cliente'];
 $nm_sobrenome = $_GET['nm_sobrenome'];
+$cd_cpf = $_GET['cd_cpf'];
 $nm_emailcliente = $_GET['nm_emailcliente'];
 $nm_senhacliente = $_GET['nm_senhacliente'];
 $nm_usuariocliente = $_GET['nm_usuariocliente'];
@@ -24,13 +25,14 @@ if($conn->connect_error){
 
 
 
-$sql = 'INSERT INTO tb_cliente (nm_cliente, nm_sobrenome, nm_emailcliente, nm_senhacliente, nm_usuariocliente) VALUES (' . "'" . $nm_cliente ."'" . ', ' ."'" .  $nm_sobrenome ."'" . ', ' ."'" . $nm_emailcliente ."'" . ', ' ."'" . $nm_senhacliente ."'" . ', ' ."'" .  $nm_usuariocliente ."'" . ')';
+$sql = 'INSERT INTO tb_cliente (cd_cpf, nm_cliente, nm_sobrenome, nm_emailcliente, nm_senhacliente, nm_usuariocliente) VALUES ('.$cd_cpf .',' . "'" . $nm_cliente ."'" . ', ' ."'" .  $nm_sobrenome ."'" . ', ' ."'" . $nm_emailcliente ."'" . ', ' ."'" . $nm_senhacliente ."'" . ', ' ."'" .  $nm_usuariocliente ."'" . ')';
 
 
 
 if($conn->query($sql)=== TRUE){
-    echo(" Olá ". $nm_sobrenome . " você foi cadastrado(a) com sucesso. ");
+    header('Location: ../entrar.php');
 }
 else{
-    echo "Erro: " . $sql . "<br>" . $conn->error;
+    $_GET['err'] = true;
+    header('Location: erro.php');
 }

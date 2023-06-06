@@ -49,7 +49,7 @@ if ($conn->query($sql)=== TRUE){
     header('Location: perfil-c.php');
 
 } else{
-    echo "Error updating record: " . $conn->error;
+    header('Location: perfil-c.php');
 }
 
 $conn->close();

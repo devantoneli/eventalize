@@ -18,7 +18,7 @@
         <div class="box">
                 <h2 class="estiloFonte">EVENTALIZE</h2>
                 <h3>Cadastre-se como Cliente</h3>
-                <form action="validarCliente.php">              
+                <form action="validarCliente.php" onsubmit="return validarFormulario()" method="GET">              
                 <div class="gridUmCadastro">
                     <input type="text" class="retangulo" placeholder="Nome" name="nm_cliente">
                     <div></div>
@@ -27,6 +27,10 @@
                 <br>
                 <div class="gridSegCadastro">
                     <input type="email" class="retangulo" placeholder="E-mail" name="nm_emailcliente">
+                </div>
+                <br>
+                <div class="gridSegCadastro">
+                    <input type="number" class="retangulo" placeholder="CPF" name="cd_cpf">
                 </div>
                 <br>
                 <div class="gridUmCadastro">
@@ -45,7 +49,7 @@
                     </h4>
                 </div> 
                 <center>   
-                    <button onclick="cadastro()" id="buttonCadastro" type="submit">Cadastrar</button>
+                    <button id="buttonCadastro" type="submit">Cadastrar</button>
                 </center>
                <div class="h4Grid">
                 <h4>Já possui uma conta? <h4> <a class="rosaEstilo" href="../index.html">Entrar </a></h4></h4>
@@ -59,5 +63,6 @@
     </div>
     </div>
 </form>
+
 </body>
 </html>

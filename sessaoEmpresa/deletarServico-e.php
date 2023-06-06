@@ -75,7 +75,8 @@ $totalPedidosAtivos = $row['total'];
 if ($totalPedidosAtivos > 0) {
     // Existem pedidos ativos com o serviço, atualize o atributo 'delete' para 1
     $sql_update = "UPDATE tb_servico SET deletado = 1 WHERE cd_servico = $cd_servico";
-    echo "O serviço não pode ser excluído, mas seu atributo 'delete' foi atualizado " . $conn->error;
+    $_SESSION['displayModalDel'] = true;
+    header('Location: modalStatDel.php');
 } else {
     // Não há pedidos ativos com o serviço, exclua-o
     $sql_delete = "DELETE FROM tb_servico WHERE cd_servico = $cd_servico";

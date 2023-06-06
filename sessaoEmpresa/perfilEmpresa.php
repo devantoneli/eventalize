@@ -4,24 +4,29 @@ if(!isset($_SESSION)){
     session_start();
 }
 include('../protect.php');
-// $sql = "SELECT * FROM tb_empresa";
-// $result = $conn->query($sql);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "db_eventalize";
+$cd_empresa = $_SESSION['cd_empresa'];
+            
+$conn = new mysqli($servername, $username, $password, $db_name);
+            
+  if($conn->connect_error){
+    die("Falha na conexão: " . $conn->connect_error);
+}
+            
+// SELECIONANDO AS INFORMAÇÕES QUE QUERO EXIBIR NA TELA DETALHES
+$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico where cd_empresa = $cd_empresa";
+            
+$result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
 
-// if ($result->num_rows > 0 ) {
-//   // informações de login válidas, redirecionar o usuário para a página inicial
+$query2 = "SELECT po.cd_avaliacao FROM tb_postagem po
+join tb_pedido p on p.cd_pedido = po.cd_pedido
+where p.cd_empresa = $cd_empresa";
+            
+$result_query2 = mysqli_query($conn, $query2) or die(' Erro na query:' . $query2 . ' ' . mysqli_error($conn));
 
-//   $empresa = $result->fetch_assoc();
-
-//   //se nao tem sessao...
-//   if(!isset($_SESSION)){
-//     session_start();
-//   }
-
-  // $_SESSION['cd_empresa'] = $empresa['cd_empresa'];
-  // $_SESSION['nm_usuarioempresa'] = $empresa['nm_usuarioempresa'];
-  
-// }
-// var_dump($_SESSION['nm_usuarioempresa']);
 include('../protect.php');
 
 ?>
@@ -83,7 +88,23 @@ include('../protect.php');
         </header>
     </div>
 <!--FIM MENU EMPRESA -->
-        
+        <?php 
+
+        $media = 0;
+        $fila = 0;
+if (mysqli_num_rows($result_query2) > 0) {
+
+
+    while ($rowMedia = mysqli_fetch_assoc($result_query2)) {
+        $fila++;
+        $media = $media + $rowMedia['cd_avaliacao'];
+        $total = $media/$fila;
+    }
+}else {
+    $total = "-";
+}
+
+        ?>
     
     
             <div class="infoPerfil">
@@ -103,7 +124,7 @@ include('../protect.php');
                         </div> -->
                             <div class="avaliacaoPerfil">
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
-                                <h4>4,8</h4>
+                                <h4><?php echo$total;?></h4>
                             </div>
                            
                     </div>
@@ -120,23 +141,6 @@ include('../protect.php');
 
 // ESSA PÁGINA IRÁ CONTER OS BOTÕES PARA QUE A EMPRESA POSSA, CONSULTAR, EDITAR E EXCLUIR SEU SERVIÇO 
           
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db_name = "db_eventalize";
-$cd_empresa = $_SESSION['cd_empresa'];
-            
-$conn = new mysqli($servername, $username, $password, $db_name);
-            
-  if($conn->connect_error){
-    die("Falha na conexão: " . $conn->connect_error);
-}
-            
-// SELECIONANDO AS INFORMAÇÕES QUE QUERO EXIBIR NA TELA DETALHES
-$query = "SELECT cd_servico ,nm_servico, ds_servico, vl_servico, url_imgcapa FROM tb_servico where cd_empresa = $cd_empresa";
-            
-$result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
-
 
 if (mysqli_num_rows($result_query) > 0) {
     echo '

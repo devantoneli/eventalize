@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 include('../protect.php');
 
 $cd_empresa = $_SESSION["cd_empresa"];
-$cd_pedido = $_POST["cd_pedido"];
+$cd_pedido = $_GET["cd_pedido"];
 
 $servername = "localhost";
 $username = "root";

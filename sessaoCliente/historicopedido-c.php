@@ -28,7 +28,7 @@ if($conn->connect_error){
     INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
     INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
     INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
-    WHERE p.cd_cliente = $cd_cliente ORDER BY p.dt_pedido";
+    WHERE p.cd_cliente = $cd_cliente ORDER BY p.dt_agendamento";
      $result=$conn->query($sql);
      $row=$result->fetch_assoc();
 
@@ -146,8 +146,8 @@ if($conn->connect_error){
                 
 
                 // if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação" && $row['nm_status']!="Aguardando assinatura do contrato"){
-
-                echo'<li id="pacotePersonalizado">'.$personaliza.'</li>
+                    // <li id="pacotePersonalizado">'.$personaliza.'</li>
+                echo'
                 ';if($row['nm_status'] == 'Aguardando assinatura do contrato'){
                     echo '<form action="contrato.php"> 
                     <button type="submit">Contrato</button>
@@ -159,7 +159,7 @@ if($conn->connect_error){
 
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Pagar' class='btn-Pagar'></form></li>";
                 }else {
-                    if ($row['nm_status']=="Aguardando confirmação" || $row['nm_status']=="Aguardando a confirmação"){
+                    if ($row['nm_status']=="Aguardando confirmação" || $row['nm_status']=="Aguardando a confirmação" || $row['nm_status']=="Aguardando Confirmação"){
                         echo'<li class="status">Aguardando confirmação</li>';
                     }else if ($row['nm_status']=="Pedido recusado"){
                         echo'<li class="status" style="color: red;">Pedido recusado</li>';
