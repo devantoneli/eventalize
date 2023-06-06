@@ -20,7 +20,7 @@ if($conn->connect_error){
 
     $sql = "SELECT c.cd_cliente, c.nm_cliente, c.url_fotoperfil FROM tb_chat ch
     join tb_cliente c on c.cd_cliente = ch.cd_cliente
-    WHERE ch.cd_empresa=$cd_empresa group by ch.cd_cliente"; 
+    WHERE ch.cd_empresa=$cd_empresa group by ch.cd_cliente order by c.nm_cliente"; 
     $result = $conn->query($sql);
     $result_query = mysqli_query($conn,  $sql) or die(' Erro na query:' .  $sql . ' ' . mysqli_error($conn));
 ?>
