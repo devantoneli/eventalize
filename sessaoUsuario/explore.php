@@ -111,14 +111,14 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="headerClientePerfil" >
                     <!-- <div class="iconCliente"> -->
-                    <a href="#" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
+                    <a href="../sessaoCliente/carrinho.php" class="carrinho"><img src="../img/icones/icon-carrinho.svg" alt="Carrinho"></a>
                    
                     <!-- </div> -->
                     
                     <button class="menuIcon2" onclick="menuOpen()"><img src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
                 </div>
                 <section class="menuPerfil">
-                    <a href="">Perfil</a>
+                    <a href="../sessaoCliente/perfilEmpresa-c.php">Perfil</a>
                     <!-- <a href="">Postagens</a> -->
                     <!-- <a href="" style="margin-bottom: 20%">Histórico de Compras</a> -->
                     <a href="">Configurações</a>

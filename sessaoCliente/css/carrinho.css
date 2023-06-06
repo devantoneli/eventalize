@@ -64,13 +64,25 @@
     border-radius: 30px;
 }
 
-.continuar {
+/* .continuar { codigo do input continuar antigo, mas estava dando erro na margin
     padding: 0.5em 1.5em;
     border: none;
     font-size: 2em;
     margin: 2em 50%;
     border-radius: 0.5em;
-}
+} */
+
+input.continuar { /*centralizar input continuar*/
+    display: block;
+    margin: 0 auto;
+    padding: 0.5em 1.5em;
+    border: none;
+    font-size: 2em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 3%;
+  }
 
 /* .imgPedido img{ codigo caso queira voltar com a borda gradiente
     width: 300px;
