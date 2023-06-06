@@ -106,7 +106,7 @@ if($conn->connect_error){
         <input type="text" name="nm_usuarioempresa" value="<?php echo($row["nm_usuarioempresa"])?>">
         <div class="botoes">
         <div class="salvarInfo">
-            <a href="perfilEmpresa.php"><button value="Cancelar" class="corLaranja"></a>
+            <input type="button" value="Cancelar" class="corLaranja">
             <input type="submit" value="Salvar" class="corRosa">
             </div>
     </div>

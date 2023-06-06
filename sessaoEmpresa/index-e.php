@@ -20,7 +20,7 @@ include('../protect.php');
     }
 
 
-    $sql = "SELECT * FROM vwpedidos WHERE cd_empresa = $cd_empresa AND nm_status<>'finalizado' AND nm_status<>'Aguardando confirmação'";
+    $sql = "SELECT * FROM vwpedidos WHERE cd_empresa = $cd_empresa AND nm_status<>'finalizado' AND nm_status<>'Aguardando confirmação' AND nm_status<>'Aguardando a confirmação'";
     $result_query = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
     $row = mysqli_fetch_assoc($result_query);
 
@@ -32,7 +32,7 @@ include('../protect.php');
     JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
     WHERE nm_status = 'Aguardando confirmação' AND p.cd_empresa = '$cd_empresa'";
 
-    $sql3 = "SELECT * FROM vwpedidos WHERE nm_status='Aguardando confirmação' AND cd_empresa=$cd_empresa";
+    $sql3 = "SELECT * FROM vwpedidos WHERE (nm_status='Aguardando confirmação' OR nm_status='Aguardando a confirmação' OR nm_status='Aguardando Confirmação') AND cd_empresa=$cd_empresa";
 
     $result_query2 = mysqli_query($conn, $sql3) or die(' Erro na query:' . $sql3 . ' ' . mysqli_error($conn));
     $row2 = mysqli_fetch_assoc($result_query2);
@@ -152,9 +152,10 @@ include('../protect.php');
 
                             ?>
                         <div class="novoPedido">
-                            <div class="imgServico" style="<?php if($row3['url_fotoperfil']="NULL"){echo("background-image: url('https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais');");} else{?>background-image: url('<?php echo($row3["url_fotoperfil"]);} ?>'); <?php ?>"></div>
+                            <div class="imgServico" style="<?php if($row3['url_imgcapa']=="NULL" || $row3['url_imgcapa']==""){echo("background-image: url('https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais');");} else{?>background-image: url('<?php echo($row3["url_imgcapa"]);} ?>'); <?php ?>"></div>
                             <!-- echo($row['url_fotoperfil']) -->
-                            <div class="imgCliente" style="background-image: url('')"></div>
+                            <div class="imgCliente" style="<?php if($row3['url_fotoperfil']=="NULL" || $row3['url_fotoperfil']==""){echo("background-image: url('https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais');");} else{?>background-image: url('<?php echo($row3["url_fotoperfil"]);} ?>'); <?php ?>"></div>
+                          
                         </div>
                         <?php
                         }

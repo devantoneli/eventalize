@@ -256,7 +256,7 @@ JOIN tb_endereco AS e ON e.cd_endereco = p.cd_endereco
 JOIN tb_cliente AS c ON c.cd_cliente = p.cd_cliente
 WHERE (p.nm_status = 'Elaboração do serviço em processo' OR p.nm_status = 'Aguardando data agendada' OR p.nm_status = 'Em consumo' OR p.nm_status = 'Aguardando assinatura do contrato') 
 AND p.cd_empresa = $cd_empresa 
-ORDER BY p.dt_pedido DESC";
+group by p.cd_pedido ORDER BY p.dt_pedido DESC";
 
 
 $result_query = mysqli_query($conn, $query) or die(' Erro na query:' . $query . ' ' . mysqli_error($conn));
@@ -277,7 +277,7 @@ if(mysqli_num_rows($result_query) > 0){
         //VALIDANDO O STATUS DO PEDIDO, SE FOR A DATA ATUAL, ELE MUDARÁ O STATUS PARA 'EM CONSUMO' -- MIH
             if($row['dt_agendamento'] == $dataAtual){
                 // var_dump($row['dt_agendamento'], $dataAtual);
-                $sql = "UPDATE tb_pedido SET nm_status = 'Em consumo' WHERE nm_status = 'Elaboração do serviço em processo' AND dt_agendamento <= '{$row['dt_agendamento']}'";
+                $sql = "UPDATE tb_pedido SET nm_status = 'Em consumo' WHERE nm_status = 'Elaboração do serviço em processo' AND dt_agendamento = '{$row['dt_agendamento']}'";
                 $result = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
             }
 
@@ -319,7 +319,9 @@ if(mysqli_num_rows($result_query) > 0){
                             
                         </div>
                     </div>';
-                    if($row['nm_status'] == 'Em consumo'){
+                    $data = date('d/m/Y', strtotime($row['dt_agendamento']));
+                    $dataHoraAtual = date("Y-m-d H:i:s");
+                    if($row['nm_status'] == 'Em consumo' || $data < $dataHoraAtual){
                         echo'
                         <div class="botaoFinalizar">
                         <form action="finalizarPedido.php" method="post">

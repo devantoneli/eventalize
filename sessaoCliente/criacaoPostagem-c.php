@@ -107,7 +107,7 @@ if ($semimg2 == false && $semimg3 == false){
 }
 
 if ($conn->query($sql)=== TRUE){
-    header('Location: perfil-c.php');
+    header('Location: historicopedido-c.php');
 } else{
     echo "Error: " . $sql . "<br>" .  $conn->error;
 }
