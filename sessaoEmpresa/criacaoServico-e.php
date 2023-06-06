@@ -42,9 +42,9 @@ include('../protect.php');
                     <a href="selecaoPedido-e.php"><h5>Criar Postagens</h5></a>
                 </section>
     
-                <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16" style="cursor:pointer;">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="2vw" height="2vw" fill="currentColor" class="bi bi-bell-fill opcaoMenu" viewBox="0 0 16 16" style="cursor:pointer;">
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                </svg>
+                </svg> -->
     
                 <div id="inserirPerfil">
                   <img src="<?php echo $_SESSION['url_fotoperfil'];?>" alt="">
@@ -84,6 +84,7 @@ include('../protect.php');
                     <option value="8">Auxiliar</option>
                 </select>
                 <input class="input-Digita" pattern="[0-9]+([,\.][0-9]+)?" title="Digite um número válido" name="vl_servico" id="" placeholder="Valor (ex: 10,50)">
+               
 <!-- RADIOS COMUNS -->
                 <div class="radios">
                     <h1>Personalização</h1>
@@ -97,14 +98,15 @@ include('../protect.php');
                         <a>Não</a></label>
                     </div>
                     <hr>
-
+                    </div>
 <!-- BOTAO DO FORM -->         
                 <button class="criar" type="submit" id="openModal">Criar Serviço</button>
-            </div>
+</div>
             
             
 
 <!-- INPUT PARA IMAGENS -->
+        <!-- <div class="gridImagens"> -->
             <div class="imagens">
                 <h1 class="">Imagem de capa</h1>
                 <label class="cardCarregarG uploadImgPedido" for="img-inputCapa" id="img2">
@@ -130,7 +132,9 @@ include('../protect.php');
                         </label>
                     </div>
                 </div>
+                <!-- </div> -->
         </form>
+       
     </section>
     
     <div id="escurecer"></div>

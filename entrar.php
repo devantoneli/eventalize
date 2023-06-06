@@ -41,11 +41,11 @@
                     <input class="inputCirc" id="usuario" name="nm_email" placeholder="Digite seu e-mail" type="email">
                     <input class="inputCirc" id="senha" name="nm_senha" placeholder="Digite sua senha" type="password">
                     
-                    <p>Não tem login? <a href="sessaoEmpresa/perfil/cadastrandoEmpresa.html">Cadastre-se agora!</a></p>
+                    <p>Não tem login? <a href="cadastrar.html">Cadastre-se agora!</a></p>
                     <button class="btnCirc" type="sub
                     "><a>Entrar</a></button>
                     <br>
-                    <!-- <a class="voltar" href="index.html">&lt;</a> -->
+                    <a class="voltar" href="index.html">&lt;</a>
                     
                 </form>
             </section>

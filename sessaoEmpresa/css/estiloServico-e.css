@@ -19,6 +19,8 @@ body, html{
     grid-template-columns: 45em 45em;
 }
 
+
+
 .digitacao{
     grid-area: 1/1/1/1;
 }
@@ -173,6 +175,7 @@ body, html{
 }
 
 .imagens{
+    grid-area: 1/2/1/2;
     display: grid;
     grid-template-rows: 5em 21em 5em 20em;
     margin-top: -5em;
@@ -276,7 +279,8 @@ body, html{
     border: none;
     background-color: #FF3E83;
     color: white;  
-    font-weight: bolder; 
+    font-weight: bolder;
+    cursor: pointer;
 }
 /* .editar{
     display: block;
@@ -305,3 +309,4 @@ body, html{
 .pacote {
     display: none;
 }
+
