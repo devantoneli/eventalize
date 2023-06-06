@@ -147,15 +147,11 @@ if($conn->connect_error){
 
                 // if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação" && $row['nm_status']!="Aguardando assinatura do contrato"){
                     // <li id="pacotePersonalizado">'.$personaliza.'</li>
-                echo'
-                ';if($row['nm_status'] == 'Aguardando assinatura do contrato'){
-                    echo '<form action="contrato.php"> 
-                    <button type="submit">Contrato</button>
-                    </form>';
-                }'
-                <li class="status">'.$row['nm_status'].'</li>';
+                ;
                 
-                if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação"){
+                // echo'<li class="status">'.$row['nm_status'].'</li>';
+                
+                if ($row['cd_infopagamento']==0 && $row['nm_status']!="Aguardando confirmação" && $row['nm_status']!="Pedido recusado" && $row['nm_status']!="Aguardando a confirmação" && $row['nm_status']!="Aguardando assinatura do contrato"){
 
                     echo "<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Pagar' class='btn-Pagar'></form></li>";
                 }else {
@@ -166,7 +162,9 @@ if($conn->connect_error){
                     }else if($row['nm_status']!="Finalizado" && $row['nm_status']!="Aguardando assinatura do contrato"){
                         echo'<li class="status">Pago</li>';
                     }else if($row['nm_status']=="Aguardando assinatura do contrato"){
-                        echo"<li><form action='pix/index.php' method='POST'><input type='hidden' value='$cd_pedido' name='cd_pedido'><input type='hidden' value='$cd_cliente' name='cd_cliente'><input type='submit' value='Assinar' class='btn-Pagar'></form></li>";
+                        echo'<form action="contrato.php"> 
+                        <button class="btn-Pagar" type="submit" style="padding: 10px 27px;">Assinar</button>
+                        </form>';
                     }
                     else if($postado){
                         echo'<li class="status">Postado</li>';

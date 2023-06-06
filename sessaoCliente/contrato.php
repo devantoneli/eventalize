@@ -117,7 +117,7 @@ include('../protect.php');
                     3.1 Qualquer alteração no escopo do evento deverá ser acordada por escrito entre as Partes, estabelecendo as condições adicionais, se necessário, e qualquer impacto no valor total do contrato.
 
                     Cancelamento
-                    4.1 Em caso de cancelamento do evento por qualquer motivo, o Cliente deverá notificar a Prestadora de Serviços por escrito com antecedência mínima de [Número de dias] dias.
+                    4.1 Em caso de cancelamento do evento por qualquer motivo, o Cliente deverá notificar a Prestadora de Serviços por escrito com antecedência mínima de 3 dias. Caso a data de agendamento seja inferior a esses dias e o Cliente queira cancelar, entrará em vigor a cláusula 4.2 deste contrato.
                     4.2 O Cliente será responsável pelo pagamento de eventuais despesas já incorridas pela Prestadora de Serviços até a data de cancelamento.
 
                     Responsabilidade
@@ -128,8 +128,8 @@ include('../protect.php');
                     6.1 Este Contrato terá vigência a partir da data de assinatura pelas Partes e permanecerá em vigor até a conclusão dos serviços prestados.
 
                     Lei Aplicável e Foro
-                    7.1 Este Contrato será regido e interpretado de acordo com as leis do [País].
-                    7.2 Quaisquer controvérsias decorrentes deste Contrato serão submetidas à jurisdição exclusiva dos tribunais competentes do [Local do Foro].
+                    7.1 Este Contrato será regido e interpretado de acordo com as leis do Brasil.
+                    7.2 Quaisquer controvérsias decorrentes deste Contrato serão submetidas à jurisdição exclusiva dos tribunais competentes do foro de São Vicente, comarca de São Vicente.
 
                     As Partes declaram ter lido, compreendido e concordado com todos os termos e condições deste Contrato, através da assinatura abaixo.
 
