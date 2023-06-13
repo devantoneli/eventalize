@@ -190,6 +190,7 @@ $result_query3 = mysqli_query($conn, $query3) or die(' Erro na query:' . $query3
 
 // echo 'Quantidade de registros retornados: ' . mysqli_num_rows($result_query3);
 if(mysqli_num_rows($result_query3) > 0){
+    foreach ($informacoes1 as $info) {
     echo'
     <section class="novosPedidos" id="novosPedidos">
         <div class="blocoPedidos">
@@ -205,7 +206,7 @@ if(mysqli_num_rows($result_query3) > 0){
                 </div>';
                 
     while($row3 = mysqli_fetch_assoc($result_query3)){
-        foreach ($informacoes1 as $info) {
+        
           
             // echo "CEP: " . $info->cep . "<br>";
             // echo "Logradouro: " . $info->logradouro . "<br>";
@@ -271,7 +272,7 @@ if(mysqli_num_rows($result_query) > 0){
             <h1 id="txtPedidosAndamento">Pedidos em andamento</h1>
             <div class="gridPedidosAndamento">';
             
-           
+            foreach ($informacoes2 as $info) {
             
     while($row = mysqli_fetch_assoc($result_query)){
         //VALIDANDO O STATUS DO PEDIDO, SE FOR A DATA ATUAL, ELE MUDARÁ O STATUS PARA 'EM CONSUMO' -- MIH
@@ -281,7 +282,7 @@ if(mysqli_num_rows($result_query) > 0){
                 $result = mysqli_query($conn, $sql) or die(' Erro na query:' . $sql . ' ' . mysqli_error($conn));
             }
 
-        foreach ($informacoes2 as $info) {
+        
         echo '
         <div class="card-Andamento">
             <div id="cardPedido">

@@ -97,14 +97,16 @@ div {
     max-height: 105vw;
     border-radius: 15px;
     padding: 2.3vw;
-    padding-bottom: 8vw;
     padding-top: 2vw;
+    padding-bottom: 0.5vw;
     font-size: 1.5vw;
     display: flex;
     flex-direction: column;
 }
 
 .pedidAndament {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 9.5vw;
     margin-bottom: 0.7em;
@@ -127,6 +129,12 @@ div {
     font-family: 'League Spartan';
 }
 
+.flexInfo{
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+}
+
 .img-cliPedAndamnt {
     width: 4.5vw;
     height: 4.5vw;
@@ -135,7 +143,7 @@ div {
     background-size: 150%;
     background-repeat: no-repeat;
     background-position: center;
-    margin: -17% 0vw 16% 23vw;
+    /* margin: -17% 0vw 16% 23vw; */
 }
 
 .status {
@@ -175,12 +183,15 @@ div {
 
 .font-acaoPendent{
     color: #ffffff;
-    transform: translate(7.9vw, -25.5vw);
+    padding: 15px;
+    border-radius: 0.6em;
+    background-color:#7696F2;
+    margin-top: -17px;
     text-decoration: none;
     font-size: 1vw;
     text-align: center;
-    width: 40%;
-    padding: 0;
+    width: 70%;
+    
 }
 
 .font-acaoPendent:hover{
@@ -317,4 +328,12 @@ div {
     object-fit: contain;
 }
 
+.infoServ{
+    display: flex;
+    flex-direction: column;
+}
 
+.vrMais{
+    color: #FF3E83;
+    text-align: center;
+}

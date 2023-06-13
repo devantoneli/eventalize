@@ -183,49 +183,24 @@ include('../protect.php');
                         <?php
                         
                             echo 
-                            '
+                            '<div class="flexInfo">
+                            <div class="infoServ">
                             <a>'.$row['nm_servico'].'</a>
-                            <p>'.$row['nm_cliente'].'</p>';
+                            <p>'.$row['nm_cliente'].'</p>
+                            </div>';
                             if($row['url_fotoperfil']==''){
                             ?>
-                            <div class="img-cliPedAndamnt" style="background-image: url('https://as1.ftcdn.net/v2/jpg/05/60/26/08/1000_F_560260880_O1V3Qm2cNO5HWjN66mBh2NrlPHNHOUxW.jpg');"></div>
+                            <div class="img-cliPedAndamnt" style="background-image: url('https://as1.ftcdn.net/v2/jpg/05/60/26/08/1000_F_560260880_O1V3Qm2cNO5HWjN66mBh2NrlPHNHOUxW.jpg');"></div></div>
                             <?php
                             }else {
                             ?>
-                            <div class="img-cliPedAndamnt" style="background-image: url('<?php echo($row['url_fotoperfil']); ?>');"></div>
+                            <div class="img-cliPedAndamnt" style="background-image: url('<?php echo($row['url_fotoperfil']); ?>');"></div></div>
                             <?php 
                             }
 
-                            if($row['nm_status'] == 'Elaboração do serviço em processo' || $row['nm_status'] == 'Execução do serviço em processo' || $row['nm_status'] == 'Aguardando data agendada' || $row['nm_status'] == 'Aguardando assinatura do contrato'){
-                                ?>
-                                <svg style="transform: translate(-0.5em, -9.2em);" class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                                <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                                </svg>
-                                <?php
-                                
-                            }else if($row['nm_status'] == 'AGUARDANDO DATA AGENDADA' || $row['nm_status'] == 'DENÚNCIA EM PROCESSO' || $row['nm_status'] == 'CONSUMO EM PROCESSO'){
-                                ?>
-                                <svg style="transform: translate(-0.5em, -9em);" class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                                <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                                </svg>
-                                <?php
-                            }else{
-                                ?>
-                                <svg class="acaoEmpresa" id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.55 116.79" width="24vw" height="20vw">
-                                <path class="cls-1" d="M361.55,116.79H71.95s46.53-56.56,144.48-56.56,145.13,56.56,145.13,56.56Z"/>
-                                </svg>
-                                <?php
-                            }
-                            
-                            
-                            
-    
                             echo'<div class="font-acaoPendent"><a>'.$row['nm_status'].'</a></div>
-    
-                            <div class="andamento">
-                            </div>
                         </div>';
-                    
+                   
                         }
                     }else{
                         echo "Nenhum pedido em andamento";
@@ -236,7 +211,7 @@ include('../protect.php');
 
                     
 
-
+                    <a href="pedidos-e.php" class="vrMais"><h4 class="vrMais">Ver mais pedidos</h4></a>
             
                 </div>
 
