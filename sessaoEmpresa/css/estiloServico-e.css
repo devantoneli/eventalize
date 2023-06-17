@@ -310,3 +310,8 @@ body, html{
     display: none;
 }
 
+.linkCapa {
+    opacity: 0;
+    margin-top: 60%;
+    margin-left: 30%;
+}

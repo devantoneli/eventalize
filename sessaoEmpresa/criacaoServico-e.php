@@ -13,7 +13,7 @@ include('../protect.php');
     <link rel="stylesheet" href="css/menu-e.css">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap" rel="stylesheet">
     <link rel="icon" href="../img/index/logo.png">
-    <title>Criar Serviço/Pacote - Eventalize</title>
+    <title>Criar Serviço - Eventalize</title>
 </head>
 <body>
 <!-- FRONT-END formulário para criação de um serviço, enviando para o arquivo salvarServico.php-->
@@ -70,9 +70,9 @@ include('../protect.php');
     <section class="servico">
         <form class="grid-Principal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <div class="digitacao">
-                <input class="input-Digita" type="text" placeholder="Título do serviço" name="nm_servico">
-                <input class="input-Digita" type="text" name="ds_servico" id="" placeholder="Descrição">
-                <select class="input-Selec" name="cd_tiposervico" id="">
+                <input required class="input-Digita" type="text" placeholder="Título do serviço" name="nm_servico">
+                <input required class="input-Digita" type="text" name="ds_servico" id="" placeholder="Descrição">
+                <select required class="input-Selec" name="cd_tiposervico" id="">
                     <option value="" selected>Tipo de serviço</option>
                     <option value="1">Comida</option>
                     <option value="2">Fotografia</option>
@@ -83,7 +83,7 @@ include('../protect.php');
                     <option value="7">Equipamento</option>
                     <option value="8">Auxiliar</option>
                 </select>
-                <input class="input-Digita" pattern="[0-9]+([,\.][0-9]+)?" title="Digite um número válido" name="vl_servico" id="" placeholder="Valor (ex: 10,50)">
+                <input required class="input-Digita" pattern="[0-9]+([,\.][0-9]+)?" title="Digite um número válido" name="vl_servico" id="" placeholder="Valor (ex: 10,50)">
                
 <!-- RADIOS COMUNS -->
                 <div class="radios">
@@ -94,7 +94,7 @@ include('../protect.php');
                         Sim</label>
                         
                         <label class="nao" for="0">
-                        <input type="radio" name="cd_personaliz" value="0" id="">
+                        <input checked type="radio" name="cd_personaliz" value="0" id="">
                         <a>Não</a></label>
                     </div>
                     <hr>
@@ -110,7 +110,7 @@ include('../protect.php');
             <div class="imagens">
                 <h1 class="">Imagem de capa</h1>
                 <label class="cardCarregarG uploadImgPedido" for="img-inputCapa" id="img2">
-                    <input hidden class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
+                    <input required class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
                     <input id="linkimgCapa" value="mudara" type="hidden" name="url_imgcapa">
                     <img id="preview-capa" src="" width="100%">
                 </label>

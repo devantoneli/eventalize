@@ -7,7 +7,7 @@ if(!isset($_SESSION)){
 include('../protect.php');
 
 $cd_cliente = $_SESSION["cd_cliente"];
-
+$ns = FALSE;
 
 $servername = "localhost";
 $username = "root";
@@ -20,7 +20,52 @@ if($conn->connect_error){
     die("Falha na conexão: " . $conn->connect_error);
 }
 
-//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E SERVICO DE PEDIDO
+// Verifica se algum filtro foi selecionado
+if (isset($_GET['filtro'])) {
+    $filtro = $_GET['filtro'];
+    
+
+    $sql="SELECT DISTINCT p.dt_agendamento, p.hr_agendamento, p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
+    s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
+    FROM tb_pedido p
+    INNER JOIN tb_cliente c ON p.cd_cliente = c.cd_cliente
+    INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
+    INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
+    INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
+    WHERE p.cd_cliente = $cd_cliente";
+     $result=$conn->query($sql);
+   
+
+    // Adiciona a cláusula WHERE com base no filtro selecionado
+    if ($filtro === 'da') {
+      $sql .= " ORDER BY dt_agendamento ASC"; // Filtra por data de agendamento futura ou igual à atual
+    } elseif ($filtro === 'ns') {
+        $ns = TRUE;
+        $statusEscolha = '
+        <img src="../img/icones/statusFiltro.svg" width="50em" id="iconeStatus" alt="Status" title="Selecionar status">
+        <div id="menuSuspenso2" class="menuSuspenso2">
+            <ul>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Assinatura">Aguardando Assinatura</a></li>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando pagamento">Aguardando pagamento</a></li>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Finalizado">Finalizado</a></li>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Confirmação">Aguardando Confirmação</a></li>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando data agendada">Aguardando data agendada</a></li>
+            </ul>
+        </div>';
+        if (isset($_GET['status'])) {
+        $statusOpcao = $_GET['status'];
+        $sql .= " AND nm_status LIKE '$statusOpcao'"; 
+        }else {
+            $sql .= " ORDER BY nm_status ASC"; 
+        }
+    } elseif ($filtro === 'ne') {
+      $sql .= " ORDER BY e.nm_fantasia"; // Filtra por nome da empresa específica
+    }
+
+    $result=$conn->query($sql);
+
+  
+  }else {
     $sql="SELECT DISTINCT p.dt_agendamento, p.hr_agendamento, p.cd_pedido, c.nm_cliente, p.dt_pedido, p.nm_status, s.cd_personaliz,
     s.nm_servico, s.ds_servico, s.vl_servico, s.url_imgcapa, e.nm_fantasia, p.cd_infopagamento
     FROM tb_pedido p
@@ -30,7 +75,12 @@ if($conn->connect_error){
     INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
     WHERE p.cd_cliente = $cd_cliente ORDER BY p.dt_agendamento";
      $result=$conn->query($sql);
-     $row=$result->fetch_assoc();
+  
+  }
+  
+
+//LOGICA PARA CARREGAR AS INFORMAÇÕES DE PEDIDO E SERVICO DE PEDIDO
+
 
 
 ?>
@@ -91,11 +141,29 @@ if($conn->connect_error){
 <!-- FIM MENU -->
 
 
-<div class="titulo">
-        <h2>Histórico de Pedidos</h2>
+        <div class="titulo">    
+            <h2>Histórico de Pedidos</h2>
+            
+            <img src="../img/icones/filtro.svg" width="50em" id="iconeFiltro" alt="Ícone de Filtro" title="Filtrar">
+            <div id="menuSuspenso" class="menuSuspenso">
+                <ul>
+                    <li><a href="historicopedido-c.php?filtro=da">Data agendada</a></li>
+                    <li><a href="historicopedido-c.php?filtro=ns">Status</a></li>
+                    <li><a href="historicopedido-c.php?filtro=ne">Empresa</a></li>
+                </ul>
+            </div>
+
+            <?php
+                if($ns){
+                    echo $statusEscolha;
+                }
+            ?>
+
         </div>
+
     <?php
     if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
         // $nm_cliente = $row['nm_cliente'];
         // $dt_pedido = $row['dt_pedido'];
         // $nm_status = $row['nm_status'];
@@ -111,7 +179,7 @@ if($conn->connect_error){
             }
         }
         
-        while($row = mysqli_fetch_assoc($result)){
+       
             $cd_pedido = $row['cd_pedido'];
             $sql2 = "SELECT * FROM tb_postagem WHERE cd_pedido = $cd_pedido";
             $result2 = $conn->query($sql2);

@@ -98,7 +98,8 @@ if (mysqli_num_rows($result_query2) > 0) {
     while ($rowMedia = mysqli_fetch_assoc($result_query2)) {
         $fila++;
         $media = $media + $rowMedia['cd_avaliacao'];
-        $total = $media/$fila;
+        $total_sem = $media/$fila;
+        $total = number_format($total_sem, 1);
     }
 }else {
     $total = "-";
@@ -122,6 +123,7 @@ if (mysqli_num_rows($result_query2) > 0) {
                             <img src="../bancoImagens/empresas/imagens-perfil-empresa/loc.svg" alt="">
                             <h4>Santos - SP</h4>
                         </div> -->
+                       
                             <div class="avaliacaoPerfil">
                                 <img src="../bancoImagens/empresas/imagens-perfil-empresa/star.svg" alt="">
                                 <h4><?php echo$total;?></h4>
