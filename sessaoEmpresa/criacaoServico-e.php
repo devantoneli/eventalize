@@ -230,9 +230,6 @@ include('../protect.php');
     animation-delay: 2s;
     }
 
-    
-
-
     @keyframes fadeIn {
     from {
         opacity: 1;
@@ -242,12 +239,8 @@ include('../protect.php');
     }
     }
 
-    
+</style>
 
-
-
-        
-    </style>
     <script src="js/scriptServico-e.js"></script>
     <script src="js/menu-e.js"></script>
 </body>
@@ -268,6 +261,7 @@ $cd_empresa = $_SESSION['cd_empresa'];
 $cd_tiposervico = $_POST['cd_tiposervico'];
 
 $vl_servico = str_replace(',', '.', $vl_servico);
+$dt_servico = date('Y-m-d');
 
 $servername = "localhost";
 $username = "root";
@@ -334,11 +328,11 @@ if(isset($_POST['url_img3'])) {
 }
 
 if ($semimg2 == false && $semimg3 == false){
-    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img2, url_img3) VALUES ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(cd_empresa, nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img2, url_img3, dt_servico) VALUES ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$url_img3', '$dt_servico')";
 }else if ($semimg2 == true){
-    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img3) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img3')";
+    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img3, dt_servico) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img3', '$dt_servico')";
 }else {
-    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img2) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img2')";
+    $sql = "INSERT INTO tb_servico(cd_empresa,nm_servico, ds_servico, vl_servico, cd_personaliz, cd_tiposervico, url_imgcapa, url_img2, dt_servico) values ($cd_empresa,'$nm_servico','$ds_servico', $vl_servico, $cd_personaliz, $cd_tiposervico, '$url_imgcapa', '$url_img2', '$dt_servico')";
 }
 
 
@@ -366,19 +360,11 @@ if ($conn->query($sql)=== TRUE){
 }
 
 
-
-
-//CASO VCS SE ESQUEÇAM, AS IMAGENS NÃO ESTÃO SENDO EXIBIDAS, POIS NÃO ESTAMOS PEDINDO PARA ELAS SEREM EXIBIDAS, NÃO SURTEM!
 $conn->close();
 
 }
 
-
-// BACK-END para salvar um serviço e finalizar sua criação com as informações enviadas pelo arquivo FRONT-END edicaoServico.html
-
 // var_dump($_POST);
-
-
 
 ?>
 
