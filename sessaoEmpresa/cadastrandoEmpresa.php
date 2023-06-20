@@ -1,3 +1,19 @@
+<?php
+
+if(isset($_GET['nm_fantasia']) && isset($_GET['nm_razaosocial']) && isset($_GET['cd_cnpj'])){
+    $fantasia = $_GET['nm_fantasia'];
+    $razao = $_GET['nm_razaosocial'];
+    $cnpj = $_GET['cd_cnpj'];
+
+    $url = 'https://www.receitaws.com.br/v1/cnpj/{$cnpj}';
+    $response = file_get_contents($url);
+    $data = json_decode($response, true);
+
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,33 +34,33 @@
          <div class="box">
                 <h2 class="estiloFonte">EVENTALIZE</h2><br>
                 <h3>Cadastre-se como Empresa ou Profissional</h3><br>
-                <form action="validarEmpresa.php" id="cadastrarEmp">                      
+                <form action="" id="cadastrarEmp">                      
                              <div class="gridSegCadastro">
-                                        <input  required type="text" class="retangulo" placeholder="Nome Fantasia" name="nm_fantasia">
+                                        <input required type="text" class="retangulo" placeholder="Nome Fantasia" name="nm_fantasia">
                                     </div>
                                     <br>    
                                     <div class="gridSegCadastro">
-                                        <input  required type="text" class="retangulo" placeholder="Razão Social" name="nm_razaosocial">
+                                        <input required type="text" class="retangulo" placeholder="Razão Social" name="nm_razaosocial">
                                     </div>
                                     <br>
                                 <div class="gridUmCadastro">
-                                    <input  required type="text" name="juridica" class="retangulo" placeholder="Natureza Juridica">
+                                    <input required type="text" name="juridica" class="retangulo" placeholder="Natureza Juridica">
                                     <div></div>
-                                    <input  required type="text" class="retangulo" placeholder="CNPJ" name="cd_cnpj">
+                                    <input required type="number" class="retangulo" placeholder="CNPJ" name="cd_cnpj">
                                 </div>
                                 <br>
                                 <div class="gridUmCadastro">
-                                    <input  required type="text" class="retangulo" placeholder="Atividade Economica">
+                                    <input required type="text" class="retangulo" placeholder="Atividade Economica">
                                     <div></div>
-                                    <input  required type="date" class="retangulo" placeholder="Data de fundação">
+                                    <input required type="date" class="retangulo" placeholder="Data de fundação">
                                 </div>
                                 <br>
                                 <div class="gridSegCadastro">
-                                    <input  required type="text" class="retangulo" placeholder="Nome do usuário" name="nm_usuarioempresa">
+                                    <input required type="text" class="retangulo" placeholder="Nome do usuário" name="nm_usuarioempresa">
                                 </div>
                                 <br>
                                 <div class="gridSegCadastro">
-                                    <input  required type="email" class="retangulo" placeholder="Email" name="nm_emailempresa">
+                                    <input required type="email" class="retangulo" placeholder="Email" name="nm_emailempresa">
                                 </div>
                                 <br>
                                 <div class="gridUmCadastro">
@@ -54,9 +70,9 @@
                                 </div>
                                 <br>
                                 <div class="gridUmCadastro">
-                                    <input  required type="text" class="retangulo" placeholder="Estado">
+                                    <input  required type="text" class="retangulo" name="estado" placeholder="Estado">
                                     <div></div>
-                                    <input  required type="text" class="retangulo" placeholder="Cidade">
+                                    <input  required type="text" class="retangulo" name="cidade" placeholder="Cidade">
                                 </div>
                             <br>
                                 <div class="termos">

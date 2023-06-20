@@ -16,13 +16,16 @@
     grid-template-columns: 1fr ;
 } */
 .conversasPerfil img{
-    width: 65%;
-    height: 70%;
+    width: 11em;
+    height: 11em;
     clip-path: circle();
     display: grid;
     justify-content: center;
     justify-items: center;
+    object-fit: cover;
 }
+
+
 .scroll{
     position: fixed;
    left: 0;
@@ -86,8 +89,9 @@
     
 }
 .infoCliente img{
-    width: 8%;
-    height: 10%;
+    width: 9em;
+    height: 9em;
+    object-fit: cover;
     clip-path: circle();
     display: grid;
     justify-content: right;

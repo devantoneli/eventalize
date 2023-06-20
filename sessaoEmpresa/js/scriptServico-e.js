@@ -14,6 +14,9 @@ function lerImgCapa() {
             linkCapa = e.target.result;
             console.log(linkCapa);
             document.getElementById("linkimgCapa").value = linkCapa;
+
+            var input = document.getElementById('img-inputCapa');
+            input.hidden = true;
         };       
         file.readAsDataURL(this.files[0]);
         // Retira o icone de upload do card quando carrega uma imagem nele

@@ -45,7 +45,7 @@ if (isset($_GET['filtro'])) {
         <img src="../img/icones/statusFiltro.svg" width="50em" id="iconeStatus" alt="Status" title="Selecionar status">
         <div id="menuSuspenso2" class="menuSuspenso2">
             <ul>
-            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Assinatura">Aguardando Assinatura</a></li>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Assinatura do contrato">Aguardando Assinatura</a></li>
             <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando pagamento">Aguardando pagamento</a></li>
             <li><a href="historicopedido-c.php?filtro=ns&status=Finalizado">Finalizado</a></li>
             <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Confirmação">Aguardando Confirmação</a></li>

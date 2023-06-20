@@ -19,7 +19,7 @@ function pegarCod(){
 
 // Adicione um ouvinte de eventos para cada foto lateral
 ate = fotosLaterais.length - 1;
-for (var i = 0; i < ate; i++) {
+for (var i = 0; i <= ate; i++) {
     fotosLaterais[i].addEventListener('click', function() {
         codigoEmpresa = this.getAttribute('value'); // Obtenha o código da empresa da foto clicada
         console.log(codigoEmpresa);
@@ -33,7 +33,11 @@ for (var i = 0; i < ate; i++) {
                     var empresa = JSON.parse(xhr.responseText);
 
                     // Atualize a foto e o nome no meio da página com as informações da empresa
-                    fotoMeio.src = empresa.foto;
+                    if (empresa.foto == null){
+                      fotoMeio.src = 'https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais'
+                    }else{
+                      fotoMeio.src = empresa.foto;
+                    }
                     nomeMeio.innerText = empresa.nome;
                     codigoEmpresa = empresa.codigo;
                     chats = empresa.chats;
@@ -86,7 +90,11 @@ setInterval(function() {
                 var empresa = JSON.parse(xhr.responseText);
 
                 // Atualize a foto e o nome no meio da página com as informações da empresa
-                fotoMeio.src = empresa.foto;
+                if (empresa.foto == null){
+                  fotoMeio.src = 'https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais'
+                }else{
+                  fotoMeio.src = empresa.foto;
+                }
                 nomeMeio.innerText = empresa.nome;
                 codigoEmpresa = empresa.codigo;
                 chats = empresa.chats;

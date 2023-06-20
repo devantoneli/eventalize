@@ -22,6 +22,7 @@
     display: grid;
     justify-content: center;
     justify-items: center;
+    object-fit: cover;
 }
 .scroll{
     position: fixed;
@@ -85,8 +86,9 @@
     
 }
 .infoCliente img{
-    width: 8%;
-    height: 10%;
+    width: 9em;
+    height: 9em;
+    object-fit: cover;
     clip-path: circle();
     display: grid;
     justify-content: right;

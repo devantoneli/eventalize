@@ -99,7 +99,7 @@ if (mysqli_num_rows($result) > 0) {
                 <h1>Adicionar Imagens</h1>
                 <!-- <input type="hidden" name="cd_postagem" value=""> -->
                 <label class="uploadImgPedido" for="img-inputCapa" id="img2">
-                    <input hidden class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
+                    <input required class="linkCapa" id="img-inputCapa" value="" type="file" name="imgCapa">
                     <input id="linkimgCapa" value="mudara" type="hidden" name="url_imgcapa">
                     <img id="preview-capa" src="" width="100%">
                 </label>
@@ -134,10 +134,10 @@ if (mysqli_num_rows($result) > 0) {
                 <form action="criarPostagem.php" method="post">
                 <div class="linhasInput">
                     <input type="text" placeholder="Pedido" name="cd_pedido" value=<?php echo($cd_pedido); ?>>
-                    <input type="text" placeholder="Título" name="nm_postagem">
+                    <input required type="text" placeholder="Título" name="nm_postagem">
                     <div>
                     <img style="margin-bottom: -7px;" src="../img/icones/estrel.png" alt="">
-                    <select class="avaliacao" name="cd_avaliacao">
+                    <select required class="avaliacao" name="cd_avaliacao">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -145,7 +145,7 @@ if (mysqli_num_rows($result) > 0) {
                         <option value="5">5</option>
                     </select>
                     </div>
-                    <textarea id="legendaInput"  type="text" placeholder="Legenda" name="ds_postagem"></textarea>
+                    <textarea required id="legendaInput"  type="text" placeholder="Legenda" name="ds_postagem"></textarea>
                 </div>
                 </form>
 
