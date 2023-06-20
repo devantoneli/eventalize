@@ -5,9 +5,20 @@ if(isset($_GET['nm_fantasia']) && isset($_GET['nm_razaosocial']) && isset($_GET[
     $razao = $_GET['nm_razaosocial'];
     $cnpj = $_GET['cd_cnpj'];
 
-    $url = 'https://www.receitaws.com.br/v1/cnpj/{$cnpj}';
+    $url = 'https://www.receitaws.com.br/v1/cnpj/'.$cnpj.'';
     $response = file_get_contents($url);
     $data = json_decode($response, true);
+
+    //Verifica se houve algum erro na consulta
+    if ($data['status'] === 'ERROR'){
+        echo 'Erro: ' . $data['message'];
+    }else {
+        $razaoSocial = $data['nome'];
+        $endereco = $data['logradouro'];
+        $bairro = $data['bairro'];
+        $cidade = $data['municipio'];
+        $estado = $data['uf'];
+    }
 
     
 }
