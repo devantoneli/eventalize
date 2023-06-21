@@ -218,6 +218,67 @@ button.menuIcon2{
     z-index: 1; 
 }
 
+.headerMenuCliente a{
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    padding: 5px 10px;
+    text-decoration: none;
+    height: 0;
+    width: 15vw;
+    font-weight: 300;
+}
+
+.headerMenuCliente{
+    display: flex;
+    justify-content: none;
+    margin-left: none;
+    align-items: none;
+    margin-right: none;
+}
+
+.headerMenuCliente {
+    /* position: absolute; */
+    position: fixed;
+    top: 10%;
+    right: -100%;
+    width: 300px;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    display: none;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px 0px black;
+    transition: all .50s ease;
+}
+
+.headerMenuCliente {
+    display: block;
+    margin: 20px 0;
+    padding: 15px 25px;
+    transition: all .50s ease;
+}
+
+.headerMenuCliente a{
+    display: block;
+    margin: 20px 0;
+    padding: 0px 10px;
+    transition: all .50s ease;
+}
+
+.headerMenuCliente a{
+    color: black;
+    padding: 8%;
+}
+
+.headerMenuCliente a:hover{
+    color:#E34C6D;
+    transform: translateY(5px);
+    /* background-color: whitesmoke; */
+}
+
 /* .headerMenuCliente a{
     color: white;
     text-decoration: none;
@@ -276,3 +337,78 @@ button.menuIcon2{
     color:#E34C6D;
     transform: translateY(5px);
 } */ /*HEADER PARA RESPONSIVIDADE*/
+
+
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1100px){
+    .logo img{
+        width: 50px;
+    }
+    .menuIcon{
+        display: inline-block;
+    }
+    .menuIcon button{
+        background-color: transparent;
+        border: none;
+    }
+    .menu {
+        position: fixed;
+        top: 14%;
+        right: -70%;
+        width: 210px;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        display: none;
+        flex-direction: column;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px 0px black;
+        transition: all .50s ease;
+    }
+    .menu {
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    .menu a{
+        display: block;
+        margin: 12px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+    }
+
+    /* .headerHome a:hover{
+        color: black;
+        transform: translateY(5px);
+        background-color: whitesmoke;
+    } */
+    
+    .open{
+        display: block;
+        right: 2%; 
+    }
+
+    .headerPesquisa input{
+        width: 10em;
+        padding: 5px;
+        
+    }
+
+    .imgLupa{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+        margin-top: -10%;
+        margin-right: -8%;
+    }
+
+    .header{
+        grid-column: 1 / span 4;
+    }
+}
