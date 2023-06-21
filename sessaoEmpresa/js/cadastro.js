@@ -1,73 +1,39 @@
-// function cadastroVerifica() {
-//     // Obtém os valores dos campos do formulário
-//     var nomeFantasia = document.getElementsByName('nm_fantasia')[0].value;
-//     var razaoSocial = document.getElementsByName('nm_razaosocial')[0].value;
-//     var juridica = document.getElementsByName('juridica')[0].value;
-//     var cd_cnpj = document.getElementsByName('cd_cnpj')[0].value;
-//     var nomeFantasia = document.getElementsByName('nm_fantasia')[0].value;
-//     // var razaoSocial = document.getElementsByName('nm_razaosocial')[0].value;
-//     // var nomeFantasia = document.getElementsByName('nm_fantasia')[0].value;
-//     // var razaoSocial = document.getElementsByName('nm_razaosocial')[0].value;
-//     // var nomeFantasia = document.getElementsByName('nm_fantasia')[0].value;
-//     // var razaoSocial = document.getElementsByName('nm_razaosocial')[0].value;
-//     // var nomeFantasia = document.getElementsByName('nm_fantasia')[0].value;
-//     // var razaoSocial = document.getElementsByName('nm_razaosocial')[0].value;
-//     // Obtenha os valores dos outros campos do formulário
+function limparColagem(event) {
+    event.preventDefault();
+    var clipboardData = event.clipboardData || window.clipboardData;
+    var text = clipboardData.getData('text/plain');
+    document.getElementById('senha').value = '';
+  }
 
-//     // Realize as validações desejadas
-//     if (nomeFantasia === "") {
-//         alert("Por favor, preencha o campo Nome Fantasia.");
-        
-//     }
-//     if (razaoSocial === "") {
-//         alert("Por favor, preencha o campo Razão Social.");
-     
-//     }
-//     if (juridica === "") {
-//         alert("Por favor, preencha o campo Natureza Juridica.");
-        
-//     }
-//     if (cd_cnpj === "") {
-//         alert("Por favor, preencha o campo CNPJ.");
-     
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-       
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
+  var cidadesPorEstado = {
+    sp: ["São Paulo", "Campinas", "Guarulhos"],
+    rj: ["Rio de Janeiro", "Niterói", "Duque de Caxias"]
+  };
+  
+function atualizarCidades() {
+var estado = document.getElementById("estado").value;
+var cidadeSelect = document.getElementById("cidade");
 
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-       
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-        
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-        
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-        
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-        
-    // }
-    // if (razaoSocial === "") {
-    //     alert("Por favor, preencha o campo Razão Social.");
-        
-    // }
-// }
+// Limpa as opções existentes
+cidadeSelect.innerHTML = "";
 
-// function enviarFormulario() {
-//     if (validarFormulario()) {
-//         var form = document.getElementById('cadastrarEmp');
-//         form.submit();
-//     }
-// }
+// Verifica se um estado foi selecionado
+if (estado !== "") {
+    var cidades = cidadesPorEstado[estado];
+
+    // Adiciona as novas opções de cidades
+    cidades.forEach(function (cidade) {
+    var option = document.createElement("option");
+    option.value = cidade;
+    option.text = cidade;
+    cidadeSelect.appendChild(option);
+    });
+} else {
+    // Caso nenhum estado seja selecionado
+    var option = document.createElement("option");
+    option.value = "";
+    option.text = "Selecione um estado primeiro";
+    cidadeSelect.appendChild(option);
+}
+}
+  

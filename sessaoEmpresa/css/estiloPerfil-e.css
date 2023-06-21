@@ -45,7 +45,7 @@ body{
     /* width:600px; */
     width: 40vw;
     /* height: 670px; */
-    height: 75vh;
+    height: 85vh;
     background-color: white;
     border-radius: 3%;
 }
@@ -188,6 +188,8 @@ a{
     font-size: 0.9em;
     display: flex;
     align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
     margin-top: 5px;
 }
 
