@@ -300,7 +300,7 @@ if ($validacao == 0){
                                     </h4>
                                 </div> <br>
                                 <center>   
-                                    <input type="submit" value="Cadastrar">
+                                    <input id="buttonCadastro" type="submit" value="Cadastrar">
                                 </center>
                                 <br>
                             <div class="h4Grid">
@@ -308,7 +308,7 @@ if ($validacao == 0){
                             </div>
                                 
                             <div class="h4Grids">
-                                <h4>Deseja se <h4> <a class="azulEstilo" href="../sessaoCliente/cadastrandoCliente.html"> cadastrar como Cliente?</a> </h4>
+                                <h4>Deseja se <h4> <a class="azulEstilo" href="../sessaoCliente/cadastrandoCliente.php"> cadastrar como Cliente?</a> </h4>
                                 </h4> 
                             </div>      
                             </center>

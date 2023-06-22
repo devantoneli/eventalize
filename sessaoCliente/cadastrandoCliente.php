@@ -164,7 +164,7 @@ if ($validacao == 0){
             $popup = "<div class='popupErro'><img src='../img/icones/exclamacao.svg' width='150px'><h2>Cliente cadastrada com sucesso! Agora, realize o login clicando em 'Entrar' na nossa <a href='../index.html'>página inicial</a>.</h2></div>";
         }
         else{
-            $popup = "<div class='popupErro'><img src='../img/icones/exclamacao.svg' width='150px'><h2>Desculpe-nos! Algo deu errado no processamento dos dados. Por favor, tente novamente mais tarde ou tente <a href='cadastrandoCmpresa.php'>recarregar a página</a>.</h2></div>";
+            $popup = "<div class='popupErro'><img src='../img/icones/exclamacao.svg' width='150px'><h2>Desculpe-nos! Algo deu errado no processamento dos dados. Por favor, tente novamente mais tarde ou tente <a href='cadastrandoCliente.php'>recarregar a página</a>.</h2></div>";
         }
     }
 }
@@ -249,7 +249,7 @@ if ($validacao == 0){
                 <h4>Já possui uma conta? <h4> <a class="rosaEstilo" href="../index.html">Entrar </a></h4></h4>
                </div>
                <div class="h4Grids">
-                <h4>Deseja se <h4> <a class="azulEstilo" href="../sessaoEmpresa/cadastrandoEmpresa.html"> cadastrar como Empresa?</a> </h4>
+                <h4>Deseja se <h4> <a class="azulEstilo" href="../sessaoEmpresa/cadastrandoEmpresa.php"> cadastrar como Empresa?</a> </h4>
                 </h4> 
                </div>    
             </center>

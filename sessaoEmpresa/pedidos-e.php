@@ -63,8 +63,34 @@ if ($result2->num_rows > 0) {
 
 // Função para consultar o CEP na API ViaCEP
 function consultarCEP($cep) {
-    $url = "https://viacep.com.br/ws/{$cep}/json/";
-    $response = file_get_contents($url);
+    
+            // Inicializa a biblioteca cURL
+        $curl = curl_init();
+
+        // Define a URL da requisição
+        $url = "https://viacep.com.br/ws/{$cep}/json/";
+
+        // Configura as opções da requisição cURL
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // Desabilita a verificação do certificado SSL (apenas para exemplo)
+
+        // Executa a requisição cURL e obtém a resposta
+        $response = curl_exec($curl);
+
+        // Verifica se houve algum erro na requisição
+        if ($response === false) {
+            $error = curl_error($curl);
+            // Trate o erro de acordo com suas necessidades
+            echo "Erro na requisição cURL: " . $error;
+        } else {
+            // Manipule a resposta da requisição conforme necessário
+            echo $response;
+        }
+
+        // Fecha a sessão cURL
+        curl_close($curl);
+
 
     if ($response !== false) {
         $data = json_decode($response);
