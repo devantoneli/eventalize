@@ -1,5 +1,7 @@
 <?php
 
+$validacao = 0;
+
 $popup = FALSE;
 $incorreto = "incorreto";
 $incorretoCnpj = FALSE;
@@ -16,10 +18,9 @@ $labelBairro = FALSE;
 $diferente = FALSE;
 $invalido = FALSE;
 
-if(isset($_POST['nm_fantasia']) && isset($_POST['nm_razaosocial']) && isset($_POST['cd_cnpj'])){
+if(isset($_POST['nm_fantasia']) && isset($_POST['nm_razaosocial']) && isset($_POST['cd_cnpj']) && isset($_POST['nm_senhaempresa']) && isset($_POST['nm_emailempresa']) && isset($_POST['bairro']) && isset($_POST['logradouro']) && isset($_POST['estado']) && isset($_POST['cidade'])){
     $fantasia = $_POST['nm_fantasia'];
     $social = $_POST['nm_razaosocial'];
-    $razao = $_POST['nm_razaosocial'];
     $cnpj = $_POST['cd_cnpj'];
     $logradouro = $_POST['logradouro'];
     $bairroP = $_POST['bairro'];
@@ -34,12 +35,14 @@ if(isset($_POST['nm_fantasia']) && isset($_POST['nm_razaosocial']) && isset($_PO
 
     if($senha != $senha2){
         $diferente = '<label for="senha2"><a class="labelV">Certifique-se de digitar a mesma senha nos dois campos</a></label>';
+        $validacao = 1;
     }
     if (preg_match('/^(?=.*[0-9])(?=.*[^\w\s]).{8,}$/', $senha)) {
         
     } else {
         // A senha não atende aos requisitos
         $invalido = '<label for="nm_senhaempresa"><a class="labelV">A senha deve ter no mínimo 8 caracteres, um símbolo e um número.</a></label>';
+        $validacao = 1;
     }
 
         $url = 'https://www.receitaws.com.br/v1/cnpj/'.$cnpj.'';
@@ -50,6 +53,7 @@ if(isset($_POST['nm_fantasia']) && isset($_POST['nm_razaosocial']) && isset($_PO
             if ($data['status'] === 'ERROR'){
                 $incorretoCnpj = TRUE;
                 $label = '<label for="juridica"><a class="labelV">CNPJ incorreto ou inexistente</a></label>';
+                $validacao = 1;
             }else {
                 $razaoSocial = $data['nome'];
                 $nomeFantasia = $data['fantasia'];
@@ -59,37 +63,105 @@ if(isset($_POST['nm_fantasia']) && isset($_POST['nm_razaosocial']) && isset($_PO
                 $cidade = $data['municipio'];
                 $estado = $data['uf'];
 
+                // Remove os acentos e converte para letras minúsculas
+                $cidadeP = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', 
+                iconv('UTF-8', 'ASCII//TRANSLIT', $cidadeP)));
+                $cidade = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', 
+                iconv('UTF-8', 'ASCII//TRANSLIT', $cidade)));
+                // Compara as strings ignorando acentos e letras maiúsculas/minúsculas
+                if (strcasecmp($cidade, $cidadeP) == 0) {
+                }else {
+                    $labelCidade = '<label for="cidade"><a class="labelV">A cidade não condiz com a do CNPJ informado</a></label>';
+                    $validacao = 1;
+                }
+
+                $bairroP = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', 
+                iconv('UTF-8', 'ASCII//TRANSLIT', $bairroP)));
+                $bairro = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', 
+                iconv('UTF-8', 'ASCII//TRANSLIT', $bairro)));
+                if (strcasecmp($bairro, $bairroP) == 0) {
+                }else {
+                    $labelBairro = '<label for="bairro"><a class="labelV">O bairro não condiz com o do CNPJ informado</a></label>';
+                    $validacao = 1;
+                }
+
+                $logradouro = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', 
+                iconv('UTF-8', 'ASCII//TRANSLIT', $logradouro)));
+                $rua = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', 
+                iconv('UTF-8', 'ASCII//TRANSLIT', $rua)));
+                if (strcasecmp($rua, $logradouro) == 0) {
+                }else {
+                    $labelRua = '<label for="logradouro"><a class="labelV">O logradouro não condiz com o do CNPJ informado</a></label>';
+                    $validacao = 1;
+                }
+
+                if (strcasecmp(strtolower($fantasia), strtolower($nomeFantasia)) == 0) {
+                } else {
+                    $labelFantasia = '<label for="nm_fantasia"><a class="labelV">O nome fantasia não condiz com o do CNPJ informade</a></label>';
+                    $validacao = 1;
+                }
+
+                if (strcasecmp(strtolower($social), strtolower($razaoSocial)) == 0) {
+                } else {
+                    $labelSocial = '<label for="nm_razaosocial"><a class="labelV">A razão social não condiz com o do CNPJ informadeo</a></label>';
+                    $validacao = 1;
+                }
+
                 //Verificando campos informados
-                if($fantasia!=$nomeFantasia){
-                    $labelFantasia = '<label for="nm_fantasia"><a class="labelV">O nome fantasia não condiz com o do CNPJ informado</a></label>';
-                }
-                if($social!=$razaoSocial){
-                    $labelSocial = '<label for="nm_razaosocial"><a class="labelV">A razão social não condiz com o do CNPJ informado</a></label>';
-                }
                 if($abertura!=$dataAbert){
                     $labelData = '<label for="abertura"><a class="labelV">A data de abertura não condiz com a do CNPJ informado</a></label>';
-                }
-                if($logradouro!=$rua){
-                    $labelRua = '<label for="logradouro"><a class="labelV">O logradouro não condiz com o do CNPJ informado</a></label>';
+                    $validacao = 1;
                 }
                 if($estadoP!=$estado){
                     $labelEstado = '<label for="estado"><a class="labelV">O estado não condiz com o do CNPJ informado</a></label>';
-                }
-                if($cidadeP!=$cidade){
-                    $labelCidade = '<label for="cidade"><a class="labelV">A cidade não condiz com a do CNPJ informado</a></label>';
-                }
-                if($bairroP!=$bairro){
-                    $labelBairro = '<label for="bairro"><a class="labelV">O bairro não condiz com o do CNPJ informado</a></label>';
+                    $validacao = 1;
                 }
             }
             
             
         }else{
             $popup = "<div class='popupErro'><img src='../img/icones/exclamacao.svg' width='150px'><h2>Desculpe-nos! Algo deu errado no processamento dos dados. Por favor, tente novamente mais tarde ou tente <a href='cadastrandoEmpresa.php'>recarregar a página</a>.</h2></div>";
+            $validacao = 1;
             unset($_POST);
-
         }
- 
+}else {
+    $validacao = 1;
+}
+
+if ($validacao == 0){
+
+    $nm_fantasia = $_POST['nm_fantasia'];
+    $nm_razaosocial = $_POST['nm_razaosocial'];
+    $cd_cnpj = $_POST['cd_cnpj'];
+    $nm_usuarioempresa = $_POST['nm_usuarioempresa'];
+    $nm_emailempresa = $_POST['nm_emailempresa'];
+    $nm_senhaempresa = $_POST['nm_senhaempresa'];
+    
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $db_name = "db_eventalize";
+    
+    
+    $conn = new mysqli($servername, $username, $password, $db_name);
+    
+    
+    if($conn->connect_error){
+        die("Falha na conexão: " . $conn->connect_error);
+    }
+    
+    $sql = 'INSERT INTO tb_empresa (nm_fantasia,cd_cnpj, nm_usuarioempresa, nm_emailempresa, nm_senhaempresa) VALUES (' . "'" . $nm_fantasia ."'" . ', ' . "'" . $cd_cnpj . "'" . ',' . "'" . $nm_usuarioempresa . "'" . ', ' . "'" . $nm_emailempresa . "'" . ', ' . "'" . $nm_senhaempresa . "'" . ')';
+    
+    if(!isset($_POST['nm_fantasia']) || !isset($_POST['nm_razaosocial']) ||!isset($_POST['cd_cnpj']) ||!isset($_POST['nm_usuarioempresa']) ||!isset($_POST['nm_emailempresa']) ||!isset($_POST['nm_senhaempresa'])){
+    
+    }else{
+        if($conn->query($sql)=== TRUE){
+            $popup = "<div class='popupErro'><img src='../img/icones/exclamacao.svg' width='150px'><h2>Empresa cadastrada com sucesso! Agora, realize o login clicando em 'Entrar' na nossa <a href='../index.html'>página inicial</a>.</h2></div>";
+        }
+        else{
+            $popup = "<div class='popupErro'><img src='../img/icones/exclamacao.svg' width='150px'><h2>Desculpe-nos! Algo deu errado no processamento dos dados. Por favor, tente novamente mais tarde ou tente <a href='cadastrandoEmpresa.php'>recarregar a página</a>.</h2></div>";
+        }
+    }
 }
 
 ?>
@@ -185,33 +257,33 @@ if(isset($_POST['nm_fantasia']) && isset($_POST['nm_razaosocial']) && isset($_PO
                                             <?php echo $labelEstado ? $labelEstado : ''; ?>
                                             <option value="">Selecione um estado</option>
                                             
-                                                <option value="AC">Acre</option>
-                                                <option value="AL">Alagoas</option>
-                                                <option value="AP">Amapá</option>
-                                                <option value="AM">Amazonas</option>
-                                                <option value="BA">Bahia</option>
-                                                <option value="CE">Ceará</option>
-                                                <option value="DF">Distrito Federal</option>
-                                                <option value="ES">Espírito Santo</option>
-                                                <option value="GO">Goiás</option>
-                                                <option value="MA">Maranhão</option>
-                                                <option value="MT">Mato Grosso</option>
-                                                <option value="MS">Mato Grosso do Sul</option>
-                                                <option value="MG">Minas Gerais</option>
-                                                <option value="PA">Pará</option>
-                                                <option value="PB">Paraíba</option>
-                                                <option value="PR">Paraná</option>
-                                                <option value="PE">Pernambuco</option>
-                                                <option value="PI">Piauí</option>
-                                                <option value="RJ">Rio de Janeiro</option>
-                                                <option value="RN">Rio Grande do Norte</option>
-                                                <option value="RS">Rio Grande do Sul</option>
-                                                <option value="RO">Rondônia</option>
-                                                <option value="RR">Roraima</option>
-                                                <option value="SC">Santa Catarina</option>
-                                                <option value="SP">São Paulo</option>
-                                                <option value="SE">Sergipe</option>
-                                                <option value="TO">Tocantins</option>
+                                            <option value="AC" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'AC' ? 'selected' : ''; ?>>Acre</option>
+                                                <option value="AL" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'AL' ? 'selected' : ''; ?>>Alagoas</option>
+                                                <option value="AP" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'AP' ? 'selected' : ''; ?>>Amapá</option>
+                                                <option value="AM" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'AM' ? 'selected' : ''; ?>>Amazonas</option>
+                                                <option value="BA" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'BA' ? 'selected' : ''; ?>>Bahia</option>
+                                                <option value="CE" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'CE' ? 'selected' : ''; ?>>Ceará</option>
+                                                <option value="DF" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'DF' ? 'selected' : ''; ?>>Distrito Federal</option>
+                                                <option value="ES" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'ES' ? 'selected' : ''; ?>>Espírito Santo</option>
+                                                <option value="GO" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'GO' ? 'selected' : ''; ?>>Goiás</option>
+                                                <option value="MA" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'MA' ? 'selected' : ''; ?>>Maranhão</option>
+                                                <option value="MT" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'MT' ? 'selected' : ''; ?>>Mato Grosso</option>
+                                                <option value="MS" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'MS' ? 'selected' : ''; ?>>Mato Grosso do Sul</option>
+                                                <option value="MG" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'MG' ? 'selected' : ''; ?>>Minas Gerais</option>
+                                                <option value="PA" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'PA' ? 'selected' : ''; ?>>Pará</option>
+                                                <option value="PB" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'PB' ? 'selected' : ''; ?>>Paraíba</option>
+                                                <option value="PR" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'PR' ? 'selected' : ''; ?>>Paraná</option>
+                                                <option value="PE" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'PE' ? 'selected' : ''; ?>>Pernambuco</option>
+                                                <option value="PI" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'PI' ? 'selected' : ''; ?>>Piauí</option>
+                                                <option value="RJ" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'RJ' ? 'selected' : ''; ?>>Rio de Janeiro</option>
+                                                <option value="RN" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'RN' ? 'selected' : ''; ?>>Rio Grande do Norte</option>
+                                                <option value="RS" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'RS' ? 'selected' : ''; ?>>Rio Grande do Sul</option>
+                                                <option value="RO" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'RO' ? 'selected' : ''; ?>>Rondônia</option>
+                                                <option value="RR" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'RR' ? 'selected' : ''; ?>>Roraima</option>
+                                                <option value="SC" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'SC' ? 'selected' : ''; ?>>Santa Catarina</option>
+                                                <option value="SP" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'SP' ? 'selected' : ''; ?>>São Paulo</option>
+                                                <option value="SE" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'SE' ? 'selected' : ''; ?>>Sergipe</option>
+                                                <option value="TO" <?php echo isset($_POST['estado']) && $_POST['estado'] == 'TO' ? 'selected' : ''; ?>>Tocantins</option>
                                             </select>
                                     </div>
                                     <div></div>

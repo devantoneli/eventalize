@@ -45,7 +45,8 @@ body{
     /* width:600px; */
     width: 40vw;
     /* height: 670px; */
-    height: 85vh;
+    height: 75vh;
+    overflow: auto;
     background-color: white;
     border-radius: 3%;
 }
