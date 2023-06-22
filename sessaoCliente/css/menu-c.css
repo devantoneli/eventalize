@@ -103,7 +103,7 @@
 
   
 .headerPesquisa input {
-    width: 25em;
+    width: 30vw;
     padding: 5px;
     border: none;
     border-radius: 5px;
@@ -120,6 +120,10 @@
     cursor: pointer;
     margin-top: -8%;
     margin-right: -8%;
+}
+
+.imgLupa img{
+    width: 7%;
 }
 
 .headerClientePerfil{
@@ -145,6 +149,54 @@ a.notificacao, a.notificacao img{
 }
 
 button.menuIcon2{
+    grid-column: 3 / 3;
+    width: 3em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button.menuIcon3{
+    grid-column: none;
+    width: 3em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menuIcon2{
+    display: inline-block;
+}
+
+.menuIcon3{
+    display: none;
+}
+
+.headerMenuCliente {
+    display: block;
+    margin: 20px 0;
+    padding: 15px 25px;
+    transition: all .50s ease;
+}
+
+.headerMenuCliente a{
+    display: block;
+    margin: 20px 0;
+    padding: 0px 10px;
+    transition: all .50s ease;
+}
+
+.headerMenuCliente{
+    display: flex;
+    justify-content: none;
+    margin-left: none;
+    align-items: none;
+    margin-right: none;
+}
+
+
+
+button.menuIcon3{
     grid-column: 3 / 3;
     width: 3em;
     background-color: transparent;
@@ -225,7 +277,7 @@ button.menuIcon2{
     padding: 5px 10px;
     text-decoration: none;
     height: 0;
-    width: 15vw;
+    /* width: 15vw; */
     font-weight: 300;
 }
 
@@ -240,10 +292,10 @@ button.menuIcon2{
 .headerMenuCliente {
     /* position: absolute; */
     position: fixed;
-    top: 10%;
+    top: 8%;
     right: -100%;
-    width: 300px;
-    height: 80%;
+    width: 200px;
+    height: 60%;
     align-items: center;
     justify-content: center;
     background: white;
@@ -252,6 +304,7 @@ button.menuIcon2{
     border-radius: 8px;
     box-shadow: 0px 0px 5px 0px black;
     transition: all .50s ease;
+    z-index: 3;
 }
 
 .headerMenuCliente {
@@ -263,14 +316,15 @@ button.menuIcon2{
 
 .headerMenuCliente a{
     display: block;
-    margin: 20px 0;
+    margin: 30px 0;
     padding: 0px 10px;
     transition: all .50s ease;
 }
 
 .headerMenuCliente a{
     color: black;
-    padding: 8%;
+    padding: 8% 0;
+    font-size: 1.3em;
 }
 
 .headerMenuCliente a:hover{
@@ -346,6 +400,51 @@ button.menuIcon2{
     .logo img{
         width: 50px;
     }
+
+    .menuIcon2{
+        cursor: pointer;
+        /* display: none; */
+        display: none;
+        fill: #ffffff;
+        margin-right: 3%;
+    }
+    .menuIcon3{
+        cursor: pointer;
+        fill: #ffffff;
+        /* margin-right: 3%; */
+    }
+
+    button.menuIcon3{
+        grid-column: none;
+        width: 3em;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menuIcon3{
+        display: inline-block;
+    }
+
+    .headerClientePerfil{
+        grid-column: 4 / 5;
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        justify-items: center;
+        align-items: center;
+        padding: 3% 20% 0 0;
+        /* column-gap: 5%; */
+        /* margin-right: 15%; */
+    }
+
+    .headerClientePerfil img{
+        padding: 8%;
+    }
+
+    ::placeholder{
+        font-size: 12px;
+    }
+
     .menuIcon{
         display: inline-block;
     }
@@ -394,9 +493,9 @@ button.menuIcon2{
     }
 
     .headerPesquisa input{
-        width: 18em;
-        padding: 5px;
-        
+        width: 35vw;
+        /* padding: 5px; */
+        margin-right: 10px;
     }
 
     .imgLupa{
@@ -404,11 +503,28 @@ button.menuIcon2{
         align-items: center;
         justify-content: flex-end;
         cursor: pointer;
-        margin-top: -10%;
-        margin-right: -8%;
+        /* margin-top: -14%; */
+        margin-right: -10%;
+    }
+
+    .imgLupa img{
+        width: 22px;
     }
 
     .header{
         grid-column: 1 / span 4;
+    }
+
+    .headerPesquisa {
+        margin-left: none;
+        display: flex;
+        /* background-color: bisque; */
+        grid-column: 2 / 3;
+    }
+}
+
+@media (max-width: 768px){
+    .imgLupa{
+        margin-top: -14%;
     }
 }

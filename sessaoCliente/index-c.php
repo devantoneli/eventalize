@@ -106,6 +106,7 @@ if($conn->connect_error){
                 
                 <!-- </div> -->
                 <button class="menuIcon2" onclick="menuOpen()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
+            <button class="menuIcon3" onclick="menuOpenCliente()"><img  src="../img/icones/vector.svg" style="height: 50px;" width="30px"></button>
             </div>
             <section class="menuPerfil">
                 <a href="perfil-c.php">Perfil</a>
@@ -115,6 +116,15 @@ if($conn->connect_error){
                 <a href="">Configurações</a>
                 <a href="../logout.php">Sair</a>
             </section>
+            <div class="headerMenuCliente">
+                <a href="">Início</a>
+                <a href="">Feed</a>
+                <a href="">Mensagens</a>
+                <a href="">Meus Pedidos</a>
+                <a href="">Perfil</a>
+                <a href="">Configurações</a>
+                <a href="">Sair</a>
+            </div>
         </div>
     </div>
 <!-- FIM MENU -->
