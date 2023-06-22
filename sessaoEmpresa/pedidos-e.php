@@ -83,9 +83,6 @@ function consultarCEP($cep) {
             $error = curl_error($curl);
             // Trate o erro de acordo com suas necessidades
             echo "Erro na requisição cURL: " . $error;
-        } else {
-            // Manipule a resposta da requisição conforme necessário
-            echo $response;
         }
 
         // Fecha a sessão cURL
