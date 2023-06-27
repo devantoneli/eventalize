@@ -48,7 +48,7 @@ if (isset($_GET['filtro'])) {
             <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Assinatura do contrato">Aguardando Assinatura</a></li>
             <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando pagamento">Aguardando pagamento</a></li>
             <li><a href="historicopedido-c.php?filtro=ns&status=Finalizado">Finalizado</a></li>
-            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando Confirmação">Aguardando Confirmação</a></li>
+            <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando a confirmação">Aguardando Confirmação</a></li>
             <li><a href="historicopedido-c.php?filtro=ns&status=Aguardando data agendada">Aguardando data agendada</a></li>
             </ul>
         </div>';
@@ -230,7 +230,8 @@ if (isset($_GET['filtro'])) {
                     }else if($row['nm_status']!="Finalizado" && $row['nm_status']!="Aguardando assinatura do contrato"){
                         echo'<li class="status">Pago</li>';
                     }else if($row['nm_status']=="Aguardando assinatura do contrato"){
-                        echo'<form action="contrato.php"> 
+                        echo'<form action="contrato.php" method="GET"> 
+                        <input name="cd_pedido" type="hidden" value="'.$row['cd_pedido'].'">
                         <button class="btn-Pagar" type="submit" style="padding: 10px 27px;">Assinar</button>
                         </form>';
                     }

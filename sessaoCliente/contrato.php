@@ -5,6 +5,7 @@ if(!isset($_SESSION)){
 }
 
 $cd_cliente = $_SESSION['cd_cliente'];
+$cd_pedido = $_GET['cd_pedido'];
 
 $servername = "localhost";
 $username = "root";
@@ -23,7 +24,7 @@ INNER JOIN tb_cliente c ON p.cd_cliente = c.cd_cliente
 INNER JOIN tb_empresa e ON p.cd_empresa = e.cd_empresa
 INNER JOIN tb_servicopedido sp ON p.cd_pedido = sp.cd_pedido
 INNER JOIN tb_servico s ON sp.cd_servico = s.cd_servico
-WHERE p.cd_cliente = $cd_cliente
+WHERE p.cd_pedido = $cd_pedido
 ORDER BY p.dt_pedido DESC
 LIMIT 1";
  $result=$conn->query($sql);
