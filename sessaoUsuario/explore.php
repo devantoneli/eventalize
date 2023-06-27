@@ -188,7 +188,7 @@ if ($result->num_rows > 0) {
                 $row3 = $result3->fetch_assoc();
                 $nome = $row3['nm_cliente'];
                 $biografia = 'Cliente';
-                $perfil = "https://cdn-icons-png.flaticon.com/512/1104/1104294.png?w=826&t=st=1685996049~exp=1685996649~hmac=e7b71ec13f9c7a9f78d6a72b0b06fc17163bc1778742debe2c8cedfb40b5d34c";
+                $perfil = "https://img.freepik.com/icones-gratis/do-utilizador_318-328976.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais";
             }
            
             

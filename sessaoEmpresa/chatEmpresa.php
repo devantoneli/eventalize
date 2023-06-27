@@ -95,7 +95,7 @@ if(mysqli_num_rows($result) > 0){
     echo'<div class="alinha">
             <h3>'.$row['nm_cliente'].'</h3><br>';
             if($row['url_fotoperfil']==''){
-                echo'<img class="imgEmpresa" src="https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" value="'.$row['cd_cliente'].'" alt="imagem">';
+                echo'<img class="imgEmpresa" src="https://img.freepik.com/icones-gratis/do-utilizador_318-328976.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais" value="'.$row['cd_cliente'].'" alt="imagem">';
             }else{
                 echo'<img class="imgEmpresa" src="'.$row['url_fotoperfil'].'" value="'.$row['cd_cliente'].'" alt="imagem">';
             }

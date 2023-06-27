@@ -34,7 +34,7 @@ for (var i = 0; i <= ate; i++) {
 
                     // Atualize a foto e o nome no meio da página com as informações da empresa
                     if (empresa.foto == null){
-                      fotoMeio.src = 'https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais'
+                      fotoMeio.src = 'https://img.freepik.com/icones-gratis/do-utilizador_318-328976.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais'
                     }else{
                       fotoMeio.src = empresa.foto;
                     }
@@ -91,7 +91,7 @@ setInterval(function() {
 
                 // Atualize a foto e o nome no meio da página com as informações da empresa
                 if (empresa.foto == null){
-                  fotoMeio.src = 'https://img.freepik.com/icones-gratis/galeria_318-583145.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais'
+                  fotoMeio.src = 'https://img.freepik.com/icones-gratis/do-utilizador_318-328976.jpg?size=626&ext=jpg&ga=GA1.2.1135653598.1681429464&semt=ais'
                 }else{
                   fotoMeio.src = empresa.foto;
                 }
